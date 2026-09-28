@@ -104,6 +104,13 @@ Sur Clever Cloud, avec le runtime Static :
 | `CC_BUILD_COMMAND` | `node scripts/build.mjs` |
 | `CC_WEBROOT` | `/dist` |
 
+L’application du prototype s’appelle `reperes-gaza-static` (région Paris, une instance pico). Elle n’est pas reliée à GitHub : un push sur `main` ne la redéploie pas. Pour publier, depuis un poste où la CLI Clever Cloud est connectée au compte propriétaire :
+
+```sh
+clever link app_0994a14a-5e02-4ace-9534-7571f27dd242 --alias reperes   # une seule fois
+clever deploy --alias reperes
+```
+
 ## Contribuer
 
 Les corrections factuelles sont les plus utiles. Pour en proposer une, ouvrez une issue qui indique la notice, la phrase en cause et le document qui la contredit ou la précise, avec l’emplacement du passage.
