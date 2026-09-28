@@ -1,0 +1,20 @@
+# Construction
+dist/
+node_modules/
+
+# Captures des tests navigateur
+e2e/screenshots/
+
+# Archives et fichiers de travail
+*.zip
+*:Zone.Identifier
+*.log
+.DS_Store
+Thumbs.db
+
+# Environnement local et secrets
+.env
+.env.*
+.clever.json
+*.pem
+*.key

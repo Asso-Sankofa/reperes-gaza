@@ -1,0 +1,51 @@
+# docker compose up site           prévisualisation avec reconstruction automatique (http://localhost:8080)
+# docker compose run --rm check    tests du corpus et build
+# docker compose run --rm e2e      parcours navigateur (ordinateur et mobile) contre le service site
+# BASE_URL=https://... docker compose run --rm --no-deps e2e   mêmes parcours contre un site déployé
+# docker compose run --rm --no-deps -e E2E_SCRIPT=liens.mjs e2e   ouvre chaque source du corpus dans Chromium
+services:
+  site:
+    build: .
+    command: ["npm", "run", "dev"]
+    environment:
+      HOST: 0.0.0.0
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - .:/app
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/"]
+      interval: 2s
+      timeout: 2s
+      retries: 15
+
+  check:
+    build: .
+    command: ["npm", "run", "check"]
+    volumes:
+      - .:/app
+    profiles: ["tools"]
+
+  links:
+    build: .
+    command: ["npm", "run", "check:links"]
+    volumes:
+      - .:/app
+    profiles: ["tools"]
+
+  e2e:
+    image: mcr.microsoft.com/playwright:v1.63.0-noble
+    working_dir: /opt/e2e
+    command:
+      - sh
+      - -c
+      - npm init -y >/dev/null && npm install --no-audit --no-fund --silent playwright@1.63.0 && cp /app/e2e/*.mjs . && node $${E2E_SCRIPT:-parcours.mjs}
+    environment:
+      BASE_URL: ${BASE_URL:-http://site:8080}
+      SHOTS_DIR: /app/e2e/screenshots
+    volumes:
+      - .:/app
+    depends_on:
+      site:
+        condition: service_healthy
+    profiles: ["tools"]
