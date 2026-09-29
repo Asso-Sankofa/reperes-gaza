@@ -32,11 +32,17 @@ Ce qui a été vérifié le 28 septembre 2026 :
 - les documents de suivi cités pour les paragraphes 2, 5 et 12 : rapport du Secrétaire général S/2024/480 du 19 juin 2024 et exposé du 24 mars 2026 sur le 37e rapport ;
 - l’accessibilité des 16 liens sortants, ouverts dans Chromium.
 
-Ce qui n’a pas été vérifié : le contenu des autres sources, repérées pour la v0.3 et non relues depuis ; la présentation juridique des notices 2023 et 2024 ; l’ensemble des rapports trimestriels postérieurs au 24 mars 2026. Un lien qui répond ne prouve pas que le passage cité s’y trouve toujours.
+Ce qui a été vérifié le 29 septembre 2026 :
+
+- les passages de l’avis consultatif de la CIJ du 19 juillet 2024 cités pour 2005 et 2024 (§ 93 et 94, § 279, § 285), dans le texte français A/78/968 ;
+- les conclusions de la commission d’enquête citées pour 2023 (§ 90 et 97 du rapport A/HRC/56/26 du 14 juin 2024) ;
+- le passage sur 2005 de la synthèse historique de l’ONU.
+
+Ce qui n’a pas été vérifié : le contenu des autres sources, repérées pour la v0.3 et non relues depuis ; l’interprétation juridique des notices 2005, 2023 et 2024, qui cite les textes mais n’a pas été relue par un juriste ; l’ensemble des rapports trimestriels postérieurs au 24 mars 2026. Un lien qui répond ne prouve pas que le passage cité s’y trouve toujours.
 
 ## Sources de données
 
-Le corpus tient dans un seul fichier : `content/reperes.json`. Chaque source y porte son éditeur, son URL, le passage à consulter, une limite et une note d’accès. Les sources contrôlées le 28 septembre 2026 ont un champ `verified_on`.
+Le corpus tient dans un seul fichier : `content/reperes.json`. Chaque source y porte son éditeur, son URL, le passage à consulter, une limite et une note d’accès. Les sources dont le passage cité a été relu ont un champ `verified_on` (28 ou 29 septembre 2026).
 
 Les documents cités viennent principalement de l’ONU (Conseil de sécurité, Secrétariat, Division des droits des Palestiniens, OCHA, Conseil des droits de l’homme), de la Cour internationale de Justice, de la Cour de justice de l’Union européenne, du ministère de l’Europe et des Affaires étrangères et de l’Assemblée nationale. S’y ajoutent l’autoprésentation d’un mouvement (Standing Together) et deux instituts d’enquête (Israel Democracy Institute, PCPSR). La charte éditoriale (`content/charte-editoriale.md`) fixe la façon de les citer.
 
