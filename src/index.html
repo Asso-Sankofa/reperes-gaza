@@ -26,8 +26,8 @@
     </a>
     <nav class="main-nav" aria-label="Navigation principale">
       <a href="#/parcours" data-nav="parcours">Le parcours</a>
-      <a href="#/voix" data-nav="voix">Qui parle ?</a>
-      <a href="#/verifier" data-nav="verifier">Vérifier un chiffre</a>
+      <a href="#/voix" data-nav="voix">Acteurs et enquêtes</a>
+      <a href="#/verifier" data-nav="verifier">Écart entre bilans</a>
       <a href="#/mots" data-nav="mots">Lexique</a>
       <a href="#/methode" data-nav="methode">Méthode</a>
     </nav>
@@ -38,8 +38,8 @@
 
 <nav class="menu-mobile" id="menu-mobile" aria-label="Navigation principale (mobile)" hidden>
   <a href="#/parcours" data-nav="parcours"><span class="menu-mobile__label">Le parcours</span><span class="menu-mobile__n">01</span></a>
-  <a href="#/voix" data-nav="voix"><span class="menu-mobile__label">Qui parle ?</span><span class="menu-mobile__n">02</span></a>
-  <a href="#/verifier" data-nav="verifier"><span class="menu-mobile__label">Vérifier un chiffre</span><span class="menu-mobile__n">03</span></a>
+  <a href="#/voix" data-nav="voix"><span class="menu-mobile__label">Acteurs et enquêtes</span><span class="menu-mobile__n">02</span></a>
+  <a href="#/verifier" data-nav="verifier"><span class="menu-mobile__label">Écart entre bilans</span><span class="menu-mobile__n">03</span></a>
   <a href="#/mots" data-nav="mots"><span class="menu-mobile__label">Lexique</span><span class="menu-mobile__n">04</span></a>
   <a href="#/methode" data-nav="methode"><span class="menu-mobile__label">Méthode</span><span class="menu-mobile__n">05</span></a>
   <p class="menu-mobile__status">Version {{VERSION}} · Notices en attente de relecture indépendante</p>
@@ -88,14 +88,14 @@
           <span class="question-card__cta">Comprendre un avis consultatif →</span>
         </a>
         <a class="question-card" href="#/verifier">
-          <span class="eyebrow eyebrow--on-ink">CAS PRATIQUE · OCHA</span>
-          <span class="question-card__q">Pourquoi deux bilans peuvent-ils différer sans que l’un soit faux ?</span>
+          <span class="eyebrow eyebrow--on-ink">MÉTHODE · OCHA</span>
+          <span class="question-card__q">Pourquoi deux bilans ne donnent-ils pas le même total ?</span>
           <span class="question-card__cta">Examiner la méthode →</span>
         </a>
         <a class="question-card" href="#/voix">
-          <span class="eyebrow eyebrow--on-ink">QUI PARLE ?</span>
-          <span class="question-card__q">Que pensent les habitants des décisions de leur gouvernement ?</span>
-          <span class="question-card__cta">Distinguer les voix →</span>
+          <span class="eyebrow eyebrow--on-ink">ACTEURS ET ENQUÊTES</span>
+          <span class="question-card__q">Quelles institutions et quelles enquêtes ce parcours cite-t-il ?</span>
+          <span class="question-card__cta">Voir les sources par pays →</span>
         </a>
       </div>
     </div>
@@ -120,10 +120,10 @@
       </div>
     </details>
     <div class="section-links">
-      <a href="#/voix"><span class="eyebrow">02</span><span class="section-links__title">Qui parle ?</span><span class="muted">Une prise de parole engage un auteur, pas une population.</span></a>
-      <a href="#/verifier"><span class="eyebrow">03</span><span class="section-links__title">Vérifier un chiffre</span><span class="muted">Avant de comparer deux bilans, regarder ce que chacun compte.</span></a>
-      <a href="#/mots"><span class="eyebrow">04</span><span class="section-links__title">Le lexique</span><span class="muted">Les mots qui reviennent, définis avec leur source.</span></a>
-      <a href="#/methode"><span class="eyebrow">05</span><span class="section-links__title">La méthode</span><span class="muted">Qui écrit, comment, et ce qui reste à relire.</span></a>
+      <a href="#/voix"><span class="eyebrow">02</span><span class="section-links__title">Acteurs et enquêtes</span><span class="muted">Institutions, mouvement et instituts d’enquête cités, avec leurs sources.</span></a>
+      <a href="#/verifier"><span class="eyebrow">03</span><span class="section-links__title">Comprendre un écart entre deux bilans</span><span class="muted">Avant de comparer deux bilans, regarder ce que chacun compte.</span></a>
+      <a href="#/mots"><span class="eyebrow">04</span><span class="section-links__title">Lexique</span><span class="muted">Les termes utilisés dans ce parcours, avec leur source.</span></a>
+      <a href="#/methode"><span class="eyebrow">05</span><span class="section-links__title">Méthode</span><span class="muted">Comment les textes sont préparés et ce qui reste à relire.</span></a>
     </div>
   </section>
 </div>
@@ -131,24 +131,25 @@
 <!-- Parcours : rendu par app.js -->
 <div data-route="parcours" data-slot="parcours" hidden></div>
 
-<!-- Qui parle ? : rendu par app.js -->
+<!-- Acteurs et enquêtes : rendu par app.js -->
 <div data-route="voix" data-slot="voix" hidden></div>
 
-<!-- Vérifier un chiffre -->
+<!-- Comprendre un écart entre deux bilans -->
 <div data-route="verifier" hidden>
   <section class="ink-section" aria-labelledby="verifier-title">
     <div class="wrap section">
       <div class="section-head">
         <div>
-          <p class="eyebrow eyebrow--on-ink">03 · APPRENDRE À VÉRIFIER</p>
-          <h1 id="verifier-title" class="display display--h1" tabindex="-1">Un chiffre a une histoire.</h1>
+          <p class="eyebrow eyebrow--on-ink">03 · COMPRENDRE UN ÉCART ENTRE DEUX BILANS</p>
+          <h1 id="verifier-title" class="display display--h1" tabindex="-1">Pourquoi deux bilans ne donnent-ils pas le même total ?</h1>
         </div>
-        <span class="eyebrow eyebrow--plain">CAS DOCUMENTAIRE · OCHA</span>
+        <span class="eyebrow eyebrow--plain">MÉTHODE · OCHA</span>
       </div>
       <div class="split">
         <div class="split__main">
-          <p class="display display--h3">Deux bilans différents. Faut-il conclure que l’un est faux ?</p>
-          <p class="measure-narrow">Avant de comparer, regardez ce que chaque bilan compte. OCHA distingue sa base de victimes vérifiées des chiffres rapportés dans ses points de situation.</p>
+          <p class="display display--h3">Deux bilans peuvent différer parce qu’ils ne couvrent pas la même période ou ne comptent pas les mêmes faits. Voici comment vérifier ce que chacun mesure.</p>
+          <p class="measure-narrow">OCHA, par exemple, distingue sa base de victimes vérifiées des chiffres rapportés dans ses points de situation.</p>
+          <p class="measure-narrow muted-on-ink">Cette page explique la méthode. Elle ne compare pas encore deux bilans chiffrés précis.</p>
           <button type="button" class="button button--outline-on-ink" data-source="ocha" data-focus="verifier-ocha">Lire la page méthodologique <span aria-hidden="true">↗</span></button>
         </div>
         <div class="split__side faq">
@@ -180,15 +181,15 @@
 <!-- Méthode -->
 <div data-route="methode" hidden>
   <section class="wrap section" aria-labelledby="methode-title">
-    <p class="eyebrow">05 · UNE DÉMARCHE CITOYENNE</p>
-    <h1 id="methode-title" class="display display--h1 methode__title" tabindex="-1">Comprendre, sans déléguer son jugement.</h1>
+    <p class="eyebrow">05 · MÉTHODE</p>
+    <h1 id="methode-title" class="display display--h1 methode__title" tabindex="-1">Comment ce site est préparé</h1>
     <div class="split">
       <div class="split__main measure">
-        <p class="lead">Repères est un nom de travail pour un projet porté par Lamine Diaby. Son point de départ : rendre les documents accessibles et examiner les décisions françaises à propos de Gaza.</p>
-        <p>La compétence revendiquée est celle du traitement de l’information et des données ouvertes. Les synthèses historiques et juridiques appellent une relecture spécialisée.</p>
+        <p class="lead">Repères est un projet documentaire porté par l’association Sankofa. Son point de départ : rendre les documents accessibles et examiner les décisions françaises à propos de Gaza.</p>
+        <p>Nous savons rechercher, organiser et rendre consultables des documents et des données publiques. Nos textes historiques et juridiques doivent encore être relus par des spécialistes.</p>
         <p>Chaque personne mérite d’être entendue sans être assignée à un gouvernement. Un juif de France n’a pas à répondre des décisions israéliennes. Une personne palestinienne n’a pas à répondre des actes du Hamas.</p>
         <div class="principles">
-          <div><h2>Une affirmation doit pouvoir être examinée</h2><p class="muted">Chaque fait important renvoie au document qui le soutient. Une déclaration est attribuée. Les limites de la source restent visibles.</p></div>
+          <div><h2>Une affirmation doit pouvoir être examinée</h2><p class="muted">Nous indiquons le document sur lequel repose chaque fait important, ainsi que ce qu’il permet réellement d’établir. Le lecteur peut remonter à la source et voir ce qui reste incertain.</p></div>
           <div><h2>Une correction laisse une trace</h2><p class="muted">Une notice corrigée conserve un historique. La collecte automatique prépare le travail ; elle n’autorise pas la publication sans validation.</p></div>
         </div>
         <div class="status-detail">

@@ -14,7 +14,7 @@ Ce dépôt réunit des éléments qui n’ont pas tous la même licence. Aucune 
 
 Les notices originales sont proposées sous Creative Commons Attribution 4.0 International.
 
-Attribution proposée : « Lamine Diaby, Repères, corpus 0.3, 2026 ».
+Attribution proposée : « Association Sankofa, Repères, corpus 0.3, 2026 ».
 
 Texte de la licence : https://creativecommons.org/licenses/by/4.0/legalcode.fr
 

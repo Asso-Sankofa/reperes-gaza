@@ -1,10 +1,10 @@
 # Charte éditoriale de travail
 
-Version 0.1, proposée le 25 septembre 2026.
+Version 0.1, proposée le 25 septembre 2026. Révision du 29 septembre 2026 : le projet est présenté comme porté par l’association Sankofa.
 
 ## Notre place
 
-Le projet part d'une démarche citoyenne : comprendre les décisions françaises concernant Gaza et rendre accessibles les documents qui permettent de les examiner. Son auteur apporte une compétence de traitement des informations et de données ouvertes. Il ne se présente pas comme journaliste ou spécialiste de géopolitique.
+Le projet part d'une démarche citoyenne : comprendre les décisions françaises concernant Gaza et rendre accessibles les documents qui permettent de les examiner. Il est porté par l’association Sankofa. Nous savons rechercher, organiser et rendre consultables des documents et des données publiques. Nous ne nous présentons pas comme journalistes ou spécialistes de géopolitique.
 
 Cette position n'exonère pas de rigueur. Les compétences nécessaires à une relecture sont recherchées et nommées. Personne n'est présenté comme validateur sans avoir effectivement relu la version publiée.
 

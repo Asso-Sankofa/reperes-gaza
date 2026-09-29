@@ -1,12 +1,12 @@
 {
   "schema_version": "0.3.0",
-  "title": "Repères : corpus de démonstration du design system",
+  "title": "Repères : corpus documentaire du prototype",
   "scope": "Sélection limitée pour éprouver une interface, sans couverture exhaustive ni bilan actuel de la guerre.",
   "editorial_status": "draft_pending_independent_review",
   "prepared_on": "2026-09-25",
   "license": {
     "notices": "CC-BY-4.0",
-    "attribution": "Lamine Diaby, Repères, corpus 0.3, 2026",
+    "attribution": "Association Sankofa, Repères, corpus 0.3, 2026",
     "third_party_documents": "Les documents liés conservent leurs droits propres. Aucun droit de redistribution de leur texte intégral n’est revendiqué."
   },
   "sources": [
@@ -217,14 +217,14 @@
     {
       "id": "france-1949",
       "year": "1949",
-      "short": "Le lien français",
+      "short": "Relations diplomatiques",
       "threads": [
         "france"
       ],
       "kind": "Relations diplomatiques",
       "title": "La France établit des relations diplomatiques avec Israël",
       "text": "La France établit ces relations le 11 mai 1949. Le ministère des Affaires étrangères rappelle ensuite une coopération française à l’effort de défense du nouvel État.",
-      "context": "Cette relation a une histoire. La comprendre demande de regarder les décisions prises à chaque période, au-delà des positions exprimées aujourd’hui.",
+      "context": "Pour comprendre cette relation, il faut regarder les décisions prises à chaque période, et pas seulement les positions exprimées aujourd’hui.",
       "question": "Quels documents permettent de suivre l’évolution de cette coopération ?",
       "sources": [
         "france"
@@ -237,7 +237,7 @@
     {
       "id": "guerre-1967",
       "year": "1967",
-      "short": "Un tournant",
+      "short": "L’occupation",
       "threads": [
         "history",
         "france"
@@ -306,7 +306,7 @@
     {
       "id": "attaques-2023",
       "year": "2023",
-      "short": "La guerre",
+      "short": "Le 7 octobre et la guerre",
       "threads": [
         "history"
       ],
@@ -335,7 +335,7 @@
       "kind": "Avis consultatif · 19 juillet",
       "title": "La CIJ examine les conséquences de l’occupation",
       "text": "La Cour internationale de Justice estime illicite la présence continue d’Israël dans le Territoire palestinien occupé et demande qu’il y soit mis fin aussi rapidement que possible.",
-      "context": "La portée d’un avis consultatif doit être expliquée. Il ne s’agit ni d’une condamnation pénale d’un individu, ni d’un jugement au fond dans l’affaire Afrique du Sud contre Israël.",
+      "context": "Un avis consultatif n’est ni la condamnation pénale d’un individu, ni un jugement au fond dans l’affaire Afrique du Sud contre Israël.",
       "question": "Quelles conséquences la Cour expose-t-elle pour les autres États ?",
       "sources": [
         "icj"
@@ -351,7 +351,7 @@
   "actors": {
     "france": {
       "label": "En France",
-      "title": "Une déclaration n’est pas un vote.",
+      "title": "Gouvernement et Parlement : deux types de documents",
       "cards": [
         {
           "name": "Le gouvernement",
@@ -372,7 +372,7 @@
     },
     "israel": {
       "label": "En Israël",
-      "title": "Identifier les désaccords, sans les simplifier.",
+      "title": "Un mouvement et un institut d’enquêtes",
       "cards": [
         {
           "name": "Standing Together",
@@ -382,7 +382,7 @@
           ]
         },
         {
-          "name": "Les enquêtes d’opinion",
+          "name": "Les enquêtes de l’Israel Democracy Institute",
           "text": "L’Israel Democracy Institute publie des enquêtes. Pour savoir ce qu’elles mesurent, il faut lire la question posée et identifier les personnes interrogées.",
           "sources": [
             "idi"
@@ -393,10 +393,10 @@
     },
     "palestine": {
       "label": "En Palestine",
-      "title": "Une population ne se réduit pas à ses dirigeants.",
+      "title": "Enquêtes d’opinion et acteurs armés",
       "cards": [
         {
-          "name": "L’opinion des habitants",
+          "name": "Les enquêtes du PCPSR",
           "text": "Le PCPSR présente des enquêtes incluant Gaza et la Cisjordanie. La couverture réelle et les conditions de collecte font partie du résultat à expliquer.",
           "sources": [
             "pcpsr"
@@ -414,7 +414,7 @@
     },
     "international": {
       "label": "À l’international",
-      "title": "L’ONU n’est pas une voix unique.",
+      "title": "Des organes de l’ONU de nature différente",
       "cards": [
         {
           "name": "Le Conseil de sécurité",
@@ -432,14 +432,14 @@
           ]
         }
       ],
-      "note": "Cette sélection démontre le composant. Elle n’est pas un inventaire des acteurs internationaux."
+      "note": "Cette sélection n’est pas un inventaire des acteurs internationaux."
     }
   },
   "terms": [
     {
       "id": "nakba",
       "title": "Nakba",
-      "subtitle": "Un événement et sa mémoire",
+      "subtitle": "Mot arabe, déplacement de 1948",
       "text": "Ce mot arabe signifie « catastrophe ». Il désigne le déplacement massif et la dépossession des Palestiniens autour de la guerre de 1948. Les usages qui décrivent un processus continu doivent être attribués à leurs auteurs.",
       "sources": [
         "nakba"
@@ -448,7 +448,7 @@
     {
       "id": "colonie",
       "title": "Colonie",
-      "subtitle": "Un terme situé dans le droit",
+      "subtitle": "Terme de la résolution 2334",
       "text": "Dans les textes présentés ici, il s’agit des implantations israéliennes dans le territoire palestinien occupé depuis 1967. La résolution 2334 les considère dépourvues de validité juridique. Le terme ne désigne pas tous les habitants d’Israël.",
       "sources": [
         "2334"
@@ -457,7 +457,7 @@
     {
       "id": "avis",
       "title": "Avis consultatif",
-      "subtitle": "Identifier la nature d’un texte",
+      "subtitle": "Type de décision de la CIJ",
       "text": "L’avis rendu par la CIJ en juillet 2024 expose une analyse juridique à la demande de l’Assemblée générale. Ce n’est pas une condamnation pénale individuelle. Pour citer ses conclusions, il faut nommer la Cour et préciser la procédure.",
       "sources": [
         "icj"
@@ -466,7 +466,7 @@
     {
       "id": "source",
       "title": "Source primaire",
-      "subtitle": "Retrouver le document d’origine",
+      "subtitle": "Notion de méthode",
       "text": "Pour un vote, le compte rendu officiel est une source primaire. Pour la position d’un mouvement, sa propre déclaration en est une. Cela ne rend pas toutes les affirmations de son auteur exactes : la source établit d’abord ce qu’il a dit ou fait.",
       "sources": [
         "an",
@@ -593,7 +593,7 @@
       }
     }
   },
-  "revised_on": "2026-09-28",
+  "revised_on": "2026-09-29",
   "threads": [
     {
       "id": "france",

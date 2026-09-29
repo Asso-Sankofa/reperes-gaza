@@ -2,7 +2,7 @@
 
 Repères est un prototype documentaire. Il aide un lecteur français à situer Gaza, l’histoire du conflit et les décisions de la France, en partant de documents qu’il peut ouvrir lui-même. Le but est de permettre à chacun de se faire une opinion, pas de lui en fournir une.
 
-Le projet est porté par Lamine Diaby, à titre citoyen. Sa compétence est le traitement de l’information et des données ouvertes. Il ne se présente ni comme journaliste ni comme spécialiste de géopolitique.
+Le projet est porté par l’association Sankofa. Nous savons rechercher, organiser et rendre consultables des documents et des données publiques. Nous ne sommes ni journalistes ni spécialistes de géopolitique : nos textes historiques et juridiques doivent encore être relus par des spécialistes.
 
 ## Statut : brouillon
 
@@ -15,8 +15,8 @@ Les contenus ont été préparés avec une assistance d’IA. La responsabilité
 - Un accueil qui part des questions que l’on se pose.
 - Un parcours de sept repères, de 1948 à 2024, filtrable par fil de lecture (lien avec la France, histoire, droit).
 - Une notice documentaire sur la résolution 2334 (2016) du Conseil de sécurité : vote des quinze membres, extraits du dispositif, et pour chaque paragraphe son destinataire et les documents qui permettent d’en suivre les suites.
-- Des fiches « Qui parle ? » qui séparent une institution, un mouvement et une population.
-- Un lexique, un cas pratique sur la lecture d’un bilan chiffré (méthode d’OCHA) et une page de méthode.
+- Une page « Acteurs et enquêtes » qui présente, pays par pays, quelques institutions, un mouvement et des instituts d’enquête, avec leurs sources. Ce n’est pas encore un inventaire des positions de chaque acteur.
+- Un lexique, une page qui explique pourquoi deux bilans chiffrés peuvent différer (méthode d’OCHA, sans comparaison chiffrée pour l’instant) et une page de méthode.
 - Un volet source, ouvert depuis chaque référence : éditeur, portée, emplacement à consulter, limite, date de consultation.
 
 ## Périmètre et limites
@@ -82,6 +82,7 @@ Avec Docker, sans rien installer d’autre :
 | `BASE_URL=https://… docker compose run --rm --no-deps e2e` | Mêmes parcours contre un site déployé |
 | `docker compose run --rm links` | Contrôle des liens sortants (réseau) |
 | `docker compose run --rm --no-deps -e E2E_SCRIPT=liens.mjs e2e` | Ouvre chaque source dans Chromium, pour les sites qui refusent les clients sans JavaScript |
+| `docker compose run --rm -e E2E_SCRIPT=apercu.mjs e2e` | Captures pleine page des rubriques, sur ordinateur et mobile, pour la relecture |
 
 Avec Node.js 20 ou plus récent installé, le projet n’a aucune dépendance npm :
 
