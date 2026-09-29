@@ -1,6 +1,6 @@
 # Charte éditoriale de travail
 
-Version 0.1, proposée le 25 septembre 2026. Révision du 29 septembre 2026 : le projet est présenté comme porté par l’association Sankofa.
+Version 0.1, proposée le 25 septembre 2026. Révision du 29 septembre 2026 : le projet est présenté comme porté par l’association Sankofa ; ajout des règles sur les consignes de rédaction et les questions finales.
 
 ## Notre place
 
@@ -14,7 +14,9 @@ Commencer par la réponse à la question de la page. Expliquer ensuite les élé
 
 Éviter l'écriture ternaire et les séries de trois propositions destinées à créer un effet rhétorique. Ne pas utiliser de tirets cadratins. Écarter les transitions automatiques, les slogans et les métaphores qui remplacent une explication. Ne pas aligner mécaniquement des phrases de même longueur.
 
-Employer des verbes précis. Définir les mots techniques à leur première apparition. Les sigles sont développés. Attribuer les qualifications controversées à la personne ou à l'institution qui les emploie.
+Employer des verbes précis. Définir les mots techniques à leur première apparition. Les sigles sont développés. Attribuer les qualifications controversées à la personne ou à l'institution qui les emploie, de même que les usages d'un mot qui en élargissent le sens (par exemple Nakba employé pour un processus qui se poursuivrait après 1948).
+
+Une notice donne l'information, pas la consigne qui aurait dû la produire. Si une phrase décrit ce que la page devrait faire (« la portée doit être expliquée »), la remplacer par l'information elle-même, ou dire clairement qu'elle manque encore. Donner d'abord le fait vérifié, puis sa limite, une seule fois. Une question finale ne porte que sur ce que le corpus ne permet pas encore de trancher.
 
 Lire le texte à voix haute. Demander à un lecteur de reformuler ce qu'il a compris. La fluidité et la justesse priment sur les scores d'un détecteur d'IA. Aucune règle stylistique ne garantit le résultat de Pangram ou d'un outil comparable. Ne pas fabriquer de souvenirs ou de témoignages pour donner une apparence humaine au texte.
 

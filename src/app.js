@@ -248,7 +248,7 @@ function renderParcours() {
         }).join('')}
       </div>` : ''}
       ${ev.actors?.length ? `<div>
-        <p class="eyebrow eyebrow--muted">ACTEURS LIÉS À CE REPÈRE</p>
+        <p class="eyebrow eyebrow--muted">ACTEURS CONCERNÉS</p>
         <div class="pill-group">${ev.actors.map(a => `<a class="pill" href="#/voix/${esc(a)}">${esc(data.actors[a].label)} →</a>`).join('')}</div>
       </div>` : ''}
     </aside>
