@@ -19,7 +19,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
   outline: 3px solid var(--color-focus);
   outline-offset: 3px;
 }
-main:focus, h1:focus { outline: none; }
+/* Titres focalisés par le script après un changement de page : pas de contour. */
+main:focus, h1:focus, h1[tabindex="-1"]:focus-visible { outline: none; }
 code { font-family: var(--font-mono); font-size: .85em; background: var(--color-surface); padding: 0 .3em; }
 p { margin: 0 0 var(--space-4); }
 h1, h2, h3 { margin: 0; }
@@ -38,6 +39,7 @@ h1, h2, h3 { margin: 0; }
 .measure { max-width: var(--reading-width); }
 .measure-narrow { max-width: 52ch; }
 .muted { color: var(--color-text-muted); }
+.muted-on-ink { color: var(--color-on-ink-muted); }
 .small { font-size: .8rem; }
 .lead { font-size: 1.15rem; }
 
@@ -157,6 +159,7 @@ h1, h2, h3 { margin: 0; }
 .question-card:focus-visible { outline-color: var(--color-accent-on-ink); }
 .section-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px 40px; margin-bottom: 28px; }
 .section-head__aside { margin: 0; color: var(--color-text-muted); max-width: 360px; font-size: .95rem; }
+.section-head__aside--wide { max-width: 480px; }
 .home-list { list-style: none; margin: 0 0 0 6px; padding: 0; border-left: 1px solid var(--color-ink); display: none; }
 .home-list li { position: relative; }
 .home-list li::before { content: ''; position: absolute; left: -6px; top: 22px; width: 11px; height: 11px; border-radius: 50%; background: var(--color-ink); }
@@ -300,7 +303,7 @@ h1, h2, h3 { margin: 0; }
 .collation summary { cursor: pointer; font-weight: 600; }
 .collation ul { margin: 10px 0 0; padding-left: 1.2em; }
 
-/* Qui parle ? */
+/* Acteurs et enquêtes */
 .voix-layout { display: flex; flex-wrap: wrap; gap: 32px 5%; }
 .tabs { flex: 0 1 240px; display: flex; flex-direction: column; }
 .tabs a { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--color-border); text-decoration: none; font-size: 1.05rem; min-height: var(--target-min); }

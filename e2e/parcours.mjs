@@ -89,13 +89,13 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   check('filtre : aria-pressed', (await page.locator('.filter[aria-pressed="true"]').textContent()) === 'Le droit');
   check('filtre : focus conservé sur le bouton', (await focused(page)) === 'filter-law');
 
-  await page.locator('.main-nav a', { hasText: 'Qui parle' }).click();
+  await page.locator('.main-nav a', { hasText: 'Acteurs et enquêtes' }).click();
   await page.waitForSelector('#voix-title', { state: 'visible' });
-  check('Qui parle : page affichée', true);
+  check('Acteurs et enquêtes : page affichée', true);
   await page.locator('.tabs a', { hasText: 'En Israël' }).click();
   await page.waitForFunction(() => document.querySelector('.tabs a[aria-current]')?.href.endsWith('/voix/israel'));
-  check('Qui parle : onglet Israël', (await page.locator('.voix-main h2').textContent()).includes('désaccords'));
-  check('Qui parle : focus conservé sur l’onglet', (await focused(page)) === 'tab-israel');
+  check('Acteurs et enquêtes : onglet Israël', (await page.locator('.voix-main h2').textContent()).includes('institut d’enquêtes'));
+  check('Acteurs et enquêtes : focus conservé sur l’onglet', (await focused(page)) === 'tab-israel');
 
   await page.locator('.main-nav a', { hasText: 'Lexique' }).click();
   await page.waitForSelector('#mots-title');

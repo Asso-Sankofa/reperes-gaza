@@ -18,16 +18,16 @@ const actorKeys = Object.keys(data.actors);
 
 const PAGE_TITLES = {
   accueil: 'Repères · Gaza et la France',
-  voix: 'Qui parle ? · Repères',
-  verifier: 'Vérifier un chiffre · Repères',
+  voix: 'Acteurs et enquêtes · Repères',
+  verifier: 'Comprendre un écart entre deux bilans · Repères',
   mots: 'Lexique · Repères',
   methode: 'Méthode · Repères',
 };
 const SECTION_PAGER = {
-  voix: ['#/parcours', 'LE PARCOURS', 'Les repères', '#/verifier', 'SECTION SUIVANTE', 'Vérifier un chiffre'],
-  verifier: ['#/voix', 'SECTION PRÉCÉDENTE', 'Qui parle ?', '#/mots', 'SECTION SUIVANTE', 'Le lexique'],
-  mots: ['#/verifier', 'SECTION PRÉCÉDENTE', 'Vérifier un chiffre', '#/methode', 'SECTION SUIVANTE', 'La méthode'],
-  methode: ['#/mots', 'SECTION PRÉCÉDENTE', 'Le lexique', '#/', 'RETOUR', 'Les questions de départ'],
+  voix: ['#/parcours', 'LE PARCOURS', 'Les repères', '#/verifier', 'SECTION SUIVANTE', 'Écart entre deux bilans'],
+  verifier: ['#/voix', 'SECTION PRÉCÉDENTE', 'Acteurs et enquêtes', '#/mots', 'SECTION SUIVANTE', 'Lexique'],
+  mots: ['#/verifier', 'SECTION PRÉCÉDENTE', 'Écart entre deux bilans', '#/methode', 'SECTION SUIVANTE', 'Méthode'],
+  methode: ['#/mots', 'SECTION PRÉCÉDENTE', 'Lexique', '#/', 'RETOUR', 'Les questions de départ'],
 };
 
 const state = {
@@ -248,7 +248,7 @@ function renderParcours() {
         }).join('')}
       </div>` : ''}
       ${ev.actors?.length ? `<div>
-        <p class="eyebrow eyebrow--muted">QUI PARLE DANS CE REPÈRE ?</p>
+        <p class="eyebrow eyebrow--muted">ACTEURS LIÉS À CE REPÈRE</p>
         <div class="pill-group">${ev.actors.map(a => `<a class="pill" href="#/voix/${esc(a)}">${esc(data.actors[a].label)} →</a>`).join('')}</div>
       </div>` : ''}
     </aside>
@@ -263,10 +263,10 @@ function renderVoix() {
   return `<section class="wrap section" aria-labelledby="voix-title">
     <div class="section-head">
       <div>
-        <p class="eyebrow">02 · IDENTIFIER CELUI QUI PARLE</p>
-        <h1 id="voix-title" class="display display--h1" tabindex="-1">Un pays n’est pas une seule voix.</h1>
+        <p class="eyebrow">02 · ACTEURS ET ENQUÊTES</p>
+        <h1 id="voix-title" class="display display--h1" tabindex="-1">Acteurs et enquêtes cités dans ce parcours</h1>
       </div>
-      <p class="section-head__aside">Une prise de parole engage un auteur. Elle ne résume pas une population.</p>
+      <p class="section-head__aside section-head__aside--wide">Une prise de parole engage son auteur. Elle ne dit pas ce que pense toute une population. Cette page présente pour l’instant quelques sources par pays, pas un inventaire des positions de chaque institution.</p>
     </div>
     <div class="voix-layout">
       <nav class="tabs" aria-label="Choisir un espace">
@@ -293,8 +293,8 @@ function renderVoix() {
 
 function renderMots() {
   return `<section class="wrap section" aria-labelledby="mots-title">
-    <p class="eyebrow">04 · LES MOTS QUE L’ON RENCONTRE</p>
-    <h1 id="mots-title" class="display display--h1" tabindex="-1">Prendre le temps d’un mot.</h1>
+    <p class="eyebrow">04 · LEXIQUE</p>
+    <h1 id="mots-title" class="display display--h1" tabindex="-1">Les termes utilisés dans ce parcours</h1>
     <div class="lexique">
       ${data.terms.map(t => {
         const linked = events.filter(e => (e.terms || []).includes(t.id));
@@ -317,7 +317,7 @@ function renderPager(ctx) {
     const next = ctx.list[ctx.idx + 1];
     p = [
       prev ? evHref(prev) : '#/', prev ? 'REPÈRE PRÉCÉDENT' : 'RETOUR', prev ? `${prev.year} · ${prev.short}` : 'Les questions',
-      next ? evHref(next) : '#/voix', next ? 'REPÈRE SUIVANT' : 'FIN DU PARCOURS · CONTINUER', next ? `${next.year} · ${next.short}` : 'Qui parle ?',
+      next ? evHref(next) : '#/voix', next ? 'REPÈRE SUIVANT' : 'FIN DU PARCOURS · CONTINUER', next ? `${next.year} · ${next.short}` : 'Acteurs et enquêtes',
     ];
   } else {
     p = SECTION_PAGER[state.route];
@@ -338,7 +338,7 @@ function renderBottomBar(ctx) {
   el.bottomBar.innerHTML = `
     <a class="bottom-bar__prev" href="${prev ? evHref(prev) : '#/'}" aria-label="${prev ? `Repère précédent : ${esc(prev.year)}` : 'Retour aux questions'}">←</a>
     <div class="bottom-bar__mid"><span class="bottom-bar__year">${esc(ctx.ev.year)}</span><span class="bottom-bar__pos">Repère ${ctx.idx + 1} sur ${ctx.list.length} · glissez pour avancer</span></div>
-    <a class="bottom-bar__next" href="${next ? evHref(next) : '#/voix'}" aria-label="${next ? `Repère suivant : ${esc(next.year)}` : 'Fin du parcours, continuer vers Qui parle ?'}">→</a>`;
+    <a class="bottom-bar__next" href="${next ? evHref(next) : '#/voix'}" aria-label="${next ? `Repère suivant : ${esc(next.year)}` : 'Fin du parcours, continuer vers Acteurs et enquêtes'}">→</a>`;
 }
 
 function formatDate(iso) {
