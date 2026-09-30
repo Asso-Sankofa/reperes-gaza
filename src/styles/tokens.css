@@ -66,6 +66,10 @@
   --color-rail-label-inactive: #6a737d;
   --color-progress-track: #eef1f3;
 
+  /* Logo de l'association Sankofa (couleurs de asso-sankofa.org) */
+  --color-sankofa: #1b1464;
+  --color-sankofa-egg: #e0a831;
+
   /* Cartes de situation. L'accent désigne le lieu dont parle la page, jamais un camp. */
   --color-map-sea-on-ink: #1f2b37;
   --color-map-land-on-ink: #2c3a48;

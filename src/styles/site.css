@@ -446,7 +446,19 @@ body.menu-open .bottom-bar { display: none; }
 body.has-bottom-bar .site-footer { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
 
 .site-footer { border-top: 1px solid var(--color-border); }
-.site-footer__inner { padding-top: 28px; padding-bottom: 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: .85rem; color: var(--color-text-muted); }
+.site-footer__inner { padding-top: 28px; padding-bottom: 28px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; font-size: .85rem; color: var(--color-text-muted); }
+/* Logo de l'association : bleu nuit sur fond clair, couleur du texte sur fond encre, œuf doré dans les deux cas. */
+.sankofa-mark { flex: none; width: 1.6em; height: 1.6em; }
+.sankofa-mark__bird { fill: none; stroke: var(--color-sankofa); stroke-width: 13; stroke-linecap: round; }
+.sankofa-mark__beak { fill: var(--color-sankofa); }
+.sankofa-mark__egg { fill: var(--color-sankofa-egg); }
+.hero__by { display: flex; align-items: center; gap: 12px; }
+.hero__by .sankofa-mark { width: 30px; height: 30px; }
+.hero__by .sankofa-mark__bird { stroke: var(--color-on-ink); }
+.hero__by .sankofa-mark__beak { fill: var(--color-on-ink); }
+.site-footer__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; }
+.site-footer__org { display: inline-flex; align-items: center; gap: 8px; min-height: var(--target-min); color: var(--color-ink); text-decoration: none; font-weight: 500; }
+.site-footer__org:hover { color: var(--color-accent); }
 .site-footer__brand { font-weight: 700; color: var(--color-ink); letter-spacing: -.04em; font-size: 1.1rem; }
 
 /* Volet source : non modal sur ordinateur, modal sur mobile */
