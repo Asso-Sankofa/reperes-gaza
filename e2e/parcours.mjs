@@ -59,8 +59,8 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   check('clavier : Tab atteint « Gaza »', (await focused(page)) === 'place-gaza');
   await page.keyboard.press('Enter');
   check('clavier : Entrée sélectionne Gaza', (await pressed(page)) === 'gaza');
-  check('Gaza : 1967, 2005, 2023, 2024', (await years(page)).join(',') === '1967,2005,2023,2024');
-  check('Gaza : annonce du nombre de notices', (await page.locator('.map-summary__status').textContent()) === 'Bande de Gaza : 4 notices sur 7');
+  check('Gaza : 1967, 2005, 2016, 2023, 2024', (await years(page)).join(',') === '1967,2005,2016,2023,2024');
+  check('Gaza : annonce du nombre de notices', (await page.locator('.map-summary__status').textContent()) === 'Bande de Gaza : 5 notices sur 7');
   check('Gaza : carte synchronisée', (await muted(page)) === 'cisjordanie');
   check('Gaza : 1948 et 1949 restent accessibles', (await page.locator('.map-summary__off a').count()) === 2);
   check('Gaza : 2023 mentionne le sud d’Israël', (await page.locator('.map-list li', { hasText: '2023' }).innerText()).includes('Sud d’Israël'));
@@ -230,7 +230,7 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   check('mobile : commandes, puis carte, puis liste', ctl.y < map.y && map.y < lst.y);
   check('mobile : cibles tactiles d’au moins 44 px', (await page.locator('.place-filter').evaluateAll(b => b.every(x => x.getBoundingClientRect().height >= 44))));
   await page.getByRole('button', { name: 'Gaza' }).tap();
-  check('mobile : toucher « Gaza » filtre la liste', (await pressed(page)) === 'gaza' && (await years(page)).length === 4);
+  check('mobile : toucher « Gaza » filtre la liste', (await pressed(page)) === 'gaza' && (await years(page)).length === 5);
   await page.getByRole('button', { name: 'Voir les sept notices' }).tap();
   await page.locator('.hero__map').scrollIntoViewIfNeeded();
   const gz = await page.locator('.hero__map [data-zone="gaza"]').boundingBox();
