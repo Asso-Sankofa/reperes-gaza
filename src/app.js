@@ -14,6 +14,11 @@ const events = data.events;
 const sourceById = new Map(data.sources.map(s => [s.id, s]));
 const termById = new Map(data.terms.map(t => [t.id, t]));
 const eventById = new Map(events.map(e => [e.id, e]));
+const placeById = new Map(data.places.map(p => [p.id, p]));
+const mapPlaces = data.places.filter(p => p.map_zone);
+// Une notice est « située » si au moins un de ses lieux est dessiné sur la carte.
+const zonesOf = e => e.places.map(id => placeById.get(id).map_zone).filter(Boolean);
+const fullyMapped = e => e.places.length > 0 && zonesOf(e).length === e.places.length;
 const actorKeys = Object.keys(data.actors);
 
 const PAGE_TITLES = {
@@ -33,6 +38,7 @@ const SECTION_PAGER = {
 const state = {
   ...parseHash(),
   filter: 'all',
+  place: 'all',
   sourceId: null,
   selPara: {},
   openTerms: new Set(),
@@ -43,7 +49,6 @@ const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 const el = {
   header: $('#site-header'),
-  banner: $('.status-banner'),
   main: $('#contenu'),
   footer: $('.site-footer'),
   menuToggle: $('#menu-toggle'),
@@ -82,6 +87,52 @@ function parcoursContext(param = state.param) {
 }
 
 /* ---------- Fragments ---------- */
+
+const joinFr = items => (items.length > 1 ? `${items.slice(0, -1).join(', ')} et ${items.at(-1)}` : items[0] || '');
+const placeLabels = e => e.places.map(id => placeById.get(id).label);
+
+// Sommaire de l'accueil : les boutons pilotent la liste et la carte ; la carte relaie seulement le clic.
+function renderMapSummary(node, listNode) {
+  if (!node || !listNode) return;
+  const place = placeById.get(state.place);
+  const list = place ? events.filter(e => e.places.includes(place.id)) : events;
+  const offMap = events.filter(e => !zonesOf(e).length);
+  const word = node.dataset.countWord;
+  const options = [['all', `Voir les ${word} notices`], ...mapPlaces.map(p => [p.id, p.short])];
+  const status = place
+    ? `${place.label} : ${list.length} notice${list.length > 1 ? 's' : ''} sur ${events.length}`
+    : `${word[0].toUpperCase() + word.slice(1)} notices, de ${events[0].year} à ${events.at(-1).year}`;
+  node.innerHTML = `<h2 class="map-summary__title">Les notices par territoire</h2>
+    <div class="map-summary__controls" role="group" aria-label="Afficher les notices par territoire">
+      ${options.map(([k, label]) => `<button type="button" class="place-filter" aria-pressed="${state.place === k}" data-place="${esc(k)}" data-focus="place-${esc(k)}">${esc(label)}</button>`).join('')}
+    </div>
+    <p class="map-summary__status" role="status">${esc(status)}</p>`;
+  listNode.innerHTML = `<ol class="map-list">
+      ${list.map(e => `<li><a href="${evHref(e)}">
+        <span class="map-list__year">${esc(e.year)}</span>
+        <span class="map-list__body"><span class="map-list__title">${esc(e.title)}</span>
+        <span class="map-list__places">${esc(e.places.length ? placeLabels(e).join(' · ') : e.place_note)}</span></span>
+        <span class="map-list__arrow" aria-hidden="true">→</span></a></li>`).join('')}
+    </ol>
+    ${place && offMap.length ? `<p class="map-summary__off">Non situées sur la carte : ${offMap.map(e => `<a href="${evHref(e)}">${esc(e.year)} · ${esc(e.short)}</a>`).join(', ')}</p>` : ''}`;
+  const fig = $('[data-map="region"]');
+  if (fig) fig.dataset.mapZones = place ? place.map_zone : mapPlaces.map(p => p.map_zone).join(' ');
+}
+
+// Lieux d'une notice : miniature si tous ses lieux sont dessinés, sinon mention écrite et raison de l'absence.
+function noticePlace(e) {
+  if (!e.places.length) return '';
+  const labels = joinFr(placeLabels(e));
+  const head = `<p class="eyebrow eyebrow--muted">${e.places.length > 1 ? 'LIEUX CONCERNÉS' : 'LIEU CONCERNÉ'}</p>`;
+  const mini = $('#map-mini');
+  if (!fullyMapped(e) || !mini) {
+    return `<div class="notice__place">${head}<p class="notice__place-name">${esc(labels)}</p>${e.place_note ? `<p class="notice__place-note">${esc(e.place_note)}</p>` : ''}</div>`;
+  }
+  const svg = mini.innerHTML.replace('role="img"', `role="img" aria-label="${esc(`Carte de situation. Mis en évidence : ${labels}.`)}"`);
+  return `<figure class="notice__place notice__place--map" data-map-zones="${esc(zonesOf(e).join(' '))}">${head}${svg}
+    <figcaption><span class="notice__place-name">${esc(labels)}</span><span class="notice__place-note">Carte de situation réalisée avec Natural Earth. <a href="#/methode">Voir les sources et limites de la carte</a></span></figcaption>
+  </figure>`;
+}
 
 function sourceButtons(ids, ctx, compact = false) {
   return (ids || []).map((id, i) => {
@@ -220,12 +271,12 @@ function renderParcours() {
     </div>
   </section>
   <article class="wrap notice" aria-labelledby="notice-title">
-    <div class="notice__main">
+    <div class="notice__main${fullyMapped(ev) && $('#map-mini') ? ' notice__main--map' : ''}">
       <p class="notice__meta"><span class="notice__year">${esc(ev.year)}</span><span class="eyebrow eyebrow--doc">${esc(ev.kind)}</span></p>
       <h1 id="notice-title" class="notice__title" tabindex="-1">${esc(ev.title)}</h1>
       <p class="notice__text">${esc(ev.text)}</p>
       <p class="notice__context">${esc(ev.context)}</p>
-      <p class="notice__status">Brouillon · en attente de relecture indépendante</p>
+      ${noticePlace(ev)}
       ${why1948 ? why1948.outerHTML.replace('data-template="why1948"', '').replace('data-focus="home-histoire"', 'data-focus="parcours-histoire"') : ''}
     </div>
     <aside class="notice__aside" aria-label="Sources et pistes de lecture">
@@ -370,6 +421,7 @@ function render({ focusHeading = false } = {}) {
   if (route === 'voix') slot.innerHTML = renderVoix();
   if (route === 'mots') slot.innerHTML = renderMots();
   if (route === 'accueil') renderHome();
+  syncMaps();
   $('[data-slot="pager"]').innerHTML = renderPager(ctx);
 
   const isParcours = route === 'parcours';
@@ -395,11 +447,20 @@ function render({ focusHeading = false } = {}) {
 }
 
 function renderHome() {
+  renderMapSummary($('[data-slot="map-controls"]'), $('[data-slot="map-list"]'));
   const railNode = $('[data-slot="home-rail"]');
   if (railNode.childElementCount) return;
   railNode.innerHTML = rail(null, events);
   $('[data-slot="home-list"]').innerHTML = events.map(e =>
     `<li><a href="${evHref(e)}"><span class="home-list__year">${esc(e.year)}</span><span>${esc(e.short)}</span></a></li>`).join('');
+}
+
+// Zones mises en évidence : data-map-zones sur la figure, les autres zones passent en teinte atténuée.
+function syncMaps() {
+  $$('[data-map-zones]').forEach(fig => {
+    const on = fig.dataset.mapZones.split(' ');
+    $$('[data-zone]', fig).forEach(z => z.classList.toggle('is-muted', !on.includes(z.dataset.zone)));
+  });
 }
 
 function centerCurrentChapter() {
@@ -417,7 +478,7 @@ let panelReturn = null;
 let panelReturnKey = null;
 
 function setBackgroundInert(on) {
-  [el.header, el.banner, el.main, el.footer, el.bottomBar].forEach(n => { n.inert = on; });
+  [el.header, el.main, el.footer, el.bottomBar].forEach(n => { n.inert = on; });
 }
 
 function openSource(id, trigger) {
@@ -477,7 +538,7 @@ function openMenu() {
   el.menu.hidden = false;
   el.menuToggle.setAttribute('aria-expanded', 'true');
   el.menuToggle.textContent = 'Fermer ✕';
-  [el.banner, el.main, el.footer, el.bottomBar].forEach(n => { n.inert = true; });
+  [el.main, el.footer, el.bottomBar].forEach(n => { n.inert = true; });
   document.body.classList.add('is-locked', 'menu-open');
   $('a', el.menu).focus();
 }
@@ -488,7 +549,7 @@ function closeMenu({ restoreFocus = true } = {}) {
   el.menu.hidden = true;
   el.menuToggle.setAttribute('aria-expanded', 'false');
   el.menuToggle.textContent = 'Menu';
-  [el.banner, el.main, el.footer, el.bottomBar].forEach(n => { n.inert = false; });
+  [el.main, el.footer, el.bottomBar].forEach(n => { n.inert = false; });
   document.body.classList.remove('is-locked', 'menu-open');
   if (restoreFocus) el.menuToggle.focus();
 }
@@ -536,9 +597,12 @@ function onHashChange() {
 }
 
 document.addEventListener('click', e => {
-  const t = e.target.closest('[data-source], [data-filter], [data-para], [data-term]');
+  const t = e.target.closest('[data-source], [data-filter], [data-para], [data-term], [data-place]');
   if (!t) return;
-  if (t.dataset.source) openSource(t.dataset.source, t);
+  if (t.dataset.place) {
+    state.place = t.dataset.place === 'all' || placeById.has(t.dataset.place) ? t.dataset.place : 'all';
+    render();
+  } else if (t.dataset.source) openSource(t.dataset.source, t);
   else if (t.dataset.filter) setFilter(t.dataset.filter);
   else if (t.dataset.para) {
     const { ev } = parcoursContext();
