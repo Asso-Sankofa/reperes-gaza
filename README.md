@@ -2,17 +2,19 @@
 
 Repères est un prototype documentaire. Il aide un lecteur français à situer Gaza, l’histoire du conflit et les décisions de la France, en partant de documents qu’il peut ouvrir lui-même. Le but est de permettre à chacun de se faire une opinion, pas de lui en fournir une.
 
-Le projet est porté par l’association Sankofa. Nous savons rechercher, organiser et rendre consultables des documents et des données publiques. Nous ne sommes ni journalistes ni spécialistes de géopolitique : nos textes historiques et juridiques doivent encore être relus par des spécialistes.
+Le projet est porté par l’association Sankofa. Nous savons rechercher, organiser et rendre consultables des documents et des données publiques. Nous ne sommes ni journalistes ni spécialistes de géopolitique : nos textes historiques et juridiques n’ont pas encore été relus par un historien ou un juriste.
 
-## Statut : brouillon
+## Statut éditorial
 
-Toutes les notices portent le statut `draft_pending_independent_review`. Aucune relecture indépendante n’a été faite. Le site l’affiche en permanence, et le build échoue si cette mention disparaît de la page.
+Une relecture éditoriale de l’ensemble du site en ligne, avant l’ajout de la carte de situation, a été faite la semaine du 28 septembre 2026. Le corpus porte le statut `editorial_review_completed` ; ce statut ne vaut pas validation de la carte ni du rattachement des notices aux lieux (`places`). Les textes historiques et juridiques n’ont pas été relus par un historien ou un juriste.
+
+Les relectures et les tests auprès de lecteurs sont consignés dans `content/relectures.json` : rôle des relecteurs, périmètre, date, ce qui n’a pas été couvert. Ce registre sert à juger la qualité rédactionnelle. Il n’est ni affiché sur le site ni exporté, mais il est conservé dans le dépôt public et reste donc lisible sur GitHub : on n’y inscrit pas le nom d’une personne qui ne souhaite pas être citée. Un contenu qui doit rester privé se conserve hors du dépôt.
 
 Les contenus ont été préparés avec une assistance d’IA. La responsabilité de ce qui est publié reste humaine.
 
 ## Ce que contient le site
 
-- Un accueil qui part des questions que l’on se pose.
+- Un accueil qui présente les notices par territoire (Gaza, Cisjordanie) avec une carte de situation, puis les questions que l’on se pose.
 - Un parcours de sept repères, de 1948 à 2024, filtrable par fil de lecture (lien avec la France, histoire, droit).
 - Une notice documentaire sur la résolution 2334 (2016) du Conseil de sécurité : vote des quinze membres, extraits du dispositif, et pour chaque paragraphe son destinataire et les documents qui permettent d’en suivre les suites.
 - Une page « Acteurs et enquêtes » qui présente, pays par pays, quelques institutions, un mouvement et des instituts d’enquête, avec leurs sources. Ce n’est pas encore un inventaire des positions de chaque acteur.
@@ -23,7 +25,9 @@ Les contenus ont été préparés avec une assistance d’IA. La responsabilité
 
 Les sept repères sont une sélection faite pour éprouver la forme. Ce n’est pas une histoire du conflit. La période antérieure à 1948 (mandat britannique, plan de partage de 1947) n’a pas encore de notice.
 
-Le site ne donne pas de bilan actuel de la guerre. Il ne contient ni carte, ni statistique, ni témoignage. Aucun de ces éléments ne sera inventé pour illustrer une page.
+Le site ne donne pas de bilan actuel de la guerre. Il ne contient ni statistique ni témoignage. Aucun de ces éléments ne sera inventé pour illustrer une page.
+
+La carte de situation (accueil et quatre notices) sert à s’orienter. Ses contours viennent de Natural Earth 4.1.0 (1:50 m) et ne reconstituent aucune limite passée. La page Méthode détaille sa provenance et ses limites, dont Jérusalem : à cette échelle, le contour de la Cisjordanie englobe toute la ville, si bien que la carte ne place pas de point « Jérusalem ».
 
 Ce qui a été vérifié le 28 septembre 2026 :
 
@@ -60,6 +64,7 @@ Les documents cités viennent principalement de l’ONU (Conseil de sécurité, 
 ```
 content/reperes.json         corpus unique (notices, sources, acteurs, termes, documents)
 content/charte-editoriale.md charte éditoriale
+content/cartes/              géométrie Natural Earth (world-atlas 2.0.2), empreinte vérifiée au build
 src/index.html               gabarit de la page (textes fixes, variables {{…}})
 src/app.js                   interface, sans dépendance ni framework
 src/styles/tokens.css        tokens du design system
@@ -67,6 +72,7 @@ src/styles/site.css          styles
 src/fonts/                   polices hébergées, avec leur licence OFL
 scripts/validate.mjs         contrôles du corpus
 scripts/build.mjs            construction de dist/
+scripts/map.mjs              cartes SVG produites au build, sans bibliothèque
 scripts/serve.mjs            serveur local de prévisualisation
 scripts/check-links.mjs      contrôle réseau des liens sortants
 test/                        tests (node:test)
@@ -82,8 +88,11 @@ Le build échoue si :
 - une notice, une carte, un terme ou un document cite une source, un terme, un acteur ou un fil qui n’existe pas, y compris depuis le gabarit HTML (`data-source`) ;
 - un lien interne (`#/parcours/…`, `#/voix/…`) ou un fichier référencé par la page n’existe pas ;
 - une URL de source n’est pas en HTTPS ;
+- une notice cite un lieu inconnu, ou n’est pas entièrement située sur la carte sans expliquer pourquoi (`place_note`) ;
+- le fichier de géométrie a changé (empreinte SHA-256) ou ne sépare plus Gaza et la Cisjordanie comme attendu ;
+- le nombre de notices n’a pas d’équivalent en lettres (le titre de l’accueil l’écrit en toutes lettres) ;
 - un texte du corpus contient un tiret cadratin ou demi-cadratin ;
-- le statut éditorial n’est plus affiché.
+- le statut éditorial n’est pas l’une des valeurs prévues.
 
 ## Commandes locales
 
@@ -139,7 +148,7 @@ Pour modifier le corpus :
 4. Lancez `docker compose run --rm check` puis `docker compose run --rm e2e`.
 5. Ouvrez une pull request qui explique ce qui change et sur quel document vous vous appuyez.
 
-Ne changez pas `editorial_status` sans relecture indépendante effective, nommée et datée.
+Ne changez pas `editorial_status` sans avoir consigné la relecture correspondante dans `content/relectures.json`.
 
 ## Licences
 

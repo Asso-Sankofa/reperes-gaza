@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta name="description" content="Prototype documentaire : Gaza, l’histoire du conflit et les décisions françaises, à partir de documents consultables. Notices en attente de relecture indépendante.">
+<meta name="description" content="Prototype documentaire : Gaza, l’histoire du conflit et les décisions françaises, à partir de documents consultables.">
 <title>Repères · Gaza et la France</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -42,12 +42,8 @@
   <a href="#/verifier" data-nav="verifier"><span class="menu-mobile__label">Écart entre bilans</span><span class="menu-mobile__n">03</span></a>
   <a href="#/mots" data-nav="mots"><span class="menu-mobile__label">Lexique</span><span class="menu-mobile__n">04</span></a>
   <a href="#/methode" data-nav="methode"><span class="menu-mobile__label">Méthode</span><span class="menu-mobile__n">05</span></a>
-  <p class="menu-mobile__status">Version {{VERSION}} · Notices en attente de relecture indépendante</p>
+  <p class="menu-mobile__status">Version {{VERSION}} · Prototype documentaire</p>
 </nav>
-
-<div class="status-banner" role="note">
-  <p><strong>Prototype documentaire.</strong> Les notices sont des brouillons : aucune relecture indépendante n’a encore été réalisée. <a href="#/methode">Ce que cela signifie</a></p>
-</div>
 
 <main id="contenu" tabindex="-1">
 <noscript>
@@ -61,9 +57,17 @@
   <section class="hero" aria-labelledby="home-title">
     <div class="wrap hero__inner">
       <p class="eyebrow eyebrow--on-ink">ATELIER DOCUMENTAIRE CITOYEN · PROTOTYPE {{VERSION}}</p>
-      <div class="hero__head">
-        <h1 id="home-title" class="display display--hero" tabindex="-1">Gaza.<br>Et la France<br><span class="accent-on-ink">dans cette histoire ?</span></h1>
-        <p class="hero__lead">Certaines questions reviennent souvent. Partons des documents pour y répondre.</p>
+      <div class="hero__grid">
+        <div class="hero__intro">
+          <h1 id="home-title" class="display display--hero" tabindex="-1">Gaza et la France&nbsp;:<br><span class="accent-on-ink">{{EVENT_COUNT_WORD}} repères</span></h1>
+          <p class="hero__lead">De {{FIRST_YEAR}} à {{LAST_YEAR}}, chaque notice s’appuie sur des documents que vous pouvez consulter. Certaines portent sur une décision française, d’autres donnent le contexte. La carte situe Gaza et la Cisjordanie.</p>
+        </div>
+        <div class="map-summary" data-slot="map-controls" data-count-word="{{EVENT_COUNT_WORD}}"></div>
+        <div class="map-results" data-slot="map-list"></div>
+        <figure class="hero__map" data-map="region">
+          {{MAP_REGION}}
+          <figcaption class="map-caption">Carte de situation réalisée avec Natural Earth (1:50&nbsp;m). Ses contours ne reconstituent pas les limites aux dates des notices. <a href="#/methode">Sources et limites de la carte</a></figcaption>
+        </figure>
       </div>
       <h2 class="hero__subtitle">PAR QUELLE QUESTION COMMENCER ?</h2>
       <div class="question-grid">
@@ -104,7 +108,7 @@
     <div class="section-head">
       <div>
         <p class="eyebrow">OU PARCOURIR LES REPÈRES</p>
-        <h2 id="home-reperes" class="display display--h2">Sept repères choisis, de 1948 à 2024.</h2>
+        <h2 id="home-reperes" class="display display--h2">{{EVENT_COUNT_WORD_CAP}} repères choisis, de {{FIRST_YEAR}} à {{LAST_YEAR}}.</h2>
       </div>
       <p class="section-head__aside">Une sélection, pas une histoire complète. Les points sont placés à l’échelle du temps.</p>
     </div>
@@ -186,7 +190,7 @@
     <div class="split">
       <div class="split__main measure">
         <p class="lead">Repères est un projet documentaire porté par l’association Sankofa. Son point de départ : rendre les documents accessibles et examiner les décisions françaises à propos de Gaza.</p>
-        <p>Nous savons rechercher, organiser et rendre consultables des documents et des données publiques. Nos textes historiques et juridiques doivent encore être relus par des spécialistes.</p>
+        <p>Nous savons rechercher, organiser et rendre consultables des documents et des données publiques. Nos textes historiques et juridiques n’ont pas encore été relus par un historien ou un juriste.</p>
         <p>Chaque personne mérite d’être entendue sans être assignée à un gouvernement. Un juif de France n’a pas à répondre des décisions israéliennes. Une personne palestinienne n’a pas à répondre des actes du Hamas.</p>
         <div class="principles">
           <div><h2>Chaque fait renvoie à un document</h2><p class="muted">Nous indiquons le document sur lequel repose chaque fait important, ainsi que ce qu’il permet réellement d’établir. Le lecteur peut remonter à la source et voir ce qui reste incertain.</p></div>
@@ -194,13 +198,26 @@
         </div>
         <div class="status-detail">
           <h2>Où en est ce prototype ?</h2>
-          <p>Toutes les notices sont des brouillons en attente de relecture indépendante (statut <code>{{EDITORIAL_STATUS}}</code> dans les données téléchargeables). Les sept repères sont une sélection pour éprouver la forme, pas une histoire exhaustive.</p>
+          <p>Les {{EVENT_COUNT_WORD}} repères sont une sélection pour éprouver la forme, pas une histoire exhaustive.</p>
           <p>Pour la résolution 2334, les extraits ont été collationnés avec le texte officiel en français le {{COLLATION_DATE}}, et le vote avec le procès-verbal de séance. Une erreur de transcription du paragraphe 12 a été corrigée à cette occasion. Les notices de 2005, 2023 et 2024 citent désormais les paragraphes de l’avis de la Cour internationale de Justice et du rapport de la commission d’enquête, relus le 29 septembre 2026. Ces vérifications portent sur la lettre des documents ; elles ne remplacent pas une relecture juridique.</p>
+        </div>
+        <div class="map-method" id="methode-carte">
+          <h2>La carte de situation</h2>
+          <p>La carte de l’accueil et les miniatures des notices montrent où se trouvent la bande de Gaza et la Cisjordanie. Elles servent à s’orienter. Elles ne prouvent rien sur un tracé.</p>
+          <h3>D’où viennent les contours</h3>
+          <p>De Natural Earth, version 4.1.0, couche des pays à l’échelle 1:50&nbsp;m. Nous utilisons le fichier <code>countries-50m.json</code> du paquet world-atlas 2.0.2, qui reprend ces données au format TopoJSON. Le fichier est conservé dans le dépôt du site, et le build vérifie son empreinte SHA-256 à chaque construction (<code class="map-method__hash">{{GEO_SHA256}}</code>). Aucune bibliothèque ni aucun serveur tiers n’est appelé : les cartes sont dessinées au moment de la construction du site. Natural Earth est dans le domaine public.</p>
+          <h3>Ce que ces contours représentent</h3>
+          <p>Natural Earth indique qu’il trace les frontières contestées selon la situation de fait (<i>de facto</i>), et non selon le droit. Ses contours ne reconstituent donc aucune limite passée. Ils ne montrent ni la géographie de 1948 ni la ligne d’armistice de 1949. Ils n’ont pas valeur de frontière.</p>
+          <p>Le jeu de données réunit Gaza et la Cisjordanie dans une seule entité, « Palestine ». Nous les séparons par leur position, de part et d’autre de 34,7° de longitude est. Le contour d’Israël y inclut le plateau du Golan.</p>
+          <h3>Jérusalem</h3>
+          <p>À cette échelle, le contour de la Cisjordanie est très simplifié et englobe toute la ville de Jérusalem. Il ne distingue pas Jérusalem-Est. Pour ne pas suggérer une délimitation que les données ne contiennent pas, les cartes ne placent aucun point « Jérusalem ». Les notices qui parlent de Jérusalem-Est le disent dans leur texte.</p>
+          <h3>Les notices et les lieux</h3>
+          <p>Chaque notice indique dans le corpus les lieux qu’elle concerne (champ <code>places</code>). C’est un choix éditorial, fait à partir du texte de la notice. Une notice que la carte ne peut pas situer le dit dans le corpus (champ <code>place_note</code>) et reste listée à l’accueil. Les localités du sud d’Israël attaquées le 7 octobre 2023 ne sont pas encore placées : leur liste et leurs coordonnées doivent d’abord être établies à partir d’une source citée.</p>
         </div>
       </div>
       <aside class="panel-box split__side" aria-labelledby="methode-contenu">
         <p class="eyebrow eyebrow--muted" id="methode-contenu">CE QUE CETTE VERSION CONTIENT</p>
-        <p>Un premier corpus de notices sourcées. Les contenus ont été préparés avec une assistance d’IA ; aucune relecture indépendante n’est revendiquée à ce stade.</p>
+        <p>Un premier corpus de notices sourcées. Les contenus ont été préparés avec une assistance d’IA. La responsabilité de ce qui est publié reste celle de l’association.</p>
         <p>Ce prototype ne présente pas de bilan actuel de la guerre. Aucun témoignage, portrait ou document n’a été inventé pour l’illustrer.</p>
         <div class="downloads">
           <a class="download download--ink" href="data/reperes.json" download="reperes-corpus-{{SCHEMA_VERSION}}.json"><span>Corpus des notices</span><span>JSON ↓</span></a>
@@ -221,7 +238,7 @@
 <footer class="site-footer">
   <div class="wrap site-footer__inner">
     <span class="site-footer__brand">repères.</span>
-    <span>Version {{VERSION}} · Nom provisoire · Notices en attente de relecture indépendante</span>
+    <span>Un projet de l’association Sankofa · Version {{VERSION}} · Nom provisoire</span>
   </div>
 </footer>
 
@@ -234,6 +251,8 @@
   </div>
   <div id="panel-body"></div>
 </aside>
+
+<template id="map-mini">{{MAP_MINI}}</template>
 
 {{CORPUS}}
 </body>

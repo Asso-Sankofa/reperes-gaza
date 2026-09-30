@@ -45,7 +45,9 @@ Le texte courant ne descend pas sous 14 px. Les surtitres (`.eyebrow`) utilisent
 | Question dépliable | `.disclosure` | Gabarit HTML | `details`/`summary` natifs, signe + tourné à 45° à l’ouverture |
 | Téléchargement | `.download` | `dist/data/` | Fichiers générés au build à partir du même corpus que la page |
 | Pagination | `.pager`, `.bottom-bar` | Parcours ou sections | Barre du bas sur mobile uniquement, masquée quand le menu est ouvert |
-| Bandeau de statut | `.status-banner` | `editorial_status` | Toujours visible sous l’en-tête. Le build échoue si le statut disparaît de la page |
+| Sommaire par territoire | `.map-summary`, `.place-filter`, `.map-list` | `places`, `events[].places`, `events[].place_note` | Boutons `aria-pressed` dans un `role="group"` nommé (« Voir les N notices », puis un bouton par lieu dessiné). Le résultat est annoncé par un `role="status"`. Le focus reste sur le bouton. Un lieu choisi laisse en bas de liste les notices non situées. Les boutons font foi : la carte ne fait que relayer le clic |
+| Carte de situation | `.map--dark`, `.map--light` | `content/cartes/`, `scripts/map.mjs` | SVG produit au build et intégré à la page, `role="img"` nommé. Zones `[data-zone]`, atténuées par `.is-muted`. Zones non focalisables (les boutons portent la commande). Zone de clic élargie autour de Gaza (`.map__hit`). Mobile : commandes, puis carte, puis liste |
+| Miniature de notice | `.notice__place--map` | `events[].places` | Affichée seulement si tous les lieux de la notice sont dessinés. Sinon, lieux écrits et `place_note` (2023), ou rien (notice sans lieu) |
 
 ## Volet source
 
@@ -90,4 +92,4 @@ La recette automatisée (`e2e/parcours.mjs`) couvre les parcours au clavier et a
 
 ## Règles de contenu
 
-Suivre `content/charte-editoriale.md`. L’interface ne transforme pas une absence de source en absence d’événement. Elle n’affiche aucun badge « vérifié » : une date de collation ou de consultation n’est pas une validation. Pas de carte géographique inventée, de statistiques simulées ni de portraits générés.
+Suivre `content/charte-editoriale.md`. L’interface ne transforme pas une absence de source en absence d’événement. Elle n’affiche aucun badge « vérifié » : une date de collation ou de consultation n’est pas une validation. Pas de statistiques simulées ni de portraits générés. Pour les cartes : aucun contour dessiné à la main ; aucune ville, zone ou limite absente du jeu de données sans source nommée dans la légende ; l’accent désigne le lieu dont parle la page, jamais un camp.
