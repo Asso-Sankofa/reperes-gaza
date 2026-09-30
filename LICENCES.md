@@ -19,7 +19,7 @@ Attribution proposée : « Association Sankofa, Repères, corpus 0.3, 2026 ».
 
 Texte de la licence : https://creativecommons.org/licenses/by/4.0/legalcode.fr
 
-La licence ne garantit pas l’exactitude du contenu. Toute réutilisation devrait conserver le statut `draft_pending_independent_review` et les limites documentaires indiquées dans chaque source. Un lien vers un document n’accorde aucun droit de reproduction sur ce document.
+La licence ne garantit pas l’exactitude du contenu. Toute réutilisation devrait conserver le statut éditorial (`editorial_status`) et les limites documentaires indiquées dans chaque source. Un lien vers un document n’accorde aucun droit de reproduction sur ce document.
 
 ## Extraits de la résolution 2334
 

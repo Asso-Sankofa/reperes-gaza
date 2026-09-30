@@ -2,11 +2,13 @@
 
 Repères est un prototype documentaire. Il aide un lecteur français à situer Gaza, l’histoire du conflit et les décisions de la France, en partant de documents qu’il peut ouvrir lui-même. Le but est de permettre à chacun de se faire une opinion, pas de lui en fournir une.
 
-Le projet est porté par l’association Sankofa. Nous savons rechercher, organiser et rendre consultables des documents et des données publiques. Nous ne sommes ni journalistes ni spécialistes de géopolitique : nos textes historiques et juridiques doivent encore être relus par des spécialistes.
+Le projet est porté par l’association Sankofa. Nous savons rechercher, organiser et rendre consultables des documents et des données publiques. Nous ne sommes ni journalistes ni spécialistes de géopolitique : nos textes historiques et juridiques n’ont pas encore été relus par un historien ou un juriste.
 
-## Statut : brouillon
+## Statut éditorial
 
-Toutes les notices portent le statut `draft_pending_independent_review`. Aucune relecture indépendante n’a été faite. Le site l’affiche en permanence, et le build échoue si cette mention disparaît de la page.
+Une relecture éditoriale de l’ensemble du site a été faite la semaine du 28 septembre 2026. Le corpus porte le statut `editorial_review_completed`. Les textes historiques et juridiques n’ont pas été relus par un historien ou un juriste.
+
+Les relectures et les tests auprès de lecteurs sont consignés dans `content/relectures.json` : rôle des relecteurs, périmètre, date, ce qui n’a pas été couvert. Ce registre sert en interne à juger la qualité rédactionnelle. Il n’est ni affiché sur le site ni exporté. Le dépôt est public : on n’y inscrit pas le nom d’une personne qui ne souhaite pas être citée.
 
 Les contenus ont été préparés avec une assistance d’IA. La responsabilité de ce qui est publié reste humaine.
 
@@ -90,7 +92,7 @@ Le build échoue si :
 - le fichier de géométrie a changé (empreinte SHA-256) ou ne sépare plus Gaza et la Cisjordanie comme attendu ;
 - le nombre de notices n’a pas d’équivalent en lettres (le titre de l’accueil l’écrit en toutes lettres) ;
 - un texte du corpus contient un tiret cadratin ou demi-cadratin ;
-- le statut éditorial n’est plus affiché.
+- le statut éditorial n’est pas l’une des valeurs prévues.
 
 ## Commandes locales
 
@@ -146,7 +148,7 @@ Pour modifier le corpus :
 4. Lancez `docker compose run --rm check` puis `docker compose run --rm e2e`.
 5. Ouvrez une pull request qui explique ce qui change et sur quel document vous vous appuyez.
 
-Ne changez pas `editorial_status` sans relecture indépendante effective, nommée et datée.
+Ne changez pas `editorial_status` sans avoir consigné la relecture correspondante dans `content/relectures.json`.
 
 ## Licences
 

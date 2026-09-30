@@ -48,7 +48,6 @@ Le texte courant ne descend pas sous 14 px. Les surtitres (`.eyebrow`) utilisent
 | Sommaire par territoire | `.map-summary`, `.place-filter`, `.map-list` | `places`, `events[].places`, `events[].place_note` | Boutons `aria-pressed` dans un `role="group"` nommé (« Voir les N notices », puis un bouton par lieu dessiné). Le résultat est annoncé par un `role="status"`. Le focus reste sur le bouton. Un lieu choisi laisse en bas de liste les notices non situées. Les boutons font foi : la carte ne fait que relayer le clic |
 | Carte de situation | `.map--dark`, `.map--light` | `content/cartes/`, `scripts/map.mjs` | SVG produit au build et intégré à la page, `role="img"` nommé. Zones `[data-zone]`, atténuées par `.is-muted`. Zones non focalisables (les boutons portent la commande). Zone de clic élargie autour de Gaza (`.map__hit`). Mobile : commandes, puis carte, puis liste |
 | Miniature de notice | `.notice__place--map` | `events[].places` | Affichée seulement si tous les lieux de la notice sont dessinés. Sinon, lieux écrits et `place_note` (2023), ou rien (notice sans lieu) |
-| Bandeau de statut | `.status-banner` | `editorial_status` | Toujours visible sous l’en-tête. Le build échoue si le statut disparaît de la page |
 
 ## Volet source
 

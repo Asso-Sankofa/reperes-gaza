@@ -49,7 +49,6 @@ const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 const el = {
   header: $('#site-header'),
-  banner: $('.status-banner'),
   main: $('#contenu'),
   footer: $('.site-footer'),
   menuToggle: $('#menu-toggle'),
@@ -278,7 +277,6 @@ function renderParcours() {
       <p class="notice__text">${esc(ev.text)}</p>
       <p class="notice__context">${esc(ev.context)}</p>
       ${noticePlace(ev)}
-      <p class="notice__status">Brouillon · en attente de relecture indépendante</p>
       ${why1948 ? why1948.outerHTML.replace('data-template="why1948"', '').replace('data-focus="home-histoire"', 'data-focus="parcours-histoire"') : ''}
     </div>
     <aside class="notice__aside" aria-label="Sources et pistes de lecture">
@@ -480,7 +478,7 @@ let panelReturn = null;
 let panelReturnKey = null;
 
 function setBackgroundInert(on) {
-  [el.header, el.banner, el.main, el.footer, el.bottomBar].forEach(n => { n.inert = on; });
+  [el.header, el.main, el.footer, el.bottomBar].forEach(n => { n.inert = on; });
 }
 
 function openSource(id, trigger) {
@@ -540,7 +538,7 @@ function openMenu() {
   el.menu.hidden = false;
   el.menuToggle.setAttribute('aria-expanded', 'true');
   el.menuToggle.textContent = 'Fermer ✕';
-  [el.banner, el.main, el.footer, el.bottomBar].forEach(n => { n.inert = true; });
+  [el.main, el.footer, el.bottomBar].forEach(n => { n.inert = true; });
   document.body.classList.add('is-locked', 'menu-open');
   $('a', el.menu).focus();
 }
@@ -551,7 +549,7 @@ function closeMenu({ restoreFocus = true } = {}) {
   el.menu.hidden = true;
   el.menuToggle.setAttribute('aria-expanded', 'false');
   el.menuToggle.textContent = 'Menu';
-  [el.banner, el.main, el.footer, el.bottomBar].forEach(n => { n.inert = false; });
+  [el.main, el.footer, el.bottomBar].forEach(n => { n.inert = false; });
   document.body.classList.remove('is-locked', 'menu-open');
   if (restoreFocus) el.menuToggle.focus();
 }

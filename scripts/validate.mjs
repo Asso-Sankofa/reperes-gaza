@@ -2,7 +2,7 @@
 import { MAP_ZONES } from './map.mjs';
 
 const ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-const STATUSES = ['draft_pending_independent_review'];
+const STATUSES = ['draft_pending_independent_review', 'editorial_review_completed'];
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 const DASHES = /[\u2013\u2014]/; // demi-cadratin et cadratin, exclus par la charte éditoriale
 

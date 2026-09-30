@@ -42,7 +42,6 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   await page.goto(BASE + '/');
   await page.waitForSelector('#home-title');
   check('accueil : titre affiché', await page.locator('#home-title').isVisible());
-  check('accueil : bandeau de statut visible', await page.locator('.status-banner').getByText('aucune relecture indépendante').isVisible());
   check('accueil : six questions', (await page.locator('.question-card').count()) === 6);
   check('accueil : frise avec sept repères', (await page.locator('[data-slot="home-rail"] .rail__dot').count()) === 7);
   check('accueil : polices chargées localement', await page.evaluate(async () => { await document.fonts.ready; return document.fonts.check('16px "DM Sans"') && document.fonts.check('16px "Libre Caslon Display"'); }));
