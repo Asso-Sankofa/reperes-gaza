@@ -31,6 +31,9 @@ const focused = page => page.evaluate(() => {
   const a = document.activeElement;
   return a ? (a.id || a.dataset.focus || a.textContent.trim().slice(0, 40)) : null;
 });
+const pressed = page => page.evaluate(() => document.querySelector('.place-filter[aria-pressed="true"]')?.dataset.place);
+const muted = page => page.evaluate(() => [...document.querySelectorAll('.hero__map [data-zone].is-muted')].map(z => z.dataset.zone).join(' '));
+const years = page => page.locator('.map-list .map-list__year').allTextContents();
 const noHorizontalScroll = page => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1);
 
 /* ---------- Ordinateur ---------- */
@@ -43,7 +46,62 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   check('accueil : six questions', (await page.locator('.question-card').count()) === 6);
   check('accueil : frise avec sept repères', (await page.locator('[data-slot="home-rail"] .rail__dot').count()) === 7);
   check('accueil : polices chargées localement', await page.evaluate(async () => { await document.fonts.ready; return document.fonts.check('16px "DM Sans"') && document.fonts.check('16px "Libre Caslon Display"'); }));
+  check('accueil : nouveau titre', (await page.locator('#home-title').innerText()).replace(/\s+/g, ' ') === 'Gaza et la France : sept repères');
+  check('carte : SVG intégré, nommé', (await page.locator('.hero__map svg[role="img"]').count()) === 1 && (await page.locator('#map-region-title').count()) === 1);
+  check('carte : légende et lien vers la méthode', (await page.locator('.map-caption').innerText()).includes('ne reconstituent pas les limites'));
+  check('sommaire : trois commandes, les sept notices par défaut', (await page.locator('.place-filter').count()) === 3 && (await pressed(page)) === 'all' && (await years(page)).length === 7);
+  check('sommaire : bouton « Voir les sept notices »', await page.getByRole('button', { name: 'Voir les sept notices' }).isVisible());
+  check('sommaire : zone d’annonce polie', (await page.locator('.map-summary__status').getAttribute('role')) === 'status');
+
+  // Clavier : Tab jusqu'à « Gaza », Entrée ; puis Tab, Espace sur « Cisjordanie ».
+  await page.locator('[data-focus="place-all"]').focus();
+  await page.keyboard.press('Tab');
+  check('clavier : Tab atteint « Gaza »', (await focused(page)) === 'place-gaza');
+  await page.keyboard.press('Enter');
+  check('clavier : Entrée sélectionne Gaza', (await pressed(page)) === 'gaza');
+  check('Gaza : 1967, 2005, 2023, 2024', (await years(page)).join(',') === '1967,2005,2023,2024');
+  check('Gaza : annonce du nombre de notices', (await page.locator('.map-summary__status').textContent()) === 'Bande de Gaza : 4 notices sur 7');
+  check('Gaza : carte synchronisée', (await muted(page)) === 'cisjordanie');
+  check('Gaza : 1948 et 1949 restent accessibles', (await page.locator('.map-summary__off a').count()) === 2);
+  check('Gaza : 2023 mentionne le sud d’Israël', (await page.locator('.map-list li', { hasText: '2023' }).innerText()).includes('Sud d’Israël'));
+  check('clavier : focus conservé sur la commande', (await focused(page)) === 'place-gaza');
+  await page.keyboard.press('Tab');
+  await page.keyboard.press('Space');
+  check('clavier : Espace sélectionne la Cisjordanie', (await pressed(page)) === 'cisjordanie' && (await years(page)).join(',') === '1967,2016,2024');
+  check('Cisjordanie : carte synchronisée', (await muted(page)) === 'gaza');
+  await page.locator('.hero__map .map__hit').click({ force: true });
+  check('carte : un clic sur Gaza met à jour les commandes', (await pressed(page)) === 'gaza');
+  await page.waitForTimeout(300);
+  await page.screenshot({ path: `${SHOTS}/desktop-accueil-gaza.png` });
+  await page.getByRole('button', { name: 'Voir les sept notices' }).click();
+  check('« Voir les sept notices » rétablit la liste complète', (await years(page)).length === 7 && (await muted(page)) === '');
   await page.screenshot({ path: `${SHOTS}/desktop-accueil.png`, fullPage: true });
+
+  // Sans carte (SVG absent ou non rendu), les commandes et la liste fonctionnent seules.
+  await page.evaluate(() => document.querySelector('.hero__map svg').remove());
+  await page.getByRole('button', { name: 'Cisjordanie' }).click();
+  check('sans carte : le filtre fonctionne', (await years(page)).length === 3 && page.errors.length === 0, page.errors.join(' | '));
+  await page.getByRole('button', { name: 'Voir les sept notices' }).click();
+
+  await page.goto(BASE + '/#/parcours/retrait-2005');
+  await page.waitForSelector('#notice-title');
+  check('miniature 2005 : Gaza en évidence', await page.evaluate(() => {
+    const f = document.querySelector('.notice__place--map');
+    return !!f && !f.querySelector('[data-zone="gaza"]').classList.contains('is-muted') && f.querySelector('[data-zone="cisjordanie"]').classList.contains('is-muted');
+  }));
+  check('miniature 2005 : nom accessible', (await page.locator('.notice__place--map svg').getAttribute('aria-label')).includes('Bande de Gaza'));
+  await page.screenshot({ path: `${SHOTS}/desktop-notice-2005.png` });
+  await page.goto(BASE + '/#/parcours/guerre-1967');
+  await page.waitForSelector('#notice-title');
+  check('miniature 1967 : les deux territoires', (await page.locator('.notice__place--map [data-zone].is-muted').count()) === 0 && (await page.locator('.notice__place-name').first().textContent()) === 'Bande de Gaza et Cisjordanie');
+  await page.goto(BASE + '/#/parcours/attaques-2023');
+  await page.waitForSelector('#notice-title');
+  check('2023 : lieux écrits, sans miniature', (await page.locator('.notice__place--map').count()) === 0 && (await page.locator('.notice__place').innerText()).includes('Sud d’Israël'));
+  await page.goto(BASE + '/#/parcours/nakba-1948');
+  await page.waitForSelector('#notice-title');
+  check('1948 : aucune carte', (await page.locator('.notice__place').count()) === 0);
+  await page.goto(BASE + '/');
+  await page.waitForSelector('#home-title');
 
   await page.locator('.question-card', { hasText: 'colonies' }).click();
   await page.waitForSelector('#notice-title');
@@ -103,7 +161,8 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   await page.locator('.main-nav a', { hasText: 'Méthode' }).click();
   const json = await page.request.get(BASE + '/data/reperes.json');
   const csv = await page.request.get(BASE + '/data/reperes-evenements.csv');
-  check('Méthode : corpus JSON téléchargeable', json.ok() && (await json.json()).schema_version === '0.3.0');
+  check('Méthode : corpus JSON téléchargeable', json.ok() && (await json.json()).schema_version === '0.4.0');
+  check('Méthode : provenance de la carte', (await page.locator('#methode-carte').innerText()).includes('Natural Earth, version 4.1.0'));
   check('Méthode : CSV téléchargeable', csv.ok() && (await csv.text()).startsWith('id,year,title'));
   check('ordinateur : aucune requête vers un domaine tiers', page.external.length === 0, page.external.join(', '));
   check('ordinateur : aucune erreur JavaScript', page.errors.length === 0, page.errors.join(' | '));
@@ -166,11 +225,37 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
 
   await page.goto(BASE + '/');
   await page.waitForSelector('#home-title');
+  const box = sel => page.locator(sel).first().boundingBox();
+  const [ctl, map, lst] = [await box('.map-summary__controls'), await box('.hero__map'), await box('.map-list')];
+  check('mobile : commandes, puis carte, puis liste', ctl.y < map.y && map.y < lst.y);
+  check('mobile : cibles tactiles d’au moins 44 px', (await page.locator('.place-filter').evaluateAll(b => b.every(x => x.getBoundingClientRect().height >= 44))));
+  await page.getByRole('button', { name: 'Gaza' }).tap();
+  check('mobile : toucher « Gaza » filtre la liste', (await pressed(page)) === 'gaza' && (await years(page)).length === 4);
+  await page.getByRole('button', { name: 'Voir les sept notices' }).tap();
+  await page.locator('.hero__map').scrollIntoViewIfNeeded();
+  const gz = await page.locator('.hero__map [data-zone="gaza"]').boundingBox();
+  await page.touchscreen.tap(gz.x + gz.width / 2, gz.y + gz.height / 2);
+  check('mobile : toucher Gaza sur la carte', (await pressed(page)) === 'gaza', `zone ${Math.round(gz.width)}×${Math.round(gz.height)} px`);
+  await page.waitForTimeout(300);
+  await page.screenshot({ path: `${SHOTS}/mobile-accueil-gaza.png`, fullPage: true });
+  await page.getByRole('button', { name: 'Voir les sept notices' }).tap();
   check('mobile : liste chronologique à l’accueil', (await page.locator('.home-list li').count()) === 7);
   check('mobile : pas de défilement horizontal (accueil)', await noHorizontalScroll(page));
   await page.screenshot({ path: `${SHOTS}/mobile-accueil.png`, fullPage: true });
   check('mobile : aucune requête vers un domaine tiers', page.external.length === 0, page.external.join(', '));
   check('mobile : aucune erreur JavaScript', page.errors.length === 0, page.errors.join(' | '));
+  await page.context().close();
+}
+
+/* ---------- Petit écran (320 px) ---------- */
+{
+  const page = await newPage({ width: 320, height: 640 }, { hasTouch: true, isMobile: true });
+  for (const r of ['/', '/#/parcours/resolution-2016']) {
+    await page.goto(BASE + r);
+    await page.waitForTimeout(300);
+    check(`320 px : pas de défilement horizontal (${r})`, await noHorizontalScroll(page));
+  }
+  await page.screenshot({ path: `${SHOTS}/mobile320-notice-2016.png`, fullPage: true });
   await page.context().close();
 }
 

@@ -5,20 +5,28 @@ import { cp, mkdir, readFile, rm, writeFile, access } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { validateCorpus } from './validate.mjs';
+import { GEO_SHA256, loadGeo, miniSvg, regionSvg } from './map.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const ROUTES = ['parcours', 'voix', 'verifier', 'mots', 'methode'];
 
 const hash = text => createHash('sha256').update(text).digest('hex').slice(0, 10);
 
+// Le nombre de notices s'écrit en lettres dans la page. Au-delà de la table, le build échoue plutôt que d'afficher un chiffre faux.
+const NUMBER_WORDS = ['zéro', 'un', 'deux', 'trois', 'quatre', 'cinq', 'six', 'sept', 'huit', 'neuf', 'dix', 'onze', 'douze', 'treize', 'quatorze', 'quinze', 'seize'];
+export function countWord(n) {
+  if (!NUMBER_WORDS[n]) throw new Error(`nombre de repères sans équivalent en lettres : ${n} (compléter NUMBER_WORDS)`);
+  return NUMBER_WORDS[n];
+}
+
 export function toCsv(corpus) {
   const cell = v => {
     const s = String(v ?? '');
     return /[",\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
   };
-  const header = ['id', 'year', 'title', 'text', 'context', 'source_ids', 'threads', 'editorial_status', 'license'];
+  const header = ['id', 'year', 'title', 'text', 'context', 'source_ids', 'threads', 'places', 'editorial_status', 'license'];
   const rows = corpus.events.map(e => [
-    e.id, e.year, e.title, e.text, e.context, e.sources.join('|'), e.threads.join('|'),
+    e.id, e.year, e.title, e.text, e.context, e.sources.join('|'), e.threads.join('|'), e.places.join('|'),
     corpus.editorial_status, corpus.license.notices,
   ]);
   return [header, ...rows].map(r => r.map(cell).join(',')).join('\n') + '\n';
@@ -89,6 +97,8 @@ export async function build({ outDir = join(ROOT, 'dist'), quiet = false } = {})
   const tokensJson = { version: pkg.version, source: 'src/styles/tokens.css', tokens: tokensFromCss(tokensCss) };
   await writeFile(join(outDir, 'design-system/tokens.json'), JSON.stringify(tokensJson, null, 2) + '\n');
 
+  const geo = await loadGeo();
+  const words = countWord(corpus.events.length);
   const collations = Object.values(corpus.documents || {}).map(d => d.collation?.checked_on).filter(Boolean).sort();
   // « < » échappé pour qu'aucune chaîne du corpus ne puisse fermer la balise script.
   const inlineCorpus = `<script type="application/json" id="corpus">${JSON.stringify(corpus).replace(/</g, '\\u003c')}</script>`;
@@ -101,6 +111,13 @@ export async function build({ outDir = join(ROOT, 'dist'), quiet = false } = {})
     HASH_SITE: hash(siteCss),
     HASH_APP: hash(app),
     CORPUS: inlineCorpus,
+    EVENT_COUNT_WORD: words,
+    EVENT_COUNT_WORD_CAP: words[0].toUpperCase() + words.slice(1),
+    FIRST_YEAR: corpus.events[0].year,
+    LAST_YEAR: corpus.events.at(-1).year,
+    GEO_SHA256,
+    MAP_REGION: regionSvg(geo),
+    MAP_MINI: miniSvg(geo),
   };
   const html = template.replace(/{{([A-Z_]+)}}/g, (m, key) => {
     if (!(key in replacements)) throw new Error(`index.html : variable inconnue ${m}`);
