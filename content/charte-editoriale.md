@@ -54,4 +54,4 @@ La collecte conserve la provenance et la version. Le statut de relecture fait pa
 
 Le futur circuit distinguera préparation, relecture et publication. Le texte indiquera son auteur et sa dernière révision substantielle. Une correction factuelle importante conservera une note expliquant le changement.
 
-Les outils automatisés peuvent aider à chercher ou à structurer. La responsabilité du contenu publié reste humaine. La version de démonstration actuelle a été préparée avec une assistance d'IA. Une relecture éditoriale de l'ensemble du site a été faite en septembre 2026 ; les textes historiques et juridiques n'ont pas encore été relus par un historien ou un juriste.
+Les outils automatisés peuvent aider à chercher ou à structurer. La responsabilité du contenu publié reste humaine. La version de démonstration actuelle a été préparée avec une assistance d'IA. Une relecture éditoriale de l'ensemble du site en ligne a été faite en septembre 2026, avant l'ajout de la carte de situation ; les textes historiques et juridiques n'ont pas encore été relus par un historien ou un juriste.

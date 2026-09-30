@@ -1,5 +1,5 @@
 {
-  "note": "Registre interne des relectures et des tests. Il n'est ni affiché sur le site ni exporté dans dist/. Le dépôt étant public, les relecteurs qui ne souhaitent pas être nommés n'y figurent que par leur rôle.",
+  "note": "Registre des relectures et des tests, conservé dans le dépôt public. Il n'est ni affiché sur le site ni exporté dans dist/, mais reste lisible sur GitHub. Les relecteurs qui ne souhaitent pas être nommés n'y figurent que par leur rôle.",
   "reviews": [
     {
       "completed_on": "2026-09-30",

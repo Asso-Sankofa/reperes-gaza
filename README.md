@@ -6,9 +6,9 @@ Le projet est porté par l’association Sankofa. Nous savons rechercher, organi
 
 ## Statut éditorial
 
-Une relecture éditoriale de l’ensemble du site a été faite la semaine du 28 septembre 2026. Le corpus porte le statut `editorial_review_completed`. Les textes historiques et juridiques n’ont pas été relus par un historien ou un juriste.
+Une relecture éditoriale de l’ensemble du site en ligne, avant l’ajout de la carte de situation, a été faite la semaine du 28 septembre 2026. Le corpus porte le statut `editorial_review_completed` ; ce statut ne vaut pas validation de la carte ni du rattachement des notices aux lieux (`places`). Les textes historiques et juridiques n’ont pas été relus par un historien ou un juriste.
 
-Les relectures et les tests auprès de lecteurs sont consignés dans `content/relectures.json` : rôle des relecteurs, périmètre, date, ce qui n’a pas été couvert. Ce registre sert en interne à juger la qualité rédactionnelle. Il n’est ni affiché sur le site ni exporté. Le dépôt est public : on n’y inscrit pas le nom d’une personne qui ne souhaite pas être citée.
+Les relectures et les tests auprès de lecteurs sont consignés dans `content/relectures.json` : rôle des relecteurs, périmètre, date, ce qui n’a pas été couvert. Ce registre sert à juger la qualité rédactionnelle. Il n’est ni affiché sur le site ni exporté, mais il est conservé dans le dépôt public et reste donc lisible sur GitHub : on n’y inscrit pas le nom d’une personne qui ne souhaite pas être citée. Un contenu qui doit rester privé se conserve hors du dépôt.
 
 Les contenus ont été préparés avec une assistance d’IA. La responsabilité de ce qui est publié reste humaine.
 
