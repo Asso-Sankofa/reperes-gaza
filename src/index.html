@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta name="description" content="Prototype documentaire : Gaza, l’histoire du conflit et les décisions françaises, à partir de documents consultables.">
+<meta name="description" content="Gaza, l’histoire du conflit et les décisions françaises, à partir de documents consultables. Un projet de l’association Sankofa.">
 <title>Repères · Gaza et la France</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -42,13 +42,13 @@
   <a href="#/verifier" data-nav="verifier"><span class="menu-mobile__label">Écart entre bilans</span><span class="menu-mobile__n">03</span></a>
   <a href="#/mots" data-nav="mots"><span class="menu-mobile__label">Lexique</span><span class="menu-mobile__n">04</span></a>
   <a href="#/methode" data-nav="methode"><span class="menu-mobile__label">Méthode</span><span class="menu-mobile__n">05</span></a>
-  <p class="menu-mobile__status">Version {{VERSION}} · Prototype documentaire</p>
+  <p class="menu-mobile__status">Un projet de l’association Sankofa</p>
 </nav>
 
 <main id="contenu" tabindex="-1">
 <noscript>
   <section class="section">
-    <p>Ce prototype a besoin de JavaScript pour afficher le parcours. Le corpus reste consultable sans lui : <a href="data/reperes.json">notices (JSON)</a>, <a href="data/reperes-evenements.csv">événements (CSV)</a>, <a href="data/charte-editoriale.md">charte éditoriale</a>.</p>
+    <p>Ce site a besoin de JavaScript pour afficher le parcours. Le corpus reste consultable sans lui : <a href="data/reperes.json">notices (JSON)</a>, <a href="data/reperes-evenements.csv">événements (CSV)</a>, <a href="data/charte-editoriale.md">charte éditoriale</a>.</p>
   </section>
 </noscript>
 
@@ -56,7 +56,7 @@
 <div data-route="accueil" hidden>
   <section class="hero" aria-labelledby="home-title">
     <div class="wrap hero__inner">
-      <p class="eyebrow eyebrow--on-ink">ATELIER DOCUMENTAIRE CITOYEN · PROTOTYPE {{VERSION}}</p>
+      <p class="eyebrow eyebrow--on-ink hero__by"><svg class="sankofa-mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><g transform="translate(-2 -1.2)"><path class="sankofa-mark__bird" d="M27.4 73.2 A 30 30 0 1 0 52 26 A 13 13 0 0 1 39.4 16.4"/><path class="sankofa-mark__beak" d="M36.7 11.6 L26 24 L42.1 21.2 Z"/><circle class="sankofa-mark__egg" cx="47" cy="51" r="8.5"/></g></svg><span>UN PROJET DE L’ASSOCIATION SANKOFA</span></p>
       <div class="hero__grid">
         <div class="hero__intro">
           <h1 id="home-title" class="display display--hero" tabindex="-1">Gaza et la France&nbsp;:<br><span class="accent-on-ink">{{EVENT_COUNT_WORD}} repères</span></h1>
@@ -197,9 +197,10 @@
           <div><h2>Une correction laisse une trace</h2><p class="muted">Une notice corrigée conserve un historique. La collecte automatique prépare le travail ; elle n’autorise pas la publication sans validation.</p></div>
         </div>
         <div class="status-detail">
-          <h2>Où en est ce prototype ?</h2>
-          <p>Les {{EVENT_COUNT_WORD}} repères sont une sélection pour éprouver la forme, pas une histoire exhaustive.</p>
-          <p>Pour la résolution 2334, les extraits ont été collationnés avec le texte officiel en français le {{COLLATION_DATE}}, et le vote avec le procès-verbal de séance. Une erreur de transcription du paragraphe 12 a été corrigée à cette occasion. Les notices de 2005, 2023 et 2024 citent désormais les paragraphes de l’avis de la Cour internationale de Justice et du rapport de la commission d’enquête, relus le 29 septembre 2026. Ces vérifications portent sur la lettre des documents ; elles ne remplacent pas une relecture juridique.</p>
+          <h2>Ce qui a été vérifié</h2>
+          <p>Les {{EVENT_COUNT_WORD}} repères, de {{FIRST_YEAR}} à {{LAST_YEAR}}, forment une sélection. Ils ne racontent pas toute l’histoire du conflit.</p>
+          <p>Les extraits de la résolution 2334 ont été relus le {{COLLATION_DATE}} sur le texte officiel en français, et le vote sur le compte rendu de la séance. La notice de 2016 en donne le détail, dont une correction apportée au paragraphe 12. Les passages de l’avis de la Cour internationale de Justice et du rapport de la commission d’enquête cités pour 2005, 2023 et 2024 ont été relus le 29 septembre 2026. Dans le volet de chaque source, une note précise comment elle a été consultée.</p>
+          <p>Ces relectures confirment que les citations reprennent fidèlement les textes. Elles ne disent pas comment un juriste les interpréterait.</p>
         </div>
         <div class="map-method" id="methode-carte">
           <h2>La carte de situation</h2>
@@ -218,7 +219,7 @@
       <aside class="panel-box split__side" aria-labelledby="methode-contenu">
         <p class="eyebrow eyebrow--muted" id="methode-contenu">CE QUE CETTE VERSION CONTIENT</p>
         <p>Un premier corpus de notices sourcées. Les contenus ont été préparés avec une assistance d’IA. La responsabilité de ce qui est publié reste celle de l’association.</p>
-        <p>Ce prototype ne présente pas de bilan actuel de la guerre. Aucun témoignage, portrait ou document n’a été inventé pour l’illustrer.</p>
+        <p>Ce site ne présente pas de bilan actuel de la guerre. Aucun témoignage, portrait ou document n’a été inventé pour l’illustrer.</p>
         <div class="downloads">
           <a class="download download--ink" href="data/reperes.json" download="reperes-corpus-{{SCHEMA_VERSION}}.json"><span>Corpus des notices</span><span>JSON ↓</span></a>
           <a class="download" href="data/reperes-evenements.csv" download="reperes-evenements.csv"><span>Événements</span><span>CSV ↓</span></a>
@@ -238,7 +239,7 @@
 <footer class="site-footer">
   <div class="wrap site-footer__inner">
     <span class="site-footer__brand">repères.</span>
-    <span>Un projet de l’association Sankofa · Version {{VERSION}} · Nom provisoire</span>
+    <span class="site-footer__meta"><a class="site-footer__org" href="https://asso-sankofa.org/"><svg class="sankofa-mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><g transform="translate(-2 -1.2)"><path class="sankofa-mark__bird" d="M27.4 73.2 A 30 30 0 1 0 52 26 A 13 13 0 0 1 39.4 16.4"/><path class="sankofa-mark__beak" d="M36.7 11.6 L26 24 L42.1 21.2 Z"/><circle class="sankofa-mark__egg" cx="47" cy="51" r="8.5"/></g></svg><span>Un projet de l’association Sankofa</span></a><span>Version {{VERSION}}</span></span>
   </div>
 </footer>
 
