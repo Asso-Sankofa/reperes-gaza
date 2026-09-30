@@ -225,7 +225,7 @@ function renderParcours() {
       <h1 id="notice-title" class="notice__title" tabindex="-1">${esc(ev.title)}</h1>
       <p class="notice__text">${esc(ev.text)}</p>
       <p class="notice__context">${esc(ev.context)}</p>
-      <p class="notice__status">Notice de travail · statut <code>${esc(data.editorial_status)}</code> · relecture indépendante à prévoir</p>
+      <p class="notice__status">Brouillon · en attente de relecture indépendante</p>
       ${why1948 ? why1948.outerHTML.replace('data-template="why1948"', '').replace('data-focus="home-histoire"', 'data-focus="parcours-histoire"') : ''}
     </div>
     <aside class="notice__aside" aria-label="Sources et pistes de lecture">

@@ -110,7 +110,9 @@ export async function build({ outDir = join(ROOT, 'dist'), quiet = false } = {})
 
   const linkErrors = await checkInternalLinks(html, corpus, outDir);
   if (linkErrors.length) throw new Error(`liens internes cassés :\n- ${linkErrors.join('\n- ')}`);
-  if (!html.includes(corpus.editorial_status)) throw new Error('le statut éditorial doit rester visible dans la page');
+  // Le bandeau d'avertissement doit rester dans la page ; le corpus intégré contient toujours le statut technique.
+  if (!/class="status-banner"[\s\S]*?aucune relecture indépendante/.test(html)) throw new Error('le bandeau de statut éditorial doit rester visible dans la page');
+  if (!html.includes(`<code>${corpus.editorial_status}</code>`)) throw new Error('le statut technique doit rester affiché dans la page Méthode');
 
   log(`dist/ construit : version ${pkg.version}, ${corpus.events.length} repères, ${corpus.sources.length} sources.`);
   return { outDir, corpus, html };
