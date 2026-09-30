@@ -4,7 +4,8 @@ import { readFile, mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { validateCorpus } from '../scripts/validate.mjs';
-import { build, checkInternalLinks, toCsv } from '../scripts/build.mjs';
+import { build, checkInternalLinks, countWord, toCsv } from '../scripts/build.mjs';
+import { decode, loadGeo, miniSvg, regionSvg } from '../scripts/map.mjs';
 
 const load = async () => JSON.parse(await readFile(new URL('../content/reperes.json', import.meta.url), 'utf8'));
 
@@ -54,6 +55,58 @@ test('un statut éditorial non prévu est refusé', async () => {
   assert.ok(validateCorpus(d).errors.some(e => e.includes('editorial_status')));
 });
 
+test('un lieu inconnu ou une zone de carte inconnue est détecté', async () => {
+  const d = await load();
+  d.events[2].places.push('lieu-absent');
+  d.places[0].map_zone = 'jerusalem-est';
+  const { errors } = validateCorpus(d);
+  assert.ok(errors.some(e => e.includes('lieu inconnu « lieu-absent »')));
+  assert.ok(errors.some(e => e.includes('zone de carte inconnue')));
+});
+
+test('une notice absente de la carte doit expliquer pourquoi', async () => {
+  const d = await load();
+  const nakba = d.events.find(e => e.id === 'nakba-1948');
+  delete nakba.place_note;
+  const a2023 = d.events.find(e => e.id === 'attaques-2023');
+  delete a2023.place_note;
+  const { errors } = validateCorpus(d);
+  assert.ok(errors.some(e => e.includes('nakba-1948') && e.includes('place_note')));
+  assert.ok(errors.some(e => e.includes('attaques-2023') && e.includes('place_note')), 'un lieu non dessiné suffit à exiger la note');
+});
+
+test('chaque notice reste accessible : située sur la carte ou signalée comme hors carte', async () => {
+  const d = await load();
+  const mapped = new Set(d.places.filter(p => p.map_zone).map(p => p.id));
+  for (const e of d.events) {
+    assert.ok(e.places.some(p => mapped.has(p)) || e.place_note, e.id);
+  }
+});
+
+test('le nombre de repères s’écrit en lettres, sinon le build échoue', () => {
+  assert.equal(countWord(7), 'sept');
+  assert.throws(() => countWord(40), /NUMBER_WORDS/);
+});
+
+test('la géométrie sépare Gaza et la Cisjordanie', async () => {
+  const geo = await loadGeo();
+  assert.equal(geo.zones.gaza.length, 1);
+  assert.equal(geo.zones.cisjordanie.length, 1);
+  assert.ok(!geo.countries.some(c => c.name === 'Palestine'));
+  const region = regionSvg(geo);
+  assert.match(region, /data-zone="gaza"[^>]*data-place="gaza"/);
+  assert.match(region, /data-zone="cisjordanie"/);
+  assert.doesNotMatch(region, /J[ée]rusalem/, 'aucun point Jérusalem : le contour ne distingue pas Jérusalem-Est');
+  assert.doesNotMatch(region + miniSvg(geo), /\sstyle=/);
+});
+
+test('une géométrie inattendue arrête le build', () => {
+  const topo = { transform: { scale: [1, 1], translate: [0, 0] }, arcs: [[[30, 30], [1, 0], [0, 1], [-1, -1]]], objects: { countries: { geometries: [
+    { type: 'Polygon', arcs: [[0]], properties: { name: 'Palestine' } },
+  ] } } };
+  assert.throws(() => decode(topo), /zone gaza/);
+});
+
 test('le CSV reprend chaque événement et échappe les guillemets', async () => {
   const d = await load();
   const csv = toCsv(d).trim().split('\n');
@@ -75,7 +128,11 @@ test('le build produit une page cohérente avec le corpus', async () => {
     assert.doesNotMatch(html, /{{[A-Z_]+}}/);
     assert.match(html, /class="status-banner"[\s\S]*?aucune relecture indépendante/);
     assert.match(html, /<code>draft_pending_independent_review<\/code>/);
-    assert.doesNotMatch(html, /unpkg\.com|fonts\.googleapis|fonts\.gstatic/);
+    assert.doesNotMatch(html, /unpkg\.com|jsdelivr|fonts\.googleapis|fonts\.gstatic/);
+    assert.match(html, /<h1 id="home-title"[^>]*>Gaza et la France&nbsp;:<br><span class="accent-on-ink">sept repères<\/span><\/h1>/);
+    assert.match(html, /class="map map--dark"/);
+    assert.match(html, /<template id="map-mini"><svg class="map map--light"/);
+    assert.doesNotMatch(html.replace(/<script type="application\/json" id="corpus">[\s\S]*?<\/script>/, ''), /\sstyle="/, 'la CSP interdit les attributs style');
     const served = JSON.parse(await readFile(join(out, 'data/reperes.json'), 'utf8'));
     assert.deepEqual(served, corpus);
     const inline = html.match(/<script type="application\/json" id="corpus">([\s\S]*?)<\/script>/)[1];

@@ -142,9 +142,73 @@ h1, h2, h3 { margin: 0; }
 .hero { background: var(--color-ink); color: var(--color-on-ink); }
 .hero__inner { padding-top: clamp(48px, 8vw, 104px); padding-bottom: clamp(48px, 6vw, 80px); }
 .hero .eyebrow { margin-bottom: 28px; }
-.hero__head { display: flex; flex-wrap: wrap; gap: 32px 7%; align-items: flex-end; }
-.hero__head h1 { flex: 1 1 520px; margin: 0; }
-.hero__lead { flex: 1 1 300px; max-width: 440px; font-size: var(--text-lead); line-height: 1.55; margin: 0; text-wrap: pretty; }
+.hero__grid {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 460px); column-gap: 56px; align-items: start;
+  grid-template-areas: "intro map" "controls map" "list map"; grid-template-rows: auto auto 1fr;
+}
+.hero__intro { grid-area: intro; }
+.map-summary { grid-area: controls; }
+.map-results { grid-area: list; }
+.hero__map { grid-area: map; margin: 0; }
+.hero__intro h1 { margin: 0 0 28px; font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: 1.02; }
+.hero__lead { max-width: 34em; font-size: var(--text-lead); line-height: 1.55; margin: 0 0 40px; text-wrap: pretty; }
+.map-caption { margin-top: 10px; font-size: .78rem; line-height: 1.45; color: var(--color-on-ink-muted); }
+.map-caption a { color: var(--color-on-ink); }
+.map-caption a:hover { color: var(--color-accent-on-ink); }
+.map-caption a:focus-visible { outline-color: var(--color-accent-on-ink); }
+
+/* Sommaire par territoire : les boutons font foi, la carte suit. */
+.map-summary { border-top: 1px solid var(--color-rule-on-ink); padding-top: 18px; }
+.map-summary__title { font-size: var(--text-meta); letter-spacing: var(--tracking-eyebrow); font-weight: 600; text-transform: uppercase; color: var(--color-accent-on-ink); margin: 0 0 12px; }
+.map-summary__controls { display: flex; flex-wrap: wrap; gap: 8px; }
+.place-filter {
+  min-height: var(--target-min); padding: 8px 18px; border-radius: var(--radius-control);
+  border: 1px solid var(--color-on-ink); color: var(--color-on-ink); font-size: .95rem;
+}
+.place-filter:hover { border-color: var(--color-accent-on-ink); color: var(--color-accent-on-ink); }
+.place-filter[aria-pressed="true"] { background: var(--color-on-ink); color: var(--color-ink); border-color: var(--color-on-ink); }
+.place-filter:focus-visible { outline-color: var(--color-accent-on-ink); }
+.map-summary__status { margin: 16px 0 4px; font-size: .9rem; color: var(--color-on-ink-muted); }
+.map-list { list-style: none; margin: 0; padding: 0; }
+.map-list a {
+  display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 12px; align-items: baseline;
+  padding: 14px 0; border-bottom: 1px solid var(--color-rule-on-ink); text-decoration: none; color: var(--color-on-ink);
+}
+.map-list a:hover { color: var(--color-accent-on-ink); }
+.map-list a:focus-visible { outline-color: var(--color-accent-on-ink); outline-offset: -3px; }
+.map-list__year { font-weight: 600; color: var(--color-accent-on-ink); }
+.map-list__title { display: block; font-family: var(--font-editorial); font-size: 1.3rem; line-height: 1.25; }
+.map-list__places { display: block; margin-top: 4px; font-size: .85rem; color: var(--color-on-ink-muted); }
+.map-summary__off { margin: 14px 0 0; font-size: .9rem; color: var(--color-on-ink-muted); }
+.map-summary__off a { color: var(--color-on-ink); }
+.map-summary__off a:focus-visible { outline-color: var(--color-accent-on-ink); }
+
+/* Cartes SVG produites par scripts/map.mjs. Couleurs portées par des classes : la CSP interdit les attributs style. */
+.map { display: block; width: 100%; height: auto; font-family: var(--font-body); -webkit-tap-highlight-color: transparent; }
+.map__land { stroke-width: .8; stroke-linejoin: round; }
+.map__zone { stroke-width: .8; stroke-linejoin: round; transition: fill var(--motion-fast); }
+.map__label { font-size: 11px; font-weight: 500; letter-spacing: .08em; }
+.map__label--sea { font-size: 10px; font-style: italic; letter-spacing: .12em; }
+.map__label--zone { font-size: 14px; font-weight: 600; letter-spacing: 0; }
+.map__label--scale { font-size: 10px; letter-spacing: 0; }
+.map__leader, .map__scale { stroke-width: 1; }
+.map--dark .map__sea { fill: var(--color-map-sea-on-ink); }
+.map--dark .map__land { fill: var(--color-map-land-on-ink); stroke: var(--color-map-stroke-on-ink); }
+.map--dark .map__zone { fill: var(--color-accent-on-ink); stroke: var(--color-ink); cursor: pointer; }
+.map--dark .map__zone.is-muted { fill: var(--color-map-muted-on-ink); }
+.map--dark .map__label { fill: var(--color-map-label-on-ink); }
+.map--dark .map__label--zone { fill: var(--color-on-ink); }
+.map--dark .map__leader { stroke: var(--color-accent-on-ink); }
+.map--dark .map__scale { stroke: var(--color-map-label-on-ink); }
+/* Zone de clic élargie autour de Gaza, invisible : sur petit écran la bande ne fait que quelques pixels de large. */
+.map__hit { fill: transparent; stroke: transparent; stroke-width: 22; cursor: pointer; }
+.map--light .map__sea { fill: var(--color-surface); }
+.map--light .map__land { fill: var(--color-paper); stroke: var(--color-map-stroke); }
+.map--light .map__zone { fill: var(--color-accent); stroke: var(--color-paper); }
+.map--light .map__zone.is-muted { fill: var(--color-map-muted); }
+.map--light .map__label { font-size: 9px; fill: var(--color-text-muted); }
+.map--light .map__label--zone { font-size: 10px; fill: var(--color-ink); stroke: var(--color-paper); stroke-width: 3; paint-order: stroke; }
+.map--light .map__frame { fill: none; stroke: var(--color-border); }
 .hero__subtitle { font-size: .8rem; letter-spacing: var(--tracking-eyebrow); font-weight: 600; margin: clamp(48px, 6vw, 80px) 0 18px; }
 .question-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 12px; }
 .question-card {
@@ -228,6 +292,16 @@ h1, h2, h3 { margin: 0; }
 .notice__title { font-family: var(--font-editorial); font-weight: 400; font-size: clamp(2rem, 3.6vw, 3.3rem); line-height: 1.1; letter-spacing: -.015em; margin: 0 0 24px; text-wrap: balance; }
 .notice__text { font-size: var(--text-lead); line-height: 1.6; margin: 0 0 18px; max-width: var(--reading-width); text-wrap: pretty; }
 .notice__context { color: var(--color-text-muted); margin: 0 0 20px; max-width: var(--reading-width); text-wrap: pretty; }
+/* Lieux de la notice (piste 4d). Miniature à droite du texte sur grand écran, sous le texte ailleurs. */
+.notice__main--map { display: grid; grid-template-columns: minmax(0, 1fr) 180px; column-gap: 40px; align-content: start; }
+.notice__main--map > * { grid-column: 1; }
+.notice__main--map > .notice__place { grid-column: 2; grid-row: 1 / span 4; }
+.notice__place { margin: 0 0 20px; max-width: 200px; }
+.notice__place .eyebrow { margin-bottom: 8px; font-size: .66rem; }
+.notice__place figcaption { margin-top: 6px; }
+.notice__place-name { display: block; font-weight: 600; font-size: .85rem; line-height: 1.4; margin: 0; }
+.notice__place-note { display: block; font-size: .75rem; line-height: 1.4; color: var(--color-text-muted); margin: 2px 0 0; }
+div.notice__place { max-width: var(--reading-width); }
 .notice__status { font-size: .78rem; color: var(--color-text-muted); margin: 0; padding-top: 12px; border-top: 1px solid var(--color-border); max-width: var(--reading-width); }
 .notice__aside { flex: 1 1 300px; min-width: 0; background: var(--color-surface); padding: 28px; align-self: flex-start; display: flex; flex-direction: column; gap: 28px; }
 .notice__aside .eyebrow { margin-bottom: 6px; }
@@ -399,6 +473,15 @@ body.has-bottom-bar .site-footer { padding-bottom: calc(64px + env(safe-area-ins
 .source-panel__link { display: flex; justify-content: space-between; padding: 14px 18px; background: var(--color-ink); color: var(--color-on-ink); text-decoration: none; }
 .source-panel__link:hover { background: var(--color-accent); color: var(--color-on-ink); }
 
+@media (max-width: 959.98px) {
+  /* Une colonne : titre, commandes, carte, puis liste. La carte reste une image, l'ordre de lecture ne change pas pour le clavier. */
+  .hero__grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "intro" "controls" "map" "list"; grid-template-rows: none; }
+  .hero__map { width: min(100%, 380px); margin: 8px 0 12px; }
+}
+@media (max-width: 1099.98px) {
+  .notice__main--map { display: block; }
+  .notice__main--map > .notice__place { width: 160px; }
+}
 @media (max-width: 719.98px) {
   .brand__tagline, .main-nav { display: none; }
   .menu-toggle { display: flex; }

@@ -1,4 +1,5 @@
 // Contrôles du corpus content/reperes.json. Retourne { errors, warnings } sans lever d'exception.
+import { MAP_ZONES } from './map.mjs';
 
 const ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const STATUSES = ['draft_pending_independent_review'];
@@ -6,12 +7,13 @@ const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 const DASHES = /[\u2013\u2014]/; // demi-cadratin et cadratin, exclus par la charte éditoriale
 
 // externalRefs : identifiants de sources cités hors du corpus (gabarit HTML).
-export function validateCorpus(d, { externalRefs = [] } = {}) {
+// mapZones : zones que la carte sait dessiner (scripts/map.mjs).
+export function validateCorpus(d, { externalRefs = [], mapZones = MAP_ZONES } = {}) {
   const errors = [];
   const warnings = [];
   const err = msg => errors.push(msg);
 
-  for (const key of ['schema_version', 'title', 'scope', 'editorial_status', 'sources', 'events', 'actors', 'terms', 'threads']) {
+  for (const key of ['schema_version', 'title', 'scope', 'editorial_status', 'sources', 'events', 'actors', 'terms', 'threads', 'places']) {
     if (d[key] === undefined) err(`champ racine manquant : ${key}`);
   }
   if (errors.length) return { errors, warnings };
@@ -30,6 +32,14 @@ export function validateCorpus(d, { externalRefs = [] } = {}) {
   const eventIds = uniqueIds(d.events, 'événement');
   const termIds = uniqueIds(d.terms, 'terme');
   const threadIds = uniqueIds(d.threads, 'fil');
+  const placeIds = uniqueIds(d.places, 'lieu');
+  const mapped = new Set();
+  for (const p of d.places) {
+    for (const f of ['label', 'short']) if (!p[f]) err(`lieu ${p.id} : champ « ${f} » vide`);
+    if (p.map_zone === undefined) err(`lieu ${p.id} : map_zone attendu (zone de la carte ou null)`);
+    else if (p.map_zone !== null && !mapZones.includes(p.map_zone)) err(`lieu ${p.id} : zone de carte inconnue « ${p.map_zone} »`);
+    if (p.map_zone) mapped.add(p.id);
+  }
   const actorIds = new Set(Object.keys(d.actors));
   for (const id of actorIds) if (!ID.test(id)) err(`acteur : identifiant invalide « ${id} »`);
 
@@ -67,6 +77,11 @@ export function validateCorpus(d, { externalRefs = [] } = {}) {
     for (const t of e.threads || []) if (!threadIds.has(t)) err(`${where} : fil inconnu « ${t} »`);
     for (const t of e.terms || []) if (!termIds.has(t)) err(`${where} : terme inconnu « ${t} »`);
     for (const a of e.actors || []) if (!actorIds.has(a)) err(`${where} : acteur inconnu « ${a} »`);
+    // Une notice absente de la carte, en tout ou en partie, doit dire pourquoi : elle reste listée à l'accueil.
+    if (!Array.isArray(e.places)) err(`${where} : liste de lieux absente (tableau vide si aucun)`);
+    for (const p of e.places || []) if (!placeIds.has(p)) err(`${where} : lieu inconnu « ${p} »`);
+    const fullyMapped = (e.places || []).length > 0 && e.places.every(p => mapped.has(p));
+    if (!fullyMapped && !e.place_note) err(`${where} : place_note attendu, la notice n’est pas entièrement située sur la carte`);
   }
 
   for (const [key, a] of Object.entries(d.actors)) {

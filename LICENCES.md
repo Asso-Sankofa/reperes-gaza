@@ -6,6 +6,7 @@ Ce dépôt réunit des éléments qui n’ont pas tous la même licence. Aucune 
 | --- | --- | --- |
 | Code du site et des outils | `src/app.js`, `src/index.html`, `src/styles/`, `scripts/`, `test/`, `e2e/`, `Dockerfile`, `compose.yaml` | MIT, voir `LICENSE` |
 | Notices originales | textes rédigés pour le projet dans `content/reperes.json`, `content/charte-editoriale.md` et leurs exports (`dist/data/`) | CC BY 4.0, voir ci-dessous |
+| Géométrie des cartes | `content/cartes/countries-50m.json` | Natural Earth 4.1.0 : domaine public. Conversion TopoJSON par world-atlas 2.0.2 : ISC, voir `content/cartes/LICENSE-world-atlas.txt` |
 | Polices DM Sans et Libre Caslon Display | `src/fonts/*.woff2` | SIL Open Font License 1.1, voir `src/fonts/OFL-*.txt` |
 | Extraits de documents officiels | champ `documents.*.paragraphs[].text` de `content/reperes.json` (paragraphes 1, 2, 5 et 12 de S/RES/2334 (2016)) | non couverts par les licences du projet |
 | Documents tiers liés | toutes les URL du champ `sources` | droits de leurs éditeurs |

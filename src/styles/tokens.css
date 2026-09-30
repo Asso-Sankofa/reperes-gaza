@@ -66,6 +66,15 @@
   --color-rail-label-inactive: #6a737d;
   --color-progress-track: #eef1f3;
 
+  /* Cartes de situation. L'accent désigne le lieu dont parle la page, jamais un camp. */
+  --color-map-sea-on-ink: #1f2b37;
+  --color-map-land-on-ink: #2c3a48;
+  --color-map-stroke-on-ink: #46586a;
+  --color-map-label-on-ink: #aab4bd;
+  --color-map-muted-on-ink: #6b5048;
+  --color-map-stroke: #c3cad1;
+  --color-map-muted: #e3c4bb;
+
   /* Typographie */
   --font-body: 'DM Sans', Arial, sans-serif;
   --font-editorial: 'Libre Caslon Display', Georgia, serif;

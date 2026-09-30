@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.3.0",
+  "schema_version": "0.4.0",
   "title": "Repères : corpus documentaire du prototype",
   "scope": "Sélection limitée pour éprouver une interface, sans couverture exhaustive ni bilan actuel de la guerre.",
   "editorial_status": "draft_pending_independent_review",
@@ -264,6 +264,8 @@
       "threads": [
         "history"
       ],
+      "places": [],
+      "place_note": "Les contours de la carte sont actuels : ils ne permettent pas de situer les lieux de 1948.",
       "kind": "Repère historique",
       "title": "Le déplacement et la dépossession des Palestiniens",
       "text": "Le mot Nakba, « catastrophe » en arabe, désigne le déplacement massif et la dépossession des Palestiniens pendant la guerre israélo-arabe de 1948.",
@@ -286,6 +288,8 @@
       "threads": [
         "france"
       ],
+      "places": [],
+      "place_note": "Cette notice porte sur une décision diplomatique de la France, pas sur un lieu de la carte.",
       "kind": "Relations diplomatiques",
       "title": "La France établit des relations diplomatiques avec Israël",
       "text": "La France établit ces relations le 11 mai 1949. Le ministère des Affaires étrangères rappelle ensuite une coopération française à l’effort de défense du nouvel État.",
@@ -306,6 +310,10 @@
       "threads": [
         "history",
         "france"
+      ],
+      "places": [
+        "gaza",
+        "cisjordanie"
       ],
       "kind": "Repère historique et français",
       "title": "L’occupation de Gaza et de la Cisjordanie",
@@ -331,6 +339,9 @@
       "threads": [
         "history"
       ],
+      "places": [
+        "gaza"
+      ],
       "kind": "Repère historique",
       "title": "Israël retire ses colons et ses troupes de Gaza",
       "text": "En 2005, Israël retire de Gaza ses colons et ses troupes. Selon la Cour internationale de Justice, il conserve pourtant des prérogatives essentielles sur le territoire : le contrôle des frontières terrestres, maritimes et aériennes, des restrictions à la circulation des personnes et des marchandises, la perception des taxes à l’importation et à l’exportation, et le contrôle militaire de la zone tampon.",
@@ -350,6 +361,9 @@
       "threads": [
         "france",
         "law"
+      ],
+      "places": [
+        "cisjordanie"
       ],
       "kind": "Décision documentée · 23 décembre",
       "title": "La France soutient une résolution sur les colonies",
@@ -376,6 +390,11 @@
       "threads": [
         "history"
       ],
+      "places": [
+        "gaza",
+        "sud-israel"
+      ],
+      "place_note": "Les localités du sud d’Israël attaquées le 7 octobre ne sont pas encore placées sur la carte.",
       "kind": "Événements et enquête ultérieure",
       "title": "Les attaques du 7 octobre et la guerre à Gaza",
       "text": "Le 7 octobre 2023, le Hamas et d’autres groupes armés palestiniens attaquent le sud d’Israël. Des civils sont tués, des personnes sont enlevées et emmenées comme otages à Gaza. Israël mène ensuite des opérations militaires dans la bande de Gaza.",
@@ -398,6 +417,10 @@
       "short": "L’avis de la CIJ",
       "threads": [
         "law"
+      ],
+      "places": [
+        "gaza",
+        "cisjordanie"
       ],
       "kind": "Avis consultatif · 19 juillet",
       "title": "La CIJ examine les conséquences de l’occupation",
@@ -682,6 +705,26 @@
     {
       "id": "law",
       "label": "Le droit"
+    }
+  ],
+  "places": [
+    {
+      "id": "gaza",
+      "label": "Bande de Gaza",
+      "short": "Gaza",
+      "map_zone": "gaza"
+    },
+    {
+      "id": "cisjordanie",
+      "label": "Cisjordanie",
+      "short": "Cisjordanie",
+      "map_zone": "cisjordanie"
+    },
+    {
+      "id": "sud-israel",
+      "label": "Sud d’Israël",
+      "short": "Sud d’Israël",
+      "map_zone": null
     }
   ]
 }
