@@ -73,7 +73,8 @@ test('le build produit une page cohérente avec le corpus', async () => {
   try {
     const { html, corpus } = await build({ outDir: out, quiet: true });
     assert.doesNotMatch(html, /{{[A-Z_]+}}/);
-    assert.match(html, /draft_pending_independent_review/);
+    assert.match(html, /class="status-banner"[\s\S]*?aucune relecture indépendante/);
+    assert.match(html, /<code>draft_pending_independent_review<\/code>/);
     assert.doesNotMatch(html, /unpkg\.com|fonts\.googleapis|fonts\.gstatic/);
     const served = JSON.parse(await readFile(join(out, 'data/reperes.json'), 'utf8'));
     assert.deepEqual(served, corpus);

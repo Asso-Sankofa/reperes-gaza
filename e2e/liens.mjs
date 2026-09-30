@@ -15,7 +15,11 @@ for (const s of corpus.sources.filter(x => !only || only.includes(x.id))) {
     const ok = res && res.status() < 400 && !/challenge|captcha|just a moment/i.test(title);
     if (!ok) failures++;
     console.log(`${ok ? 'ok  ' : 'ÉCHEC'} ${res?.status()} ${s.id} → ${page.url()} « ${title} »`);
-  } catch (e) { failures++; console.log(`ÉCHEC --- ${s.id} ${e.message.split('\n')[0]}`); }
+  } catch (e) {
+    // Un PDF servi en téléchargement fait échouer goto : le lien fonctionne quand même.
+    if (/Download is starting/.test(e.message)) { console.log(`ok   --- ${s.id} → téléchargement du fichier`); continue; }
+    failures++; console.log(`ÉCHEC --- ${s.id} ${e.message.split('\n')[0]}`);
+  }
 }
 await browser.close();
 process.exit(failures ? 1 : 0);

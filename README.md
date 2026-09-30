@@ -38,13 +38,22 @@ Ce qui a été vérifié le 29 septembre 2026 :
 - les conclusions de la commission d’enquête citées pour 2023 (§ 90 et 97 du rapport A/HRC/56/26 du 14 juin 2024) ;
 - le passage sur 2005 de la synthèse historique de l’ONU.
 
-Ce qui n’a pas été vérifié : le contenu des autres sources, repérées pour la v0.3 et non relues depuis ; l’interprétation juridique des notices 2005, 2023 et 2024, qui cite les textes mais n’a pas été relue par un juriste ; l’ensemble des rapports trimestriels postérieurs au 24 mars 2026. Un lien qui répond ne prouve pas que le passage cité s’y trouve toujours.
+Ce qui a été vérifié le 30 septembre 2026 :
+
+- la définition de la Nakba sur la page de l’ONU, et l’usage élargi du mot par le Comité de l’ONU pour les droits des Palestiniens ;
+- les passages du ministère des Affaires étrangères sur 1949 et 1967. Sur la date de l’embargo de 1967, la page actuelle du ministère contredit la déclaration du ministre Maurice Couve de Murville devant l’Assemblée nationale le 16 juin 1967 (Journal officiel, p. 1923), que la notice retient désormais ;
+- la méthode d’OCHA (vérification indépendante des victimes depuis le 7 octobre 2023, règle des deux sources) ;
+- l’arrêt *Psagot* de la CJUE (12 novembre 2019), l’avis de la DGCCRF du 24 novembre 2016 et la décision du Conseil d’État du 31 décembre 2019, qui documentent les suites françaises du paragraphe 5.
+
+Au 30 septembre 2026, 14 des 21 fiches sources portent une date de vérification (`verified_on`). Les sept autres sont des portails ou des pages de présentation (Assemblée nationale, Standing Together, Israel Democracy Institute, PCPSR, Digital Inquiry Group), ou doublent une source primaire déjà vérifiée (fiche de l’affaire à la CIJ, compte rendu de l’ONU à Genève).
+
+Ce qui n’a pas été vérifié : les sources listées ci-dessus sans `verified_on` ; l’interprétation juridique des notices 2005, 2023 et 2024, qui cite les textes mais n’a pas été relue par un juriste ; l’ensemble des rapports trimestriels postérieurs au 24 mars 2026. Un lien qui répond ne prouve pas que le passage cité s’y trouve toujours.
 
 ## Sources de données
 
-Le corpus tient dans un seul fichier : `content/reperes.json`. Chaque source y porte son éditeur, son URL, le passage à consulter, une limite et une note d’accès. Les sources dont le passage cité a été relu ont un champ `verified_on` (28 ou 29 septembre 2026).
+Le corpus tient dans un seul fichier : `content/reperes.json`. Chaque source y porte son éditeur, son URL, le passage à consulter, une limite et une note d’accès. Les sources dont le passage cité a été relu ont un champ `verified_on`.
 
-Les documents cités viennent principalement de l’ONU (Conseil de sécurité, Secrétariat, Division des droits des Palestiniens, OCHA, Conseil des droits de l’homme), de la Cour internationale de Justice, de la Cour de justice de l’Union européenne, du ministère de l’Europe et des Affaires étrangères et de l’Assemblée nationale. S’y ajoutent l’autoprésentation d’un mouvement (Standing Together) et deux instituts d’enquête (Israel Democracy Institute, PCPSR). La charte éditoriale (`content/charte-editoriale.md`) fixe la façon de les citer.
+Les documents cités viennent principalement de l’ONU (Conseil de sécurité, Secrétariat, Division des droits des Palestiniens, OCHA, Conseil des droits de l’homme), de la Cour internationale de Justice, de la Cour de justice de l’Union européenne, du ministère de l’Europe et des Affaires étrangères, du Journal officiel (Légifrance, débats de l’Assemblée nationale de 1967) et du Conseil d’État. S’y ajoutent l’autoprésentation d’un mouvement (Standing Together) et deux instituts d’enquête (Israel Democracy Institute, PCPSR). La charte éditoriale (`content/charte-editoriale.md`) fixe la façon de les citer.
 
 ## Organisation du dépôt
 
