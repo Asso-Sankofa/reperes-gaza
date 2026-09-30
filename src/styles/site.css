@@ -88,10 +88,6 @@ h1, h2, h3 { margin: 0; }
 .progress { height: 3px; background: var(--color-progress-track); }
 .progress__bar { height: 3px; width: 0; background: var(--color-accent); transition: width var(--motion-slow) ease; }
 
-/* Bandeau de statut éditorial : toujours visible */
-.status-banner { background: var(--color-surface); border-bottom: 1px solid var(--color-border); font-size: var(--text-small); }
-.status-banner p { max-width: var(--content-width); margin: 0 auto; padding: 8px var(--gutter); color: var(--color-ink); }
-.status-banner a { color: var(--color-document); }
 
 /* Menu mobile */
 .menu-mobile {
@@ -302,7 +298,6 @@ h1, h2, h3 { margin: 0; }
 .notice__place-name { display: block; font-weight: 600; font-size: .85rem; line-height: 1.4; margin: 0; }
 .notice__place-note { display: block; font-size: .75rem; line-height: 1.4; color: var(--color-text-muted); margin: 2px 0 0; }
 div.notice__place { max-width: var(--reading-width); }
-.notice__status { font-size: .78rem; color: var(--color-text-muted); margin: 0; padding-top: 12px; border-top: 1px solid var(--color-border); max-width: var(--reading-width); }
 .notice__aside { flex: 1 1 300px; min-width: 0; background: var(--color-surface); padding: 28px; align-self: flex-start; display: flex; flex-direction: column; gap: 28px; }
 .notice__aside .eyebrow { margin-bottom: 6px; }
 .notice__question { font-family: var(--font-editorial); font-size: 1.45rem; line-height: 1.25; margin: 0; }

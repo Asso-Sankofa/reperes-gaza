@@ -1,0 +1,23 @@
+{
+  "note": "Registre interne des relectures et des tests. Il n'est ni affiché sur le site ni exporté dans dist/. Le dépôt étant public, les relecteurs qui ne souhaitent pas être nommés n'y figurent que par leur rôle.",
+  "reviews": [
+    {
+      "completed_on": "2026-09-30",
+      "period": "semaine du 28 septembre 2026",
+      "kind": "relecture éditoriale",
+      "scope": "ensemble du site en ligne, avant l'ajout de la carte de situation",
+      "reviewers": [
+        "porteur du projet",
+        "journaliste"
+      ],
+      "named_publicly": false,
+      "not_covered": "relecture par un historien ou un juriste"
+    }
+  ],
+  "user_tests": [
+    {
+      "period": "septembre 2026",
+      "summary": "Retours très positifs : site jugé sérieux et bien documenté."
+    }
+  ]
+}

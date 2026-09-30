@@ -107,6 +107,16 @@ test('une géométrie inattendue arrête le build', () => {
   assert.throws(() => decode(topo), /zone gaza/);
 });
 
+test('le registre interne des relectures est complet et ne nomme personne publiquement', async () => {
+  const reg = JSON.parse(await readFile(new URL('../content/relectures.json', import.meta.url), 'utf8'));
+  for (const r of reg.reviews) {
+    assert.match(r.completed_on, /^\d{4}-\d{2}-\d{2}$/);
+    for (const f of ['kind', 'scope', 'not_covered']) assert.ok(r[f], f);
+    assert.ok(r.reviewers.length);
+    assert.equal(r.named_publicly, false);
+  }
+});
+
 test('le CSV reprend chaque événement et échappe les guillemets', async () => {
   const d = await load();
   const csv = toCsv(d).trim().split('\n');
@@ -126,8 +136,8 @@ test('le build produit une page cohérente avec le corpus', async () => {
   try {
     const { html, corpus } = await build({ outDir: out, quiet: true });
     assert.doesNotMatch(html, /{{[A-Z_]+}}/);
-    assert.match(html, /class="status-banner"[\s\S]*?aucune relecture indépendante/);
-    assert.match(html, /<code>draft_pending_independent_review<\/code>/);
+    assert.doesNotMatch(html, /aucune relecture indépendante|en attente de relecture/, 'la relecture éditoriale a eu lieu');
+    assert.doesNotMatch(html, /relectures\.json/);
     assert.doesNotMatch(html, /unpkg\.com|jsdelivr|fonts\.googleapis|fonts\.gstatic/);
     assert.match(html, /<h1 id="home-title"[^>]*>Gaza et la France&nbsp;:<br><span class="accent-on-ink">sept repères<\/span><\/h1>/);
     assert.match(html, /class="map map--dark"/);
