@@ -131,7 +131,7 @@ function noticePlace(e) {
   }
   const svg = mini.innerHTML.replace('role="img"', `role="img" aria-label="${esc(`Carte de situation. Mis en évidence : ${labels}.`)}"`);
   return `<figure class="notice__place notice__place--map" data-map-zones="${esc(zonesOf(e).join(' '))}">${head}${svg}
-    <figcaption><span class="notice__place-name">${esc(labels)}</span><span class="notice__place-note">Contours actuels (Natural Earth), sans valeur de frontière.</span></figcaption>
+    <figcaption><span class="notice__place-name">${esc(labels)}</span><span class="notice__place-note">Carte de situation réalisée avec Natural Earth. <a href="#/methode">Voir les sources et limites de la carte</a></span></figcaption>
   </figure>`;
 }
 
