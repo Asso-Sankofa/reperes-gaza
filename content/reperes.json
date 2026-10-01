@@ -459,8 +459,7 @@
             "an"
           ]
         }
-      ],
-      "note": "Aucune association ne peut être présumée représenter l’opinion de tous les Français d’une même origine ou religion."
+      ]
     },
     "israel": {
       "label": "En Israël",
@@ -480,8 +479,7 @@
             "idi"
           ]
         }
-      ],
-      "note": "S’opposer à un dirigeant ne dit rien, à soi seul, de la position d’une personne sur l’occupation."
+      ]
     },
     "palestine": {
       "label": "En Palestine",
@@ -501,8 +499,7 @@
             "coi-rapport"
           ]
         }
-      ],
-      "note": "Cette page ne contient pas de témoignages. Les recueillir demanderait un travail journalistique, avec le consentement des personnes."
+      ]
     },
     "international": {
       "label": "À l’international",
@@ -523,8 +520,7 @@
             "coi-rapport"
           ]
         }
-      ],
-      "note": "Cette sélection n’est pas un inventaire des acteurs internationaux."
+      ]
     }
   },
   "terms": [

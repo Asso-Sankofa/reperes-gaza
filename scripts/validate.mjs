@@ -85,7 +85,7 @@ export function validateCorpus(d, { externalRefs = [], mapZones = MAP_ZONES } = 
   }
 
   for (const [key, a] of Object.entries(d.actors)) {
-    for (const f of ['label', 'title', 'note']) if (!a[f]) err(`acteur ${key} : champ « ${f} » vide`);
+    for (const f of ['label', 'title']) if (!a[f]) err(`acteur ${key} : champ « ${f} » vide`);
     (a.cards || []).forEach((c, i) => refSources(c.sources, `acteur ${key}, carte ${i + 1}`));
   }
   for (const t of d.terms) refSources(t.sources, `terme ${t.id}`);

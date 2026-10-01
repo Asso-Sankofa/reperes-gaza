@@ -331,7 +331,7 @@ function renderVoix() {
             ${sourceButtons(c.sources, `card${i}`, true)}
           </article>`).join('')}
         </div>
-        <p class="note-box">${esc(actor.note)}</p>
+        ${actor.note ? `<p class="note-box">${esc(actor.note)}</p>` : ''}
         ${related.length ? `<div class="related">
           <span class="eyebrow">REPÈRES LIÉS</span>
           ${related.map(e => `<a class="pill" href="${evHref(e)}">${esc(e.year + ' · ' + e.short)} →</a>`).join('')}
