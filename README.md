@@ -52,7 +52,7 @@ Ce qui a été vérifié le 30 septembre 2026 :
 Ce qui a été vérifié le 1er octobre 2026 :
 
 - le vote de la France pour l'admission d'Israël à l'ONU et la déclaration de son représentant, dans le procès-verbal A/PV.207 du 11 mai 1949 ;
-- la réponse d'André Bettencourt devant l'Assemblée nationale le 17 mai 1968 (JO, p. 1936), qui situe l'embargo de 1967 avant la guerre et décrit son assouplissement de juillet 1967 ;
+- la réponse d'André Bettencourt devant l'Assemblée nationale le 17 mai 1968 (JO, p. 1936), qui situe l'embargo de 1967 « à la même époque » que la déclaration du 2 juin et décrit son assouplissement de juillet 1967 ;
 - le vote de la France pour la résolution ES-10/24 et l'explication de vote de son représentant, dans le procès-verbal A/ES-10/PV.55 du 18 septembre 2024.
 
 Au 1er octobre 2026, 17 des 24 fiches sources portent une date de vérification (`verified_on`). Les sept autres sont des portails ou des pages de présentation (Assemblée nationale, Standing Together, Israel Democracy Institute, PCPSR, Digital Inquiry Group), ou doublent une source primaire déjà vérifiée (fiche de l’affaire à la CIJ, compte rendu de l’ONU à Genève).
