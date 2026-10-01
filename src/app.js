@@ -24,14 +24,14 @@ const actorKeys = Object.keys(data.actors);
 const PAGE_TITLES = {
   accueil: 'Repères · Gaza et la France',
   voix: 'Acteurs et enquêtes · Repères',
-  verifier: 'Comprendre un écart entre deux bilans · Repères',
+  verifier: 'Bilans de victimes · Repères',
   mots: 'Lexique · Repères',
   methode: 'Méthode · Repères',
 };
 const SECTION_PAGER = {
-  voix: ['#/parcours', 'LE PARCOURS', 'Les repères', '#/verifier', 'SECTION SUIVANTE', 'Écart entre deux bilans'],
+  voix: ['#/parcours', 'SECTION PRÉCÉDENTE', 'Les repères', '#/verifier', 'SECTION SUIVANTE', 'Bilans de victimes'],
   verifier: ['#/voix', 'SECTION PRÉCÉDENTE', 'Acteurs et enquêtes', '#/mots', 'SECTION SUIVANTE', 'Lexique'],
-  mots: ['#/verifier', 'SECTION PRÉCÉDENTE', 'Écart entre deux bilans', '#/methode', 'SECTION SUIVANTE', 'Méthode'],
+  mots: ['#/verifier', 'SECTION PRÉCÉDENTE', 'Bilans de victimes', '#/methode', 'SECTION SUIVANTE', 'Méthode'],
   methode: ['#/mots', 'SECTION PRÉCÉDENTE', 'Lexique', '#/', 'RETOUR', 'Les questions de départ'],
 };
 
@@ -238,7 +238,7 @@ function documentSection(ev, doc) {
           </div>
           ${col ? `<details class="collation card">
             <summary>Comment cette transcription a été vérifiée</summary>
-            <p>Collation le ${esc(formatDate(col.checked_on))} avec ${esc(col.against)}. Paragraphes contrôlés : ${esc(col.paragraphs.join(', '))}.</p>
+            <p>Transcription comparée le ${esc(formatDate(col.checked_on))} au texte officiel (${esc(col.against)}). Paragraphes vérifiés&nbsp;: ${esc(col.paragraphs.join(', '))}.</p>
             ${col.corrections.length ? `<ul>${col.corrections.map(c => `<li>${esc(c)}</li>`).join('')}</ul>` : ''}
           </details>` : ''}
         </div>
@@ -257,13 +257,13 @@ function renderParcours() {
   return `<section class="parcours-head">
     <div class="wrap parcours-head__inner">
       <div class="parcours-head__bar">
-        <p class="eyebrow">LE PARCOURS · REPÈRE ${idx + 1} SUR ${list.length}</p>
+        <p class="eyebrow">REPÈRE ${idx + 1} SUR ${list.length}</p>
         <div role="group" aria-label="Choisir un fil de lecture" class="pill-group">
           ${filters.map(([k, label]) => `<button type="button" class="filter" aria-pressed="${state.filter === k}" data-filter="${esc(k)}" data-focus="filter-${esc(k)}">${esc(label)}</button>`).join('')}
         </div>
       </div>
       <div class="rail" aria-hidden="true">${rail(ev, list)}</div>
-      <nav class="chapters" aria-label="Repères du parcours">
+      <nav class="chapters" aria-label="Liste des repères">
         ${list.map((e, i) => `<a href="${evHref(e)}" data-focus="chap-${esc(e.id)}" class="${i < idx ? 'is-done' : ''}"${i === idx ? ' aria-current="step"' : ''}>
           <span class="chapters__year">${esc(e.year)}</span><span class="chapters__short">${esc(e.short)}</span></a>`).join('')}
       </nav>
@@ -314,7 +314,7 @@ function renderVoix() {
     <div class="section-head">
       <div>
         <p class="eyebrow">02 · ACTEURS ET ENQUÊTES</p>
-        <h1 id="voix-title" class="display display--h1" tabindex="-1">Acteurs et enquêtes cités dans ce parcours</h1>
+        <h1 id="voix-title" class="display display--h1" tabindex="-1">Acteurs et enquêtes cités dans les repères</h1>
       </div>
       <p class="section-head__aside section-head__aside--wide">Pour chaque pays, des acteurs et des enquêtes, avec leurs sources.</p>
     </div>
@@ -344,7 +344,7 @@ function renderVoix() {
 function renderMots() {
   return `<section class="wrap section" aria-labelledby="mots-title">
     <p class="eyebrow">04 · LEXIQUE</p>
-    <h1 id="mots-title" class="display display--h1" tabindex="-1">Les termes utilisés dans ce parcours</h1>
+    <h1 id="mots-title" class="display display--h1" tabindex="-1">Les termes utilisés dans les repères</h1>
     <div class="lexique">
       ${data.terms.map(t => {
         const linked = events.filter(e => (e.terms || []).includes(t.id));
@@ -353,7 +353,7 @@ function renderMots() {
           <h2 id="mot-${esc(t.id)}">${esc(t.title)}</h2>
           <p>${esc(t.text)}</p>
           ${sourceButtons(t.sources, `mot-${t.id}`, true)}
-          ${linked.length ? `<div class="pill-group">${linked.map(e => `<a class="pill" href="${evHref(e)}">Dans le parcours : ${esc(e.year)} →</a>`).join('')}</div>` : ''}
+          ${linked.length ? `<div class="pill-group">${linked.map(e => `<a class="pill" href="${evHref(e)}">Repère ${esc(e.year)} →</a>`).join('')}</div>` : ''}
         </article>`;
       }).join('')}
     </div>
@@ -367,7 +367,7 @@ function renderPager(ctx) {
     const next = ctx.list[ctx.idx + 1];
     p = [
       prev ? evHref(prev) : '#/', prev ? 'REPÈRE PRÉCÉDENT' : 'RETOUR', prev ? `${prev.year} · ${prev.short}` : 'Les questions',
-      next ? evHref(next) : '#/voix', next ? 'REPÈRE SUIVANT' : 'FIN DU PARCOURS · CONTINUER', next ? `${next.year} · ${next.short}` : 'Acteurs et enquêtes',
+      next ? evHref(next) : '#/voix', next ? 'REPÈRE SUIVANT' : 'DERNIER REPÈRE · CONTINUER', next ? `${next.year} · ${next.short}` : 'Acteurs et enquêtes',
     ];
   } else {
     p = SECTION_PAGER[state.route];
@@ -378,7 +378,7 @@ function renderPager(ctx) {
       <a href="${esc(p[0])}" data-focus="pager-prev"><span class="pager__sub">← ${esc(p[1])}</span><span class="pager__label">${esc(p[2])}</span></a>
       <a href="${esc(p[3])}" class="pager__next" data-focus="pager-next"><span class="pager__sub">${esc(p[4])} →</span><span class="pager__label">${esc(p[5])}</span></a>
     </div>
-    ${state.route === 'parcours' ? '<p class="pager__tip">Astuce : les flèches ← → du clavier font avancer le parcours.</p>' : ''}
+    ${state.route === 'parcours' ? '<p class="pager__tip">Astuce&nbsp;: les flèches ← → du clavier font passer d’un repère à l’autre.</p>' : ''}
   </nav>`;
 }
 
@@ -388,7 +388,7 @@ function renderBottomBar(ctx) {
   el.bottomBar.innerHTML = `
     <a class="bottom-bar__prev" href="${prev ? evHref(prev) : '#/'}" aria-label="${prev ? `Repère précédent : ${esc(prev.year)}` : 'Retour aux questions'}">←</a>
     <div class="bottom-bar__mid"><span class="bottom-bar__year">${esc(ctx.ev.year)}</span><span class="bottom-bar__pos">Repère ${ctx.idx + 1} sur ${ctx.list.length} · glissez pour avancer</span></div>
-    <a class="bottom-bar__next" href="${next ? evHref(next) : '#/voix'}" aria-label="${next ? `Repère suivant : ${esc(next.year)}` : 'Fin du parcours, continuer vers Acteurs et enquêtes'}">→</a>`;
+    <a class="bottom-bar__next" href="${next ? evHref(next) : '#/voix'}" aria-label="${next ? `Repère suivant : ${esc(next.year)}` : 'Dernier repère, continuer vers Acteurs et enquêtes'}">→</a>`;
 }
 
 function formatDate(iso) {
@@ -493,9 +493,8 @@ function openSource(id, trigger) {
     <h3>Ce que cette source documente</h3><p>${esc(s.scope)}</p>
     <h3>Où regarder</h3><p>${esc(s.locator)}</p>
     <h3>Limite à garder en tête</h3><p>${esc(s.limit)}</p>
-    <p class="source-panel__access">${esc(s.access)}</p>
-    <a class="source-panel__link" href="${esc(s.url)}" target="_blank" rel="noopener noreferrer"><span>Ouvrir le document d’origine<span class="visually-hidden"> (nouvel onglet)</span></span><span aria-hidden="true">↗</span></a>
-    <p class="source-panel__hint">${MOBILE.matches ? 'Touchez hors du panneau pour revenir à la lecture.' : 'Le panneau laisse la page lisible. Échap le ferme.'}</p>`;
+    ${s.verified_on ? `<p class="source-panel__access">Passage vérifié le ${esc(formatDate(s.verified_on))}.</p>` : ''}
+    <a class="source-panel__link" href="${esc(s.url)}" target="_blank" rel="noopener noreferrer"><span>Ouvrir le document d’origine<span class="visually-hidden"> (nouvel onglet)</span></span><span aria-hidden="true">↗</span></a>`;
   el.panel.hidden = false;
   el.panel.scrollTop = 0;
   applyPanelMode();

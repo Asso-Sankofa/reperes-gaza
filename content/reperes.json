@@ -160,9 +160,9 @@
       "type": "Méthodologie de données humanitaires",
       "scope": "Périmètre des victimes recensées et conditions de vérification.",
       "locator": "Introduction et Definitions and clarifications",
-      "access": "Page consultée le 30 septembre 2026 dans un navigateur. Passages relus : les victimes des hostilités commencées le 7 octobre 2023 ne sont ajoutées qu’« once these incidents have been independently verified » ; un incident doit être confirmé par « at least two independent and reliable sources ».",
+      "access": "Page consultée le 30 septembre et le 1er octobre 2026 dans un navigateur. Passages relus : les victimes des hostilités commencées le 7 octobre 2023 ne sont ajoutées qu’« once these incidents have been independently verified » ; un incident doit être confirmé par « at least two independent and reliable sources », sauf les incidents qui font des blessés israéliens, pour lesquels l’information est « typically based on media reports » ; seules sont comptées les victimes « of confrontations between Palestinians and Israelis in the context of the occupation and conflict ».",
       "limit": "Les séries et les points de situation peuvent avoir des périmètres ou des statuts de vérification différents.",
-      "verified_on": "2026-09-30"
+      "verified_on": "2026-10-01"
     },
     {
       "id": "an",
@@ -725,8 +725,8 @@
           "12"
         ],
         "corrections": [
-          "Paragraphe 12 : la v0.3 donnait « de lui présenter tous les trois mois un rapport sur l’application des dispositions ». Le texte officiel dit « de lui faire rapport tous les trois mois sur la mise en œuvre des dispositions ».",
-          "Ponctuation : le texte officiel ne met pas d’espace avant le point-virgule final."
+          "Paragraphe 12 : une version antérieure du site donnait « de lui présenter tous les trois mois un rapport sur l’application des dispositions ». Le texte officiel dit « de lui faire rapport tous les trois mois sur la mise en œuvre des dispositions ».",
+          "Ponctuation : une espace en trop avant le point-virgule final a été retirée."
         ]
       }
     }

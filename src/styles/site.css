@@ -473,7 +473,6 @@ body.has-bottom-bar .site-footer { padding-bottom: calc(64px + env(safe-area-ins
 .source-panel p { margin: 0 0 18px; }
 .source-panel__publisher { color: var(--color-text-muted); margin-bottom: 24px !important; }
 .source-panel__access { font-size: .85rem; color: var(--color-document); background: var(--color-surface); padding: 12px 14px; margin-bottom: 24px !important; }
-.source-panel__hint { font-size: .8rem; color: var(--color-text-muted); margin: 16px 0 0 !important; }
 .source-panel__link { display: flex; justify-content: space-between; padding: 14px 18px; background: var(--color-ink); color: var(--color-on-ink); text-decoration: none; }
 .source-panel__link:hover { background: var(--color-accent); color: var(--color-on-ink); }
 
