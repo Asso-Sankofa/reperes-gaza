@@ -207,24 +207,21 @@
         </div>
         <div class="status-detail">
           <h2>Ce qui a été vérifié</h2>
-          <p>Les {{EVENT_COUNT_WORD}} repères, de {{FIRST_YEAR}} à {{LAST_YEAR}}, forment une sélection. Ils ne racontent pas toute l’histoire du conflit.</p>
+          <p>Les {{EVENT_COUNT_WORD}} repères, de {{FIRST_YEAR}} à {{LAST_YEAR}}, sont une sélection.</p>
           <p>Les extraits de la résolution 2334 ont été relus le {{COLLATION_DATE}} sur le texte officiel en français, et le vote sur le compte rendu de la séance. Le repère de 2016 en donne le détail, dont une correction apportée au paragraphe 12. Les passages de l’avis de la Cour internationale de Justice et du rapport de la commission d’enquête cités pour 2005, 2023 et 2024 ont été relus le 29 septembre 2026. Dans le volet de chaque source, une note précise comment elle a été consultée.</p>
-          <p>Ces relectures confirment que les citations reprennent fidèlement les textes. Elles ne disent pas comment un juriste les interpréterait.</p>
         </div>
         <div class="map-method" id="methode-carte">
           <h2>La carte de situation</h2>
-          <p>La carte de l’accueil et les miniatures des repères montrent où se trouvent la bande de Gaza et la Cisjordanie. Elles servent à s’orienter. Elles ne prouvent rien sur un tracé.</p>
+          <p>La carte de l’accueil et les miniatures des repères situent la bande de Gaza et la Cisjordanie.</p>
           <h3>D’où viennent les contours</h3>
-          <p>De Natural Earth, version 4.1.0, couche des pays à l’échelle 1:50&nbsp;m. Nous utilisons le fichier <code>countries-50m.json</code> du paquet world-atlas 2.0.2, qui reprend ces données au format TopoJSON. Le fichier est conservé dans le dépôt du site, et le build vérifie son empreinte SHA-256 à chaque construction (<code class="map-method__hash">{{GEO_SHA256}}</code>). Aucune bibliothèque ni aucun serveur tiers n’est appelé : les cartes sont dessinées au moment de la construction du site. Natural Earth est dans le domaine public.</p>
+          <p>De Natural Earth, version 4.1.0, couche des pays à l’échelle 1:50&nbsp;m, dans le fichier <code>countries-50m.json</code> du paquet world-atlas 2.0.2 (empreinte SHA-256&nbsp;: <code class="map-method__hash">{{GEO_SHA256}}</code>). Natural Earth est dans le domaine public.</p>
           <h3>Ce que ces contours représentent</h3>
-          <p>Natural Earth indique qu’il trace les frontières contestées selon la situation de fait (<i>de facto</i>), et non selon le droit. Ses contours ne reconstituent donc aucune limite passée. Ils ne montrent ni la géographie de 1948 ni la ligne d’armistice de 1949. Ils n’ont pas valeur de frontière.</p>
-          <p>Le jeu de données réunit Gaza et la Cisjordanie dans une seule entité, « Palestine ». Nous les séparons par leur position, de part et d’autre de 34,7° de longitude est. Le contour d’Israël y inclut le plateau du Golan.</p>
+          <p>Natural Earth trace les frontières contestées selon la situation de fait (<i>de facto</i>). Ses contours ne reconstituent pas les limites passées, ni celles de 1948 ni la ligne d’armistice de 1949.</p>
+          <p>Le jeu de données réunit Gaza et la Cisjordanie dans une seule entité, «&nbsp;Palestine&nbsp;», que nous séparons à 34,7° de longitude est. Le contour d’Israël y inclut le plateau du Golan.</p>
           <h3>Jérusalem</h3>
-          <p>À cette échelle, le contour de la Cisjordanie est très simplifié et englobe toute la ville de Jérusalem. Il ne distingue pas Jérusalem-Est. Pour ne pas suggérer une délimitation que les données ne contiennent pas, les cartes ne placent aucun point « Jérusalem ». Les repères qui parlent de Jérusalem-Est le disent dans leur texte.</p>
-          <h3>Le logo</h3>
-          <p>Le logo de Repères, un cercle traversé par une ligne en pointillé, évoque la ligne d’armistice de 1949. C’est un symbole&nbsp;: il ne reproduit aucun tracé, et les cartes du site ne montrent pas cette ligne.</p>
+          <p>À cette échelle, le contour de la Cisjordanie englobe toute la ville de Jérusalem et ne distingue pas Jérusalem-Est. Les cartes ne placent donc pas de point «&nbsp;Jérusalem&nbsp;».</p>
           <h3>Les repères et les lieux</h3>
-          <p>Chaque repère indique dans le corpus les lieux qu’il concerne (champ <code>places</code>). C’est un choix éditorial, fait à partir du texte du repère. Un repère que la carte ne peut pas situer le dit dans le corpus (champ <code>place_note</code>) et reste listée à l’accueil. Les localités du sud d’Israël attaquées le 7 octobre 2023 ne sont pas encore placées : leur liste et leurs coordonnées doivent d’abord être établies à partir d’une source citée.</p>
+          <p>Chaque repère indique dans le corpus les lieux qu’il concerne (champ <code>places</code>). Les localités du sud d’Israël attaquées le 7 octobre 2023 ne sont pas encore placées sur la carte.</p>
         </div>
       </div>
       <aside class="panel-box split__side" aria-labelledby="methode-contenu">
