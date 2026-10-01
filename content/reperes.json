@@ -47,6 +47,18 @@
       "verified_on": "2026-09-30"
     },
     {
+      "id": "pv-207",
+      "publisher": "ONU · Assemblée générale",
+      "title": "Procès-verbal de la 207e séance plénière, 11 mai 1949 (A/PV.207)",
+      "url": "https://documents.un.org/api/symbol/access?s=A/PV.207&l=fr&t=pdf",
+      "type": "Procès-verbal de séance",
+      "scope": "Admission d’Israël à l’Organisation des Nations unies : déclarations des délégations, puis vote par appel nominal.",
+      "locator": "Page 322 : déclaration du représentant de la France. Pages 330 et 331 : vote, « 37 voix pour, 12 voix contre et 9 abstentions ».",
+      "access": "Document bilingue numérisé, consulté le 1er octobre 2026 sur documents.un.org. Passages relus à cette date.",
+      "limit": "Le vote porte sur l’admission d’Israël à l’ONU. Ce n’est pas l’acte français de reconnaissance.",
+      "verified_on": "2026-10-01"
+    },
+    {
       "id": "an-1967",
       "publisher": "Assemblée nationale · Journal officiel",
       "title": "Débat sur la politique étrangère, séance du 16 juin 1967 (JO Débats AN n° 50 du 17 juin 1967)",
@@ -57,6 +69,18 @@
       "access": "PDF du Journal officiel consulté le 30 septembre 2026 sur le site des archives de l’Assemblée nationale. Passage relu à cette date.",
       "limit": "C’est la présentation de la décision par le ministre, pas le texte de la décision. Le débat du 15 juin montre que la date et la portée de l’embargo étaient contestées par des députés.",
       "verified_on": "2026-09-30"
+    },
+    {
+      "id": "an-1968",
+      "publisher": "Assemblée nationale · Journal officiel",
+      "title": "Questions orales, séance du 17 mai 1968 (JO Débats AN n° 32 du 18 mai 1968)",
+      "url": "https://archives.assemblee-nationale.fr/3/cri/1967-1968-ordinaire2/026.pdf",
+      "type": "Compte rendu intégral de séance",
+      "scope": "Réponse d’André Bettencourt, secrétaire d’État aux Affaires étrangères, sur l’embargo de juin 1967 et son assouplissement en juillet.",
+      "locator": "Page 1936 : « le Gouvernement français décidait, à la même époque, d’établir un embargo général sur les exportations de matériel de guerre à destination de tous les pays du Moyen-Orient ».",
+      "access": "PDF du Journal officiel consulté le 1er octobre 2026 sur le site des archives de l’Assemblée nationale. Passages relus à cette date.",
+      "limit": "C’est la présentation de la décision par le gouvernement, onze mois après les faits, pas le texte de la décision.",
+      "verified_on": "2026-10-01"
     },
     {
       "id": "2334",
@@ -115,6 +139,18 @@
       "access": "Texte français consulté le 29 septembre 2026 sur documents.un.org (document daté du 24 juillet 2024). Les passages cités ont été relus à cette date.",
       "limit": "Le texte anglais fait foi. Un avis consultatif n’est pas un arrêt dans une affaire contentieuse ni une décision pénale.",
       "verified_on": "2026-09-29"
+    },
+    {
+      "id": "pv-es10-55",
+      "publisher": "ONU · Assemblée générale",
+      "title": "Procès-verbal de la 55e séance de la dixième session extraordinaire d’urgence, 18 septembre 2024 (A/ES-10/PV.55)",
+      "url": "https://documents.un.org/api/symbol/access?s=A/ES-10/PV.55&l=fr&t=pdf",
+      "type": "Procès-verbal de séance",
+      "scope": "Adoption de la résolution ES-10/24, qui fait suite à l’avis consultatif de la Cour internationale de Justice, et explications de vote.",
+      "locator": "Page 18 du PDF : « Par 124 voix contre 14, avec 43 abstentions » (la France vote pour). Page 32 : explication de vote de M. de Rivière (France).",
+      "access": "Version française consultée le 1er octobre 2026 sur documents.un.org. Passages relus à cette date.",
+      "limit": "Un vote et une explication de vote ne disent pas quelles mesures ont été appliquées ensuite.",
+      "verified_on": "2026-10-01"
     },
     {
       "id": "ocha",
@@ -292,10 +328,11 @@
       "place_note": "Ce repère porte sur une décision diplomatique de la France, pas sur un lieu de la carte.",
       "kind": "Relations diplomatiques",
       "title": "La France établit des relations diplomatiques avec Israël",
-      "text": "La France établit ces relations le 11 mai 1949. Le ministère des Affaires étrangères rappelle ensuite une coopération française à l’effort de défense du nouvel État.",
-      "context": "La décision française examinée ici est l’établissement de relations diplomatiques, suivi d’une coopération de défense. La seule source est pour l’instant le ministère lui-même : les archives de ces décisions n’ont pas encore été réunies.",
-      "question": "Quels documents permettent de suivre l’évolution de cette coopération ?",
+      "text": "Le 11 mai 1949, l’Assemblée générale de l’ONU admet Israël parmi ses membres, et la France vote pour. Le ministère des Affaires étrangères date de ce même jour l’établissement des relations diplomatiques, puis rappelle une coopération française à l’effort de défense du nouvel État.",
+      "context": "Avant le vote, le représentant de la France déclare que « le Gouvernement français votera sans hésiter en faveur de l’admission d’Israël ». Aucun acte français de reconnaissance n’a été trouvé en ligne. Les dossiers sur la coopération militaire sont conservés aux Archives diplomatiques (série 218QO) et au Service historique de la Défense.",
+      "question": "Que contiennent les dossiers d’archives sur la coopération militaire franco-israélienne des années 1950 ?",
       "sources": [
+        "pv-207",
         "france"
       ],
       "terms": [],
@@ -318,11 +355,12 @@
       "kind": "Repère historique et français",
       "title": "L’occupation de Gaza et de la Cisjordanie",
       "text": "Lors de la guerre de juin 1967, Israël occupe Gaza et la Cisjordanie, dont Jérusalem-Est. La France décide un embargo sur les armes. Le 16 juin, devant l’Assemblée nationale, le ministre des Affaires étrangères Maurice Couve de Murville parle d’une décision « prise après l’éclatement des hostilités » de « mettre l’embargo sur les livraisons d’armes à toutes les parties belligérantes ».",
-      "context": "Le ministère des Affaires étrangères écrit aujourd’hui que l’embargo a été décidé « avant le déclenchement des hostilités ». Le compte rendu de 1967 dit l’inverse, et ce repère retient la déclaration de l’époque. Le territoire occupé en 1967 est celui que désignent la résolution 2334 en 2016 et l’avis de la Cour internationale de Justice en 2024.",
-      "question": "Quel texte a fixé l’embargo, à quelle date exacte, et combien de temps a-t-il duré ?",
+      "context": "Le gouvernement en a donné une autre version. Le 17 mai 1968, le secrétaire d’État André Bettencourt situe la décision « à la même époque » que la déclaration du 2 juin, puis rappelle que « la guerre a été déclenchée le 5 juin ». Le ministère des Affaires étrangères écrit aujourd’hui que l’embargo a été décidé « avant le déclenchement des hostilités ». Selon Bettencourt, le gouvernement l’assouplit en juillet 1967 mais le maintient « essentiellement pour 50 avions Mirage V commandés par Israël ». Aucun acte publié fixant l’embargo n’a été trouvé. Le territoire occupé en 1967 est celui que désignent la résolution 2334 en 2016 et l’avis de la Cour internationale de Justice en 2024.",
+      "question": "Quel acte a fixé l’embargo, et à quelle date ?",
       "sources": [
         "histoire",
         "an-1967",
+        "an-1968",
         "france"
       ],
       "terms": [
@@ -417,6 +455,7 @@
       "year": "2024",
       "short": "L’avis de la CIJ",
       "threads": [
+        "france",
         "law"
       ],
       "places": [
@@ -426,16 +465,18 @@
       "kind": "Avis consultatif · 19 juillet",
       "title": "La CIJ examine les conséquences de l’occupation",
       "text": "Par onze voix contre quatre, la Cour internationale de Justice est d’avis que la présence continue d’Israël dans le Territoire palestinien occupé est illicite et qu’Israël doit y mettre fin « dans les plus brefs délais ».",
-      "context": "Pour les autres États, dont la France, la Cour est d’avis, par douze voix contre trois, qu’ils sont dans l’obligation de ne pas reconnaître comme licite la situation découlant de cette présence et de ne pas prêter aide ou assistance à son maintien (§ 285, point 7). L’Assemblée générale a demandé cet avis. Il est distinct de l’affaire contentieuse Afrique du Sud contre Israël, portée devant la même Cour.",
-      "question": "Quelles mesures la France a-t-elle prises ou annoncées après cet avis ?",
+      "context": "Pour les autres États, dont la France, la Cour est d’avis, par douze voix contre trois, qu’ils sont dans l’obligation de ne pas reconnaître comme licite la situation découlant de cette présence et de ne pas prêter aide ou assistance à son maintien (§ 285, point 7). L’Assemblée générale a demandé cet avis. Il est distinct de l’affaire contentieuse Afrique du Sud contre Israël, portée devant la même Cour. Le 18 septembre 2024, la France vote pour la résolution ES-10/24 de l’Assemblée générale, qui fait suite à l’avis. Son représentant déclare que « la France ne reconnaîtra pas l’annexion illégale de ces territoires », et précise qu’elle aurait préféré un texte reprenant exactement l’avis de la Cour.",
+      "question": "Quelles mesures la France a-t-elle appliquées depuis ce vote ?",
       "sources": [
         "icj-avis",
+        "pv-es10-55",
         "icj"
       ],
       "terms": [
         "avis"
       ],
       "actors": [
+        "france",
         "international"
       ]
     }
@@ -690,7 +731,7 @@
       }
     }
   },
-  "revised_on": "2026-09-30",
+  "revised_on": "2026-10-01",
   "threads": [
     {
       "id": "france",
