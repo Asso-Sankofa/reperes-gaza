@@ -49,7 +49,13 @@ Ce qui a été vérifié le 30 septembre 2026 :
 - la méthode d’OCHA (vérification indépendante des victimes depuis le 7 octobre 2023, règle des deux sources) ;
 - l’arrêt *Psagot* de la CJUE (12 novembre 2019), l’avis de la DGCCRF du 24 novembre 2016 et la décision du Conseil d’État du 31 décembre 2019, qui documentent les suites françaises du paragraphe 5.
 
-Au 30 septembre 2026, 14 des 21 fiches sources portent une date de vérification (`verified_on`). Les sept autres sont des portails ou des pages de présentation (Assemblée nationale, Standing Together, Israel Democracy Institute, PCPSR, Digital Inquiry Group), ou doublent une source primaire déjà vérifiée (fiche de l’affaire à la CIJ, compte rendu de l’ONU à Genève).
+Ce qui a été vérifié le 1er octobre 2026 :
+
+- le vote de la France pour l'admission d'Israël à l'ONU et la déclaration de son représentant, dans le procès-verbal A/PV.207 du 11 mai 1949 ;
+- la réponse d'André Bettencourt devant l'Assemblée nationale le 17 mai 1968 (JO, p. 1936), qui situe l'embargo de 1967 avant la guerre et décrit son assouplissement de juillet 1967 ;
+- le vote de la France pour la résolution ES-10/24 et l'explication de vote de son représentant, dans le procès-verbal A/ES-10/PV.55 du 18 septembre 2024.
+
+Au 1er octobre 2026, 17 des 24 fiches sources portent une date de vérification (`verified_on`). Les sept autres sont des portails ou des pages de présentation (Assemblée nationale, Standing Together, Israel Democracy Institute, PCPSR, Digital Inquiry Group), ou doublent une source primaire déjà vérifiée (fiche de l’affaire à la CIJ, compte rendu de l’ONU à Genève).
 
 Ce qui n’a pas été vérifié : les sources listées ci-dessus sans `verified_on` ; l’interprétation juridique des notices 2005, 2023 et 2024, qui cite les textes mais n’a pas été relue par un juriste ; l’ensemble des rapports trimestriels postérieurs au 24 mars 2026. Un lien qui répond ne prouve pas que le passage cité s’y trouve toujours.
 
