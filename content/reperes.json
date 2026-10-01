@@ -467,14 +467,14 @@
       "cards": [
         {
           "name": "Standing Together",
-          "text": "Ce mouvement se présente comme une organisation de citoyens juifs et palestiniens d’Israël contre l’occupation et pour l’égalité. Sa présentation renseigne sur son projet, pas sur son poids dans l’opinion.",
+          "text": "Ce mouvement se présente comme une organisation de citoyens juifs et palestiniens d’Israël contre l’occupation et pour l’égalité.",
           "sources": [
             "standing"
           ]
         },
         {
           "name": "Les enquêtes de l’Israel Democracy Institute",
-          "text": "L’Israel Democracy Institute publie des enquêtes d’opinion sur la société israélienne. Aucun résultat n’est repris ici pour l’instant : chacun devra être présenté avec sa date, l’échantillon interrogé et la question posée.",
+          "text": "L’Israel Democracy Institute publie des enquêtes d’opinion sur la société israélienne. Aucun résultat n’est repris ici pour l’instant.",
           "sources": [
             "idi"
           ]
@@ -487,14 +487,14 @@
       "cards": [
         {
           "name": "Les enquêtes du PCPSR",
-          "text": "Le PCPSR publie des enquêtes menées à Gaza et en Cisjordanie. Aucun résultat n’est repris ici pour l’instant : chacun devra être présenté avec sa date, sa zone de collecte et la question posée.",
+          "text": "Le PCPSR publie des enquêtes menées à Gaza et en Cisjordanie. Aucun résultat n’est repris ici pour l’instant.",
           "sources": [
             "pcpsr"
           ]
         },
         {
           "name": "Les acteurs armés",
-          "text": "Une enquête portant sur les actes du Hamas et d’autres groupes armés concerne ces acteurs et les faits examinés. Elle ne permet pas d’attribuer une responsabilité à une population entière.",
+          "text": "Le rapport de la commission d’enquête (A/HRC/56/26) examine les actes du Hamas et d’autres groupes armés palestiniens lors de l’attaque du 7 octobre 2023 (§ 90 et 91).",
           "sources": [
             "coi-rapport"
           ]
@@ -515,7 +515,7 @@
         },
         {
           "name": "Une cour ou une commission",
-          "text": "L’avis de la CIJ et les conclusions d’une commission d’enquête sont des documents de nature différente. L’expression « l’ONU a dit » masque parfois cette distinction.",
+          "text": "L’avis de la CIJ et les conclusions d’une commission d’enquête sont des documents de nature différente.",
           "sources": [
             "icj-avis",
             "coi-rapport"
