@@ -98,12 +98,12 @@ function renderMapSummary(node, listNode) {
   const list = place ? events.filter(e => e.places.includes(place.id)) : events;
   const offMap = events.filter(e => !zonesOf(e).length);
   const word = node.dataset.countWord;
-  const options = [['all', `Voir les ${word} notices`], ...mapPlaces.map(p => [p.id, p.short])];
+  const options = [['all', `Voir les ${word} repères`], ...mapPlaces.map(p => [p.id, p.short])];
   const status = place
-    ? `${place.label} : ${list.length} notice${list.length > 1 ? 's' : ''} sur ${events.length}`
-    : `${word[0].toUpperCase() + word.slice(1)} notices, de ${events[0].year} à ${events.at(-1).year}`;
+    ? `${place.label} : ${list.length} repère${list.length > 1 ? 's' : ''} sur ${events.length}`
+    : `${word[0].toUpperCase() + word.slice(1)} repères, de ${events[0].year} à ${events.at(-1).year}`;
   node.innerHTML = `<h3 class="map-summary__title">Filtrer par territoire</h3>
-    <div class="map-summary__controls" role="group" aria-label="Afficher les notices par territoire">
+    <div class="map-summary__controls" role="group" aria-label="Afficher les repères par territoire">
       ${options.map(([k, label]) => `<button type="button" class="place-filter" aria-pressed="${state.place === k}" data-place="${esc(k)}" data-focus="place-${esc(k)}">${esc(label)}</button>`).join('')}
     </div>
     <p class="map-summary__status" role="status">${esc(status)}</p>`;
@@ -240,7 +240,7 @@ function documentSection(ev, doc) {
             <summary>Comment cette transcription a été vérifiée</summary>
             <p>Collation le ${esc(formatDate(col.checked_on))} avec ${esc(col.against)}. Paragraphes contrôlés : ${esc(col.paragraphs.join(', '))}.</p>
             ${col.corrections.length ? `<ul>${col.corrections.map(c => `<li>${esc(c)}</li>`).join('')}</ul>` : ''}
-            <p class="muted">Cette vérification porte sur la lettre du texte. Elle ne vaut pas relecture juridique de la notice.</p>
+            <p class="muted">Cette vérification porte sur la lettre du texte. Elle ne vaut pas relecture juridique de ce repère.</p>
           </details>` : ''}
         </div>
         <aside class="gloss gloss--aside" aria-live="polite" aria-label="Le paragraphe choisi et ses suites">${gloss(selected, 'aside')}</aside>
@@ -285,11 +285,11 @@ function renderParcours() {
         <p class="notice__question">${esc(ev.question)}</p>
       </div>
       <div>
-        <p class="eyebrow eyebrow--muted">SUR QUOI S’APPUIE CETTE NOTICE ?</p>
+        <p class="eyebrow eyebrow--muted">SUR QUOI S’APPUIE CE REPÈRE&nbsp;?</p>
         ${sourceButtons(ev.sources, 'ev')}
       </div>
       ${terms.length ? `<div>
-        <p class="eyebrow eyebrow--muted">LES MOTS DE CETTE NOTICE</p>
+        <p class="eyebrow eyebrow--muted">LES MOTS DE CE REPÈRE</p>
         ${terms.map(t => {
           const open = state.openTerms.has(t.id);
           return `<div class="term">
