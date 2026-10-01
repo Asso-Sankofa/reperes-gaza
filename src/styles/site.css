@@ -69,10 +69,7 @@ h1, h2, h3 { margin: 0; }
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 32px;
 }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--color-ink); }
-.brand__mark {
-  width: 34px; height: 34px; display: grid; place-items: center;
-  background: var(--color-ink); color: var(--color-on-ink); font-family: Georgia, serif; font-size: 1.45rem;
-}
+.brand__mark { display: block; width: 34px; height: 34px; flex: none; }
 .brand__name { font-weight: 700; font-size: 1.35rem; letter-spacing: -.05em; }
 .brand__tagline { font-size: .7rem; letter-spacing: .12em; font-weight: 600; color: var(--color-text-muted); margin-left: 4px; white-space: nowrap; }
 .main-nav { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; max-width: 100%; }

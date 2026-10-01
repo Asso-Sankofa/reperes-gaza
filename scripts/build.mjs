@@ -84,6 +84,8 @@ export async function build({ outDir = join(ROOT, 'dist'), quiet = false } = {})
   await cp(join(ROOT, 'src/fonts'), join(outDir, 'fonts'), { recursive: true });
   await cp(join(ROOT, 'src/styles'), join(outDir, 'styles'), { recursive: true });
   await cp(join(ROOT, 'src/favicon.svg'), join(outDir, 'favicon.svg'));
+  await cp(join(ROOT, 'src/og-image.png'), join(outDir, 'og-image.png'));
+  await cp(join(ROOT, 'src/logo'), join(outDir, 'logo'), { recursive: true });
   const app = await readFile(join(ROOT, 'src/app.js'), 'utf8');
   await writeFile(join(outDir, 'app.js'), app);
 
@@ -120,7 +122,7 @@ export async function build({ outDir = join(ROOT, 'dist'), quiet = false } = {})
     MAP_REGION: regionSvg(geo),
     MAP_MINI: miniSvg(geo),
   };
-  const html = template.replace(/{{([A-Z_]+)}}/g, (m, key) => {
+  const html = template.replace(/{{([A-Z0-9_]+)}}/g, (m, key) => {
     if (!(key in replacements)) throw new Error(`index.html : variable inconnue ${m}`);
     return replacements[key];
   });
