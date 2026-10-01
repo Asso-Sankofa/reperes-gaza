@@ -202,7 +202,7 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   await toggle.click();
   check('menu mobile : ouvert', await page.locator('#menu-mobile').isVisible());
   check('menu mobile : aria-expanded', (await toggle.getAttribute('aria-expanded')) === 'true');
-  check('menu mobile : focus sur le premier lien', (await focused(page)).startsWith('Le parcours'));
+  check('menu mobile : focus sur le premier lien', (await focused(page)).startsWith('Les repères'));
   check('menu mobile : contenu de la page inerte', await page.evaluate(() => document.getElementById('contenu').inert));
   for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');
   check('menu mobile : Tab revient au bouton Fermer', (await focused(page)) === 'menu-toggle');
