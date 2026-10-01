@@ -128,6 +128,9 @@ Sur Clever Cloud, avec le runtime Static :
 | --- | --- |
 | `CC_BUILD_COMMAND` | `node scripts/build.mjs` |
 | `CC_WEBROOT` | `/dist` |
+| `CC_STATIC_FLAGS` | `--config-file sws.toml` |
+
+`sws.toml` demande à Static Web Server de revalider `index.html` à chaque visite (`Cache-Control: no-cache`). Les styles et le script sont versionnés (`?v=…`) et gardent le cache par défaut, un an.
 
 L’application du prototype s’appelle `reperes-gaza-static` (région Paris, une instance pico). Elle n’est pas reliée à GitHub : un push sur `main` ne la redéploie pas. Pour publier, depuis un poste où la CLI Clever Cloud est connectée au compte propriétaire :
 

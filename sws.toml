@@ -1,0 +1,7 @@
+# Configuration de Static Web Server sur Clever Cloud (runtime Static).
+# index.html est revalidé à chaque visite ; les fichiers versionnés (?v=…) gardent le cache par défaut.
+[advanced]
+
+[[advanced.headers]]
+source = "**/*.html"
+headers = { Cache-Control = "no-cache" }
