@@ -163,6 +163,10 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   const csv = await page.request.get(BASE + '/data/reperes-evenements.csv');
   check('Méthode : corpus JSON téléchargeable', json.ok() && (await json.json()).schema_version === '0.4.0');
   check('Méthode : provenance de la carte', (await page.locator('#methode-carte').innerText()).includes('Natural Earth, version 4.1.0'));
+  check('Méthode : empreinte du fichier affichée', /^[0-9a-f]{64}$/.test(await page.locator('.map-method__hash').textContent()));
+  const og = await page.request.get(BASE + '/og-image.png');
+  check('partage : image OpenGraph servie', og.ok() && og.headers()['content-type'].startsWith('image/png') && (await page.locator('meta[property="og:image"]').getAttribute('content')) === 'https://reperes-gaza.fr/og-image.png');
+  check('en-tête : logo chargé', await page.locator('.brand__mark').evaluate(i => i.complete && i.naturalWidth > 0));
   check('Méthode : CSV téléchargeable', csv.ok() && (await csv.text()).startsWith('id,year,title'));
   check('ordinateur : aucune requête vers un domaine tiers', page.external.length === 0, page.external.join(', '));
   check('ordinateur : aucune erreur JavaScript', page.errors.length === 0, page.errors.join(' | '));

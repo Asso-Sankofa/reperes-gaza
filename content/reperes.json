@@ -399,7 +399,7 @@
       "kind": "Événements et enquête ultérieure",
       "title": "Les attaques du 7 octobre et la guerre à Gaza",
       "text": "Le 7 octobre 2023, le Hamas et d’autres groupes armés palestiniens attaquent le sud d’Israël. Des civils sont tués, des personnes sont enlevées et emmenées comme otages à Gaza. Israël mène ensuite des opérations militaires dans la bande de Gaza.",
-      "context": "La Commission internationale indépendante d’enquête créée par le Conseil des droits de l’homme a examiné les trois premiers mois de la guerre. Dans son rapport du 14 juin 2024, elle conclut, « sur la base de motifs raisonnables », que des membres des ailes militaires du Hamas et d’autres groupes armés palestiniens ont commis des crimes de guerre lors de l’attaque du 7 octobre (§ 90). Pour les opérations militaires israéliennes à Gaza, elle conclut qu’Israël a commis des crimes de guerre et des crimes contre l’humanité (§ 97). Ce sont les conclusions d’une commission d’enquête, pas un jugement.",
+      "context": "La Commission internationale indépendante d’enquête créée par le Conseil des droits de l’homme a examiné les trois premiers mois de la guerre. Dans son rapport du 14 juin 2024, elle conclut, « sur la base de motifs raisonnables », que des membres des ailes militaires du Hamas et d’autres groupes armés palestiniens ont commis des crimes de guerre lors de l’attaque du 7 octobre (§ 90). Pour les opérations militaires israéliennes à Gaza, elle conclut qu’Israël a commis des crimes de guerre et des crimes contre l’humanité (§ 97).",
       "question": "Quelles procédures judiciaires ont été engagées depuis sur ces faits, et où en sont-elles ?",
       "sources": [
         "coi-rapport",
@@ -426,7 +426,7 @@
       "kind": "Avis consultatif · 19 juillet",
       "title": "La CIJ examine les conséquences de l’occupation",
       "text": "Par onze voix contre quatre, la Cour internationale de Justice est d’avis que la présence continue d’Israël dans le Territoire palestinien occupé est illicite et qu’Israël doit y mettre fin « dans les plus brefs délais ».",
-      "context": "Pour les autres États, dont la France, la Cour est d’avis, par douze voix contre trois, qu’ils sont dans l’obligation de ne pas reconnaître comme licite la situation découlant de cette présence et de ne pas prêter aide ou assistance à son maintien (§ 285, point 7). L’avis a été demandé par l’Assemblée générale. Ce n’est ni la condamnation pénale d’un individu, ni un jugement dans l’affaire Afrique du Sud contre Israël.",
+      "context": "Pour les autres États, dont la France, la Cour est d’avis, par douze voix contre trois, qu’ils sont dans l’obligation de ne pas reconnaître comme licite la situation découlant de cette présence et de ne pas prêter aide ou assistance à son maintien (§ 285, point 7). L’Assemblée générale a demandé cet avis. Il est distinct de l’affaire contentieuse Afrique du Sud contre Israël, portée devant la même Cour.",
       "question": "Quelles mesures la France a-t-elle prises ou annoncées après cet avis ?",
       "sources": [
         "icj-avis",
@@ -459,8 +459,7 @@
             "an"
           ]
         }
-      ],
-      "note": "Aucune association ne peut être présumée représenter l’opinion de tous les Français d’une même origine ou religion."
+      ]
     },
     "israel": {
       "label": "En Israël",
@@ -468,20 +467,19 @@
       "cards": [
         {
           "name": "Standing Together",
-          "text": "Ce mouvement se présente comme une organisation de citoyens juifs et palestiniens d’Israël contre l’occupation et pour l’égalité. Sa présentation renseigne sur son projet, pas sur son poids dans l’opinion.",
+          "text": "Ce mouvement se présente comme une organisation de citoyens juifs et palestiniens d’Israël contre l’occupation et pour l’égalité.",
           "sources": [
             "standing"
           ]
         },
         {
           "name": "Les enquêtes de l’Israel Democracy Institute",
-          "text": "L’Israel Democracy Institute publie des enquêtes d’opinion sur la société israélienne. Aucun résultat n’est repris ici pour l’instant : chacun devra être présenté avec sa date, l’échantillon interrogé et la question posée.",
+          "text": "L’Israel Democracy Institute publie des enquêtes d’opinion sur la société israélienne. Aucun résultat n’est repris ici pour l’instant.",
           "sources": [
             "idi"
           ]
         }
-      ],
-      "note": "S’opposer à un dirigeant ne dit rien, à soi seul, de la position d’une personne sur l’occupation."
+      ]
     },
     "palestine": {
       "label": "En Palestine",
@@ -489,24 +487,24 @@
       "cards": [
         {
           "name": "Les enquêtes du PCPSR",
-          "text": "Le PCPSR publie des enquêtes menées à Gaza et en Cisjordanie. Aucun résultat n’est repris ici pour l’instant : chacun devra être présenté avec sa date, sa zone de collecte et la question posée.",
+          "text": "Le PCPSR publie des enquêtes menées à Gaza et en Cisjordanie. Aucun résultat n’est repris ici pour l’instant.",
           "sources": [
             "pcpsr"
           ]
         },
         {
           "name": "Les acteurs armés",
-          "text": "Une enquête portant sur les actes du Hamas et d’autres groupes armés concerne ces acteurs et les faits examinés. Elle ne permet pas d’attribuer une responsabilité à une population entière.",
+          "text": "Le rapport de la commission d’enquête (A/HRC/56/26) examine les actes du Hamas et d’autres groupes armés palestiniens lors de l’attaque du 7 octobre 2023 (§ 90 et 91).",
           "sources": [
             "coi-rapport"
           ]
         }
-      ],
-      "note": "Cette page ne contient pas de témoignages. Les recueillir demanderait un travail journalistique, avec le consentement des personnes."
+      ]
     },
     "international": {
       "label": "À l’international",
       "title": "Des organes de l’ONU de nature différente",
+      "note": "Cette sélection n’est pas un inventaire des acteurs internationaux.",
       "cards": [
         {
           "name": "Le Conseil de sécurité",
@@ -517,14 +515,13 @@
         },
         {
           "name": "Une cour ou une commission",
-          "text": "L’avis de la CIJ et les conclusions d’une commission d’enquête sont des documents de nature différente. L’expression « l’ONU a dit » masque parfois cette distinction.",
+          "text": "L’avis de la CIJ et les conclusions d’une commission d’enquête sont des documents de nature différente.",
           "sources": [
             "icj-avis",
             "coi-rapport"
           ]
         }
-      ],
-      "note": "Cette sélection n’est pas un inventaire des acteurs internationaux."
+      ]
     }
   },
   "terms": [

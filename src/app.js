@@ -240,7 +240,6 @@ function documentSection(ev, doc) {
             <summary>Comment cette transcription a été vérifiée</summary>
             <p>Collation le ${esc(formatDate(col.checked_on))} avec ${esc(col.against)}. Paragraphes contrôlés : ${esc(col.paragraphs.join(', '))}.</p>
             ${col.corrections.length ? `<ul>${col.corrections.map(c => `<li>${esc(c)}</li>`).join('')}</ul>` : ''}
-            <p class="muted">Cette vérification porte sur la lettre du texte. Elle ne vaut pas relecture juridique de ce repère.</p>
           </details>` : ''}
         </div>
         <aside class="gloss gloss--aside" aria-live="polite" aria-label="Le paragraphe choisi et ses suites">${gloss(selected, 'aside')}</aside>
@@ -317,7 +316,7 @@ function renderVoix() {
         <p class="eyebrow">02 · ACTEURS ET ENQUÊTES</p>
         <h1 id="voix-title" class="display display--h1" tabindex="-1">Acteurs et enquêtes cités dans ce parcours</h1>
       </div>
-      <p class="section-head__aside section-head__aside--wide">Une prise de parole engage son auteur. Elle ne dit pas ce que pense toute une population. Cette page présente pour l’instant quelques sources par pays, pas un inventaire des positions de chaque institution.</p>
+      <p class="section-head__aside section-head__aside--wide">Pour chaque pays, des acteurs et des enquêtes, avec leurs sources.</p>
     </div>
     <div class="voix-layout">
       <nav class="tabs" aria-label="Choisir un espace">
@@ -332,7 +331,7 @@ function renderVoix() {
             ${sourceButtons(c.sources, `card${i}`, true)}
           </article>`).join('')}
         </div>
-        <p class="note-box">${esc(actor.note)}</p>
+        ${actor.note ? `<p class="note-box">${esc(actor.note)}</p>` : ''}
         ${related.length ? `<div class="related">
           <span class="eyebrow">REPÈRES LIÉS</span>
           ${related.map(e => `<a class="pill" href="${evHref(e)}">${esc(e.year + ' · ' + e.short)} →</a>`).join('')}

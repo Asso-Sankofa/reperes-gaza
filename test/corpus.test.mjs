@@ -135,7 +135,9 @@ test('le build produit une page cohérente avec le corpus', async () => {
   const out = await mkdtemp(join(tmpdir(), 'reperes-'));
   try {
     const { html, corpus } = await build({ outDir: out, quiet: true });
-    assert.doesNotMatch(html, /{{[A-Z_]+}}/);
+    assert.doesNotMatch(html, /{{[A-Z0-9_]+}}/);
+    assert.match(html, /class="map-method__hash">[0-9a-f]{64}</);
+    assert.match(html, /<meta property="og:image" content="https:\/\/reperes-gaza\.fr\/og-image\.png">/);
     assert.doesNotMatch(html, /aucune relecture indépendante|en attente de relecture/, 'la relecture éditoriale a eu lieu');
     assert.doesNotMatch(html, /relectures\.json/);
     assert.doesNotMatch(html, /unpkg\.com|jsdelivr|fonts\.googleapis|fonts\.gstatic/);
