@@ -128,8 +128,8 @@ function base(geo, opts) {
   return { project, pxPerKm, countries, zones };
 }
 
-// Grande carte d'accueil, sur fond encre. Les zones portent data-place pour le délégué de clic d'app.js.
-export function regionSvg(geo, { width = 460, height = 540 } = {}) {
+// Grande carte d'accueil. Les zones portent data-place pour le délégué de clic d'app.js.
+export function regionSvg(geo, { width = 460, height = 540, theme = 'light' } = {}) {
   const opts = { width, height, bbox: [32.8, 29.4, 36.7, 33.4], center: [34.75, 31.4] };
   const { project, pxPerKm, countries, zones } = base(geo, opts);
   const at = (lon, lat) => project([lon, lat]);
@@ -140,7 +140,7 @@ export function regionSvg(geo, { width = 460, height = 540 } = {}) {
   const [s0x, s0y] = at(32.95, 29.62);
   const km = 50;
   const s1x = s0x + km * pxPerKm(31.5);
-  return `<svg class="map map--dark" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="map-region-title">
+  return `<svg class="map map--${theme} map--region" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="map-region-title">
 <title id="map-region-title">Carte de situation de la bande de Gaza et de la Cisjordanie, entre la mer Méditerranée, l’Égypte, Israël et la Jordanie.</title>
 <rect class="map__sea" width="${width}" height="${height}"/>
 ${countries}
