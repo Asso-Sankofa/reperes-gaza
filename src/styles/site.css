@@ -138,46 +138,43 @@ h1, h2, h3 { margin: 0; }
 .hero { background: var(--color-ink); color: var(--color-on-ink); }
 .hero__inner { padding-top: clamp(48px, 8vw, 104px); padding-bottom: clamp(48px, 6vw, 80px); }
 .hero .eyebrow { margin-bottom: 28px; }
-.hero__grid {
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 460px); column-gap: 56px; align-items: start;
-  grid-template-areas: "intro map" "controls map" "list map"; grid-template-rows: auto auto 1fr;
+.hero__title { max-width: 18ch; margin: 0 0 24px; font-size: clamp(2.3rem, 6vw, 4.8rem); line-height: 1.04; text-wrap: balance; }
+.hero__lead { max-width: 40em; font-size: var(--text-lead); line-height: 1.55; margin: 0 0 32px; text-wrap: pretty; }
+.button--on-ink { background: var(--color-on-ink); color: var(--color-ink); padding: 14px 22px; font-weight: 500; font-size: 1rem; }
+.button--on-ink:hover { background: var(--color-accent-on-ink); color: var(--color-ink); }
+.button--on-ink:focus-visible { outline-color: var(--color-accent-on-ink); }
+
+/* Liste des notices filtrable par territoire, avec la carte à côté (ordinateur) ou dessous (mobile).
+   Les boutons font foi : la carte ne fait que relayer le clic. */
+.explorer {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 400px); column-gap: 56px; align-items: start;
+  grid-template-areas: "controls map" "list map"; grid-template-rows: auto 1fr; margin-top: 28px;
 }
-.hero__intro { grid-area: intro; }
 .map-summary { grid-area: controls; }
 .map-results { grid-area: list; }
-.hero__map { grid-area: map; margin: 0; }
-.hero__intro h1 { margin: 0 0 28px; font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: 1.02; }
-.hero__lead { max-width: 34em; font-size: var(--text-lead); line-height: 1.55; margin: 0 0 40px; text-wrap: pretty; }
-.map-caption { margin-top: 10px; font-size: .78rem; line-height: 1.45; color: var(--color-on-ink-muted); }
-.map-caption a { color: var(--color-on-ink); }
-.map-caption a:hover { color: var(--color-accent-on-ink); }
-.map-caption a:focus-visible { outline-color: var(--color-accent-on-ink); }
-
-/* Sommaire par territoire : les boutons font foi, la carte suit. */
-.map-summary { border-top: 1px solid var(--color-rule-on-ink); padding-top: 18px; }
-.map-summary__title { font-size: var(--text-meta); letter-spacing: var(--tracking-eyebrow); font-weight: 600; text-transform: uppercase; color: var(--color-accent-on-ink); margin: 0 0 12px; }
+.explorer__map { grid-area: map; margin: 0; }
+.map-caption { margin-top: 10px; font-size: .78rem; line-height: 1.45; color: var(--color-text-muted); }
+.map-caption a { color: var(--color-document); }
+.map-summary__title { font-size: var(--text-meta); letter-spacing: var(--tracking-eyebrow); font-weight: 600; text-transform: uppercase; color: var(--color-text-muted); margin: 0 0 10px; }
 .map-summary__controls { display: flex; flex-wrap: wrap; gap: 8px; }
 .place-filter {
   min-height: var(--target-min); padding: 8px 18px; border-radius: var(--radius-control);
-  border: 1px solid var(--color-on-ink); color: var(--color-on-ink); font-size: .95rem;
+  border: 1px solid var(--color-ink); background: var(--color-paper); color: var(--color-ink); font-size: .95rem;
 }
-.place-filter:hover { border-color: var(--color-accent-on-ink); color: var(--color-accent-on-ink); }
-.place-filter[aria-pressed="true"] { background: var(--color-on-ink); color: var(--color-ink); border-color: var(--color-on-ink); }
-.place-filter:focus-visible { outline-color: var(--color-accent-on-ink); }
-.map-summary__status { margin: 16px 0 4px; font-size: .9rem; color: var(--color-on-ink-muted); }
-.map-list { list-style: none; margin: 0; padding: 0; }
+.place-filter:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.place-filter[aria-pressed="true"] { background: var(--color-ink); color: var(--color-on-ink); border-color: var(--color-ink); }
+.map-summary__status { margin: 14px 0 4px; font-size: .9rem; color: var(--color-text-muted); }
+.map-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--color-border); }
 .map-list a {
   display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 12px; align-items: baseline;
-  padding: 14px 0; border-bottom: 1px solid var(--color-rule-on-ink); text-decoration: none; color: var(--color-on-ink);
+  padding: 14px 0; border-bottom: 1px solid var(--color-border); text-decoration: none; min-height: var(--target-min);
 }
-.map-list a:hover { color: var(--color-accent-on-ink); }
-.map-list a:focus-visible { outline-color: var(--color-accent-on-ink); outline-offset: -3px; }
-.map-list__year { font-weight: 600; color: var(--color-accent-on-ink); }
+.map-list a:focus-visible { outline-offset: -3px; }
+.map-list__year { font-family: var(--font-editorial); font-size: 1.35rem; color: var(--color-accent); }
 .map-list__title { display: block; font-family: var(--font-editorial); font-size: 1.3rem; line-height: 1.25; }
-.map-list__places { display: block; margin-top: 4px; font-size: .85rem; color: var(--color-on-ink-muted); }
-.map-summary__off { margin: 14px 0 0; font-size: .9rem; color: var(--color-on-ink-muted); }
-.map-summary__off a { color: var(--color-on-ink); }
-.map-summary__off a:focus-visible { outline-color: var(--color-accent-on-ink); }
+.map-list__places { display: block; margin-top: 4px; font-size: .85rem; color: var(--color-text-muted); }
+.map-summary__off { margin: 14px 0 0; font-size: .9rem; color: var(--color-text-muted); }
+.map-summary__off a { color: var(--color-ink); }
 
 /* Cartes SVG produites par scripts/map.mjs. Couleurs portées par des classes : la CSP interdit les attributs style. */
 .map { display: block; width: 100%; height: auto; font-family: var(--font-body); -webkit-tap-highlight-color: transparent; }
@@ -205,6 +202,14 @@ h1, h2, h3 { margin: 0; }
 .map--light .map__label { font-size: 9px; fill: var(--color-text-muted); }
 .map--light .map__label--zone { font-size: 10px; fill: var(--color-ink); stroke: var(--color-paper); stroke-width: 3; paint-order: stroke; }
 .map--light .map__frame { fill: none; stroke: var(--color-border); }
+/* Grande carte en palette claire : libellés plus grands que sur la miniature, zones cliquables. */
+.map--region.map--light .map__label { font-size: 11px; }
+.map--region.map--light .map__label--sea { font-size: 10px; }
+.map--region.map--light .map__label--zone { font-size: 14px; }
+.map--region.map--light .map__label--scale { font-size: 10px; }
+.map--region.map--light .map__zone { cursor: pointer; }
+.map--light .map__leader { stroke: var(--color-accent); }
+.map--light .map__scale { stroke: var(--color-text-muted); }
 .hero__subtitle { font-size: .8rem; letter-spacing: var(--tracking-eyebrow); font-weight: 600; margin: clamp(48px, 6vw, 80px) 0 18px; }
 .question-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 12px; }
 .question-card {
@@ -220,11 +225,6 @@ h1, h2, h3 { margin: 0; }
 .section-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px 40px; margin-bottom: 28px; }
 .section-head__aside { margin: 0; color: var(--color-text-muted); max-width: 360px; font-size: .95rem; }
 .section-head__aside--wide { max-width: 480px; }
-.home-list { list-style: none; margin: 0 0 0 6px; padding: 0; border-left: 1px solid var(--color-ink); display: none; }
-.home-list li { position: relative; }
-.home-list li::before { content: ''; position: absolute; left: -6px; top: 22px; width: 11px; height: 11px; border-radius: 50%; background: var(--color-ink); }
-.home-list a { display: flex; gap: 16px; align-items: baseline; padding: 14px 0 14px 22px; text-decoration: none; min-height: var(--target-min); }
-.home-list__year { font-family: var(--font-editorial); font-size: 1.5rem; color: var(--color-accent); min-width: 54px; }
 .section-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 32px; margin-top: clamp(56px, 7vw, 96px); }
 .section-links a { display: block; border-top: 2px solid var(--color-ink); padding-top: 16px; text-decoration: none; }
 .section-links .eyebrow { margin: 0; letter-spacing: .12em; }
@@ -481,9 +481,9 @@ body.has-bottom-bar .site-footer { padding-bottom: calc(64px + env(safe-area-ins
 .source-panel__link:hover { background: var(--color-accent); color: var(--color-on-ink); }
 
 @media (max-width: 959.98px) {
-  /* Une colonne : titre, commandes, carte, puis liste. La carte reste une image, l'ordre de lecture ne change pas pour le clavier. */
-  .hero__grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "intro" "controls" "map" "list"; grid-template-rows: none; }
-  .hero__map { width: min(100%, 380px); margin: 8px 0 12px; }
+  /* Une colonne : commandes, liste, puis carte. Le résultat d'un filtre apparaît juste sous les boutons. */
+  .explorer { grid-template-columns: minmax(0, 1fr); grid-template-areas: "controls" "list" "map"; grid-template-rows: none; }
+  .explorer__map { width: min(100%, 340px); margin-top: 24px; }
 }
 @media (max-width: 1099.98px) {
   .notice__main--map { display: block; }
@@ -493,8 +493,7 @@ body.has-bottom-bar .site-footer { padding-bottom: calc(64px + env(safe-area-ins
   .brand__tagline, .main-nav { display: none; }
   .menu-toggle { display: flex; }
   .rail { display: none; }
-  .home-list { display: block; }
-  .gloss--aside { display: none; }
+    .gloss--aside { display: none; }
   .gloss--inline { display: block; }
   .source-panel {
     top: 12vh; left: 0; width: 100%; border-left: 0; border-top: 1px solid var(--color-border);

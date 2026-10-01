@@ -139,8 +139,10 @@ test('le build produit une page cohérente avec le corpus', async () => {
     assert.doesNotMatch(html, /aucune relecture indépendante|en attente de relecture/, 'la relecture éditoriale a eu lieu');
     assert.doesNotMatch(html, /relectures\.json/);
     assert.doesNotMatch(html, /unpkg\.com|jsdelivr|fonts\.googleapis|fonts\.gstatic/);
-    assert.match(html, /<h1 id="home-title"[^>]*>Gaza et la France&nbsp;:<br><span class="accent-on-ink">sept repères<\/span><\/h1>/);
-    assert.match(html, /class="map map--dark"/);
+    assert.match(html, /<h1 id="home-title"[^>]*>Comprendre Gaza et le rôle de la France, <span class="accent-on-ink">documents à l’appui<\/span><\/h1>/);
+    assert.match(html, /Sept repères, de 1948 à 2024\./);
+    assert.match(html, /href="#\/parcours\/nakba-1948">Commencer en 1948/);
+    assert.match(html, /class="map map--light map--region"/);
     assert.match(html, /<template id="map-mini"><svg class="map map--light"/);
     assert.doesNotMatch(html.replace(/<script type="application\/json" id="corpus">[\s\S]*?<\/script>/, ''), /\sstyle="/, 'la CSP interdit les attributs style');
     const served = JSON.parse(await readFile(join(out, 'data/reperes.json'), 'utf8'));

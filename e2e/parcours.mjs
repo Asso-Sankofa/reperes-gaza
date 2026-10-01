@@ -32,7 +32,7 @@ const focused = page => page.evaluate(() => {
   return a ? (a.id || a.dataset.focus || a.textContent.trim().slice(0, 40)) : null;
 });
 const pressed = page => page.evaluate(() => document.querySelector('.place-filter[aria-pressed="true"]')?.dataset.place);
-const muted = page => page.evaluate(() => [...document.querySelectorAll('.hero__map [data-zone].is-muted')].map(z => z.dataset.zone).join(' '));
+const muted = page => page.evaluate(() => [...document.querySelectorAll('.explorer__map [data-zone].is-muted')].map(z => z.dataset.zone).join(' '));
 const years = page => page.locator('.map-list .map-list__year').allTextContents();
 const noHorizontalScroll = page => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1);
 
@@ -45,8 +45,9 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   check('accueil : six questions', (await page.locator('.question-card').count()) === 6);
   check('accueil : frise avec sept repères', (await page.locator('[data-slot="home-rail"] .rail__dot').count()) === 7);
   check('accueil : polices chargées localement', await page.evaluate(async () => { await document.fonts.ready; return document.fonts.check('16px "DM Sans"') && document.fonts.check('16px "Libre Caslon Display"'); }));
-  check('accueil : nouveau titre', (await page.locator('#home-title').innerText()).replace(/\s+/g, ' ') === 'Gaza et la France : sept repères');
-  check('carte : SVG intégré, nommé', (await page.locator('.hero__map svg[role="img"]').count()) === 1 && (await page.locator('#map-region-title').count()) === 1);
+  check('accueil : nouveau titre', (await page.locator('#home-title').innerText()).replace(/\s+/g, ' ') === 'Comprendre Gaza et le rôle de la France, documents à l’appui');
+  check('accueil : bouton « Commencer en 1948 »', (await page.locator('.hero__cta').getAttribute('href')) === '#/parcours/nakba-1948');
+  check('carte : SVG intégré, nommé', (await page.locator('.explorer__map svg[role="img"]').count()) === 1 && (await page.locator('#map-region-title').count()) === 1);
   check('carte : légende et lien vers la méthode', (await page.locator('.map-caption').innerText()).includes('ne reconstituent pas les limites'));
   check('sommaire : trois commandes, les sept notices par défaut', (await page.locator('.place-filter').count()) === 3 && (await pressed(page)) === 'all' && (await years(page)).length === 7);
   check('sommaire : bouton « Voir les sept notices »', await page.getByRole('button', { name: 'Voir les sept notices' }).isVisible());
@@ -68,7 +69,7 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   await page.keyboard.press('Space');
   check('clavier : Espace sélectionne la Cisjordanie', (await pressed(page)) === 'cisjordanie' && (await years(page)).join(',') === '1967,2016,2024');
   check('Cisjordanie : carte synchronisée', (await muted(page)) === 'gaza');
-  await page.locator('.hero__map .map__hit').click({ force: true });
+  await page.locator('.explorer__map .map__hit').click({ force: true });
   check('carte : un clic sur Gaza met à jour les commandes', (await pressed(page)) === 'gaza');
   await page.waitForTimeout(300);
   await page.screenshot({ path: `${SHOTS}/desktop-accueil-gaza.png` });
@@ -77,7 +78,7 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   await page.screenshot({ path: `${SHOTS}/desktop-accueil.png`, fullPage: true });
 
   // Sans carte (SVG absent ou non rendu), les commandes et la liste fonctionnent seules.
-  await page.evaluate(() => document.querySelector('.hero__map svg').remove());
+  await page.evaluate(() => document.querySelector('.explorer__map svg').remove());
   await page.getByRole('button', { name: 'Cisjordanie' }).click();
   check('sans carte : le filtre fonctionne', (await years(page)).length === 3 && page.errors.length === 0, page.errors.join(' | '));
   await page.getByRole('button', { name: 'Voir les sept notices' }).click();
@@ -225,20 +226,23 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   await page.goto(BASE + '/');
   await page.waitForSelector('#home-title');
   const box = sel => page.locator(sel).first().boundingBox();
-  const [ctl, map, lst] = [await box('.map-summary__controls'), await box('.hero__map'), await box('.map-list')];
-  check('mobile : commandes, puis carte, puis liste', ctl.y < map.y && map.y < lst.y);
+  const [ttl, cta, q1] = [await box('#home-title'), await box('.hero__cta'), await box('.question-card')];
+  check('mobile : titre, chapô et bouton dans le premier écran', ttl.y >= 0 && cta.y + cta.height <= 844, `bas du bouton à ${Math.round(cta.y + cta.height)} px`);
+  check('mobile : les questions suivent le bouton', q1.y > cta.y);
+  const [ctl, lst, map] = [await box('.map-summary__controls'), await box('.map-list'), await box('.explorer__map')];
+  check('mobile : commandes, puis liste, puis carte', ctl.y < lst.y && lst.y < map.y);
   check('mobile : cibles tactiles d’au moins 44 px', (await page.locator('.place-filter').evaluateAll(b => b.every(x => x.getBoundingClientRect().height >= 44))));
   await page.getByRole('button', { name: 'Gaza' }).tap();
   check('mobile : toucher « Gaza » filtre la liste', (await pressed(page)) === 'gaza' && (await years(page)).length === 5);
   await page.getByRole('button', { name: 'Voir les sept notices' }).tap();
-  await page.locator('.hero__map').scrollIntoViewIfNeeded();
-  const gz = await page.locator('.hero__map [data-zone="gaza"]').boundingBox();
+  await page.locator('.explorer__map').scrollIntoViewIfNeeded();
+  const gz = await page.locator('.explorer__map [data-zone="gaza"]').boundingBox();
   await page.touchscreen.tap(gz.x + gz.width / 2, gz.y + gz.height / 2);
   check('mobile : toucher Gaza sur la carte', (await pressed(page)) === 'gaza', `zone ${Math.round(gz.width)}×${Math.round(gz.height)} px`);
   await page.waitForTimeout(300);
   await page.screenshot({ path: `${SHOTS}/mobile-accueil-gaza.png`, fullPage: true });
   await page.getByRole('button', { name: 'Voir les sept notices' }).tap();
-  check('mobile : liste chronologique à l’accueil', (await page.locator('.home-list li').count()) === 7);
+  check('mobile : liste chronologique à l’accueil', (await page.locator('.map-list li').count()) === 7);
   check('mobile : pas de défilement horizontal (accueil)', await noHorizontalScroll(page));
   await page.screenshot({ path: `${SHOTS}/mobile-accueil.png`, fullPage: true });
   check('mobile : aucune requête vers un domaine tiers', page.external.length === 0, page.external.join(', '));

@@ -102,7 +102,7 @@ function renderMapSummary(node, listNode) {
   const status = place
     ? `${place.label} : ${list.length} notice${list.length > 1 ? 's' : ''} sur ${events.length}`
     : `${word[0].toUpperCase() + word.slice(1)} notices, de ${events[0].year} à ${events.at(-1).year}`;
-  node.innerHTML = `<h2 class="map-summary__title">Les notices par territoire</h2>
+  node.innerHTML = `<h3 class="map-summary__title">Filtrer par territoire</h3>
     <div class="map-summary__controls" role="group" aria-label="Afficher les notices par territoire">
       ${options.map(([k, label]) => `<button type="button" class="place-filter" aria-pressed="${state.place === k}" data-place="${esc(k)}" data-focus="place-${esc(k)}">${esc(label)}</button>`).join('')}
     </div>
@@ -111,7 +111,7 @@ function renderMapSummary(node, listNode) {
       ${list.map(e => `<li><a href="${evHref(e)}">
         <span class="map-list__year">${esc(e.year)}</span>
         <span class="map-list__body"><span class="map-list__title">${esc(e.title)}</span>
-        <span class="map-list__places">${esc(e.places.length ? placeLabels(e).join(' · ') : e.place_note)}</span></span>
+        ${e.places.length ? `<span class="map-list__places">${esc(placeLabels(e).join(' · '))}</span>` : ''}</span>
         <span class="map-list__arrow" aria-hidden="true">→</span></a></li>`).join('')}
     </ol>
     ${place && offMap.length ? `<p class="map-summary__off">Non situées sur la carte : ${offMap.map(e => `<a href="${evHref(e)}">${esc(e.year)} · ${esc(e.short)}</a>`).join(', ')}</p>` : ''}`;
@@ -451,8 +451,6 @@ function renderHome() {
   const railNode = $('[data-slot="home-rail"]');
   if (railNode.childElementCount) return;
   railNode.innerHTML = rail(null, events);
-  $('[data-slot="home-list"]').innerHTML = events.map(e =>
-    `<li><a href="${evHref(e)}"><span class="home-list__year">${esc(e.year)}</span><span>${esc(e.short)}</span></a></li>`).join('');
 }
 
 // Zones mises en évidence : data-map-zones sur la figure, les autres zones passent en teinte atténuée.

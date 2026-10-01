@@ -115,6 +115,7 @@ export async function build({ outDir = join(ROOT, 'dist'), quiet = false } = {})
     EVENT_COUNT_WORD_CAP: words[0].toUpperCase() + words.slice(1),
     FIRST_YEAR: corpus.events[0].year,
     LAST_YEAR: corpus.events.at(-1).year,
+    FIRST_EVENT_ID: corpus.events[0].id,
     GEO_SHA256,
     MAP_REGION: regionSvg(geo),
     MAP_MINI: miniSvg(geo),
