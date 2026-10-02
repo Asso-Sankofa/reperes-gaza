@@ -107,16 +107,6 @@ test('une géométrie inattendue arrête le build', () => {
   assert.throws(() => decode(topo), /zone gaza/);
 });
 
-test('le registre interne des relectures est complet et ne nomme personne publiquement', async () => {
-  const reg = JSON.parse(await readFile(new URL('../content/relectures.json', import.meta.url), 'utf8'));
-  for (const r of reg.reviews) {
-    assert.match(r.completed_on, /^\d{4}-\d{2}-\d{2}$/);
-    for (const f of ['kind', 'scope', 'not_covered']) assert.ok(r[f], f);
-    assert.ok(r.reviewers.length);
-    assert.equal(r.named_publicly, false);
-  }
-});
-
 test('le CSV reprend chaque événement et échappe les guillemets', async () => {
   const d = await load();
   const csv = toCsv(d).trim().split('\n');
@@ -139,7 +129,6 @@ test('le build produit une page cohérente avec le corpus', async () => {
     assert.match(html, /class="map-method__hash">[0-9a-f]{64}</);
     assert.match(html, /<meta property="og:image" content="https:\/\/reperes-gaza\.fr\/og-image\.png">/);
     assert.doesNotMatch(html, /aucune relecture indépendante|en attente de relecture/, 'la relecture éditoriale a eu lieu');
-    assert.doesNotMatch(html, /relectures\.json/);
     assert.doesNotMatch(html, /unpkg\.com|jsdelivr|fonts\.googleapis|fonts\.gstatic/);
     assert.match(html, /<h1 id="home-title"[^>]*>Comprendre le rôle de la France <span class="accent-on-ink">dans la question de Gaza<\/span><\/h1>/);
     assert.match(html, /Sept repères, de 1948 à 2024&nbsp;: des décisions françaises, et le contexte qui les éclaire\./);

@@ -5,7 +5,7 @@ Ce dépôt réunit des éléments qui n’ont pas tous la même licence. Aucune 
 | Élément | Fichiers | Licence |
 | --- | --- | --- |
 | Code du site et des outils | `src/app.js`, `src/index.html`, `src/styles/`, `scripts/`, `test/`, `e2e/`, `Dockerfile`, `compose.yaml` | MIT, voir `LICENSE` |
-| Notices originales | textes rédigés pour le projet dans `content/reperes.json`, `content/charte-editoriale.md` et leurs exports (`dist/data/`) | CC BY 4.0, voir ci-dessous |
+| Textes originaux | textes rédigés pour le projet dans `content/reperes.json`, `content/charte-editoriale.md` et leurs exports (`dist/data/`) | CC BY 4.0, voir ci-dessous |
 | Géométrie des cartes | `content/cartes/countries-50m.json` | Natural Earth 4.1.0 : domaine public. Conversion TopoJSON par world-atlas 2.0.2 : ISC, voir `content/cartes/LICENSE-world-atlas.txt` |
 | Logo de Repères, favicon et image de partage | `src/logo/symbole-clair.svg`, `src/favicon.svg`, `src/og-image.png` | association Sankofa, non couverts par les licences du projet. Fichiers repris tels quels du kit logo, avec leurs métadonnées de provenance (C2PA) |
 | Logo de l’association Sankofa | SVG intégré dans `src/index.html` (accueil et pied de page) | propriété de l’association Sankofa, non couvert par les licences du projet |
@@ -13,9 +13,9 @@ Ce dépôt réunit des éléments qui n’ont pas tous la même licence. Aucune 
 | Extraits de documents officiels | champ `documents.*.paragraphs[].text` de `content/reperes.json` (paragraphes 1, 2, 5 et 12 de S/RES/2334 (2016)) | non couverts par les licences du projet |
 | Documents tiers liés | toutes les URL du champ `sources` | droits de leurs éditeurs |
 
-## Notices originales : CC BY 4.0
+## Textes originaux : CC BY 4.0
 
-Les notices originales sont proposées sous Creative Commons Attribution 4.0 International.
+Les textes originaux sont proposés sous Creative Commons Attribution 4.0 International.
 
 Attribution proposée : « Association Sankofa, Repères, corpus 0.3, 2026 ».
 
