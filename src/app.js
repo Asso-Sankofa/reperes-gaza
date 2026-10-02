@@ -378,7 +378,6 @@ function renderPager(ctx) {
       <a href="${esc(p[0])}" data-focus="pager-prev"><span class="pager__sub">← ${esc(p[1])}</span><span class="pager__label">${esc(p[2])}</span></a>
       <a href="${esc(p[3])}" class="pager__next" data-focus="pager-next"><span class="pager__sub">${esc(p[4])} →</span><span class="pager__label">${esc(p[5])}</span></a>
     </div>
-    ${state.route === 'parcours' ? '<p class="pager__tip">Astuce&nbsp;: les flèches ← → du clavier font passer d’un repère à l’autre.</p>' : ''}
   </nav>`;
 }
 
@@ -387,7 +386,7 @@ function renderBottomBar(ctx) {
   const next = ctx.list[ctx.idx + 1];
   el.bottomBar.innerHTML = `
     <a class="bottom-bar__prev" href="${prev ? evHref(prev) : '#/'}" aria-label="${prev ? `Repère précédent : ${esc(prev.year)}` : 'Retour aux questions'}">←</a>
-    <div class="bottom-bar__mid"><span class="bottom-bar__year">${esc(ctx.ev.year)}</span><span class="bottom-bar__pos">Repère ${ctx.idx + 1} sur ${ctx.list.length} · glissez pour avancer</span></div>
+    <div class="bottom-bar__mid"><span class="bottom-bar__year">${esc(ctx.ev.year)}</span><span class="bottom-bar__pos">Repère ${ctx.idx + 1} sur ${ctx.list.length}</span></div>
     <a class="bottom-bar__next" href="${next ? evHref(next) : '#/voix'}" aria-label="${next ? `Repère suivant : ${esc(next.year)}` : 'Dernier repère, continuer vers Acteurs et enquêtes'}">→</a>`;
 }
 
