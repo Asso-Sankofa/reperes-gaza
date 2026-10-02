@@ -153,6 +153,18 @@
       "verified_on": "2026-10-01"
     },
     {
+      "id": "meae-entreprises-2026",
+      "publisher": "Ministère de l’Europe et des Affaires étrangères",
+      "title": "Palestine : activités des entreprises françaises dans les colonies (30 juin 2026)",
+      "url": "https://www.diplomatie.gouv.fr/fr/presse-et-ressources/decouvrir-et-informer/actualites/palestine-activites-des-entreprises-francaises-dans-les-colonies",
+      "type": "Avis aux entreprises",
+      "scope": "Mise en garde adressée aux entreprises sur les activités économiques dans les colonies israéliennes, qui cite la résolution 2334 et l’avis consultatif de la Cour internationale de Justice.",
+      "locator": "Les colonies sont illégales « conformément à la résolution 2334 (2016) du Conseil de sécurité des Nations unies et aux conclusions de l’avis consultatif de la Cour internationale de Justice du 19 juillet 2024 » ; les entreprises « s’exposent au risque d’être reconnues coupables de violations du droit international ».",
+      "access": "Page publiée le 30 juin 2026, mise à jour le 1er juillet 2026, consultée le 2 octobre 2026 sur diplomatie.gouv.fr. Passages relus à cette date.",
+      "limit": "Le texte décrit des risques pour les entreprises. Il ne dit pas quelles mesures ont été prises à leur encontre.",
+      "verified_on": "2026-10-02"
+    },
+    {
       "id": "ocha",
       "publisher": "OCHA · Territoire palestinien occupé",
       "title": "Data on casualties : definitions and clarifications",
@@ -465,11 +477,12 @@
       "kind": "Avis consultatif · 19 juillet",
       "title": "La CIJ examine les conséquences de l’occupation",
       "text": "Par onze voix contre quatre, la Cour internationale de Justice est d’avis que la présence continue d’Israël dans le Territoire palestinien occupé est illicite et qu’Israël doit y mettre fin « dans les plus brefs délais ».",
-      "context": "Pour les autres États, dont la France, la Cour est d’avis, par douze voix contre trois, qu’ils sont dans l’obligation de ne pas reconnaître comme licite la situation découlant de cette présence et de ne pas prêter aide ou assistance à son maintien (§ 285, point 7). L’Assemblée générale a demandé cet avis. Il est distinct de l’affaire contentieuse Afrique du Sud contre Israël, portée devant la même Cour. Le 18 septembre 2024, la France vote pour la résolution ES-10/24 de l’Assemblée générale, qui fait suite à l’avis. Son représentant déclare que « la France ne reconnaîtra pas l’annexion illégale de ces territoires », et précise qu’elle aurait préféré un texte reprenant exactement l’avis de la Cour.",
-      "question": "Quelles mesures la France a-t-elle appliquées depuis ce vote ?",
+      "context": "Pour les autres États, dont la France, la Cour est d’avis, par douze voix contre trois, qu’ils sont dans l’obligation de ne pas reconnaître comme licite la situation découlant de cette présence et de ne pas prêter aide ou assistance à son maintien (§ 285, point 7). L’Assemblée générale a demandé cet avis. Il est distinct de l’affaire contentieuse Afrique du Sud contre Israël, portée devant la même Cour. Le 18 septembre 2024, la France vote pour la résolution ES-10/24 de l’Assemblée générale, qui fait suite à l’avis. Son représentant déclare que « la France ne reconnaîtra pas l’annexion illégale de ces territoires », et précise qu’elle aurait préféré un texte reprenant exactement l’avis de la Cour. Le 30 juin 2026, le ministère des Affaires étrangères publie une mise en garde aux entreprises, qui s’appuie sur la résolution 2334 et sur l’avis de la Cour. Celles qui prennent part à l’activité des colonies israéliennes « s’exposent au risque d’être reconnues coupables de violations du droit international ».",
+      "question": "Quelle mesure contraignante la France a-t-elle adoptée à la suite de l’avis ?",
       "sources": [
         "icj-avis",
         "pv-es10-55",
+        "meae-entreprises-2026",
         "icj"
       ],
       "terms": [
@@ -731,7 +744,7 @@
       }
     }
   },
-  "revised_on": "2026-10-01",
+  "revised_on": "2026-10-02",
   "threads": [
     {
       "id": "france",
