@@ -424,7 +424,6 @@ div.notice__place { max-width: var(--reading-width); }
 .pager__sub { font-size: .72rem; letter-spacing: var(--tracking-eyebrow); font-weight: 600; color: var(--color-on-ink-muted); }
 .pager__next .pager__sub { color: var(--color-accent-on-ink); }
 .pager__label { font-family: var(--font-editorial); font-size: 1.6rem; }
-.pager__tip { text-align: center; font-size: .78rem; color: var(--color-on-ink-muted); margin: 0; padding: 0 0 18px; }
 
 .bottom-bar {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; background: var(--color-paper);
@@ -496,7 +495,6 @@ body.has-bottom-bar .site-footer { padding-bottom: calc(64px + env(safe-area-ins
     padding: 12px 20px 40px;
   }
   .source-panel__grip { display: block; }
-  .pager__tip { display: none; }
 }
 @media (min-width: 720px) {
   .menu-mobile, .bottom-bar, .backdrop { display: none !important; }
