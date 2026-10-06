@@ -147,6 +147,15 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   check('filtre : aria-pressed', (await page.locator('.filter[aria-pressed="true"]').textContent()) === 'Le droit');
   check('filtre : focus conservé sur le bouton', (await focused(page)) === 'filter-law');
 
+  await page.locator('.main-nav a', { hasText: 'Décisions françaises' }).click();
+  await page.waitForSelector('#decisions-title', { state: 'visible' });
+  check('Décisions françaises : titre focalisé', (await focused(page)) === 'decisions-title');
+  check('Décisions françaises : six actes, dans l’ordre', (await page.locator('.decision__date').allTextContents()).join(' | ') === '11 mai 1949 | Juin 1967 | Juillet 1967 | 23 décembre 2016 | 18 septembre 2024 | 30 juin 2026');
+  await page.locator('[data-focus="src-dec-embargo-juillet-1967-an-1968"]').click();
+  check('Décisions françaises : le document s’ouvre', (await page.locator('#panel-title').textContent()).includes('17 mai 1968'));
+  await page.keyboard.press('Escape');
+  check('Décisions françaises : lien vers le repère', (await page.locator('.decision .pill').first().getAttribute('href')) === '#/parcours/france-1949');
+
   await page.locator('.main-nav a', { hasText: 'Acteurs et enquêtes' }).click();
   await page.waitForSelector('#voix-title', { state: 'visible' });
   check('Acteurs et enquêtes : page affichée', true);
@@ -204,7 +213,7 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   check('menu mobile : aria-expanded', (await toggle.getAttribute('aria-expanded')) === 'true');
   check('menu mobile : focus sur le premier lien', (await focused(page)).startsWith('Les repères'));
   check('menu mobile : contenu de la page inerte', await page.evaluate(() => document.getElementById('contenu').inert));
-  for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');
+  for (let i = 0; i < 6; i++) await page.keyboard.press('Tab');
   check('menu mobile : Tab revient au bouton Fermer', (await focused(page)) === 'menu-toggle');
   await page.keyboard.press('Shift+Tab');
   check('menu mobile : Maj+Tab va au dernier lien', (await focused(page)).startsWith('Méthode'));

@@ -84,6 +84,20 @@ export function validateCorpus(d, { externalRefs = [], mapZones = MAP_ZONES } = 
     if (!fullyMapped && !e.place_note) err(`${where} : place_note attendu, la notice n’est pas entièrement située sur la carte`);
   }
 
+  // Décisions françaises : chaque acte renvoie à un repère et à ses documents, dans l'ordre chronologique.
+  uniqueIds(d.decisions || [], 'décision');
+  let lastWhen = '';
+  for (const x of d.decisions || []) {
+    const where = `décision ${x.id}`;
+    for (const f of ['date', 'title', 'author', 'nature', 'text', 'limit']) if (!x[f]) err(`${where} : champ « ${f} » vide`);
+    if (!/^\d{4}(-\d{2}(-\d{2})?)?$/.test(x.when || '')) err(`${where} : when doit être une date AAAA, AAAA-MM ou AAAA-MM-JJ`);
+    else if (x.when < lastWhen) err(`${where} : les décisions doivent être classées par date`);
+    else lastWhen = x.when;
+    if (!eventIds.has(x.event)) err(`${where} : repère inconnu « ${x.event} »`);
+    refSources(x.sources, where);
+    if (!x.sources?.length) err(`${where} : au moins une source attendue`);
+  }
+
   for (const [key, a] of Object.entries(d.actors)) {
     for (const f of ['label', 'title']) if (!a[f]) err(`acteur ${key} : champ « ${f} » vide`);
     (a.cards || []).forEach((c, i) => refSources(c.sources, `acteur ${key}, carte ${i + 1}`));

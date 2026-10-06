@@ -43,6 +43,15 @@ test('un document rattaché à un repère absent est détecté', async () => {
   assert.ok(validateCorpus(d).errors.some(e => e.includes('aucun événement')));
 });
 
+test('une décision mal rattachée ou mal classée est détectée', async () => {
+  const d = await load();
+  d.decisions[0].event = 'repere-absent';
+  d.decisions[1].when = '2030-01-01';
+  const { errors } = validateCorpus(d);
+  assert.ok(errors.some(e => e.includes('repère inconnu « repere-absent »')));
+  assert.ok(errors.some(e => e.includes('classées par date')));
+});
+
 test('les tirets cadratins sont refusés', async () => {
   const d = await load();
   d.events[0].text += ' \u2014 ajout';

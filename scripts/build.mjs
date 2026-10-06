@@ -8,7 +8,7 @@ import { validateCorpus } from './validate.mjs';
 import { GEO_SHA256, loadGeo, miniSvg, regionSvg } from './map.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const ROUTES = ['parcours', 'voix', 'verifier', 'mots', 'methode'];
+const ROUTES = ['parcours', 'decisions', 'voix', 'verifier', 'mots', 'methode'];
 
 const hash = text => createHash('sha256').update(text).digest('hex').slice(0, 10);
 

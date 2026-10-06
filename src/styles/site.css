@@ -385,6 +385,23 @@ div.notice__place { max-width: var(--reading-width); }
 .related { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 24px; }
 .related .eyebrow { margin: 0 6px 0 0; color: var(--color-text-muted); font-size: .72rem; }
 
+/* Décisions françaises */
+.decisions { list-style: none; margin: 0; padding: 0; display: grid; gap: 48px; }
+.decision { display: grid; grid-template-columns: minmax(0, 200px) minmax(0, 1fr); gap: 12px 5%; border-top: 2px solid var(--color-ink); padding-top: 18px; }
+.decision__date { font-family: var(--font-editorial); font-size: 1.6rem; line-height: 1.15; margin: 0; }
+.decision__body { max-width: 68ch; }
+.decision__body h2 { font-family: var(--font-editorial); font-weight: 400; font-size: clamp(1.6rem, 2.6vw, 2.2rem); line-height: 1.1; margin: 0 0 16px; }
+.decision__body > p { margin: 0 0 14px; text-wrap: pretty; }
+.decision__facts { display: flex; flex-wrap: wrap; gap: 8px 32px; margin: 0 0 16px; }
+.decision__facts dt { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--color-text-muted); }
+.decision__facts dd { margin: 2px 0 0; font-weight: 500; }
+.decision__limit { padding: 14px 18px; background: var(--color-surface); color: var(--color-text-muted); font-size: .95rem; }
+.decision__limit .eyebrow { display: block; margin: 0 0 4px; }
+.decision .pill { margin-top: 12px; }
+@media (max-width: 719.98px) {
+  .decision { grid-template-columns: 1fr; }
+}
+
 /* Lexique */
 .lexique { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 48px 6%; }
 .lexique article { border-top: 2px solid var(--color-ink); padding-top: 18px; }
