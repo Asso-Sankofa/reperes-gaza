@@ -419,7 +419,7 @@
       "kind": "Décision documentée · 23 décembre",
       "title": "La France soutient une résolution sur les colonies",
       "text": "Le Conseil de sécurité adopte la résolution 2334. Elle réaffirme l’absence de validité juridique des colonies dans le territoire palestinien occupé depuis 1967, y compris Jérusalem-Est. La France vote pour.",
-      "context": "Le vote engage la France sur le texte adopté. Ce qu’elle a fait ensuite se lit dans d’autres documents : le paragraphe 5, présenté plus bas, est celui qui la concerne le plus directement.",
+      "context": "Ce que la France a fait ensuite se lit dans d’autres documents : le paragraphe 5, présenté plus bas, est celui qui la concerne le plus directement.",
       "question": "Comment ce vote se traduit-il dans les décisions françaises ?",
       "sources": [
         "2334-texte",
@@ -541,6 +541,20 @@
       ]
     },
     {
+      "id": "etiquetage-2016",
+      "when": "2016-11-24",
+      "date": "24 novembre 2016",
+      "event": "resolution-2016",
+      "title": "Avis sur l’étiquetage des produits des colonies",
+      "author": "Le ministère de l’Économie et des Finances (DGCCRF)",
+      "nature": "Avis aux opérateurs économiques, publié au Journal officiel",
+      "text": "La DGCCRF publie au Journal officiel un avis : les denrées issues des colonies israéliennes de Cisjordanie et du plateau du Golan doivent porter la mention « colonie israélienne ». L’avis donne l’exemple « produit originaire de Cisjordanie (colonie israélienne) ».",
+      "limit": "L’avis applique une communication de la Commission européenne du 12 novembre 2015. Il est antérieur à la résolution 2334 et ne s’y réfère pas.",
+      "sources": [
+        "avis-dgccrf-2016"
+      ]
+    },
+    {
       "id": "resolution-2334-2016",
       "when": "2016-12-23",
       "date": "23 décembre 2016",
@@ -549,10 +563,25 @@
       "author": "La délégation française au Conseil de sécurité de l’ONU",
       "nature": "Vote",
       "text": "La France vote pour la résolution 2334, adoptée par 14 voix et une abstention, celle des États-Unis. Le texte réaffirme que la création par Israël de colonies de peuplement dans le Territoire palestinien occupé depuis 1967, y compris Jérusalem-Est, « n’a aucun fondement en droit et constitue une violation flagrante du droit international » (paragraphe 1).",
-      "limit": "Le vote engage la France sur le texte adopté. Une résolution formule des constats et des demandes : elle ne dit pas si ces demandes ont été suivies.",
+      "limit": "Une résolution formule des constats et des demandes. Elle ne dit pas si ces demandes ont été suivies.",
       "sources": [
         "2334",
         "2334-texte"
+      ]
+    },
+    {
+      "id": "conseil-etat-2019",
+      "when": "2019-12-31",
+      "date": "31 décembre 2019",
+      "event": "resolution-2016",
+      "title": "Le Conseil d’État maintient l’avis de 2016",
+      "author": "Le Conseil d’État",
+      "nature": "Décision de justice administrative",
+      "text": "Le Conseil d’État rejette les recours contre l’avis du 24 novembre 2016. Il statue après l’arrêt de la Cour de justice de l’Union européenne du 12 novembre 2019, qu’il avait saisie : selon cet arrêt, ces denrées doivent mentionner le territoire occupé et, le cas échéant, leur provenance d’une colonie.",
+      "limit": "La décision tranche la légalité de l’avis. Elle ne dit rien de son application par les commerçants ni des contrôles effectués.",
+      "sources": [
+        "ce-2019",
+        "cjue-psagot"
       ]
     },
     {
