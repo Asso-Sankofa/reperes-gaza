@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile, mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { validateCorpus } from '../scripts/validate.mjs';
+import { LOOSE_SPACE, validateCorpus } from '../scripts/validate.mjs';
 import { build, checkInternalLinks, countWord, toCsv } from '../scripts/build.mjs';
 import { decode, loadGeo, miniSvg, regionSvg } from '../scripts/map.mjs';
 
@@ -56,6 +56,15 @@ test('les tirets cadratins sont refusés', async () => {
   const d = await load();
   d.events[0].text += ' \u2014 ajout';
   assert.ok(validateCorpus(d).errors.some(e => e.includes('tiret cadratin')));
+});
+
+test('une espace normale avant « : » est refusée, dans le corpus comme dans le gabarit', async () => {
+  const d = await load();
+  d.events[0].question = 'Pourquoi ?';
+  assert.ok(validateCorpus(d).errors.some(e => e.includes('espace normale')));
+  const html = await readFile(new URL('../src/index.html', import.meta.url), 'utf8');
+  const text = html.replace(/<script[\s\S]*?<\/script>|<svg[\s\S]*?<\/svg>|<!--[\s\S]*?-->/g, '').replace(/<[^>]+>/g, '');
+  assert.ok(!text.split('\n').some(l => LOOSE_SPACE.test(l)), 'gabarit : espace normale avant une ponctuation double');
 });
 
 test('un statut éditorial non prévu est refusé', async () => {

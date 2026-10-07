@@ -60,7 +60,7 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   await page.keyboard.press('Enter');
   check('clavier : Entrée sélectionne Gaza', (await pressed(page)) === 'gaza');
   check('Gaza : 1967, 2005, 2016, 2023, 2024', (await years(page)).join(',') === '1967,2005,2016,2023,2024');
-  check('Gaza : annonce du nombre de repères', (await page.locator('.map-summary__status').textContent()) === 'Bande de Gaza : 5 repères sur 7');
+  check('Gaza : annonce du nombre de repères', (await page.locator('.map-summary__status').textContent()) === 'Bande de Gaza\u00a0: 5 repères sur 7');
   check('Gaza : carte synchronisée', (await muted(page)) === 'cisjordanie');
   check('Gaza : 1948 et 1949 restent accessibles', (await page.locator('.map-summary__off a').count()) === 2);
   check('Gaza : 2023 mentionne le sud d’Israël', (await page.locator('.map-list li', { hasText: '2023' }).innerText()).includes('Sud d’Israël'));
