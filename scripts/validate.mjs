@@ -5,6 +5,7 @@ const ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const STATUSES = ['draft_pending_independent_review', 'editorial_review_completed'];
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 const DASHES = /[\u2013\u2014]/; // demi-cadratin et cadratin, exclus par la charte éditoriale
+export const LOOSE_SPACE = /\S [:;?!](?=\s|$)/; // espace normale là où la charte demande une espace insécable
 
 // externalRefs : identifiants de sources cités hors du corpus (gabarit HTML).
 // mapZones : zones que la carte sait dessiner (scripts/map.mjs).
@@ -124,7 +125,10 @@ export function validateCorpus(d, { externalRefs = [], mapZones = MAP_ZONES } = 
   for (const id of sourceIds) if (!used.has(id)) warnings.push(`source ${id} : jamais citée`);
 
   // Règle de la charte : pas de tiret cadratin ni demi-cadratin dans les textes.
-  walkStrings(d, (value, path) => { if (DASHES.test(value)) err(`${path} : tiret cadratin ou demi-cadratin`); });
+  walkStrings(d, (value, path) => {
+    if (DASHES.test(value)) err(`${path} : tiret cadratin ou demi-cadratin`);
+    if (LOOSE_SPACE.test(value)) err(`${path} : espace normale avant « : », « ; », « ? » ou « ! »`);
+  });
 
   return { errors, warnings };
 }

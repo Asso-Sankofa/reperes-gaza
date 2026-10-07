@@ -102,7 +102,7 @@ function renderMapSummary(node, listNode) {
   const word = node.dataset.countWord;
   const options = [['all', `Voir les ${word} repères`], ...mapPlaces.map(p => [p.id, p.short])];
   const status = place
-    ? `${place.label} : ${list.length} repère${list.length > 1 ? 's' : ''} sur ${events.length}`
+    ? `${place.label} : ${list.length} repère${list.length > 1 ? 's' : ''} sur ${events.length}`
     : `${word[0].toUpperCase() + word.slice(1)} repères, de ${events[0].year} à ${events.at(-1).year}`;
   node.innerHTML = `<h3 class="map-summary__title">Filtrer par territoire</h3>
     <div class="map-summary__controls" role="group" aria-label="Afficher les repères par territoire">
@@ -116,7 +116,7 @@ function renderMapSummary(node, listNode) {
         ${e.places.length ? `<span class="map-list__places">${esc(placeLabels(e).join(' · '))}</span>` : ''}</span>
         <span class="map-list__arrow" aria-hidden="true">→</span></a></li>`).join('')}
     </ol>
-    ${place && offMap.length ? `<p class="map-summary__off">Non situées sur la carte : ${offMap.map(e => `<a href="${evHref(e)}">${esc(e.year)} · ${esc(e.short)}</a>`).join(', ')}</p>` : ''}`;
+    ${place && offMap.length ? `<p class="map-summary__off">Non situées sur la carte : ${offMap.map(e => `<a href="${evHref(e)}">${esc(e.year)} · ${esc(e.short)}</a>`).join(', ')}</p>` : ''}`;
   const fig = $('[data-map="region"]');
   if (fig) fig.dataset.mapZones = place ? place.map_zone : mapPlaces.map(p => p.map_zone).join(' ');
 }
@@ -130,7 +130,7 @@ function noticePlace(e) {
   if (!fullyMapped(e) || !mini) {
     return `<div class="notice__place">${head}<p class="notice__place-name">${esc(labels)}</p>${e.place_note ? `<p class="notice__place-note">${esc(e.place_note)}</p>` : ''}</div>`;
   }
-  const svg = mini.innerHTML.replace('role="img"', `role="img" aria-label="${esc(`Carte de situation. Mis en évidence : ${labels}.`)}"`);
+  const svg = mini.innerHTML.replace('role="img"', `role="img" aria-label="${esc(`Carte de situation. Mis en évidence : ${labels}.`)}"`);
   return `<figure class="notice__place notice__place--map" data-map-zones="${esc(zonesOf(e).join(' '))}">${head}${svg}
     <figcaption><span class="notice__place-name">${esc(labels)}</span><span class="notice__place-note">Carte de situation réalisée avec Natural Earth. <a href="#/methode">Voir les sources et limites de la carte</a></span></figcaption>
   </figure>`;
@@ -176,7 +176,7 @@ function gloss(p, variant) {
       <span class="followup__note">${esc(f.note)}</span>
     </button>`;
   }).join('');
-  return `<p class="eyebrow">PARAGRAPHE ${esc(p.n)} · À QUI S’ADRESSE-T-IL ?</p>
+  return `<p class="eyebrow">PARAGRAPHE ${esc(p.n)} · À QUI S’ADRESSE-T-IL ?</p>
     <p class="gloss__addressee">${esc(p.addressee)}</p>
     <p class="gloss__text">${esc(p.gloss)}</p>
     <p class="eyebrow">POUR EXAMINER SES SUITES</p>
@@ -204,7 +204,6 @@ function documentSection(ev, doc) {
           <p class="eyebrow">LE DOCUMENT · ${esc(doc.ref)}</p>
           <h2 id="doc-title" class="display display--h2">Lire le texte adopté, puis chercher ses suites.</h2>
         </div>
-        <p class="section-head__aside">Choisissez un paragraphe. Vous verrez à qui il s’adresse et quels documents permettent d’examiner s’il a été suivi.</p>
       </div>
       <div class="card vote">
         <div class="vote__head">

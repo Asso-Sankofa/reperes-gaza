@@ -1,12 +1,12 @@
 {
   "schema_version": "0.4.0",
-  "title": "Repères : corpus documentaire du prototype",
-  "scope": "Sélection limitée pour éprouver une interface, sans couverture exhaustive ni bilan actuel de la guerre.",
+  "title": "Repères : corpus documentaire sur Gaza et la France",
+  "scope": "Sélection de repères sourcés, sans couverture exhaustive ni bilan actuel de la guerre.",
   "editorial_status": "editorial_review_completed",
   "prepared_on": "2026-09-25",
   "license": {
     "notices": "CC-BY-4.0",
-    "attribution": "Association Sankofa, Repères, corpus 0.3, 2026",
+    "attribution": "Association Sankofa, Repères, 2026",
     "third_party_documents": "Les documents liés conservent leurs droits propres. Aucun droit de redistribution de leur texte intégral n’est revendiqué."
   },
   "sources": [
@@ -17,9 +17,9 @@
       "url": "https://www.un.org/unispal/about-the-nakba/",
       "type": "Présentation institutionnelle",
       "scope": "Définition et contexte historique de la Nakba.",
-      "locator": "Premier paragraphe (définition) ; rubrique Nakba Commemorations (table ronde du 17 mai 2024)",
-      "access": "Page consultée le 30 septembre 2026 dans un navigateur. Passage relu : « The Nakba, which means “catastrophe” in Arabic, refers to the mass displacement and dispossession of Palestinians during the 1948 Arab-Israeli war. »",
-      "limit": "À compléter par une bibliographie historique contradictoire et une relecture spécialisée.",
+      "locator": "Premier paragraphe (définition) ; rubrique Nakba Commemorations (table ronde du 17 mai 2024)",
+      "access": "Page consultée le 30 septembre 2026 dans un navigateur. Passage relu : « The Nakba, which means “catastrophe” in Arabic, refers to the mass displacement and dispossession of Palestinians during the 1948 Arab-Israeli war. »",
+      "limit": "La présentation d’une institution n’épuise pas les débats historiques.",
       "verified_on": "2026-09-30"
     },
     {
@@ -30,19 +30,19 @@
       "type": "Synthèse institutionnelle",
       "scope": "Repères historiques et retrait israélien de Gaza en 2005.",
       "locator": "Passages sur 1967 et 2005",
-      "access": "Page consultée le 29 septembre 2026 dans un navigateur. Passage relu : « In 2005, Israel withdrew its settlers and troops from Gaza while retaining control over its borders, seashore and airspace. »",
+      "access": "Page consultée le 29 septembre 2026 dans un navigateur. Passage relu : « In 2005, Israel withdrew its settlers and troops from Gaza while retaining control over its borders, seashore and airspace. »",
       "limit": "Le résumé d’une institution n’épuise pas les débats historiques.",
       "verified_on": "2026-09-29"
     },
     {
       "id": "france",
       "publisher": "Ministère de l’Europe et des Affaires étrangères",
-      "title": "Israël : politique et économie",
+      "title": "Israël : politique et économie",
       "url": "https://www.diplomatie.gouv.fr/fr/information-par-pays/israel-territoires-palestiniens/israel-politique-et-economie",
       "type": "Position institutionnelle française",
       "scope": "Relations diplomatiques en 1949 et position française en 1967.",
       "locator": "Rubrique Relations politiques, deux premiers paragraphes",
-      "access": "Page datée du 29 avril 2026, consultée le 30 septembre 2026. Passages relus : relations diplomatiques établies « le 11 mai 1949 » ; embargo décidé « avant le déclenchement des hostilités » en 1967.",
+      "access": "Page datée du 29 avril 2026, consultée le 30 septembre 2026. Passages relus : relations diplomatiques établies « le 11 mai 1949 » ; embargo décidé « avant le déclenchement des hostilités » en 1967.",
       "limit": "Cette source expose le récit officiel français actuel. Sur la date de l’embargo de 1967, elle contredit la déclaration faite par le ministre des Affaires étrangères devant l’Assemblée nationale le 16 juin 1967.",
       "verified_on": "2026-09-30"
     },
@@ -65,7 +65,7 @@
       "url": "https://archives.assemblee-nationale.fr/3/cri/1966-1967-ordinaire2/051.pdf",
       "type": "Compte rendu intégral de séance",
       "scope": "Déclaration de Maurice Couve de Murville, ministre des Affaires étrangères, sur la guerre de juin 1967 et l’embargo sur les armes.",
-      "locator": "Page 1923 : « notre décision, prise après l’éclatement des hostilités, de mettre l’embargo sur les livraisons d’armes à toutes les parties belligérantes »",
+      "locator": "Page 1923 : « notre décision, prise après l’éclatement des hostilités, de mettre l’embargo sur les livraisons d’armes à toutes les parties belligérantes »",
       "access": "PDF du Journal officiel consulté le 30 septembre 2026 sur le site des archives de l’Assemblée nationale. Passage relu à cette date.",
       "limit": "C’est la présentation de la décision par le ministre, pas le texte de la décision. Le débat du 15 juin montre que la date et la portée de l’embargo étaient contestées par des députés.",
       "verified_on": "2026-09-30"
@@ -89,8 +89,8 @@
       "url": "https://docs.un.org/fr/S/PV.7853",
       "type": "Procès-verbal de séance, 23 décembre 2016",
       "scope": "Vote sur la résolution 2334 et explications de vote, dont celle de la France.",
-      "locator": "Résultat du vote, page 4 ; déclaration de M. Delattre (France)",
-      "access": "PDF officiel consulté le 28 septembre 2026. Le résultat du vote a été vérifié à cette date : 14 voix pour, aucune contre, une abstention (États-Unis).",
+      "locator": "Résultat du vote, page 4 ; déclaration de M. Delattre (France)",
+      "access": "PDF officiel consulté le 28 septembre 2026. Le résultat du vote a été vérifié à cette date : 14 voix pour, aucune contre, une abstention (États-Unis).",
       "limit": "Distinguer le texte de la résolution des déclarations de chaque représentant. Le procès-verbal publié en ligne porte la mention « Provisoire ».",
       "verified_on": "2026-09-28"
     },
@@ -112,9 +112,9 @@
       "url": "https://docs.un.org/fr/A/HRC/56/26",
       "type": "Rapport de commission d’enquête",
       "scope": "Violations et crimes que toutes les parties pourraient avoir commis entre le 7 octobre et le 31 décembre 2023.",
-      "locator": "Conclusions : § 90 et 91 (attaque du 7 octobre), § 97 et suivants (opérations militaires israéliennes à Gaza)",
+      "locator": "Conclusions : § 90 et 91 (attaque du 7 octobre), § 97 et suivants (opérations militaires israéliennes à Gaza)",
       "access": "Version française consultée le 29 septembre 2026 sur documents.un.org. Les paragraphes cités ont été relus à cette date.",
-      "limit": "Une commission d’enquête formule des conclusions ; elle ne juge pas. Le rapport couvre les trois premiers mois de la guerre.",
+      "limit": "Une commission d’enquête formule des conclusions ; elle ne juge pas. Le rapport couvre les trois premiers mois de la guerre.",
       "verified_on": "2026-09-29"
     },
     {
@@ -159,7 +159,7 @@
       "url": "https://www.diplomatie.gouv.fr/fr/presse-et-ressources/decouvrir-et-informer/actualites/palestine-activites-des-entreprises-francaises-dans-les-colonies",
       "type": "Avis aux entreprises",
       "scope": "Mise en garde adressée aux entreprises sur les activités économiques dans les colonies israéliennes, qui cite la résolution 2334 et l’avis consultatif de la Cour internationale de Justice.",
-      "locator": "Les colonies sont illégales « conformément à la résolution 2334 (2016) du Conseil de sécurité des Nations unies et aux conclusions de l’avis consultatif de la Cour internationale de Justice du 19 juillet 2024 » ; les entreprises « s’exposent au risque d’être reconnues coupables de violations du droit international ».",
+      "locator": "Les colonies sont illégales « conformément à la résolution 2334 (2016) du Conseil de sécurité des Nations unies et aux conclusions de l’avis consultatif de la Cour internationale de Justice du 19 juillet 2024 » ; les entreprises « s’exposent au risque d’être reconnues coupables de violations du droit international ».",
       "access": "Page publiée le 30 juin 2026, mise à jour le 1er juillet 2026, consultée le 2 octobre 2026 sur diplomatie.gouv.fr. Passages relus à cette date.",
       "limit": "Le texte décrit des risques pour les entreprises. Il ne dit pas quelles mesures ont été prises à leur encontre.",
       "verified_on": "2026-10-02"
@@ -167,12 +167,12 @@
     {
       "id": "ocha",
       "publisher": "OCHA · Territoire palestinien occupé",
-      "title": "Data on casualties : definitions and clarifications",
+      "title": "Data on casualties",
       "url": "https://www.ochaopt.org/data/casualties",
       "type": "Méthodologie de données humanitaires",
       "scope": "Périmètre des victimes recensées et conditions de vérification.",
       "locator": "Introduction et Definitions and clarifications",
-      "access": "Page consultée le 30 septembre et le 1er octobre 2026 dans un navigateur. Passages relus : les victimes des hostilités commencées le 7 octobre 2023 ne sont ajoutées qu’« once these incidents have been independently verified » ; un incident doit être confirmé par « at least two independent and reliable sources », sauf les incidents qui font des blessés israéliens, pour lesquels l’information est « typically based on media reports » ; seules sont comptées les victimes « of confrontations between Palestinians and Israelis in the context of the occupation and conflict ».",
+      "access": "Page consultée le 30 septembre et le 1er octobre 2026 dans un navigateur. Passages relus : les victimes des hostilités commencées le 7 octobre 2023 ne sont ajoutées qu’« once these incidents have been independently verified » ; un incident doit être confirmé par « at least two independent and reliable sources », sauf les incidents qui font des blessés israéliens, pour lesquels l’information est « typically based on media reports » ; seules sont comptées les victimes « of confrontations between Palestinians and Israelis in the context of the occupation and conflict ».",
       "limit": "Les séries et les points de situation peuvent avoir des périmètres ou des statuts de vérification différents.",
       "verified_on": "2026-10-01"
     },
@@ -185,7 +185,7 @@
       "scope": "Accès aux votes, débats et questions parlementaires.",
       "locator": "Travaux parlementaires et Questions",
       "access": "Catalogue consulté le 25 septembre 2026.",
-      "limit": "La licence du portail concerne ses données ; elle ne s’étend pas automatiquement à tous les documents tiers cités."
+      "limit": "La licence du portail concerne ses données ; elle ne s’étend pas automatiquement à tous les documents tiers cités."
     },
     {
       "id": "standing",
@@ -219,17 +219,6 @@
       "locator": "Présentation de l’échantillon",
       "access": "Notice d’enquête consultée pendant le repérage.",
       "limit": "Les conditions de collecte et la couverture territoriale doivent accompagner les résultats."
-    },
-    {
-      "id": "dig",
-      "publisher": "Digital Inquiry Group",
-      "title": "Recherche et éducation à l’information",
-      "url": "https://www.inquirygroup.org/",
-      "type": "Organisation de recherche et d’éducation",
-      "scope": "Lecture latérale et évaluation des sources.",
-      "locator": "Civic Online Reasoning",
-      "access": "Présentation consultée pendant le repérage.",
-      "limit": "Les exercices du prototype sont originaux ; ils ne constituent pas une évaluation validée par cet organisme."
     },
     {
       "id": "2334-texte",
@@ -274,7 +263,7 @@
       "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:62018CJ0363",
       "type": "Arrêt sur renvoi préjudiciel",
       "scope": "Indication de l’origine des denrées issues des territoires occupés par Israël. Question posée par le Conseil d’État français.",
-      "locator": "Dispositif ; exposé du litige, qui cite l’avis français du 24 novembre 2016",
+      "locator": "Dispositif ; exposé du litige, qui cite l’avis français du 24 novembre 2016",
       "access": "Texte intégral en français consulté le 30 septembre 2026 sur EUR-Lex. Dispositif relu à cette date.",
       "limit": "L’arrêt interprète le droit européen de l’étiquetage. Il ne cite pas la résolution 2334 et ne dit pas comment l’étiquetage est contrôlé en France.",
       "verified_on": "2026-09-30"
@@ -286,7 +275,7 @@
       "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000033464109",
       "type": "Avis publié au Journal officiel (JORF n° 273 du 24 novembre 2016, texte n° 81)",
       "scope": "Obligation d’indiquer « colonie israélienne » sur les denrées issues des colonies de Cisjordanie et du plateau du Golan.",
-      "locator": "Dernier paragraphe : exemples « produit originaire de Cisjordanie (colonie israélienne) »",
+      "locator": "Dernier paragraphe : exemples « produit originaire de Cisjordanie (colonie israélienne) »",
       "access": "Texte consulté le 30 septembre 2026 sur Légifrance.",
       "limit": "L’avis applique une communication de la Commission européenne du 12 novembre 2015. Il est antérieur à la résolution 2334 et ne s’y réfère pas.",
       "verified_on": "2026-09-30"
@@ -313,12 +302,12 @@
         "history"
       ],
       "places": [],
-      "place_note": "Les contours de la carte sont actuels : ils ne permettent pas de situer les lieux de 1948.",
+      "place_note": "Les contours de la carte sont actuels : ils ne permettent pas de situer les lieux de 1948.",
       "kind": "Repère historique",
       "title": "Le déplacement et la dépossession des Palestiniens",
       "text": "Le mot Nakba, « catastrophe » en arabe, désigne le déplacement massif et la dépossession des Palestiniens pendant la guerre israélo-arabe de 1948.",
       "context": "C’est de là que part la question des réfugiés palestiniens. Les causes de la guerre de 1948 et ce qu’ont vécu les autres populations concernées n’ont pas encore de repère.",
-      "question": "Que s’est-il passé dans les lieux dont les familles ont été déplacées ?",
+      "question": "Que s’est-il passé dans les lieux dont les familles ont été déplacées ?",
       "sources": [
         "nakba"
       ],
@@ -394,9 +383,9 @@
       ],
       "kind": "Repère historique",
       "title": "Israël retire ses colons et ses troupes de Gaza",
-      "text": "En 2005, Israël retire de Gaza ses colons et ses troupes. Selon la Cour internationale de Justice, il conserve pourtant des prérogatives essentielles sur le territoire : le contrôle des frontières terrestres, maritimes et aériennes, des restrictions à la circulation des personnes et des marchandises, la perception des taxes à l’importation et à l’exportation, et le contrôle militaire de la zone tampon.",
-      "context": "La Cour en tire une conséquence juridique dans son avis du 19 juillet 2024 : le retrait n’a pas totalement libéré Israël des obligations du droit de l’occupation, qui restent proportionnées à son contrôle effectif sur Gaza (§ 93 et 94). Elle ajoute que c’est « encore plus vrai depuis le 7 octobre 2023 ».",
-      "question": "Quelles obligations précises découlent, pour Israël, de ce contrôle partiel ?",
+      "text": "En 2005, Israël retire de Gaza ses colons et ses troupes. Selon la Cour internationale de Justice, il conserve pourtant des prérogatives essentielles sur le territoire : le contrôle des frontières terrestres, maritimes et aériennes, des restrictions à la circulation des personnes et des marchandises, la perception des taxes à l’importation et à l’exportation, et le contrôle militaire de la zone tampon.",
+      "context": "La Cour en tire une conséquence juridique dans son avis du 19 juillet 2024 : le retrait n’a pas totalement libéré Israël des obligations du droit de l’occupation, qui restent proportionnées à son contrôle effectif sur Gaza (§ 93 et 94). Elle ajoute que c’est « encore plus vrai depuis le 7 octobre 2023 ».",
+      "question": "Quelles obligations précises découlent, pour Israël, de ce contrôle partiel ?",
       "sources": [
         "icj-avis",
         "histoire"
@@ -419,8 +408,8 @@
       "kind": "Décision documentée · 23 décembre",
       "title": "La France soutient une résolution sur les colonies",
       "text": "Le Conseil de sécurité adopte la résolution 2334. Elle réaffirme l’absence de validité juridique des colonies dans le territoire palestinien occupé depuis 1967, y compris Jérusalem-Est. La France vote pour.",
-      "context": "Ce que la France a fait ensuite se lit dans d’autres documents : le paragraphe 5, présenté plus bas, est celui qui la concerne le plus directement.",
-      "question": "Comment ce vote se traduit-il dans les décisions françaises ?",
+      "context": "Ce que la France a fait ensuite se lit dans d’autres documents : le paragraphe 5, présenté plus bas, s’adresse à tous les États, dont la France.",
+      "question": "Ce vote s’est-il traduit dans des décisions françaises ?",
       "sources": [
         "2334-texte",
         "2334"
@@ -450,7 +439,7 @@
       "title": "Les attaques du 7 octobre et la guerre à Gaza",
       "text": "Le 7 octobre 2023, le Hamas et d’autres groupes armés palestiniens attaquent le sud d’Israël. Des civils sont tués, des personnes sont enlevées et emmenées comme otages à Gaza. Israël mène ensuite des opérations militaires dans la bande de Gaza.",
       "context": "La Commission internationale indépendante d’enquête créée par le Conseil des droits de l’homme a examiné les trois premiers mois de la guerre. Dans son rapport du 14 juin 2024, elle conclut, « sur la base de motifs raisonnables », que des membres des ailes militaires du Hamas et d’autres groupes armés palestiniens ont commis des crimes de guerre lors de l’attaque du 7 octobre (§ 90). Pour les opérations militaires israéliennes à Gaza, elle conclut qu’Israël a commis des crimes de guerre et des crimes contre l’humanité (§ 97).",
-      "question": "Quelles procédures judiciaires ont été engagées depuis sur ces faits, et où en sont-elles ?",
+      "question": "Quelles procédures judiciaires ont été engagées depuis sur ces faits, et où en sont-elles ?",
       "sources": [
         "coi-rapport",
         "coi"
@@ -478,7 +467,7 @@
       "title": "La CIJ examine les conséquences de l’occupation",
       "text": "Par onze voix contre quatre, la Cour internationale de Justice est d’avis que la présence continue d’Israël dans le Territoire palestinien occupé est illicite et qu’Israël doit y mettre fin « dans les plus brefs délais ».",
       "context": "Pour les autres États, dont la France, la Cour est d’avis, par douze voix contre trois, qu’ils sont dans l’obligation de ne pas reconnaître comme licite la situation découlant de cette présence et de ne pas prêter aide ou assistance à son maintien (§ 285, point 7). L’Assemblée générale a demandé cet avis. Il est distinct de l’affaire contentieuse Afrique du Sud contre Israël, portée devant la même Cour. Le 18 septembre 2024, la France vote pour la résolution ES-10/24 de l’Assemblée générale, qui fait suite à l’avis. Son représentant déclare que « la France ne reconnaîtra pas l’annexion illégale de ces territoires », et précise qu’elle aurait préféré un texte reprenant exactement l’avis de la Cour. Le 30 juin 2026, le ministère des Affaires étrangères publie une mise en garde aux entreprises, qui s’appuie sur la résolution 2334 et sur l’avis de la Cour. Celles qui prennent part à l’activité des colonies israéliennes « s’exposent au risque d’être reconnues coupables de violations du droit international ».",
-      "question": "Quelle mesure contraignante la France a-t-elle adoptée à la suite de l’avis ?",
+      "question": "La France a-t-elle adopté une mesure contraignante à la suite de l’avis ?",
       "sources": [
         "icj-avis",
         "pv-es10-55",
@@ -616,11 +605,11 @@
   "actors": {
     "france": {
       "label": "En France",
-      "title": "Gouvernement et Parlement : deux types de documents",
+      "title": "Gouvernement et Parlement : deux types de documents",
       "cards": [
         {
           "name": "Le gouvernement",
-          "text": "France Diplomatie donne accès à la position officielle et au récit français des relations bilatérales. Ces pages disent ce que le gouvernement affirme ; elles ne listent pas les décisions qui ont suivi.",
+          "text": "France Diplomatie donne accès à la position officielle et au récit français des relations bilatérales. Ces pages disent ce que le gouvernement affirme ; elles ne listent pas les décisions qui ont suivi.",
           "sources": [
             "france"
           ]
@@ -647,7 +636,7 @@
         },
         {
           "name": "Les enquêtes de l’Israel Democracy Institute",
-          "text": "L’Israel Democracy Institute publie des enquêtes d’opinion sur la société israélienne. Aucun résultat n’est repris ici pour l’instant.",
+          "text": "L’Israel Democracy Institute publie des enquêtes d’opinion sur la société israélienne. Aucun résultat n’est repris ici.",
           "sources": [
             "idi"
           ]
@@ -660,7 +649,7 @@
       "cards": [
         {
           "name": "Les enquêtes du PCPSR",
-          "text": "Le PCPSR publie des enquêtes menées à Gaza et en Cisjordanie. Aucun résultat n’est repris ici pour l’instant.",
+          "text": "Le PCPSR publie des enquêtes menées à Gaza et en Cisjordanie. Aucun résultat n’est repris ici.",
           "sources": [
             "pcpsr"
           ]
@@ -702,7 +691,7 @@
       "id": "nakba",
       "title": "Nakba",
       "subtitle": "L’événement de 1948 et l’usage élargi du mot",
-      "text": "Ce mot arabe signifie « catastrophe ». Il désigne le déplacement massif et la dépossession des Palestiniens pendant la guerre de 1948. Le mot sert aussi à décrire un processus qui se poursuivrait depuis : le Comité de l’ONU pour les droits des Palestiniens a ainsi intitulé une table ronde du 17 mai 2024 « 1948-2024: The Ongoing Palestinian Nakba ». Cette fiche s’en tient à l’événement de 1948.",
+      "text": "Ce mot arabe signifie « catastrophe ». Il désigne le déplacement massif et la dépossession des Palestiniens pendant la guerre de 1948. Le mot sert aussi à décrire un processus qui se poursuivrait depuis : le Comité de l’ONU pour les droits des Palestiniens a ainsi intitulé une table ronde du 17 mai 2024 « 1948-2024: The Ongoing Palestinian Nakba ». Cette fiche s’en tient à l’événement de 1948.",
       "sources": [
         "nakba"
       ]
@@ -711,7 +700,7 @@
       "id": "colonie",
       "title": "Colonie",
       "subtitle": "Le sens juridique, dans la résolution 2334",
-      "text": "Dans les textes présentés ici, il s’agit des implantations israéliennes dans le territoire palestinien occupé depuis 1967. La résolution 2334 affirme que leur création « n’a aucun fondement en droit » (paragraphe 1). Le terme ne désigne pas tous les habitants d’Israël.",
+      "text": "Dans les textes présentés ici, il s’agit des implantations israéliennes dans le territoire palestinien occupé depuis 1967. La résolution 2334 affirme que leur création « n’a aucun fondement en droit » (paragraphe 1).",
       "sources": [
         "2334-texte"
       ]
@@ -719,8 +708,8 @@
     {
       "id": "avis",
       "title": "Avis consultatif",
-      "subtitle": "Type de décision de la CIJ",
-      "text": "Un avis consultatif répond à une question posée par un organe de l’ONU, ici l’Assemblée générale. La Cour y expose le droit applicable ; elle ne condamne personne. L’avis de juillet 2024 est celui de la Cour internationale de Justice, pas de « l’ONU » en général.",
+      "subtitle": "Un type d’acte de la CIJ",
+      "text": "Un avis consultatif répond à une question posée par un organe de l’ONU, ici l’Assemblée générale. La Cour y expose le droit applicable ; elle ne condamne personne.",
       "sources": [
         "icj-avis"
       ]
@@ -729,7 +718,7 @@
       "id": "source",
       "title": "Source primaire",
       "subtitle": "Notion de méthode",
-      "text": "Pour un vote, le compte rendu officiel est une source primaire. Pour la position d’un mouvement, sa propre déclaration en est une. Cela ne rend pas toutes les affirmations de son auteur exactes : la source établit d’abord ce qu’il a dit ou fait.",
+      "text": "Pour un vote, le compte rendu officiel est une source primaire. Pour la position d’un mouvement, sa propre déclaration en est une. Cela ne rend pas toutes les affirmations de son auteur exactes : la source établit d’abord ce qu’il a dit ou fait.",
       "sources": [
         "an",
         "standing"
@@ -767,7 +756,7 @@
         ]
       },
       "voteNote": "Chaque membre vote en son nom. Le compte rendu distingue ce vote des explications données ensuite par chaque représentant.",
-      "note": "Extraits du dispositif. Paragraphes 3, 4, 6 à 11 et 13 non reproduits. Transcription collationnée le 28 septembre 2026 avec le texte officiel en français.",
+      "note": "Extraits du dispositif. Paragraphes 3, 4, 6 à 11 et 13 non reproduits. Transcription relue le 28 septembre 2026 sur le texte officiel en français.",
       "defaultParagraph": "5",
       "paragraphs": [
         {
@@ -779,40 +768,36 @@
             {
               "source": "icj",
               "note": "En 2024, la Cour examine aussi la politique de colonisation et en expose les conséquences juridiques."
-            },
-            {
-              "source": "france",
-              "note": "La position officielle française, à rapprocher de ce constat."
             }
           ],
-          "question": "Les textes ultérieurs reprennent-ils la même qualification ?"
+          "question": "Les textes ultérieurs reprennent-ils la même qualification ?"
         },
         {
           "n": "2",
           "text": "Exige de nouveau d’Israël qu’il arrête immédiatement et complètement toutes ses activités de peuplement dans le Territoire palestinien occupé, y compris Jérusalem-Est, et respecte pleinement toutes les obligations juridiques qui lui incombent à cet égard;",
           "addressee": "Israël",
-          "gloss": "Une exigence adressée à un seul État : arrêter toute activité de peuplement.",
+          "gloss": "Une exigence adressée à un seul État : arrêter toute activité de peuplement.",
           "followups": [
             {
               "source": "sg2334",
-              "note": "Selon le rapport du 19 juin 2024 (§ 2), aucune mesure n’a été prise dans ce sens pendant la période couverte : les activités de peuplement se sont poursuivies."
+              "note": "Selon le rapport du 19 juin 2024 (§ 2), aucune mesure n’a été prise dans ce sens pendant la période couverte : les activités de peuplement se sont poursuivies."
             }
           ],
-          "question": "Que rapportent les comptes rendus du Conseil sur ce point depuis 2017 ?"
+          "question": "Que rapportent les comptes rendus du Conseil sur ce point depuis 2017 ?"
         },
         {
           "n": "5",
           "text": "Demande à tous les États, compte tenu du paragraphe 1 de la présente résolution, de faire une distinction, dans leurs échanges en la matière, entre le territoire de l’État d’Israël et les territoires occupés depuis 1967;",
           "addressee": "Tous les États, dont la France",
-          "gloss": "C’est le paragraphe qui concerne le plus directement la France : distinguer, dans ses échanges, le territoire d’Israël et les territoires occupés depuis 1967.",
+          "gloss": "Une demande adressée à tous les États : distinguer, dans leurs échanges, le territoire de l’État d’Israël et les territoires occupés depuis 1967.",
           "followups": [
             {
               "source": "avis-dgccrf-2016",
-              "note": "Le 24 novembre 2016, un mois avant le vote, la DGCCRF publie au Journal officiel un avis : les denrées issues des colonies israéliennes doivent porter la mention « colonie israélienne ». C’est la mesure française la plus directement liée à cette distinction, mais elle précède la résolution."
+              "note": "Le 24 novembre 2016, un mois avant le vote, la DGCCRF publie au Journal officiel un avis : les denrées issues des colonies israéliennes doivent porter la mention « colonie israélienne »."
             },
             {
               "source": "cjue-psagot",
-              "note": "Saisie par le Conseil d’État, la Cour de justice de l’Union européenne juge le 12 novembre 2019 que ces denrées doivent mentionner le territoire occupé et, le cas échéant, leur provenance d’une colonie. L’arrêt repose sur le droit européen ; il ne cite pas la résolution 2334."
+              "note": "Saisie par le Conseil d’État, la Cour de justice de l’Union européenne juge le 12 novembre 2019 que ces denrées doivent mentionner le territoire occupé et, le cas échéant, leur provenance d’une colonie. L’arrêt repose sur le droit européen ; il ne cite pas la résolution 2334."
             },
             {
               "source": "ce-2019",
@@ -827,13 +812,13 @@
               "note": "Les questions écrites des députés permettent de suivre les demandes d’explication sur l’étiquetage et les échanges."
             }
           ],
-          "question": "Comment le respect de cet étiquetage est-il contrôlé en France, et avec quels résultats ?"
+          "question": "Quelles mesures françaises appliquent cette distinction, et sont-elles contrôlées ?"
         },
         {
           "n": "12",
           "text": "Prie le Secrétaire général de lui faire rapport tous les trois mois sur la mise en œuvre des dispositions de la présente résolution;",
           "addressee": "Le Secrétaire général",
-          "gloss": "Le Conseil organise le suivi de sa propre décision : un rapport tous les trois mois.",
+          "gloss": "Le Conseil organise le suivi de sa propre décision : un rapport tous les trois mois.",
           "followups": [
             {
               "source": "sg2334",
@@ -844,7 +829,7 @@
               "note": "L’exposé du 24 mars 2026 présente le trente-septième rapport. C’est le plus récent que nous ayons repéré au 28 septembre 2026."
             }
           ],
-          "question": "Que disent les derniers rapports, et comment la France y a-t-elle répondu en séance ?"
+          "question": "Que disent les derniers rapports, et comment la France y a-t-elle répondu en séance ?"
         }
       ],
       "collation": {
@@ -857,8 +842,7 @@
           "12"
         ],
         "corrections": [
-          "Paragraphe 12 : une version antérieure du site donnait « de lui présenter tous les trois mois un rapport sur l’application des dispositions ». Le texte officiel dit « de lui faire rapport tous les trois mois sur la mise en œuvre des dispositions ».",
-          "Ponctuation : une espace en trop avant le point-virgule final a été retirée."
+          "Paragraphe 12 : une version antérieure du site donnait « de lui présenter tous les trois mois un rapport sur l’application des dispositions ». Le texte officiel dit « de lui faire rapport tous les trois mois sur la mise en œuvre des dispositions »."
         ]
       }
     }
