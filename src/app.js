@@ -5,7 +5,7 @@ const data = JSON.parse(document.getElementById('corpus').textContent);
 
 const MOBILE = window.matchMedia('(max-width: 719.98px)');
 const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)');
-const ROUTES = ['parcours', 'voix', 'verifier', 'mots', 'methode'];
+const ROUTES = ['parcours', 'decisions', 'voix', 'verifier', 'mots', 'methode'];
 const RAIL_START = 1945;
 const RAIL_END = 2026;
 const RAIL_TICKS = [1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020];
@@ -23,13 +23,15 @@ const actorKeys = Object.keys(data.actors);
 
 const PAGE_TITLES = {
   accueil: 'Repères · Gaza et la France',
+  decisions: 'Décisions françaises · Repères',
   voix: 'Acteurs et enquêtes · Repères',
   verifier: 'Bilans de victimes · Repères',
   mots: 'Lexique · Repères',
   methode: 'Méthode · Repères',
 };
 const SECTION_PAGER = {
-  voix: ['#/parcours', 'SECTION PRÉCÉDENTE', 'Les repères', '#/verifier', 'SECTION SUIVANTE', 'Bilans de victimes'],
+  decisions: ['#/parcours', 'SECTION PRÉCÉDENTE', 'Les repères', '#/voix', 'SECTION SUIVANTE', 'Acteurs et enquêtes'],
+  voix: ['#/decisions', 'SECTION PRÉCÉDENTE', 'Décisions françaises', '#/verifier', 'SECTION SUIVANTE', 'Bilans de victimes'],
   verifier: ['#/voix', 'SECTION PRÉCÉDENTE', 'Acteurs et enquêtes', '#/mots', 'SECTION SUIVANTE', 'Lexique'],
   mots: ['#/verifier', 'SECTION PRÉCÉDENTE', 'Bilans de victimes', '#/methode', 'SECTION SUIVANTE', 'Méthode'],
   methode: ['#/mots', 'SECTION PRÉCÉDENTE', 'Lexique', '#/', 'RETOUR', 'Les questions de départ'],
@@ -306,6 +308,39 @@ function renderParcours() {
   ${doc ? documentSection(ev, doc) : ''}`;
 }
 
+function renderDecisions() {
+  const list = data.decisions || [];
+  return `<section class="wrap section" aria-labelledby="decisions-title">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">02 · DÉCISIONS FRANÇAISES</p>
+        <h1 id="decisions-title" class="display display--h1" tabindex="-1">Les actes de la France cités dans les repères</h1>
+      </div>
+      <p class="section-head__aside section-head__aside--wide">Pour chaque acte, son auteur, sa nature, les documents qui l’établissent et ce qu’ils ne disent pas.</p>
+    </div>
+    <ol class="decisions">
+      ${list.map(x => {
+        const ev = eventById.get(x.event);
+        return `<li class="decision">
+          <p class="decision__date">${esc(x.date)}</p>
+          <div class="decision__body">
+            <h2 id="decision-${esc(x.id)}">${esc(x.title)}</h2>
+            <dl class="decision__facts">
+              <div><dt>Auteur</dt><dd>${esc(x.author)}</dd></div>
+              <div><dt>Nature</dt><dd>${esc(x.nature)}</dd></div>
+            </dl>
+            <p>${esc(x.text)}</p>
+            <p class="decision__limit"><span class="eyebrow eyebrow--muted">LIMITE</span>${esc(x.limit)}</p>
+            ${sourceButtons(x.sources, `dec-${x.id}`, true)}
+            <a class="pill" href="${evHref(ev)}">Repère ${esc(ev.year)} · ${esc(ev.short)} →</a>
+          </div>
+        </li>`;
+      }).join('')}
+    </ol>
+    <p class="note-box">Cette liste ne recense que les actes cités dans les repères. Ce n’est pas un inventaire de la politique française.</p>
+  </section>`;
+}
+
 function renderVoix() {
   const key = actorKeys.includes(state.param) ? state.param : actorKeys[0];
   const actor = data.actors[key];
@@ -313,7 +348,7 @@ function renderVoix() {
   return `<section class="wrap section" aria-labelledby="voix-title">
     <div class="section-head">
       <div>
-        <p class="eyebrow">02 · ACTEURS ET ENQUÊTES</p>
+        <p class="eyebrow">03 · ACTEURS ET ENQUÊTES</p>
         <h1 id="voix-title" class="display display--h1" tabindex="-1">Acteurs et enquêtes cités dans les repères</h1>
       </div>
       <p class="section-head__aside section-head__aside--wide">Pour chaque pays, des acteurs et des enquêtes, avec leurs sources.</p>
@@ -343,7 +378,7 @@ function renderVoix() {
 
 function renderMots() {
   return `<section class="wrap section" aria-labelledby="mots-title">
-    <p class="eyebrow">04 · LEXIQUE</p>
+    <p class="eyebrow">05 · LEXIQUE</p>
     <h1 id="mots-title" class="display display--h1" tabindex="-1">Les termes utilisés dans les repères</h1>
     <div class="lexique">
       ${data.terms.map(t => {
@@ -367,7 +402,7 @@ function renderPager(ctx) {
     const next = ctx.list[ctx.idx + 1];
     p = [
       prev ? evHref(prev) : '#/', prev ? 'REPÈRE PRÉCÉDENT' : 'RETOUR', prev ? `${prev.year} · ${prev.short}` : 'Les questions',
-      next ? evHref(next) : '#/voix', next ? 'REPÈRE SUIVANT' : 'DERNIER REPÈRE · CONTINUER', next ? `${next.year} · ${next.short}` : 'Acteurs et enquêtes',
+      next ? evHref(next) : '#/decisions', next ? 'REPÈRE SUIVANT' : 'DERNIER REPÈRE · CONTINUER', next ? `${next.year} · ${next.short}` : 'Décisions françaises',
     ];
   } else {
     p = SECTION_PAGER[state.route];
@@ -387,7 +422,7 @@ function renderBottomBar(ctx) {
   el.bottomBar.innerHTML = `
     <a class="bottom-bar__prev" href="${prev ? evHref(prev) : '#/'}" aria-label="${prev ? `Repère précédent : ${esc(prev.year)}` : 'Retour aux questions'}">←</a>
     <div class="bottom-bar__mid"><span class="bottom-bar__year">${esc(ctx.ev.year)}</span><span class="bottom-bar__pos">Repère ${ctx.idx + 1} sur ${ctx.list.length}</span></div>
-    <a class="bottom-bar__next" href="${next ? evHref(next) : '#/voix'}" aria-label="${next ? `Repère suivant : ${esc(next.year)}` : 'Dernier repère, continuer vers Acteurs et enquêtes'}">→</a>`;
+    <a class="bottom-bar__next" href="${next ? evHref(next) : '#/decisions'}" aria-label="${next ? `Repère suivant : ${esc(next.year)}` : 'Dernier repère, continuer vers les décisions françaises'}">→</a>`;
 }
 
 function formatDate(iso) {
@@ -416,6 +451,7 @@ function render({ focusHeading = false } = {}) {
   const ctx = parcoursContext();
   const slot = $(`[data-slot="${route}"]`);
   if (route === 'parcours') slot.innerHTML = renderParcours();
+  if (route === 'decisions') slot.innerHTML = renderDecisions();
   if (route === 'voix') slot.innerHTML = renderVoix();
   if (route === 'mots') slot.innerHTML = renderMots();
   if (route === 'accueil') renderHome();

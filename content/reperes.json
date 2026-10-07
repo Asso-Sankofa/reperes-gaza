@@ -419,7 +419,7 @@
       "kind": "Décision documentée · 23 décembre",
       "title": "La France soutient une résolution sur les colonies",
       "text": "Le Conseil de sécurité adopte la résolution 2334. Elle réaffirme l’absence de validité juridique des colonies dans le territoire palestinien occupé depuis 1967, y compris Jérusalem-Est. La France vote pour.",
-      "context": "Le vote engage la France sur le texte adopté. Ce qu’elle a fait ensuite se lit dans d’autres documents : le paragraphe 5, présenté plus bas, est celui qui la concerne le plus directement.",
+      "context": "Ce que la France a fait ensuite se lit dans d’autres documents : le paragraphe 5, présenté plus bas, est celui qui la concerne le plus directement.",
       "question": "Comment ce vote se traduit-il dans les décisions françaises ?",
       "sources": [
         "2334-texte",
@@ -491,6 +491,125 @@
       "actors": [
         "france",
         "international"
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "id": "admission-israel-1949",
+      "when": "1949-05-11",
+      "date": "11 mai 1949",
+      "event": "france-1949",
+      "title": "Vote pour l’admission d’Israël à l’ONU",
+      "author": "La délégation française à l’Assemblée générale de l’ONU",
+      "nature": "Vote",
+      "text": "La France vote pour l’admission d’Israël parmi les membres de l’ONU. Avant le vote, son représentant déclare que « le Gouvernement français votera sans hésiter en faveur de l’admission d’Israël ». Le ministère des Affaires étrangères date de ce même jour l’établissement des relations diplomatiques.",
+      "limit": "Le vote porte sur l’admission d’Israël à l’ONU. Aucun acte français de reconnaissance n’a été trouvé en ligne.",
+      "sources": [
+        "pv-207",
+        "france"
+      ]
+    },
+    {
+      "id": "embargo-juin-1967",
+      "when": "1967-06",
+      "date": "Juin 1967",
+      "event": "guerre-1967",
+      "title": "Embargo sur les armes",
+      "author": "Le gouvernement",
+      "nature": "Décision gouvernementale, connue par des déclarations",
+      "text": "Le 16 juin 1967, devant l’Assemblée nationale, le ministre des Affaires étrangères Maurice Couve de Murville parle de « notre décision, prise après l’éclatement des hostilités, de mettre l’embargo sur les livraisons d’armes à toutes les parties belligérantes ».",
+      "limit": "Aucun acte publié fixant l’embargo n’a été trouvé. Sa date varie selon les documents. En 1968, le secrétaire d’État André Bettencourt la situe « à la même époque » que la déclaration du 2 juin. Le ministère des Affaires étrangères écrit aujourd’hui que l’embargo a été décidé « avant le déclenchement des hostilités ».",
+      "sources": [
+        "an-1967",
+        "an-1968",
+        "france"
+      ]
+    },
+    {
+      "id": "embargo-juillet-1967",
+      "when": "1967-07",
+      "date": "Juillet 1967",
+      "event": "guerre-1967",
+      "title": "Assouplissement de l’embargo",
+      "author": "Le gouvernement",
+      "nature": "Décision gouvernementale, connue par une déclaration ultérieure",
+      "text": "Selon André Bettencourt, secrétaire d’État aux Affaires étrangères, le gouvernement assouplit l’embargo en juillet 1967 mais le maintient « essentiellement pour 50 avions Mirage V commandés par Israël ».",
+      "limit": "Ce récit est fait devant l’Assemblée nationale le 17 mai 1968. Aucun acte publié n’a été trouvé.",
+      "sources": [
+        "an-1968"
+      ]
+    },
+    {
+      "id": "etiquetage-2016",
+      "when": "2016-11-24",
+      "date": "24 novembre 2016",
+      "event": "resolution-2016",
+      "title": "Avis sur l’étiquetage des produits des colonies",
+      "author": "Le ministère de l’Économie et des Finances (DGCCRF)",
+      "nature": "Avis aux opérateurs économiques, publié au Journal officiel",
+      "text": "La DGCCRF publie au Journal officiel un avis : les denrées issues des colonies israéliennes de Cisjordanie et du plateau du Golan doivent porter la mention « colonie israélienne ». L’avis donne l’exemple « produit originaire de Cisjordanie (colonie israélienne) ».",
+      "limit": "L’avis applique une communication de la Commission européenne du 12 novembre 2015. Il est antérieur à la résolution 2334 et ne s’y réfère pas.",
+      "sources": [
+        "avis-dgccrf-2016"
+      ]
+    },
+    {
+      "id": "resolution-2334-2016",
+      "when": "2016-12-23",
+      "date": "23 décembre 2016",
+      "event": "resolution-2016",
+      "title": "Vote pour la résolution 2334",
+      "author": "La délégation française au Conseil de sécurité de l’ONU",
+      "nature": "Vote",
+      "text": "La France vote pour la résolution 2334, adoptée par 14 voix et une abstention, celle des États-Unis. Le texte réaffirme que la création par Israël de colonies de peuplement dans le Territoire palestinien occupé depuis 1967, y compris Jérusalem-Est, « n’a aucun fondement en droit et constitue une violation flagrante du droit international » (paragraphe 1).",
+      "limit": "Une résolution formule des constats et des demandes. Elle ne dit pas si ces demandes ont été suivies.",
+      "sources": [
+        "2334",
+        "2334-texte"
+      ]
+    },
+    {
+      "id": "conseil-etat-2019",
+      "when": "2019-12-31",
+      "date": "31 décembre 2019",
+      "event": "resolution-2016",
+      "title": "Le Conseil d’État maintient l’avis de 2016",
+      "author": "Le Conseil d’État",
+      "nature": "Décision de justice administrative",
+      "text": "Le Conseil d’État rejette les recours contre l’avis du 24 novembre 2016. Il statue après l’arrêt de la Cour de justice de l’Union européenne du 12 novembre 2019, qu’il avait saisie : selon cet arrêt, ces denrées doivent mentionner le territoire occupé et, le cas échéant, leur provenance d’une colonie.",
+      "limit": "La décision tranche la légalité de l’avis. Elle ne dit rien de son application par les commerçants ni des contrôles effectués.",
+      "sources": [
+        "ce-2019",
+        "cjue-psagot"
+      ]
+    },
+    {
+      "id": "resolution-es10-24-2024",
+      "when": "2024-09-18",
+      "date": "18 septembre 2024",
+      "event": "avis-2024",
+      "title": "Vote pour la résolution ES-10/24",
+      "author": "La délégation française à l’Assemblée générale de l’ONU",
+      "nature": "Vote et explication de vote",
+      "text": "La France vote pour la résolution ES-10/24, qui fait suite à l’avis de la Cour internationale de Justice. Le texte est adopté par 124 voix contre 14, avec 43 abstentions. Le représentant de la France déclare que « la France ne reconnaîtra pas l’annexion illégale de ces territoires », et précise qu’elle aurait préféré un texte reprenant exactement l’avis de la Cour.",
+      "limit": "Un vote et une explication de vote ne disent pas quelles mesures ont été appliquées ensuite.",
+      "sources": [
+        "pv-es10-55"
+      ]
+    },
+    {
+      "id": "entreprises-2026",
+      "when": "2026-06-30",
+      "date": "30 juin 2026",
+      "event": "avis-2024",
+      "title": "Mise en garde aux entreprises",
+      "author": "Le ministère de l’Europe et des Affaires étrangères",
+      "nature": "Avis aux entreprises",
+      "text": "Le ministère publie une mise en garde sur les activités des entreprises françaises dans les colonies israéliennes. Il s’appuie sur la résolution 2334 et sur l’avis de la Cour. Les entreprises qui prennent part à l’activité des colonies « s’exposent au risque d’être reconnues coupables de violations du droit international ».",
+      "limit": "Le texte décrit des risques pour les entreprises. Il ne dit pas quelles mesures ont été prises à leur encontre.",
+      "sources": [
+        "meae-entreprises-2026"
       ]
     }
   ],

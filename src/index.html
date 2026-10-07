@@ -37,6 +37,7 @@
     </a>
     <nav class="main-nav" aria-label="Navigation principale">
       <a href="#/parcours" data-nav="parcours">Les repères</a>
+      <a href="#/decisions" data-nav="decisions">Décisions françaises</a>
       <a href="#/voix" data-nav="voix">Acteurs et enquêtes</a>
       <a href="#/verifier" data-nav="verifier">Bilans de victimes</a>
       <a href="#/mots" data-nav="mots">Lexique</a>
@@ -49,10 +50,11 @@
 
 <nav class="menu-mobile" id="menu-mobile" aria-label="Navigation principale (mobile)" hidden>
   <a href="#/parcours" data-nav="parcours"><span class="menu-mobile__label">Les repères</span><span class="menu-mobile__n">01</span></a>
-  <a href="#/voix" data-nav="voix"><span class="menu-mobile__label">Acteurs et enquêtes</span><span class="menu-mobile__n">02</span></a>
-  <a href="#/verifier" data-nav="verifier"><span class="menu-mobile__label">Bilans de victimes</span><span class="menu-mobile__n">03</span></a>
-  <a href="#/mots" data-nav="mots"><span class="menu-mobile__label">Lexique</span><span class="menu-mobile__n">04</span></a>
-  <a href="#/methode" data-nav="methode"><span class="menu-mobile__label">Méthode</span><span class="menu-mobile__n">05</span></a>
+  <a href="#/decisions" data-nav="decisions"><span class="menu-mobile__label">Décisions françaises</span><span class="menu-mobile__n">02</span></a>
+  <a href="#/voix" data-nav="voix"><span class="menu-mobile__label">Acteurs et enquêtes</span><span class="menu-mobile__n">03</span></a>
+  <a href="#/verifier" data-nav="verifier"><span class="menu-mobile__label">Bilans de victimes</span><span class="menu-mobile__n">04</span></a>
+  <a href="#/mots" data-nav="mots"><span class="menu-mobile__label">Lexique</span><span class="menu-mobile__n">05</span></a>
+  <a href="#/methode" data-nav="methode"><span class="menu-mobile__label">Méthode</span><span class="menu-mobile__n">06</span></a>
   <p class="menu-mobile__status">Un projet de l’association Sankofa</p>
 </nav>
 
@@ -133,16 +135,20 @@
       </div>
     </details>
     <div class="section-links">
-      <a href="#/voix"><span class="eyebrow">02</span><span class="section-links__title">Acteurs et enquêtes</span><span class="muted">Institutions, mouvement et instituts d’enquête cités, avec leurs sources.</span></a>
-      <a href="#/verifier"><span class="eyebrow">03</span><span class="section-links__title">Bilans de victimes</span><span class="muted">Comment OCHA compte les victimes, et pourquoi deux totaux diffèrent.</span></a>
-      <a href="#/mots"><span class="eyebrow">04</span><span class="section-links__title">Lexique</span><span class="muted">Les termes utilisés dans les repères, avec leur source.</span></a>
-      <a href="#/methode"><span class="eyebrow">05</span><span class="section-links__title">Méthode</span><span class="muted">Comment les textes sont préparés et ce qui reste à relire.</span></a>
+      <a href="#/decisions"><span class="eyebrow">02</span><span class="section-links__title">Décisions françaises</span><span class="muted">Les actes de la France cités dans les repères, avec leurs documents.</span></a>
+      <a href="#/voix"><span class="eyebrow">03</span><span class="section-links__title">Acteurs et enquêtes</span><span class="muted">Institutions, mouvement et instituts d’enquête cités, avec leurs sources.</span></a>
+      <a href="#/verifier"><span class="eyebrow">04</span><span class="section-links__title">Bilans de victimes</span><span class="muted">Comment OCHA compte les victimes, et pourquoi deux totaux diffèrent.</span></a>
+      <a href="#/mots"><span class="eyebrow">05</span><span class="section-links__title">Lexique</span><span class="muted">Les termes utilisés dans les repères, avec leur source.</span></a>
+      <a href="#/methode"><span class="eyebrow">06</span><span class="section-links__title">Méthode</span><span class="muted">Comment les textes sont préparés et ce qui reste à relire.</span></a>
     </div>
   </section>
 </div>
 
 <!-- Parcours : rendu par app.js -->
 <div data-route="parcours" data-slot="parcours" hidden></div>
+
+<!-- Décisions françaises : rendu par app.js -->
+<div data-route="decisions" data-slot="decisions" hidden></div>
 
 <!-- Acteurs et enquêtes : rendu par app.js -->
 <div data-route="voix" data-slot="voix" hidden></div>
@@ -153,7 +159,7 @@
     <div class="wrap section">
       <div class="section-head">
         <div>
-          <p class="eyebrow eyebrow--on-ink">03 · BILANS DE VICTIMES</p>
+          <p class="eyebrow eyebrow--on-ink">04 · BILANS DE VICTIMES</p>
           <h1 id="verifier-title" class="display display--h1" tabindex="-1">Pourquoi deux bilans ne donnent-ils pas le même total&nbsp;?</h1>
         </div>
         <span class="eyebrow eyebrow--plain">SOURCE · OCHA</span>
@@ -190,7 +196,7 @@
 <!-- Méthode -->
 <div data-route="methode" hidden>
   <section class="wrap section" aria-labelledby="methode-title">
-    <p class="eyebrow">05 · MÉTHODE</p>
+    <p class="eyebrow">06 · MÉTHODE</p>
     <h1 id="methode-title" class="display display--h1 methode__title" tabindex="-1">Comment ce site est préparé</h1>
     <div class="split">
       <div class="split__main measure">
