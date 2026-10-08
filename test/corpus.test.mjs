@@ -82,22 +82,22 @@ test('un lieu inconnu ou une zone de carte inconnue est détecté', async () => 
   assert.ok(errors.some(e => e.includes('zone de carte inconnue')));
 });
 
-test('une notice absente de la carte doit expliquer pourquoi', async () => {
+test('un lieu non dessiné sur la carte exige une note, un repère sans lieu n’en a pas besoin', async () => {
   const d = await load();
   const nakba = d.events.find(e => e.id === 'nakba-1948');
   delete nakba.place_note;
   const a2023 = d.events.find(e => e.id === 'attaques-2023');
   delete a2023.place_note;
   const { errors } = validateCorpus(d);
-  assert.ok(errors.some(e => e.includes('nakba-1948') && e.includes('place_note')));
+  assert.ok(!errors.some(e => e.includes('nakba-1948')));
   assert.ok(errors.some(e => e.includes('attaques-2023') && e.includes('place_note')), 'un lieu non dessiné suffit à exiger la note');
 });
 
-test('chaque notice reste accessible : située sur la carte ou signalée comme hors carte', async () => {
+test('chaque notice reste accessible : située sur la carte ou listée hors carte', async () => {
   const d = await load();
   const mapped = new Set(d.places.filter(p => p.map_zone).map(p => p.id));
   for (const e of d.events) {
-    assert.ok(e.places.some(p => mapped.has(p)) || e.place_note, e.id);
+    assert.ok(e.places.some(p => mapped.has(p)) || e.places.length === 0, e.id);
   }
 });
 
@@ -149,7 +149,7 @@ test('le build produit une page cohérente avec le corpus', async () => {
     assert.doesNotMatch(html, /aucune relecture indépendante|en attente de relecture/, 'la relecture éditoriale a eu lieu');
     assert.doesNotMatch(html, /unpkg\.com|jsdelivr|fonts\.googleapis|fonts\.gstatic/);
     assert.match(html, /<h1 id="home-title"[^>]*>Comprendre le rôle de la France <span class="accent-on-ink">dans la question de Gaza<\/span><\/h1>/);
-    assert.match(html, /Sept repères, de 1948 à 2024&nbsp;: des décisions françaises, et le contexte qui les éclaire\./);
+    assert.match(html, /Huit repères, de 1948 à 2025&nbsp;: des décisions françaises, et le contexte qui les éclaire\./);
     assert.match(html, /href="#\/parcours\/nakba-1948">Commencer en 1948/);
     assert.match(html, /class="map map--light map--region"/);
     assert.match(html, /<template id="map-mini"><svg class="map map--light"/);

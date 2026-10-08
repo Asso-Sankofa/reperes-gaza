@@ -327,6 +327,54 @@
       "access": "Page consultée le 7 octobre 2026 sur le site de l’Assemblée nationale. Réponse relue à cette date.",
       "limit": "La réponse expose la position du gouvernement. Elle ne dit pas comment l’étiquetage est contrôlé.",
       "verified_on": "2026-10-07"
+    },
+    {
+      "id": "elysee-2025-09-22",
+      "publisher": "Présidence de la République",
+      "title": "80e session de l’Assemblée générale des Nations Unies à New York : première journée (22 septembre 2025)",
+      "url": "https://www.elysee.fr/emmanuel-macron/2025/09/22/80e-session-de-lassemblee-generale-des-nations-unies-a-new-york-premiere-journee",
+      "type": "Discours",
+      "scope": "Discours du Président de la République à la tribune des Nations unies lors de la conférence pour la solution à deux États, dans lequel il déclare que la France reconnaît l’État de Palestine.",
+      "locator": "Texte du discours : « fidèle à l’engagement historique de mon pays au Proche-Orient, pour la paix entre le peuple israélien et le peuple palestinien, je déclare que la France reconnaît aujourd’hui l’État de Palestine ». Plus loin : « C’est dans ce cadre, aussi, que je pourrai décider d’établir une ambassade auprès de l’État de Palestine, dès lors que tous les otages détenus à Gaza auront été libérés et qu’un cessez-le-feu aura été établi. »",
+      "access": "Page publiée le 22 septembre 2025, consultée le 8 octobre 2026 sur elysee.fr. Passages relus à cette date.",
+      "limit": "Le texte publié porte la mention « Seul le prononcé fait foi ». Il écrit « Etat » sans accent.",
+      "verified_on": "2026-10-08"
+    },
+    {
+      "id": "meae-annonce-2025",
+      "publisher": "Ministère de l’Europe et des Affaires étrangères",
+      "title": "Israël / Territoires palestiniens : annonce de la reconnaissance de l’État palestinien (25 juillet 2025)",
+      "url": "https://www.diplomatie.gouv.fr/fr/presse-et-ressources/decouvrir-et-informer/actualites/israel-territoires-palestiniens-annonce-de-la-reconnaissance-de-l-etat-palestinien",
+      "type": "Communiqué",
+      "scope": "Remise, le 24 juillet 2025, de la lettre du Président de la République au président de l’Autorité palestinienne, qui annonce la reconnaissance de l’État de Palestine pour septembre.",
+      "locator": "Premier paragraphe : « Le Consul général de France à Jérusalem a remis ce jeudi 24 juillet 2025 la lettre du président de la République Emmanuel Macron au président de l’Autorité palestinienne Mahmoud Abbas en réponse au courrier adressé le 9 juin dernier. Fidèle à son engagement historique pour une paix juste et durable au Proche-Orient, la France procédera en septembre prochain à la reconnaissance de l’État de Palestine. »",
+      "access": "Communiqué daté du 25 juillet 2025, consulté le 8 octobre 2026 sur diplomatie.gouv.fr. Passage relu à cette date.",
+      "limit": "Le communiqué résume la lettre. Le texte de la lettre n’y est pas publié.",
+      "verified_on": "2026-10-08"
+    },
+    {
+      "id": "meae-reconnaissance",
+      "publisher": "Ministère de l’Europe et des Affaires étrangères",
+      "title": "Comprendre la reconnaissance par la France de l’État de Palestine",
+      "url": "https://www.diplomatie.gouv.fr/fr/le-ministere-en-action/agir-pour-la-paix-et-le-respect-des-droits-de-l-homme/agir-pour-la-securite-le-desarmement-et-la-non-proliferation/crises-et-conflits/comprendre-la-reconnaissance-par-la-france-de-l-etat-de-palestine",
+      "type": "Page d’information officielle",
+      "scope": "Présentation par le ministère de la Déclaration de New York et de la reconnaissance de l’État de Palestine par la France le 22 septembre 2025.",
+      "locator": "Section « La reconnaissance par la France de l’État de Palestine », qui cite le discours : « fidèle à l’engagement historique de mon pays au Proche-Orient, pour la paix entre le peuple israélien et le peuple palestinien, je déclare que la France reconnaît aujourd’hui l’État de Palestine ».",
+      "access": "Page publiée le 15 septembre 2026 et mise à jour le 21 septembre 2026, consultée le 8 octobre 2026 sur diplomatie.gouv.fr. Passage relu à cette date.",
+      "limit": "La page présente la position du ministère. Elle écrit que la reconnaissance française « a été suivie » de celles de dix États, dont le Royaume-Uni et le Canada, alors que, selon ONU Info, ces deux États l’ont annoncée la veille.",
+      "verified_on": "2026-10-08"
+    },
+    {
+      "id": "onu-info-2025-09-22",
+      "publisher": "ONU Info",
+      "title": "La France et plusieurs autres pays occidentaux reconnaissent l’État de Palestine à l’ONU (22 septembre 2025)",
+      "url": "https://news.un.org/fr/story/2025/09/1157534",
+      "type": "Article d’information de l’ONU",
+      "scope": "Compte rendu de la conférence du 22 septembre 2025 sur la solution à deux États et des reconnaissances annoncées ce jour-là et la veille.",
+      "locator": "Section « Une vague de reconnaissances » : « La veille, le Royaume-Uni, le Canada, le Portugal et l’Australie avaient fait de même. Durant la conférence, la décision française a été suivie par celles de la Belgique, d’Andorre, de Malte, du Luxembourg, de Monaco et de Saint-Marin. » Plus loin : « Les États-Unis et Israël, eux, ont boycotté la réunion ».",
+      "access": "Article du 22 septembre 2025, consulté le 8 octobre 2026 sur news.un.org. Passages relus à cette date.",
+      "limit": "Article d’information du service de presse de l’ONU, pas un compte rendu officiel de séance.",
+      "verified_on": "2026-10-08"
     }
   ],
   "events": [
@@ -519,6 +567,31 @@
         "france",
         "international"
       ]
+    },
+    {
+      "id": "reconnaissance-2025",
+      "year": "2025",
+      "short": "Reconnaissance de la Palestine",
+      "threads": [
+        "france"
+      ],
+      "places": [],
+      "kind": "Déclaration · 22 septembre",
+      "title": "La France reconnaît l’État de Palestine",
+      "text": "Le 22 septembre 2025, à la tribune de l’ONU, le Président de la République déclare : « fidèle à l’engagement historique de mon pays au Proche-Orient, pour la paix entre le peuple israélien et le peuple palestinien, je déclare que la France reconnaît aujourd’hui l’État de Palestine ».",
+      "context": "L’annonce date de juillet. Selon le ministère des Affaires étrangères, le consul général de France à Jérusalem remet le 24 juillet 2025 au président de l’Autorité palestinienne, Mahmoud Abbas, une lettre du Président de la République en réponse à son courrier du 9 juin. Le communiqué ajoute que « la France procédera en septembre prochain à la reconnaissance de l’État de Palestine ». La déclaration de septembre est faite lors de la conférence sur la solution à deux États, que la France et l’Arabie saoudite coprésident au siège de l’ONU. Selon ONU Info, le Royaume-Uni, le Canada, le Portugal et l’Australie avaient reconnu cet État la veille, et six autres pays le font pendant la conférence. Les États-Unis et Israël n’y participent pas. Dans le même discours, le Président indique : « C’est dans ce cadre, aussi, que je pourrai décider d’établir une ambassade auprès de l’État de Palestine, dès lors que tous les otages détenus à Gaza auront été libérés et qu’un cessez-le-feu aura été établi. »",
+      "question": "La France a-t-elle établi une ambassade auprès de l’État de Palestine ?",
+      "sources": [
+        "elysee-2025-09-22",
+        "meae-annonce-2025",
+        "meae-reconnaissance",
+        "onu-info-2025-09-22"
+      ],
+      "terms": [],
+      "actors": [
+        "france",
+        "palestine"
+      ]
     }
   ],
   "decisions": [
@@ -624,6 +697,22 @@
       "limit": "Un vote et une explication de vote ne disent pas quelles mesures ont été appliquées ensuite.",
       "sources": [
         "pv-es10-55"
+      ]
+    },
+    {
+      "id": "reconnaissance-palestine-2025",
+      "when": "2025-09-22",
+      "date": "22 septembre 2025",
+      "event": "reconnaissance-2025",
+      "title": "Reconnaissance de l’État de Palestine",
+      "author": "Le Président de la République",
+      "nature": "Déclaration à la tribune de l’ONU",
+      "text": "Le Président de la République déclare : « fidèle à l’engagement historique de mon pays au Proche-Orient, pour la paix entre le peuple israélien et le peuple palestinien, je déclare que la France reconnaît aujourd’hui l’État de Palestine ». Selon le ministère des Affaires étrangères, une lettre remise le 24 juillet 2025 au président de l’Autorité palestinienne annonçait cette reconnaissance pour septembre.",
+      "limit": "Le discours subordonne l’établissement d’une ambassade de France auprès de l’État de Palestine à la libération de tous les otages et à un cessez-le-feu. Aucun des documents consultés n’annonce cette ambassade.",
+      "sources": [
+        "elysee-2025-09-22",
+        "meae-annonce-2025",
+        "meae-reconnaissance"
       ]
     },
     {

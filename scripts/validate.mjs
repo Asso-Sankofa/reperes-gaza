@@ -78,11 +78,11 @@ export function validateCorpus(d, { externalRefs = [], mapZones = MAP_ZONES } = 
     for (const t of e.threads || []) if (!threadIds.has(t)) err(`${where} : fil inconnu « ${t} »`);
     for (const t of e.terms || []) if (!termIds.has(t)) err(`${where} : terme inconnu « ${t} »`);
     for (const a of e.actors || []) if (!actorIds.has(a)) err(`${where} : acteur inconnu « ${a} »`);
-    // Une notice absente de la carte, en tout ou en partie, doit dire pourquoi : elle reste listée à l'accueil.
+    // Un lieu nommé mais non dessiné s'affiche en toutes lettres avec sa note. Sans lieu, le repère est listé hors carte à l'accueil.
     if (!Array.isArray(e.places)) err(`${where} : liste de lieux absente (tableau vide si aucun)`);
     for (const p of e.places || []) if (!placeIds.has(p)) err(`${where} : lieu inconnu « ${p} »`);
-    const fullyMapped = (e.places || []).length > 0 && e.places.every(p => mapped.has(p));
-    if (!fullyMapped && !e.place_note) err(`${where} : place_note attendu, la notice n’est pas entièrement située sur la carte`);
+    const partlyMapped = (e.places || []).some(p => !mapped.has(p));
+    if (partlyMapped && !e.place_note) err(`${where} : place_note attendu, un lieu n’est pas dessiné sur la carte`);
   }
 
   // Décisions françaises : chaque acte renvoie à un repère et à ses documents, dans l'ordre chronologique.
