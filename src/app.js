@@ -274,6 +274,7 @@ function renderParcours() {
             <span class="chapters__year">${esc(e.year)}</span><span class="chapters__short">${esc(e.short)}</span></a>`).join('')}
         </nav>
       </details>
+      ${SPEECH && !(doc && state.sub === 'texte') ? `<div class="listen" data-slot="listen" role="group" aria-label="Écouter ce repère">${listenControls()}</div>` : ''}
     </div>
   </section>`;
 
@@ -293,7 +294,7 @@ function renderParcours() {
   return `${head}
   <article class="wrap reading" aria-labelledby="notice-title">
     <header class="reading__head">
-      <p class="notice__meta"><span class="notice__year">${esc(ev.year)}</span><span class="eyebrow eyebrow--doc">${esc(ev.kind)}</span></p>
+      <div class="notice__meta"><span class="notice__year">${esc(ev.year)}</span><span class="eyebrow eyebrow--doc">${esc(ev.kind)}</span></div>
       <h1 id="notice-title" class="notice__title" tabindex="-1">${esc(ev.title)}</h1>
     </header>
     <div class="reading__body">
@@ -613,6 +614,86 @@ function trapMenuFocus(e) {
 }
 
 
+/* ---------- Lecteur audio (synthèse vocale du navigateur) ---------- */
+
+const SPEECH = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+let speech = 'idle'; // idle | playing | paused
+
+// Ce qui est lu : année et titre, texte, contexte, question. Sans les appels de source ;
+// les passages {en}…{/en} sont lus avec une voix anglaise quand l'appareil en a une.
+function speechParts(ev) {
+  const parts = [];
+  const push = (text, lang) => text.split(/(?<=[.!?…»])\s+/).map(x => x.trim()).filter(Boolean).forEach(x => parts.push({ text: x, lang }));
+  const add = raw => {
+    const text = String(raw || '').replace(CALL, '');
+    let last = 0;
+    for (const m of text.matchAll(/\{en\}(.*?)\{\/en\}/g)) {
+      push(text.slice(last, m.index), 'fr-FR');
+      push(m[1], 'en-GB');
+      last = m.index + m[0].length;
+    }
+    push(text.slice(last), 'fr-FR');
+  };
+  add(`${ev.year}. ${ev.title}.`);
+  add(ev.text);
+  add(ev.context);
+  add(`Question ouverte : ${ev.question}`);
+  return parts;
+}
+
+function voiceFor(lang) {
+  const voices = window.speechSynthesis.getVoices();
+  const base = lang.slice(0, 2);
+  return voices.find(v => v.lang.replace('_', '-') === lang) || voices.find(v => v.lang.toLowerCase().startsWith(base));
+}
+
+function listenControls() {
+  if (speech === 'idle') {
+    return `<button type="button" class="listen__button" data-listen="play" data-focus="listen-play"><span class="listen__icon listen__icon--play" aria-hidden="true"></span>Écouter</button>`;
+  }
+  const paused = speech === 'paused';
+  return `<button type="button" class="listen__button" data-listen="${paused ? 'resume' : 'pause'}" data-focus="listen-toggle"><span class="listen__icon listen__icon--${paused ? 'play' : 'pause'}" aria-hidden="true"></span>${paused ? 'Reprendre' : 'Pause'}</button>
+    <button type="button" class="listen__button" data-listen="stop" data-focus="listen-stop"><span class="listen__icon listen__icon--stop" aria-hidden="true"></span>Arrêter</button>`;
+}
+
+function setSpeech(next) {
+  const keep = document.activeElement?.closest?.('.listen');
+  speech = next;
+  const slot = $('[data-slot="listen"]');
+  if (!slot) return;
+  slot.innerHTML = listenControls();
+  if (keep) $(next === 'idle' ? '[data-listen="play"]' : '[data-listen="pause"], [data-listen="resume"]', slot)?.focus();
+}
+
+function listen(action) {
+  const synth = window.speechSynthesis;
+  if (action === 'play') {
+    const { ev } = parcoursContext();
+    synth.cancel();
+    const parts = speechParts(ev);
+    parts.forEach((p, i) => {
+      const u = new SpeechSynthesisUtterance(p.text);
+      u.lang = p.lang;
+      const voice = voiceFor(p.lang);
+      if (voice) u.voice = voice;
+      if (i === parts.length - 1) u.onend = () => { if (speech !== 'idle') setSpeech('idle'); };
+      u.onerror = e => { if (e.error !== 'interrupted' && e.error !== 'canceled') setSpeech('idle'); };
+      synth.speak(u);
+    });
+    setSpeech('playing');
+  } else if (action === 'pause') { synth.pause(); setSpeech('paused'); }
+  else if (action === 'resume') { synth.resume(); setSpeech('playing'); }
+  else if (action === 'stop') stopSpeech({ keepFocus: true });
+}
+
+function stopSpeech({ keepFocus = false } = {}) {
+  if (!SPEECH || speech === 'idle') return;
+  window.speechSynthesis.cancel();
+  if (keepFocus) setSpeech('idle'); else { speech = 'idle'; }
+}
+
+window.addEventListener('pagehide', () => { if (SPEECH) window.speechSynthesis.cancel(); });
+
 /* ---------- Événements ---------- */
 
 function onHashChange() {
@@ -623,7 +704,7 @@ function onHashChange() {
   // Onglets des acteurs : le focus reste sur l'onglet utilisé.
   const keepFocus = !!active?.closest?.('.tabs');
   closeMenu({ restoreFocus: false });
-  if (changed) { closePanel({ restoreFocus: false }); state.tocOpen = false; state.moreOpen = false; }
+  if (changed) { closePanel({ restoreFocus: false }); stopSpeech(); state.tocOpen = false; state.moreOpen = false; }
   Object.assign(state, next);
   render({ focusHeading: changed && !keepFocus });
   // Lien vers un acte précis de la page Décisions : on s'y rend plutôt qu'en haut de page.
@@ -633,6 +714,8 @@ function onHashChange() {
 }
 
 document.addEventListener('click', e => {
+  const l = e.target.closest('[data-listen]');
+  if (l) { listen(l.dataset.listen); return; }
   const t = e.target.closest('[data-source], [data-para], [data-place]');
   if (!t) return;
   if (t.dataset.place) {
