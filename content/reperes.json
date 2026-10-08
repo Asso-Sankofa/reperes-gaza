@@ -415,7 +415,7 @@
       "places": [],
       "kind": "Vote à l’ONU · 11 mai",
       "title": "La France établit des relations diplomatiques avec Israël",
-      "text": "Le 11 mai 1949, l’Assemblée générale de l’ONU admet Israël parmi ses membres, et la France vote pour.[[pv-207]] Le ministère des Affaires étrangères date de ce même jour l’établissement des relations diplomatiques.[[france]] Il mentionne aussi une coopération française à la défense du nouvel État.",
+      "text": "Le 11 mai 1949, l’Assemblée générale de l’ONU admet Israël parmi ses membres, et la France vote pour.[[pv-207]] Le ministère des Affaires étrangères date de ce même jour l’établissement des relations diplomatiques. Il mentionne aussi une coopération française à la défense du nouvel État.[[france]]",
       "context": "Avant le vote, le représentant de la France déclare que « le Gouvernement français votera sans hésiter en faveur de l’admission d’Israël ».[[pv-207]] Aucun acte français de reconnaissance n’a été trouvé en ligne. Les dossiers sur la coopération militaire sont conservés aux Archives diplomatiques (série 218QO) et au Service historique de la Défense.",
       "question": "Que contiennent les dossiers d’archives sur la coopération militaire franco-israélienne des années 1950 ?",
       "sources": [
@@ -550,7 +550,7 @@
       "kind": "Avis consultatif · 19 juillet",
       "title": "L’avis de la Cour internationale de Justice sur l’occupation",
       "text": "Par onze voix contre quatre, la Cour internationale de Justice est d’avis que la présence continue d’Israël dans le Territoire palestinien occupé est illicite et qu’Israël doit y mettre fin « dans les plus brefs délais ».[[icj-avis]][[icj]]",
-      "context": "Pour les autres États, dont la France, la Cour est d’avis, par douze voix contre trois, qu’ils sont dans l’obligation de ne pas reconnaître comme licite la situation découlant de cette présence et de ne pas prêter aide ou assistance à son maintien (§ 285, point 7).[[icj-avis]] L’Assemblée générale a demandé cet avis. Il est distinct de l’affaire contentieuse Afrique du Sud contre Israël, portée devant la même Cour. Le 18 septembre 2024, la France vote pour la résolution ES-10/24 de l’Assemblée générale, qui fait suite à l’avis. Son représentant déclare que « la France ne reconnaîtra pas l’annexion illégale de ces territoires », et précise qu’elle aurait préféré un texte reprenant exactement l’avis de la Cour.[[pv-es10-55]] Le 8 septembre 2026, le Président de la République s’engage, avec les Premiers ministres britannique et canadien, à prendre « des mesures pour interdire l’importation de produits en provenance des colonies ».[[elysee-2026-09-08]] Cette déclaration ne cite pas l’avis.",
+      "context": "Pour les autres États, dont la France, la Cour est d’avis, par douze voix contre trois, qu’ils sont dans l’obligation de ne pas reconnaître comme licite la situation découlant de cette présence et de ne pas prêter aide ou assistance à son maintien (§ 285, point 7). L’Assemblée générale a demandé cet avis.[[icj-avis]] Le 18 septembre 2024, la France vote pour la résolution ES-10/24 de l’Assemblée générale, qui fait suite à l’avis. Son représentant déclare que « la France ne reconnaîtra pas l’annexion illégale de ces territoires », et précise qu’elle aurait préféré un texte reprenant exactement l’avis de la Cour.[[pv-es10-55]] Le 8 septembre 2026, le Président de la République s’engage, avec les Premiers ministres britannique et canadien, à prendre « des mesures pour interdire l’importation de produits en provenance des colonies ».[[elysee-2026-09-08]] Cette déclaration ne cite pas l’avis.",
       "question": "La France a-t-elle adopté une mesure contraignante à la suite de l’avis ?",
       "sources": [
         "icj-avis",
@@ -569,12 +569,12 @@
     {
       "id": "reconnaissance-2025",
       "year": "2025",
-      "short": "Reconnaissance de la Palestine",
+      "short": "Reconnaissance de l’État de Palestine",
       "threads": [
         "france"
       ],
       "places": [],
-      "kind": "Déclaration · 22 septembre",
+      "kind": "Déclaration à l’ONU · 22 septembre",
       "title": "La France reconnaît l’État de Palestine",
       "text": "Le 22 septembre 2025, à la tribune de l’ONU, le Président de la République déclare : « fidèle à l’engagement historique de mon pays au Proche-Orient, pour la paix entre le peuple israélien et le peuple palestinien, je déclare que la France reconnaît aujourd’hui l’État de Palestine ».[[elysee-2025-09-22]][[meae-reconnaissance]]",
       "context": "L’annonce date de juillet. Selon le ministère des Affaires étrangères, le consul général de France à Jérusalem remet le 24 juillet 2025 au président de l’Autorité palestinienne, Mahmoud Abbas, une lettre du Président de la République en réponse à son courrier du 9 juin. Le communiqué ajoute que « la France procédera en septembre prochain à la reconnaissance de l’État de Palestine ».[[meae-annonce-2025]] La déclaration de septembre est faite lors de la conférence sur la solution à deux États, que la France et l’Arabie saoudite coprésident au siège de l’ONU.[[elysee-2025-09-22]] Selon ONU Info, le Royaume-Uni, le Canada, le Portugal et l’Australie avaient reconnu cet État la veille, et six autres pays le font pendant la conférence. Les États-Unis et Israël n’y participent pas.[[onu-info-2025-09-22]] Dans le même discours, le Président indique : « C’est dans ce cadre, aussi, que je pourrai décider d’établir une ambassade auprès de l’État de Palestine, dès lors que tous les otages détenus à Gaza auront été libérés et qu’un cessez-le-feu aura été établi. »[[elysee-2025-09-22]]",
@@ -753,7 +753,7 @@
         },
         {
           "name": "Le Parlement",
-          "text": "Les députés posent au gouvernement des questions écrites, auxquelles le ministre concerné répond publiquement. Exemple cité : la question n° 27183 sur l’étiquetage des produits des colonies, avec la réponse du 28 avril 2020.",
+          "text": "Les députés posent au gouvernement des questions écrites, auxquelles le ministre concerné répond au Journal officiel. Exemple cité : la question n° 27183 sur l’étiquetage des produits des colonies, avec la réponse du 28 avril 2020.",
           "sources": [
             "qe-27183"
           ]

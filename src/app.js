@@ -125,7 +125,7 @@ function noticePlace(e) {
   const labels = joinFr(placeLabels(e));
   const svg = mini.innerHTML.replace('role="img"', `role="img" aria-label="${esc(`Carte de situation. Mis en évidence : ${labels}.`)}"`);
   return `<figure class="notice__place" data-map-zones="${esc(zonesOf(e).join(' '))}">${svg}
-    <figcaption><span class="notice__place-name">${esc(labels)}</span> <a href="#/methode">Sources de la carte</a></figcaption>
+    <figcaption><span class="notice__place-name">${esc(labels)}</span> · <a href="#/methode">Sources de la carte</a></figcaption>
   </figure>`;
 }
 
