@@ -150,7 +150,7 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   await page.locator('.main-nav a', { hasText: 'Décisions françaises' }).click();
   await page.waitForSelector('#decisions-title', { state: 'visible' });
   check('Décisions françaises : titre focalisé', (await focused(page)) === 'decisions-title');
-  check('Décisions françaises : neuf actes, dans l’ordre', (await page.locator('.decision__date').allTextContents()).join(' | ') === '11 mai 1949 | Juin 1967 | Juillet 1967 | 24 novembre 2016 | 23 décembre 2016 | 31 décembre 2019 | 18 septembre 2024 | 22 septembre 2025 | 30 juin 2026');
+  check('Décisions françaises : dix actes, dans l’ordre', (await page.locator('.decision__date').allTextContents()).join(' | ') === '11 mai 1949 | Juin 1967 | Juillet 1967 | 24 novembre 2016 | 23 décembre 2016 | 31 décembre 2019 | 18 septembre 2024 | 22 septembre 2025 | 30 juin 2026 | 8 septembre 2026');
   await page.locator('[data-focus="src-dec-embargo-juillet-1967-an-1968"]').click();
   check('Décisions françaises : le document s’ouvre', (await page.locator('#panel-title').textContent()).includes('17 mai 1968'));
   await page.keyboard.press('Escape');

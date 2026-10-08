@@ -247,14 +247,14 @@
     {
       "id": "sg2334-2026",
       "publisher": "ONU · Bureau du Coordonnateur spécial (UNSCO)",
-      "title": "Exposé au Conseil de sécurité du 24 mars 2026 sur le 37e rapport (résolution 2334)",
-      "url": "https://unsco.unmissions.org/en/news/security-council-briefing-24-march-2026-unscr-2334",
+      "title": "Exposé au Conseil de sécurité du 28 septembre 2026 sur le 39e rapport (résolution 2334)",
+      "url": "https://unsco.unmissions.org/en/news/security-council-briefing-28-september-2026-unscr-2334",
       "type": "Exposé présenté en séance, en anglais",
-      "scope": "Trente-septième rapport sur l’application de la résolution 2334. Il couvre la période du 3 décembre 2025 au 13 mars 2026.",
-      "locator": "Introduction de l’exposé",
-      "access": "Page consultée le 28 septembre 2026. Rapport trimestriel le plus récent repéré à cette date, sans recherche exhaustive des séances suivantes.",
+      "scope": "Trente-neuvième rapport sur l’application de la résolution 2334. Il couvre la période du 13 juin au 18 septembre 2026.",
+      "locator": "Introduction : « Settlement activity has, nevertheless, continued at high levels. » Passage sur le paragraphe 5 : annonce du 8 septembre 2026 par le Canada, la France et le Royaume-Uni.",
+      "access": "Exposé consulté le 7 octobre 2026 sur le site de l’UNSCO. Passages relus à cette date.",
       "limit": "Un exposé oral résume le rapport. Il ne remplace pas le compte rendu de la séance, qui contient aussi les interventions des États.",
-      "verified_on": "2026-09-28"
+      "verified_on": "2026-10-07"
     },
     {
       "id": "cjue-psagot",
@@ -291,6 +291,42 @@
       "access": "Texte consulté le 30 septembre 2026 sur Légifrance.",
       "limit": "La décision tranche la légalité de l’avis. Elle ne dit rien de son application par les commerçants ni des contrôles effectués.",
       "verified_on": "2026-09-30"
+    },
+    {
+      "id": "elysee-2026-09-08",
+      "publisher": "Présidence de la République",
+      "title": "Déclaration conjointe du Président de la République française, du Premier ministre britannique et du Premier ministre canadien sur la solution à deux États (8 septembre 2026)",
+      "url": "https://www.elysee.fr/emmanuel-macron/2026/09/08/declaration-conjointe-du-president-de-la-republique-francaise-du-premier-ministre-britannique-et-du-premier-ministre-canadien-sur-la-solution-a-deux-etats",
+      "type": "Déclaration conjointe",
+      "scope": "Engagement du Royaume-Uni, de la France et du Canada à interdire l’importation de produits en provenance des colonies et à appliquer des sanctions ciblées.",
+      "locator": "Cinquième paragraphe : « Le Royaume-Uni, la France et le Canada prendront par conséquent des mesures pour interdire l’importation de produits en provenance des colonies et appliquer des sanctions ciblées contre les colonies et contre ceux qui les facilitent ou en tirent profit. »",
+      "access": "Page publiée le 8 septembre 2026, consultée le 7 octobre 2026 sur elysee.fr. Passage relu à cette date.",
+      "limit": "La déclaration annonce des mesures sans en fixer le contenu ni la date. Elle ne cite ni l’avis de la Cour internationale de Justice ni la résolution 2334.",
+      "verified_on": "2026-10-07"
+    },
+    {
+      "id": "meae-pp-2026-09-17",
+      "publisher": "Ministère de l’Europe et des Affaires étrangères",
+      "title": "Conférence de presse du porte-parole du 17 septembre 2026",
+      "url": "https://www.diplomatie.gouv.fr/fr/presse-et-ressources/decouvrir-et-informer/actualites/conference-de-presse-du-porte-parole-du-17-septembre-2026",
+      "type": "Point de presse, transcription",
+      "scope": "État des travaux sur l’interdiction des importations de produits des colonies, neuf jours après l’annonce.",
+      "locator": "Réponses sur le commerce avec les colonies : « la décision politique était prise » ; les travaux techniques incluent « le dossier étiquetage », « le dossier traçabilité » et « le dossier du vecteur juridique et du calendrier ».",
+      "access": "Transcription consultée le 7 octobre 2026 sur diplomatie.gouv.fr. Passages relus à cette date.",
+      "limit": "Une réponse en point de presse décrit l’état des travaux à cette date. Ce n’est pas un texte normatif.",
+      "verified_on": "2026-10-07"
+    },
+    {
+      "id": "qe-27183",
+      "publisher": "Assemblée nationale · Journal officiel",
+      "title": "Question écrite n° 27183 et réponse du ministère de l’Europe et des Affaires étrangères (JO du 28 avril 2020, p. 3132)",
+      "url": "https://questions.assemblee-nationale.fr/q15/15-27183QE.htm",
+      "type": "Question écrite et réponse ministérielle",
+      "scope": "Étiquetage des produits des colonies israéliennes après l’arrêt de la Cour de justice de l’Union européenne du 12 novembre 2019.",
+      "locator": "Réponse, cinquième phrase : « En conformité avec la résolution 2334 du Conseil de sécurité et le droit à l’information du consommateur garanti par le droit de l’Union européenne, cette politique se matérialise notamment par l’obligation de l’étiquetage des denrées alimentaires en provenance des colonies israéliennes dans les Territoires palestiniens occupés ».",
+      "access": "Page consultée le 7 octobre 2026 sur le site de l’Assemblée nationale. Réponse relue à cette date.",
+      "limit": "La réponse expose la position du gouvernement. Elle ne dit pas comment l’étiquetage est contrôlé.",
+      "verified_on": "2026-10-07"
     },
     {
       "id": "elysee-2025-09-22",
@@ -514,13 +550,15 @@
       "kind": "Avis consultatif · 19 juillet",
       "title": "La CIJ examine les conséquences de l’occupation",
       "text": "Par onze voix contre quatre, la Cour internationale de Justice est d’avis que la présence continue d’Israël dans le Territoire palestinien occupé est illicite et qu’Israël doit y mettre fin « dans les plus brefs délais ».",
-      "context": "Pour les autres États, dont la France, la Cour est d’avis, par douze voix contre trois, qu’ils sont dans l’obligation de ne pas reconnaître comme licite la situation découlant de cette présence et de ne pas prêter aide ou assistance à son maintien (§ 285, point 7). L’Assemblée générale a demandé cet avis. Il est distinct de l’affaire contentieuse Afrique du Sud contre Israël, portée devant la même Cour. Le 18 septembre 2024, la France vote pour la résolution ES-10/24 de l’Assemblée générale, qui fait suite à l’avis. Son représentant déclare que « la France ne reconnaîtra pas l’annexion illégale de ces territoires », et précise qu’elle aurait préféré un texte reprenant exactement l’avis de la Cour. Le 30 juin 2026, le ministère des Affaires étrangères publie une mise en garde aux entreprises, qui s’appuie sur la résolution 2334 et sur l’avis de la Cour. Celles qui prennent part à l’activité des colonies israéliennes « s’exposent au risque d’être reconnues coupables de violations du droit international ».",
+      "context": "Pour les autres États, dont la France, la Cour est d’avis, par douze voix contre trois, qu’ils sont dans l’obligation de ne pas reconnaître comme licite la situation découlant de cette présence et de ne pas prêter aide ou assistance à son maintien (§ 285, point 7). L’Assemblée générale a demandé cet avis. Il est distinct de l’affaire contentieuse Afrique du Sud contre Israël, portée devant la même Cour. Le 18 septembre 2024, la France vote pour la résolution ES-10/24 de l’Assemblée générale, qui fait suite à l’avis. Son représentant déclare que « la France ne reconnaîtra pas l’annexion illégale de ces territoires », et précise qu’elle aurait préféré un texte reprenant exactement l’avis de la Cour. Le 30 juin 2026, le ministère des Affaires étrangères publie une mise en garde aux entreprises, qui s’appuie sur la résolution 2334 et sur l’avis de la Cour. Celles qui prennent part à l’activité des colonies israéliennes « s’exposent au risque d’être reconnues coupables de violations du droit international ». Le 8 septembre 2026, le Président de la République s’engage, avec les Premiers ministres britannique et canadien, à prendre « des mesures pour interdire l’importation de produits en provenance des colonies ». Cette déclaration ne cite pas l’avis. Le 17 septembre 2026, le porte-parole du ministère indique que les travaux techniques ont débuté, dont « le dossier du vecteur juridique et du calendrier ».",
       "question": "La France a-t-elle adopté une mesure contraignante à la suite de l’avis ?",
       "sources": [
         "icj-avis",
         "pv-es10-55",
         "meae-entreprises-2026",
-        "icj"
+        "icj",
+        "elysee-2026-09-08",
+        "meae-pp-2026-09-17"
       ],
       "terms": [
         "avis"
@@ -611,9 +649,10 @@
       "author": "Le ministère de l’Économie et des Finances (DGCCRF)",
       "nature": "Avis aux opérateurs économiques, publié au Journal officiel",
       "text": "La DGCCRF publie au Journal officiel un avis : les denrées issues des colonies israéliennes de Cisjordanie et du plateau du Golan doivent porter la mention « colonie israélienne ». L’avis donne l’exemple « produit originaire de Cisjordanie (colonie israélienne) ».",
-      "limit": "L’avis applique une communication de la Commission européenne du 12 novembre 2015. Il est antérieur à la résolution 2334 et ne s’y réfère pas.",
+      "limit": "L’avis applique une communication de la Commission européenne du 12 novembre 2015. Il est antérieur à la résolution 2334 et ne s’y réfère pas. En 2020, le ministère des Affaires étrangères rattache l’étiquetage à la résolution 2334, dans une réponse à un député.",
       "sources": [
-        "avis-dgccrf-2016"
+        "avis-dgccrf-2016",
+        "qe-27183"
       ]
     },
     {
@@ -688,6 +727,21 @@
       "limit": "Le texte décrit des risques pour les entreprises. Il ne dit pas quelles mesures ont été prises à leur encontre.",
       "sources": [
         "meae-entreprises-2026"
+      ]
+    },
+    {
+      "id": "importations-2026",
+      "when": "2026-09-08",
+      "date": "8 septembre 2026",
+      "event": "avis-2024",
+      "title": "Engagement d’interdire l’importation des produits des colonies",
+      "author": "Le Président de la République, avec les Premiers ministres britannique et canadien",
+      "nature": "Déclaration conjointe",
+      "text": "La déclaration commune affirme : « Les colonies sont illégales au regard du droit international. Le Royaume-Uni, la France et le Canada prendront par conséquent des mesures pour interdire l’importation de produits en provenance des colonies et appliquer des sanctions ciblées contre les colonies et contre ceux qui les facilitent ou en tirent profit. »",
+      "limit": "La déclaration annonce des mesures sans en fixer le contenu ni la date. Le 17 septembre 2026, le porte-parole du ministère des Affaires étrangères indique que « la décision politique était prise » et que les travaux techniques incluent « le dossier du vecteur juridique et du calendrier ». La déclaration ne cite ni l’avis de la Cour ni la résolution 2334.",
+      "sources": [
+        "elysee-2026-09-08",
+        "meae-pp-2026-09-17"
       ]
     }
   ],
@@ -897,8 +951,12 @@
               "note": "Selon le rapport du 19 juin 2024 (§ 50), aucune mesure n’a été prise dans ce sens entre le 19 mars et le 10 juin 2024."
             },
             {
-              "source": "an",
-              "note": "Les questions écrites des députés permettent de suivre les demandes d’explication sur l’étiquetage et les échanges."
+              "source": "qe-27183",
+              "note": "Le 28 avril 2020, en réponse à un député, le ministère des Affaires étrangères écrit : « En conformité avec la résolution 2334 du Conseil de sécurité et le droit à l’information du consommateur garanti par le droit de l’Union européenne, cette politique se matérialise notamment par l’obligation de l’étiquetage des denrées alimentaires en provenance des colonies israéliennes ». La réponse ne dit pas comment l’étiquetage est contrôlé."
+            },
+            {
+              "source": "sg2334-2026",
+              "note": "L’exposé du 28 septembre 2026 rapporte que le Canada, la France et le Royaume-Uni ont annoncé le 8 septembre des mesures pour interdire l’importation des produits des colonies."
             }
           ],
           "question": "Quelles mesures françaises appliquent cette distinction, et sont-elles contrôlées ?"
@@ -915,7 +973,7 @@
             },
             {
               "source": "sg2334-2026",
-              "note": "L’exposé du 24 mars 2026 présente le trente-septième rapport. C’est le plus récent que nous ayons repéré au 28 septembre 2026."
+              "note": "L’exposé du 28 septembre 2026 présente le trente-neuvième rapport. Selon lui, « Settlement activity has, nevertheless, continued at high levels ». C’est le plus récent que nous ayons repéré au 7 octobre 2026."
             }
           ],
           "question": "Que disent les derniers rapports, et comment la France y a-t-elle répondu en séance ?"
@@ -936,7 +994,7 @@
       }
     }
   },
-  "revised_on": "2026-10-02",
+  "revised_on": "2026-10-07",
   "threads": [
     {
       "id": "france",
