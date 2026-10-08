@@ -4,7 +4,7 @@ import { createHash } from 'node:crypto';
 import { cp, mkdir, readFile, rm, writeFile, access } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { validateCorpus } from './validate.mjs';
+import { CALL, validateCorpus } from './validate.mjs';
 import { GEO_SHA256, loadGeo, miniSvg, regionSvg } from './map.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -19,6 +19,9 @@ export function countWord(n) {
   return NUMBER_WORDS[n];
 }
 
+// Les appels de source [[id]] servent au rendu ; l'export CSV garde le texte seul.
+const plain = s => String(s ?? '').replace(CALL, '');
+
 export function toCsv(corpus) {
   const cell = v => {
     const s = String(v ?? '');
@@ -26,7 +29,7 @@ export function toCsv(corpus) {
   };
   const header = ['id', 'year', 'title', 'text', 'context', 'source_ids', 'threads', 'places', 'editorial_status', 'license'];
   const rows = corpus.events.map(e => [
-    e.id, e.year, e.title, e.text, e.context, e.sources.join('|'), e.threads.join('|'), e.places.join('|'),
+    e.id, e.year, e.title, plain(e.text), plain(e.context), e.sources.join('|'), e.threads.join('|'), e.places.join('|'),
     corpus.editorial_status, corpus.license.notices,
   ]);
   return [header, ...rows].map(r => r.map(cell).join(',')).join('\n') + '\n';

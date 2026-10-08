@@ -5,6 +5,7 @@ const ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const STATUSES = ['draft_pending_independent_review', 'editorial_review_completed'];
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 const DASHES = /[\u2013\u2014]/; // demi-cadratin et cadratin, exclus par la charte éditoriale
+export const CALL = /\[\[([a-z0-9-]+)\]\]/g;
 export const LOOSE_SPACE = /\S [:;?!](?=\s|$)/; // espace normale là où la charte demande une espace insécable
 
 // externalRefs : identifiants de sources cités hors du corpus (gabarit HTML).
@@ -72,6 +73,10 @@ export function validateCorpus(d, { externalRefs = [], mapZones = MAP_ZONES } = 
     if (Number(e.year) < lastYear) err(`${where} : les événements doivent être classés par année`);
     lastYear = Number(e.year);
     refSources(e.sources, where);
+    // Chaque source du repère est appelée dans le texte, après la phrase qu'elle appuie : [[id]].
+    const calls = new Set([...`${e.text || ''} ${e.context || ''}`.matchAll(CALL)].map(m => m[1]));
+    for (const id of calls) if (!(e.sources || []).includes(id)) err(`${where} : appel [[${id}]] vers une source absente du repère`);
+    for (const id of e.sources || []) if (!calls.has(id)) err(`${where} : source « ${id} » jamais appelée dans le texte`);
     if (!Array.isArray(e.threads) || !e.threads.length) err(`${where} : au moins un fil de lecture attendu`);
     for (const t of e.threads || []) if (!threadIds.has(t)) err(`${where} : fil inconnu « ${t} »`);
     for (const t of e.terms || []) if (!termIds.has(t)) err(`${where} : terme inconnu « ${t} »`);

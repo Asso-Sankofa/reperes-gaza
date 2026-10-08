@@ -39,11 +39,11 @@ const SECTION_PAGER = {
 
 const state = {
   ...parseHash(),
-  filter: 'all',
   place: 'all',
   sourceId: null,
   selPara: {},
-  openTerms: new Set(),
+  tocOpen: false,
+  moreOpen: false,
   menuOpen: false,
 };
 
@@ -70,22 +70,18 @@ const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ESC[c]);
 
 function parseHash() {
   const h = (window.location.hash || '').replace(/^#\/?/, '');
-  const [r, a] = h.split('/');
-  return { route: ROUTES.includes(r) ? r : 'accueil', param: a ? decodeURIComponent(a) : null };
+  const [r, a, b] = h.split('/');
+  return { route: ROUTES.includes(r) ? r : 'accueil', param: a ? decodeURIComponent(a) : null, sub: b || null };
 }
 
 const evHref = e => '#/parcours/' + encodeURIComponent(e.id);
-const matches = (e, filter) => filter === 'all' || e.threads.includes(filter);
 const railPos = e => ((Number(e.year) - RAIL_START) / (RAIL_END - RAIL_START)) * 100;
 const scrollBehavior = () => (REDUCED.matches ? 'auto' : 'smooth');
 
-// Le repère courant et la liste dans laquelle il se situe (règle reprise de la v0.3).
+// Le repère courant et sa position dans la liste complète.
 function parcoursContext(param = state.param) {
-  const filtered = events.filter(e => matches(e, state.filter));
-  let ev = eventById.get(param);
-  const list = ev && !filtered.includes(ev) ? events : filtered;
-  if (!ev) ev = list[0];
-  return { ev, list, idx: list.indexOf(ev) };
+  const ev = eventById.get(param) || events[0];
+  return { ev, list: events, idx: events.indexOf(ev) };
 }
 
 /* ---------- Fragments ---------- */
@@ -121,19 +117,32 @@ function renderMapSummary(node, listNode) {
   if (fig) fig.dataset.mapZones = place ? place.map_zone : mapPlaces.map(p => p.map_zone).join(' ');
 }
 
-// Lieux d'une notice : miniature si tous ses lieux sont dessinés, sinon mention écrite et raison de l'absence.
+// Miniature seulement quand elle distingue une partie du territoire dessiné (2005 : Gaza seule).
+// Sinon elle répète la carte de l'accueil.
 function noticePlace(e) {
-  if (!e.places.length) return '';
-  const labels = joinFr(placeLabels(e));
-  const head = `<p class="eyebrow eyebrow--muted">${e.places.length > 1 ? 'LIEUX CONCERNÉS' : 'LIEU CONCERNÉ'}</p>`;
   const mini = $('#map-mini');
-  if (!fullyMapped(e) || !mini) {
-    return `<div class="notice__place">${head}<p class="notice__place-name">${esc(labels)}</p>${e.place_note ? `<p class="notice__place-note">${esc(e.place_note)}</p>` : ''}</div>`;
-  }
+  if (!mini || !fullyMapped(e) || zonesOf(e).length >= mapPlaces.length) return '';
+  const labels = joinFr(placeLabels(e));
   const svg = mini.innerHTML.replace('role="img"', `role="img" aria-label="${esc(`Carte de situation. Mis en évidence : ${labels}.`)}"`);
-  return `<figure class="notice__place notice__place--map" data-map-zones="${esc(zonesOf(e).join(' '))}">${head}${svg}
-    <figcaption><span class="notice__place-name">${esc(labels)}</span><span class="notice__place-note">Carte de situation réalisée avec Natural Earth. <a href="#/methode">Voir les sources et limites de la carte</a></span></figcaption>
+  return `<figure class="notice__place" data-map-zones="${esc(zonesOf(e).join(' '))}">${svg}
+    <figcaption><span class="notice__place-name">${esc(labels)}</span> <a href="#/methode">Sources de la carte</a></figcaption>
   </figure>`;
+}
+
+// Appels de source [[id]] : numérotés dans l'ordre d'apparition. La note de marge (ordinateur) suit le premier appel.
+const CALL = /\[\[([a-z0-9-]+)\]\]/g;
+const citedOrder = ev => [...new Set([...`${ev.text} ${ev.context || ''}`.matchAll(CALL)].map(m => m[1]))];
+
+function withCalls(text, order, seen) {
+  return esc(text).replace(CALL, (_, id) => {
+    const n = order.indexOf(id) + 1;
+    const s = sourceById.get(id);
+    const first = !seen.has(id);
+    seen.add(id);
+    return `<button type="button" class="cite" data-source="${esc(id)}" aria-label="Source ${n} : ${esc(s.publisher)}">${n}</button>${first
+      ? `<span class="sidenote" data-source="${esc(id)}" aria-hidden="true"><span class="sidenote__n">${n}</span><span class="sidenote__publisher">${esc(s.publisher)}</span><span class="sidenote__title">${esc(s.title)}</span></span>`
+      : ''}`;
+  });
 }
 
 function sourceButtons(ids, ctx, compact = false) {
@@ -202,7 +211,7 @@ function documentSection(ev, doc) {
       <div class="section-head">
         <div>
           <p class="eyebrow">LE DOCUMENT · ${esc(doc.ref)}</p>
-          <h2 id="doc-title" class="display display--h2">Le vote et le texte adopté</h2>
+          <h1 id="doc-title" class="display display--h1" tabindex="-1">${esc(doc.title)}&nbsp;: le vote et le texte adopté</h1>
         </div>
       </div>
       <div class="card vote">
@@ -251,60 +260,64 @@ function documentSection(ev, doc) {
 
 function renderParcours() {
   const { ev, list, idx } = parcoursContext();
-  const filters = [['all', 'Tous les repères'], ...data.threads.map(t => [t.id, t.label])];
-  const terms = (ev.terms || []).map(id => termById.get(id));
-  const why1948 = idx >= 0 && events[0] === ev ? $('[data-template="why1948"]') : null;
   const doc = data.documents?.[ev.id];
-  return `<section class="parcours-head">
+  const head = `<section class="parcours-head">
     <div class="wrap parcours-head__inner">
-      <div class="parcours-head__bar">
-        <p class="eyebrow">REPÈRE ${idx + 1} SUR ${list.length}</p>
-        <div role="group" aria-label="Choisir un fil de lecture" class="pill-group">
-          ${filters.map(([k, label]) => `<button type="button" class="filter" aria-pressed="${state.filter === k}" data-filter="${esc(k)}" data-focus="filter-${esc(k)}">${esc(label)}</button>`).join('')}
-        </div>
-      </div>
-      <div class="rail" aria-hidden="true">${rail(ev, list)}</div>
-      <nav class="chapters" aria-label="Liste des repères">
-        ${list.map((e, i) => `<a href="${evHref(e)}" data-focus="chap-${esc(e.id)}" class="${i < idx ? 'is-done' : ''}"${i === idx ? ' aria-current="step"' : ''}>
-          <span class="chapters__year">${esc(e.year)}</span><span class="chapters__short">${esc(e.short)}</span></a>`).join('')}
-      </nav>
+      <details class="toc"${state.tocOpen ? ' open' : ''}>
+        <summary data-focus="toc"><span class="eyebrow">REPÈRE ${idx + 1} SUR ${list.length}</span><span class="toc__label">Tous les repères</span></summary>
+        <nav class="chapters" aria-label="Liste des repères">
+          ${list.map((e, i) => `<a href="${evHref(e)}" data-focus="chap-${esc(e.id)}" class="${i < idx ? 'is-done' : ''}"${i === idx ? ' aria-current="step"' : ''}>
+            <span class="chapters__year">${esc(e.year)}</span><span class="chapters__short">${esc(e.short)}</span></a>`).join('')}
+        </nav>
+      </details>
     </div>
-  </section>
-  <article class="wrap notice" aria-labelledby="notice-title">
-    <div class="notice__main${fullyMapped(ev) && $('#map-mini') ? ' notice__main--map' : ''}">
+  </section>`;
+
+  // Sous-page : le document du repère, paragraphe par paragraphe.
+  if (doc && state.sub === 'texte') {
+    return `${head}
+    <div class="wrap doc-back"><a href="${evHref(ev)}" data-focus="doc-back">← Repère ${esc(ev.year)} · ${esc(ev.short)}</a></div>
+    ${documentSection(ev, doc)}`;
+  }
+
+  const order = citedOrder(ev);
+  const seen = new Set();
+  const terms = (ev.terms || []).map(id => termById.get(id));
+  const decisions = (data.decisions || []).filter(x => x.event === ev.id);
+  const why1948 = events[0] === ev ? $('[data-template="why1948"]') : null;
+  const more = terms.length || ev.actors?.length;
+  return `${head}
+  <article class="wrap reading" aria-labelledby="notice-title">
+    <header class="reading__head">
       <p class="notice__meta"><span class="notice__year">${esc(ev.year)}</span><span class="eyebrow eyebrow--doc">${esc(ev.kind)}</span></p>
       <h1 id="notice-title" class="notice__title" tabindex="-1">${esc(ev.title)}</h1>
-      <p class="notice__text">${esc(ev.text)}</p>
-      ${ev.context ? `<p class="notice__context">${esc(ev.context)}</p>` : ''}
+    </header>
+    <div class="reading__body">
       ${noticePlace(ev)}
-      ${why1948 ? why1948.outerHTML.replace('data-template="why1948"', '').replace('data-focus="home-histoire"', 'data-focus="parcours-histoire"') : ''}
-    </div>
-    <aside class="notice__aside" aria-label="Sources et pistes de lecture">
-      <div>
+      <p class="notice__text">${withCalls(ev.text, order, seen)}</p>
+      ${ev.context ? `<p class="notice__context">${withCalls(ev.context, order, seen)}</p>` : ''}
+      ${doc ? `<p class="reading__doc"><a class="button button--outline" href="${evHref(ev)}/texte" data-focus="doc-open">Lire la ${esc(doc.title.replace(/ \(\d{4}\)$/, '').replace(/^R/, 'r'))}, paragraphe par paragraphe <span aria-hidden="true">→</span></a></p>` : ''}
+      ${decisions.length ? `<div class="reading__decisions">
+        <p class="eyebrow eyebrow--muted">DÉCISIONS FRANÇAISES</p>
+        <ul>${decisions.map(x => `<li><a href="#/decisions/${esc(x.id)}">${esc(x.title)} · ${esc(x.date)} <span aria-hidden="true">→</span></a></li>`).join('')}</ul>
+      </div>` : ''}
+      <section class="reading__sources" aria-labelledby="sources-title">
+        <h2 id="sources-title" class="eyebrow eyebrow--muted">SOURCES</h2>
+        ${sourceButtons(order, 'ev')}
+      </section>
+      <div class="reading__question">
         <p class="eyebrow eyebrow--muted">QUESTION OUVERTE</p>
         <p class="notice__question">${esc(ev.question)}</p>
       </div>
-      <div>
-        <p class="eyebrow eyebrow--muted">SOURCES</p>
-        ${sourceButtons(ev.sources, 'ev')}
-      </div>
-      ${terms.length ? `<div>
-        <p class="eyebrow eyebrow--muted">LES MOTS DE CE REPÈRE</p>
-        ${terms.map(t => {
-          const open = state.openTerms.has(t.id);
-          return `<div class="term">
-            <button type="button" class="term__toggle" aria-expanded="${open}" aria-controls="term-${esc(t.id)}" data-term="${esc(t.id)}" data-focus="term-${esc(t.id)}"><span>${esc(t.title)}</span><span class="term__sign" aria-hidden="true">${open ? '−' : '+'}</span></button>
-            <p class="term__text" id="term-${esc(t.id)}"${open ? '' : ' hidden'}>${esc(t.text)}</p>
-          </div>`;
-        }).join('')}
-      </div>` : ''}
-      ${ev.actors?.length ? `<div>
-        <p class="eyebrow eyebrow--muted">ACTEURS CONCERNÉS</p>
-        <div class="pill-group">${ev.actors.map(a => `<a class="pill" href="#/voix/${esc(a)}">${esc(data.actors[a].label)} →</a>`).join('')}</div>
-      </div>` : ''}
-    </aside>
-  </article>
-  ${doc ? documentSection(ev, doc) : ''}`;
+      ${more ? `<details class="reading__more"${state.moreOpen ? ' open' : ''}>
+        <summary data-focus="more">Pour aller plus loin</summary>
+        ${terms.map(t => `<div class="term"><p class="term__title">${esc(t.title)}</p><p class="term__text">${esc(t.text)}</p></div>`).join('')}
+        ${ev.actors?.length ? `<p class="eyebrow eyebrow--muted">ACTEURS CONCERNÉS</p>
+        <div class="pill-group">${ev.actors.map(a => `<a class="pill" href="#/voix/${esc(a)}">${esc(data.actors[a].label)} →</a>`).join('')}</div>` : ''}
+      </details>` : ''}
+      ${why1948 ? why1948.outerHTML.replace('data-template="why1948"', '').replace('data-focus="home-histoire"', 'data-focus="parcours-histoire"') : ''}
+    </div>
+  </article>`;
 }
 
 function renderDecisions() {
@@ -323,7 +336,7 @@ function renderDecisions() {
         return `<li class="decision">
           <p class="decision__date">${esc(x.date)}</p>
           <div class="decision__body">
-            <h2 id="decision-${esc(x.id)}">${esc(x.title)}</h2>
+            <h2 id="decision-${esc(x.id)}" tabindex="-1">${esc(x.title)}</h2>
             <dl class="decision__facts">
               <div><dt>Auteur</dt><dd>${esc(x.author)}</dd></div>
               <div><dt>Nature</dt><dd>${esc(x.nature)}</dd></div>
@@ -407,7 +420,7 @@ function renderPager(ctx) {
     p = SECTION_PAGER[state.route];
   }
   if (!p) return '';
-  return `<nav class="pager" aria-label="Continuer la lecture">
+  return `<nav class="pager${state.route === 'parcours' ? ' pager--parcours' : ''}" aria-label="Continuer la lecture">
     <div class="wrap pager__inner">
       <a href="${esc(p[0])}" data-focus="pager-prev"><span class="pager__sub">← ${esc(p[1])}</span><span class="pager__label">${esc(p[2])}</span></a>
       <a href="${esc(p[3])}" class="pager__next" data-focus="pager-next"><span class="pager__sub">${esc(p[4])} →</span><span class="pager__label">${esc(p[5])}</span></a>
@@ -465,7 +478,8 @@ function render({ focusHeading = false } = {}) {
   if (isParcours) renderBottomBar(ctx);
   applyPositions(document);
 
-  document.title = isParcours ? `${ctx.ev.year} · ${ctx.ev.title} · Repères` : PAGE_TITLES[route];
+  const docTitle = isParcours && state.sub === 'texte' && data.documents?.[ctx.ev.id]?.title;
+  document.title = docTitle ? `${docTitle} · Repères` : isParcours ? `${ctx.ev.year} · ${ctx.ev.title} · Repères` : PAGE_TITLES[route];
 
   if (isParcours) centerCurrentChapter();
 
@@ -594,56 +608,45 @@ function trapMenuFocus(e) {
   else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
 }
 
-/* ---------- Filtres ---------- */
-
-let keepFocusOnNextRender = false;
-
-function setFilter(key) {
-  const cur = eventById.get(state.param) || events[0];
-  state.filter = key;
-  if (state.route !== 'parcours' || matches(cur, key)) { render(); return; }
-  const candidates = events.filter(e => matches(e, key));
-  if (!candidates.length) { render(); return; }
-  const near = candidates.reduce((a, b) => (Math.abs(b.year - cur.year) < Math.abs(a.year - cur.year) ? b : a));
-  keepFocusOnNextRender = true;
-  window.location.hash = evHref(near);
-}
 
 /* ---------- Événements ---------- */
 
 function onHashChange() {
   const next = parseHash();
   const routeChanged = next.route !== state.route;
-  const changed = routeChanged || next.param !== state.param;
+  const changed = routeChanged || next.param !== state.param || next.sub !== state.sub;
   const active = document.activeElement;
-  // Navigation dans la liste des repères ou via un filtre : le focus reste sur la commande utilisée.
-  const keepFocus = keepFocusOnNextRender || !!active?.closest?.('.chapters, .tabs');
-  keepFocusOnNextRender = false;
+  // Onglets des acteurs : le focus reste sur l'onglet utilisé.
+  const keepFocus = !!active?.closest?.('.tabs');
   closeMenu({ restoreFocus: false });
-  if (changed) closePanel({ restoreFocus: false });
+  if (changed) { closePanel({ restoreFocus: false }); state.tocOpen = false; state.moreOpen = false; }
   Object.assign(state, next);
   render({ focusHeading: changed && !keepFocus });
-  if (changed) window.scrollTo({ top: 0, behavior: scrollBehavior() });
+  // Lien vers un acte précis de la page Décisions : on s'y rend plutôt qu'en haut de page.
+  const anchor = state.route === 'decisions' && state.param ? $(`#decision-${CSS.escape(state.param)}`) : null;
+  if (anchor) { anchor.focus({ preventScroll: true }); anchor.scrollIntoView({ block: 'start', behavior: scrollBehavior() }); }
+  else if (changed) window.scrollTo({ top: 0, behavior: scrollBehavior() });
 }
 
 document.addEventListener('click', e => {
-  const t = e.target.closest('[data-source], [data-filter], [data-para], [data-term], [data-place]');
+  const t = e.target.closest('[data-source], [data-para], [data-place]');
   if (!t) return;
   if (t.dataset.place) {
     state.place = t.dataset.place === 'all' || placeById.has(t.dataset.place) ? t.dataset.place : 'all';
     render();
   } else if (t.dataset.source) openSource(t.dataset.source, t);
-  else if (t.dataset.filter) setFilter(t.dataset.filter);
   else if (t.dataset.para) {
     const { ev } = parcoursContext();
     state.selPara[ev.id] = t.dataset.para;
     render();
-  } else if (t.dataset.term) {
-    const id = t.dataset.term;
-    if (state.openTerms.has(id)) state.openTerms.delete(id); else state.openTerms.add(id);
-    render();
   }
 });
+
+// Sommaire des repères et « Pour aller plus loin » : leur état d'ouverture survit aux rendus.
+document.addEventListener('toggle', e => {
+  if (e.target.matches?.('.toc')) { state.tocOpen = e.target.open; if (e.target.open) centerCurrentChapter(); }
+  if (e.target.matches?.('.reading__more')) state.moreOpen = e.target.open;
+}, true);
 
 el.menuToggle.addEventListener('click', () => (state.menuOpen ? closeMenu() : openMenu()));
 el.panelClose.addEventListener('click', () => closePanel());
