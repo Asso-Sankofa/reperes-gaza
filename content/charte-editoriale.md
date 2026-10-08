@@ -18,7 +18,7 @@ Employer des verbes précis. Définir les mots techniques à leur première appa
 
 Une notice donne l'information, pas la consigne qui aurait dû la produire. Si une phrase décrit ce que la page devrait faire (« la portée doit être expliquée »), la remplacer par l'information elle-même, ou dire clairement qu'elle manque encore. Donner d'abord le fait vérifié, puis sa limite, une seule fois. Une question finale ne porte que sur ce que le corpus ne permet pas encore de trancher.
 
-Lire le texte à voix haute. Demander à un lecteur de reformuler ce qu'il a compris. La fluidité et la justesse priment sur les scores d'un détecteur d'IA. Aucune règle stylistique ne garantit le résultat de Pangram ou d'un outil comparable. Ne pas fabriquer de souvenirs ou de témoignages pour donner une apparence humaine au texte.
+Lire le texte à voix haute. Demander à un lecteur de reformuler ce qu'il a compris. Ne pas fabriquer de souvenirs ou de témoignages pour donner une apparence humaine au texte.
 
 ## Sourcer une affirmation
 
@@ -54,4 +54,4 @@ La collecte conserve la provenance et la version. Le statut de relecture fait pa
 
 Le futur circuit distinguera préparation, relecture et publication. Le texte indiquera son auteur et sa dernière révision substantielle. Une correction factuelle importante conservera une note expliquant le changement.
 
-Les outils automatisés peuvent aider à chercher ou à structurer. La responsabilité du contenu publié reste humaine. La version de démonstration actuelle a été préparée avec une assistance d'IA. Une relecture éditoriale de l'ensemble du site en ligne a été faite en septembre 2026, avant l'ajout de la carte de situation ; les textes historiques et juridiques n'ont pas encore été relus par un historien ou un juriste.
+Les outils automatisés peuvent aider à chercher ou à structurer. La responsabilité du contenu publié reste humaine. Une relecture éditoriale de l'ensemble du site en ligne a été faite en septembre 2026, avant l'ajout de la carte de situation ; les textes historiques et juridiques n'ont pas encore été relus par un historien ou un juriste.

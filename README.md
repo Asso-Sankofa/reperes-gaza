@@ -10,8 +10,6 @@ Une relecture éditoriale de l’ensemble du site en ligne a été faite la sema
 
 Le registre des relectures (rôles, périmètre, dates) est conservé par l’association, hors du dépôt.
 
-Les contenus ont été préparés avec une assistance d’IA.
-
 ## Ce que contient le site
 
 - Un accueil qui dit ce que propose le site, puis des questions d’entrée et la liste des sept repères, filtrable par territoire (Gaza, Cisjordanie) avec une carte de situation.
