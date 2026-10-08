@@ -18,7 +18,7 @@ Employer des verbes précis. Définir les mots techniques à leur première appa
 
 Une notice donne l'information, pas la consigne qui aurait dû la produire. Si une phrase décrit ce que la page devrait faire (« la portée doit être expliquée »), la remplacer par l'information elle-même, ou dire clairement qu'elle manque encore. Donner d'abord le fait vérifié, puis sa limite, une seule fois. Une question finale ne porte que sur ce que le corpus ne permet pas encore de trancher.
 
-Lire le texte à voix haute. Demander à un lecteur de reformuler ce qu'il a compris. Ne pas fabriquer de souvenirs ou de témoignages pour donner une apparence humaine au texte.
+Lire le texte à voix haute. Demander à un lecteur de reformuler ce qu'il a compris. Ne pas fabriquer de souvenirs ou de témoignages.
 
 ## Sourcer une affirmation
 
