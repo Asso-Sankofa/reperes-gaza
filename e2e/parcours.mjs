@@ -86,20 +86,17 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   await page.goto(BASE + '/#/parcours/retrait-2005');
   await page.waitForSelector('#notice-title');
   check('miniature 2005 : Gaza en évidence', await page.evaluate(() => {
-    const f = document.querySelector('.notice__place--map');
+    const f = document.querySelector('.notice__place');
     return !!f && !f.querySelector('[data-zone="gaza"]').classList.contains('is-muted') && f.querySelector('[data-zone="cisjordanie"]').classList.contains('is-muted');
   }));
-  check('miniature 2005 : nom accessible', (await page.locator('.notice__place--map svg').getAttribute('aria-label')).includes('Bande de Gaza'));
+  check('miniature 2005 : nom accessible', (await page.locator('.notice__place svg').getAttribute('aria-label')).includes('Bande de Gaza'));
   await page.screenshot({ path: `${SHOTS}/desktop-notice-2005.png` });
-  await page.goto(BASE + '/#/parcours/guerre-1967');
-  await page.waitForSelector('#notice-title');
-  check('miniature 1967 : les deux territoires', (await page.locator('.notice__place--map [data-zone].is-muted').count()) === 0 && (await page.locator('.notice__place-name').first().textContent()) === 'Bande de Gaza et Cisjordanie');
-  await page.goto(BASE + '/#/parcours/attaques-2023');
-  await page.waitForSelector('#notice-title');
-  check('2023 : lieux écrits, sans miniature', (await page.locator('.notice__place--map').count()) === 0 && (await page.locator('.notice__place').innerText()).includes('Sud d’Israël'));
-  await page.goto(BASE + '/#/parcours/nakba-1948');
-  await page.waitForSelector('#notice-title');
-  check('1948 : aucune carte', (await page.locator('.notice__place').count()) === 0);
+  // La miniature ne répète pas la carte de l'accueil : pas de carte quand tout le territoire dessiné est concerné.
+  for (const id of ['guerre-1967', 'attaques-2023', 'nakba-1948']) {
+    await page.goto(BASE + '/#/parcours/' + id);
+    await page.waitForSelector('#notice-title');
+    check(`${id} : pas de miniature`, (await page.locator('.notice__place').count()) === 0);
+  }
   await page.goto(BASE + '/');
   await page.waitForSelector('#home-title');
 
@@ -107,6 +104,16 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   await page.waitForSelector('#notice-title');
   check('notice 2016 : titre', (await page.locator('#notice-title').textContent()).includes('résolution 2334 de l’ONU sur les colonies israéliennes'));
   check('notice 2016 : focus sur le titre après navigation', (await focused(page)) === 'notice-title');
+  check('notice 2016 : sources appelées dans le texte', (await page.locator('.notice__text .cite').allTextContents()).join(',') === '1,2');
+  check('notice 2016 : notes de marge sur ordinateur', (await page.locator('.sidenote').first().isVisible()) && (await page.locator('.reading__sources').isHidden()));
+  await page.locator('.notice__text .cite').nth(1).click();
+  check('appel de source : ouvre le volet de la source', (await page.locator('#panel-title').textContent()).includes('S/RES/2334'));
+  await page.keyboard.press('Escape');
+  check('notice 2016 : liens vers les actes de la page Décisions', (await page.locator('.reading__decisions a').evaluateAll(l => l.map(a => a.getAttribute('href')))).join(' ') === '#/decisions/etiquetage-2016 #/decisions/resolution-2334-2016 #/decisions/conseil-etat-2019');
+  check('notice 2016 : le document n’est plus dans la page', (await page.locator('.seat').count()) === 0);
+  await page.locator('.reading__doc a').click();
+  await page.waitForSelector('#doc-title');
+  check('document 2334 : page propre, titre focalisé', (await hash(page)) === '#/parcours/resolution-2016/texte' && (await focused(page)) === 'doc-title');
   check('notice 2016 : quinze sièges', (await page.locator('.seat').count()) === 15);
   check('notice 2016 : décompte du vote', (await page.locator('.vote__tally').textContent()) === '14 pour · 0 contre · 1 abstention');
   check('notice 2016 : § 12 collationné', (await page.locator('.para', { hasText: '12.' }).textContent()).includes('de lui faire rapport tous les trois mois'));
@@ -131,6 +138,8 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   check('volet source : Échap ferme', await panel.isHidden());
   check('volet source : focus rendu au déclencheur', (await focused(page)) === 'fu-aside-12-0');
 
+  await page.goto(BASE + '/#/parcours/resolution-2016');
+  await page.waitForSelector('#notice-title');
   await page.locator('#notice-title').focus();
   await page.keyboard.press('ArrowRight');
   await page.waitForFunction(() => location.hash === '#/parcours/attaques-2023');
@@ -140,15 +149,18 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   check('raccourci ← revient au repère précédent', true);
 
   await page.goto(BASE + '/#/parcours/attaques-2023');
-  await page.locator('.filter', { hasText: 'Le droit' }).click();
-  await page.waitForFunction(() => location.hash === '#/parcours/avis-2024' && document.querySelector('.chapters a[aria-current]')?.href.endsWith('avis-2024'));
-  check('filtre « Le droit » : ouvre le repère le plus proche', true);
-  check('filtre « Le droit » : deux repères', (await page.locator('.chapters a').count()) === 2);
-  check('filtre : aria-pressed', (await page.locator('.filter[aria-pressed="true"]').textContent()) === 'Le droit');
-  check('filtre : focus conservé sur le bouton', (await focused(page)) === 'filter-law');
+  await page.waitForSelector('#notice-title');
+  check('sommaire des repères : replié par défaut', (await page.locator('.chapters').isHidden()) && (await page.locator('.toc summary').innerText()).includes('REPÈRE 6 SUR 8'));
+  await page.locator('.toc summary').click();
+  check('sommaire des repères : huit repères', (await page.locator('.chapters a').count()) === 8 && (await page.locator('.chapters a[aria-current]').getAttribute('href')) === '#/parcours/attaques-2023');
+  await page.goto(BASE + '/#/parcours/guerre-1967');
+  await page.waitForSelector('#notice-title');
+  await page.locator('.reading__decisions a').first().click();
+  await page.waitForFunction(() => document.activeElement?.id === 'decision-embargo-juin-1967', null, { timeout: 3000 }).catch(() => {});
+  check('lien vers un acte : focus sur l’acte', (await focused(page)) === 'decision-embargo-juin-1967');
 
   await page.locator('.main-nav a', { hasText: 'Décisions françaises' }).click();
-  await page.waitForSelector('#decisions-title', { state: 'visible' });
+  await page.waitForFunction(() => location.hash === '#/decisions' && document.activeElement?.id === 'decisions-title', null, { timeout: 3000 }).catch(() => {});
   check('Décisions françaises : titre focalisé', (await focused(page)) === 'decisions-title');
   check('Décisions françaises : dix actes, dans l’ordre', (await page.locator('.decision__date').allTextContents()).join(' | ') === '11 mai 1949 | Juin 1967 | Juillet 1967 | 24 novembre 2016 | 23 décembre 2016 | 31 décembre 2019 | 18 septembre 2024 | 22 septembre 2025 | 30 juin 2026 | 8 septembre 2026');
   await page.locator('[data-focus="src-dec-embargo-juillet-1967-an-1968"]').click();
@@ -199,13 +211,20 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
 /* ---------- Mobile ---------- */
 {
   const page = await newPage({ width: 390, height: 844 }, { hasTouch: true, isMobile: true, deviceScaleFactor: 2 });
+  await page.goto(BASE + '/#/parcours/resolution-2016/texte');
+  await page.waitForSelector('#doc-title');
+  check('mobile : glose du paragraphe dans le flux', await page.locator('.gloss--inline').isVisible());
+  check('mobile : pas de défilement horizontal (document)', await noHorizontalScroll(page));
+  await page.screenshot({ path: `${SHOTS}/mobile-notice-2334.png`, fullPage: true });
   await page.goto(BASE + '/#/parcours/resolution-2016');
   await page.waitForSelector('#notice-title');
   check('mobile : navigation principale masquée', await page.locator('.main-nav').isHidden());
   check('mobile : barre de progression du bas', await page.locator('#bottom-bar').isVisible());
-  check('mobile : glose du paragraphe dans le flux', await page.locator('.gloss--inline').isVisible());
+  check('mobile : une seule navigation entre repères', await page.locator('.pager').isHidden());
+  check('mobile : sources listées sous le texte, sans notes de marge', (await page.locator('.reading__sources').isVisible()) && (await page.locator('.sidenote').first().isHidden()));
+  const textBox = await page.locator('.notice__text').boundingBox();
+  check('mobile : le texte du repère tient dans le premier écran', textBox.y + textBox.height <= 844 - 64, `bas du texte à ${Math.round(textBox.y + textBox.height)} px`);
   check('mobile : pas de défilement horizontal (notice)', await noHorizontalScroll(page));
-  await page.screenshot({ path: `${SHOTS}/mobile-notice-2334.png`, fullPage: true });
 
   const toggle = page.locator('#menu-toggle');
   await toggle.click();
@@ -225,7 +244,7 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   check('menu mobile : Échap ferme', await page.locator('#menu-mobile').isHidden());
   check('menu mobile : focus rendu au bouton', (await focused(page)) === 'menu-toggle');
 
-  await page.locator('.notice__aside .source-button').first().click();
+  await page.locator('.reading__sources .source-button').first().click();
   const panel = page.locator('#source-panel');
   check('volet mobile : modal', (await panel.getAttribute('aria-modal')) === 'true');
   check('volet mobile : fond occultant', await page.locator('#panel-backdrop').isVisible());
