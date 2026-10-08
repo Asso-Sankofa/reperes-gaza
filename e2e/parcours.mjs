@@ -48,7 +48,7 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   check('accueil : nouveau titre', (await page.locator('#home-title').innerText()).replace(/\s+/g, ' ') === 'Comprendre le rôle de la France dans la question de Gaza');
   check('accueil : bouton « Commencer en 1948 »', (await page.locator('.hero__cta').getAttribute('href')) === '#/parcours/nakba-1948');
   check('carte : SVG intégré, nommé', (await page.locator('.explorer__map svg[role="img"]').count()) === 1 && (await page.locator('#map-region-title').count()) === 1);
-  check('carte : légende et lien vers la méthode', (await page.locator('.map-caption').innerText()).includes('ne reconstituent pas les limites'));
+  check('carte : légende et lien vers la méthode', (await page.locator('.map-caption a[href="#/methode"]').count()) === 1);
   check('sommaire : trois commandes, les huit repères par défaut', (await page.locator('.place-filter').count()) === 3 && (await pressed(page)) === 'all' && (await years(page)).length === 8);
   check('sommaire : bouton « Voir les huit repères »', await page.getByRole('button', { name: 'Voir les huit repères' }).isVisible());
   check('sommaire : zone d’annonce polie', (await page.locator('.map-summary__status').getAttribute('role')) === 'status');
@@ -105,7 +105,7 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
 
   await page.locator('.question-card', { hasText: 'colonies' }).click();
   await page.waitForSelector('#notice-title');
-  check('notice 2016 : titre', (await page.locator('#notice-title').textContent()).includes('résolution sur les colonies'));
+  check('notice 2016 : titre', (await page.locator('#notice-title').textContent()).includes('résolution 2334 de l’ONU sur les colonies israéliennes'));
   check('notice 2016 : focus sur le titre après navigation', (await focused(page)) === 'notice-title');
   check('notice 2016 : quinze sièges', (await page.locator('.seat').count()) === 15);
   check('notice 2016 : décompte du vote', (await page.locator('.vote__tally').textContent()) === '14 pour · 0 contre · 1 abstention');
@@ -166,7 +166,7 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
 
   await page.locator('.main-nav a', { hasText: 'Lexique' }).click();
   await page.waitForSelector('#mots-title');
-  check('Lexique : quatre termes', (await page.locator('.lexique article').count()) === 4);
+  check('Lexique : trois termes', (await page.locator('.lexique article').count()) === 3);
   await page.locator('.main-nav a', { hasText: 'Méthode' }).click();
   const json = await page.request.get(BASE + '/data/reperes.json');
   const csv = await page.request.get(BASE + '/data/reperes-evenements.csv');

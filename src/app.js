@@ -116,7 +116,7 @@ function renderMapSummary(node, listNode) {
         ${e.places.length ? `<span class="map-list__places">${esc(placeLabels(e).join(' · '))}</span>` : ''}</span>
         <span class="map-list__arrow" aria-hidden="true">→</span></a></li>`).join('')}
     </ol>
-    ${place && offMap.length ? `<p class="map-summary__off">Non situées sur la carte : ${offMap.map(e => `<a href="${evHref(e)}">${esc(e.year)} · ${esc(e.short)}</a>`).join(', ')}</p>` : ''}`;
+    ${place && offMap.length ? `<p class="map-summary__off">Hors carte&nbsp;: ${offMap.map(e => `<a href="${evHref(e)}">${esc(e.year)} · ${esc(e.short)}</a>`).join(', ')}</p>` : ''}`;
   const fig = $('[data-map="region"]');
   if (fig) fig.dataset.mapZones = place ? place.map_zone : mapPlaces.map(p => p.map_zone).join(' ');
 }
@@ -181,7 +181,7 @@ function gloss(p, variant) {
     <p class="gloss__text">${esc(p.gloss)}</p>
     <p class="eyebrow">POUR EXAMINER SES SUITES</p>
     ${followups}
-    <div class="gloss__open"><p class="eyebrow">LA QUESTION QUI RESTE OUVERTE</p><p class="gloss__question">${esc(p.question)}</p></div>`;
+    <div class="gloss__open"><p class="eyebrow">QUESTION OUVERTE</p><p class="gloss__question">${esc(p.question)}</p></div>`;
 }
 
 function documentSection(ev, doc) {
@@ -202,7 +202,7 @@ function documentSection(ev, doc) {
       <div class="section-head">
         <div>
           <p class="eyebrow">LE DOCUMENT · ${esc(doc.ref)}</p>
-          <h2 id="doc-title" class="display display--h2">Lire le texte adopté, puis chercher ses suites.</h2>
+          <h2 id="doc-title" class="display display--h2">Le vote et le texte adopté</h2>
         </div>
       </div>
       <div class="card vote">
@@ -214,7 +214,7 @@ function documentSection(ev, doc) {
           ${seats.map(([n, label, kind]) => `<li class="seat seat--${kind}${n === 'France' ? ' seat--france' : ''}"><span>${esc(n)}</span><span class="seat__vote">${label}</span></li>`).join('')}
         </ul>
         <div class="vote__foot">
-          <p>${esc(doc.voteNote)}</p>
+          ${doc.voteNote ? `<p>${esc(doc.voteNote)}</p>` : ''}
           <button type="button" class="button button--outline" data-source="${esc(doc.sourceVote)}" data-focus="doc-vote">Lire l’explication de vote française <span aria-hidden="true">↗</span></button>
         </div>
       </div>
@@ -275,17 +275,17 @@ function renderParcours() {
       <p class="notice__meta"><span class="notice__year">${esc(ev.year)}</span><span class="eyebrow eyebrow--doc">${esc(ev.kind)}</span></p>
       <h1 id="notice-title" class="notice__title" tabindex="-1">${esc(ev.title)}</h1>
       <p class="notice__text">${esc(ev.text)}</p>
-      <p class="notice__context">${esc(ev.context)}</p>
+      ${ev.context ? `<p class="notice__context">${esc(ev.context)}</p>` : ''}
       ${noticePlace(ev)}
       ${why1948 ? why1948.outerHTML.replace('data-template="why1948"', '').replace('data-focus="home-histoire"', 'data-focus="parcours-histoire"') : ''}
     </div>
     <aside class="notice__aside" aria-label="Sources et pistes de lecture">
       <div>
-        <p class="eyebrow eyebrow--muted">LA QUESTION À POURSUIVRE</p>
+        <p class="eyebrow eyebrow--muted">QUESTION OUVERTE</p>
         <p class="notice__question">${esc(ev.question)}</p>
       </div>
       <div>
-        <p class="eyebrow eyebrow--muted">SUR QUOI S’APPUIE CE REPÈRE&nbsp;?</p>
+        <p class="eyebrow eyebrow--muted">SOURCES</p>
         ${sourceButtons(ev.sources, 'ev')}
       </div>
       ${terms.length ? `<div>
@@ -329,14 +329,14 @@ function renderDecisions() {
               <div><dt>Nature</dt><dd>${esc(x.nature)}</dd></div>
             </dl>
             <p>${esc(x.text)}</p>
-            <p class="decision__limit"><span class="eyebrow eyebrow--muted">LIMITE</span>${esc(x.limit)}</p>
+            ${x.limit ? `<p class="decision__limit"><span class="eyebrow eyebrow--muted">LIMITE</span>${esc(x.limit)}</p>` : ''}
             ${sourceButtons(x.sources, `dec-${x.id}`, true)}
             <a class="pill" href="${evHref(ev)}">Repère ${esc(ev.year)} · ${esc(ev.short)} →</a>
           </div>
         </li>`;
       }).join('')}
     </ol>
-    <p class="note-box">Cette liste ne recense que les actes cités dans les repères. Ce n’est pas un inventaire de la politique française.</p>
+    <p class="note-box">Cette liste ne recense que les actes cités dans les repères.</p>
   </section>`;
 }
 
@@ -526,7 +526,7 @@ function openSource(id, trigger) {
     <p class="source-panel__publisher">${esc(s.publisher)}</p>
     <h3>Ce que cette source documente</h3><p>${esc(s.scope)}</p>
     <h3>Où regarder</h3><p>${esc(s.locator)}</p>
-    <h3>Limite à garder en tête</h3><p>${esc(s.limit)}</p>
+    <h3>Limite</h3><p>${esc(s.limit)}</p>
     ${s.verified_on ? `<p class="source-panel__access">Passage vérifié le ${esc(formatDate(s.verified_on))}.</p>` : ''}
     <a class="source-panel__link" href="${esc(s.url)}" target="_blank" rel="noopener noreferrer"><span>Ouvrir le document d’origine<span class="visually-hidden"> (nouvel onglet)</span></span><span aria-hidden="true">↗</span></a>`;
   el.panel.hidden = false;

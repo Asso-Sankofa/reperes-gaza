@@ -77,7 +77,7 @@
       <div class="question-grid">
         <a class="question-card" href="#/parcours/resolution-2016">
           <span class="eyebrow eyebrow--on-ink">REPÈRE · 2016</span>
-          <span class="question-card__q">La France a-t-elle soutenu un texte de l’ONU sur les colonies&nbsp;?</span>
+          <span class="question-card__q">Qu’a voté la France à l’ONU sur les colonies israéliennes en 2016&nbsp;?</span>
           <span class="question-card__cta">Lire le texte adopté et ses suites →</span>
         </a>
         <a class="question-card" href="#/parcours/nakba-1948">
@@ -87,7 +87,7 @@
         </a>
         <a class="question-card" href="#/parcours/retrait-2005">
           <span class="eyebrow eyebrow--on-ink">REPÈRE · 2005</span>
-          <span class="question-card__q">Gaza est-elle restée sous contrôle après le retrait israélien&nbsp;?</span>
+          <span class="question-card__q">Israël contrôle-t-il encore Gaza après son retrait de 2005&nbsp;?</span>
           <span class="question-card__cta">Lire ce repère et ses sources →</span>
         </a>
         <a class="question-card" href="#/parcours/avis-2024">
@@ -122,15 +122,14 @@
       <div class="map-results" data-slot="map-list"></div>
       <figure class="explorer__map" data-map="region">
         {{MAP_REGION}}
-        <figcaption class="map-caption">Carte de situation réalisée avec Natural Earth (1:50&nbsp;m). Ses contours ne reconstituent pas les limites aux dates des repères. <a href="#/methode">Sources et limites de la carte</a></figcaption>
+        <figcaption class="map-caption">Carte de situation réalisée avec Natural Earth (1:50&nbsp;m). <a href="#/methode">Sources et limites de la carte</a></figcaption>
       </figure>
     </div>
     <a class="button button--ink" href="#/parcours">Parcourir les repères <span aria-hidden="true">→</span></a>
     <details class="disclosure" data-template="why1948">
-      <summary><span>Pourquoi les repères commencent-ils en 1948&nbsp;?</span><span class="disclosure__sign" aria-hidden="true">+</span></summary>
+      <summary><span>Avant 1948</span><span class="disclosure__sign" aria-hidden="true">+</span></summary>
       <div class="disclosure__body">
-        <p>Deux thèmes du site y commencent&nbsp;: la question des réfugiés palestiniens et, dès 1949, la relation diplomatique entre la France et Israël. Ce n’est pas le début de l’histoire. Le mandat britannique sur la Palestine, confié par la Société des Nations en 1922, et le plan de partage adopté par l’Assemblée générale de l’ONU en 1947 en font partie.</p>
-        <p class="muted">Les repères sur la période antérieure restent à écrire. En attendant, une synthèse institutionnelle permet de situer ce contexte.</p>
+        <p>Le mandat britannique sur la Palestine, confié par la Société des Nations en 1922, et le plan de partage adopté par l’Assemblée générale de l’ONU en 1947 précèdent ces repères. La synthèse historique de l’ONU les présente.</p>
         <button type="button" class="button button--outline" data-source="histoire" data-focus="home-histoire">Lire la synthèse historique de l’ONU <span aria-hidden="true">↗</span></button>
       </div>
     </details>
@@ -203,7 +202,7 @@
         <p class="lead">Repères est un projet documentaire porté par l’association Sankofa. Son point de départ&nbsp;: rendre les documents accessibles et examiner les décisions françaises à propos de Gaza.</p>
         <p>Nos textes historiques et juridiques n’ont pas encore été relus par un historien ou un juriste.</p>
         <div class="principles">
-          <div><h2>Chaque fait renvoie à un document</h2><p class="muted">Nous indiquons le document sur lequel repose chaque fait important, ainsi que ce qu’il permet réellement d’établir. Le lecteur peut remonter à la source et voir ce qui reste incertain.</p></div>
+          <div><h2>Chaque fait renvoie à un document</h2><p class="muted">Chaque fait important renvoie à un document, avec le passage cité et ce que ce document ne dit pas. Une déclaration établit ce qui a été déclaré, pas que le fait décrit a eu lieu.</p></div>
           <div><h2>Une correction laisse une trace</h2><p class="muted">Les corrections sont visibles dans l’<a href="https://github.com/Asso-Sankofa/reperes-gaza/commits/main">historique public du dépôt</a>.</p></div>
         </div>
         <div class="status-detail">
@@ -221,13 +220,11 @@
           <p>Le jeu de données réunit Gaza et la Cisjordanie dans une seule entité, «&nbsp;Palestine&nbsp;», que nous séparons à 34,7° de longitude est. Le contour d’Israël y inclut le plateau du Golan.</p>
           <h3>Jérusalem</h3>
           <p>À cette échelle, le contour de la Cisjordanie englobe toute la ville de Jérusalem et ne distingue pas Jérusalem-Est. Les cartes ne placent donc pas de point «&nbsp;Jérusalem&nbsp;».</p>
-          <h3>Les repères et les lieux</h3>
-          <p>Chaque repère indique dans le corpus les lieux qu’il concerne (champ <code>places</code>). Les localités du sud d’Israël attaquées le 7 octobre 2023 ne sont pas encore placées sur la carte.</p>
         </div>
       </div>
       <aside class="panel-box split__side" aria-labelledby="methode-contenu">
         <p class="eyebrow eyebrow--muted" id="methode-contenu">CE QUE CETTE VERSION CONTIENT</p>
-        <p>Un premier corpus de repères sourcés. Les contenus ont été préparés avec une assistance d’IA.</p>
+        <p>Les contenus ont été préparés avec une assistance d’IA.</p>
         <p>Ce site ne présente pas de bilan actuel de la guerre.</p>
         <div class="downloads">
           <a class="download download--ink" href="data/reperes.json" download="reperes-corpus-{{SCHEMA_VERSION}}.json"><span>Corpus des repères</span><span>JSON ↓</span></a>

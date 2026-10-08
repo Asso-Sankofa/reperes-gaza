@@ -386,12 +386,10 @@
         "history"
       ],
       "places": [],
-      "place_note": "Les contours de la carte sont actuels : ils ne permettent pas de situer les lieux de 1948.",
       "kind": "Repère historique",
       "title": "Le déplacement et la dépossession des Palestiniens",
       "text": "Le mot Nakba, « catastrophe » en arabe, désigne le déplacement massif et la dépossession des Palestiniens pendant la guerre israélo-arabe de 1948.",
-      "context": "C’est de là que part la question des réfugiés palestiniens. Les causes de la guerre de 1948 et ce qu’ont vécu les autres populations concernées n’ont pas encore de repère.",
-      "question": "Que s’est-il passé dans les lieux dont les familles ont été déplacées ?",
+      "question": "Combien de Palestiniens ont été déplacés, selon les sources ?",
       "sources": [
         "nakba"
       ],
@@ -410,10 +408,9 @@
         "france"
       ],
       "places": [],
-      "place_note": "Ce repère porte sur une décision diplomatique de la France, pas sur un lieu de la carte.",
-      "kind": "Relations diplomatiques",
+      "kind": "Vote à l’ONU · 11 mai",
       "title": "La France établit des relations diplomatiques avec Israël",
-      "text": "Le 11 mai 1949, l’Assemblée générale de l’ONU admet Israël parmi ses membres, et la France vote pour. Le ministère des Affaires étrangères date de ce même jour l’établissement des relations diplomatiques, puis rappelle une coopération française à l’effort de défense du nouvel État.",
+      "text": "Le 11 mai 1949, l’Assemblée générale de l’ONU admet Israël parmi ses membres, et la France vote pour. Le ministère des Affaires étrangères date de ce même jour l’établissement des relations diplomatiques. Il mentionne aussi une coopération française à la défense du nouvel État.",
       "context": "Avant le vote, le représentant de la France déclare que « le Gouvernement français votera sans hésiter en faveur de l’admission d’Israël ». Aucun acte français de reconnaissance n’a été trouvé en ligne. Les dossiers sur la coopération militaire sont conservés aux Archives diplomatiques (série 218QO) et au Service historique de la Défense.",
       "question": "Que contiennent les dossiers d’archives sur la coopération militaire franco-israélienne des années 1950 ?",
       "sources": [
@@ -437,10 +434,10 @@
         "gaza",
         "cisjordanie"
       ],
-      "kind": "Repère historique et français",
+      "kind": "Guerre et embargo · juin",
       "title": "L’occupation de Gaza et de la Cisjordanie",
       "text": "Lors de la guerre de juin 1967, Israël occupe Gaza et la Cisjordanie, dont Jérusalem-Est. La France décide un embargo sur les armes. Le 16 juin, devant l’Assemblée nationale, le ministre des Affaires étrangères Maurice Couve de Murville parle d’une décision « prise après l’éclatement des hostilités » de « mettre l’embargo sur les livraisons d’armes à toutes les parties belligérantes ».",
-      "context": "Le gouvernement en a donné une autre version. Le 17 mai 1968, le secrétaire d’État André Bettencourt situe la décision « à la même époque » que la déclaration du 2 juin, puis rappelle que « la guerre a été déclenchée le 5 juin ». Le ministère des Affaires étrangères écrit aujourd’hui que l’embargo a été décidé « avant le déclenchement des hostilités ». Selon Bettencourt, le gouvernement l’assouplit en juillet 1967 mais le maintient « essentiellement pour 50 avions Mirage V commandés par Israël ». Aucun acte publié fixant l’embargo n’a été trouvé. Le territoire occupé en 1967 est celui que désignent la résolution 2334 en 2016 et l’avis de la Cour internationale de Justice en 2024.",
+      "context": "Sa date varie selon les documents. Le 17 mai 1968, le secrétaire d’État André Bettencourt situe la décision « à la même époque » que la déclaration du 2 juin, puis rappelle que « la guerre a été déclenchée le 5 juin ». Le ministère des Affaires étrangères écrit aujourd’hui que l’embargo a été décidé « avant le déclenchement des hostilités ». Selon Bettencourt, le gouvernement l’assouplit en juillet 1967 mais le maintient « essentiellement pour 50 avions Mirage V commandés par Israël ». Aucun acte publié fixant l’embargo n’a été trouvé. Le territoire occupé en 1967 est celui que désignent la résolution 2334 en 2016 et l’avis de la Cour internationale de Justice en 2024.",
       "question": "Quel acte a fixé l’embargo, et à quelle date ?",
       "sources": [
         "histoire",
@@ -465,7 +462,7 @@
       "places": [
         "gaza"
       ],
-      "kind": "Repère historique",
+      "kind": "Retrait israélien",
       "title": "Israël retire ses colons et ses troupes de Gaza",
       "text": "En 2005, Israël retire de Gaza ses colons et ses troupes. Selon la Cour internationale de Justice, il conserve pourtant des prérogatives essentielles sur le territoire : le contrôle des frontières terrestres, maritimes et aériennes, des restrictions à la circulation des personnes et des marchandises, la perception des taxes à l’importation et à l’exportation, et le contrôle militaire de la zone tampon.",
       "context": "La Cour en tire une conséquence juridique dans son avis du 19 juillet 2024 : le retrait n’a pas totalement libéré Israël des obligations du droit de l’occupation, qui restent proportionnées à son contrôle effectif sur Gaza (§ 93 et 94). Elle ajoute que c’est « encore plus vrai depuis le 7 octobre 2023 ».",
@@ -489,18 +486,17 @@
         "gaza",
         "cisjordanie"
       ],
-      "kind": "Décision documentée · 23 décembre",
-      "title": "La France soutient une résolution sur les colonies",
-      "text": "Le Conseil de sécurité adopte la résolution 2334. Elle réaffirme l’absence de validité juridique des colonies dans le territoire palestinien occupé depuis 1967, y compris Jérusalem-Est. La France vote pour.",
-      "context": "Ce que la France a fait ensuite se lit dans d’autres documents : le paragraphe 5, présenté plus bas, s’adresse à tous les États, dont la France.",
+      "kind": "Vote au Conseil de sécurité · 23 décembre",
+      "title": "La France vote la résolution 2334 de l’ONU sur les colonies israéliennes",
+      "text": "Le 23 décembre 2016, le Conseil de sécurité de l’ONU adopte la résolution 2334 par quatorze voix, dont celle de la France, et une abstention, celle des États-Unis. Le texte réaffirme que la création par Israël de colonies de peuplement dans le Territoire palestinien occupé depuis 1967, y compris Jérusalem-Est, « n’a aucun fondement en droit et constitue une violation flagrante du droit international ».",
+      "context": "Le paragraphe 5, qui s’appuie sur ce constat, demande à tous les États, dont la France, « de faire une distinction, dans leurs échanges en la matière, entre le territoire de l’État d’Israël et les territoires occupés depuis 1967 ».",
       "question": "Ce vote s’est-il traduit dans des décisions françaises ?",
       "sources": [
         "2334-texte",
         "2334"
       ],
       "terms": [
-        "colonie",
-        "source"
+        "colonie"
       ],
       "actors": [
         "france",
@@ -518,8 +514,7 @@
         "gaza",
         "sud-israel"
       ],
-      "place_note": "Les localités du sud d’Israël attaquées le 7 octobre ne sont pas encore placées sur la carte.",
-      "kind": "Événements et enquête ultérieure",
+      "kind": "Attaque et guerre · 7 octobre",
       "title": "Les attaques du 7 octobre et la guerre à Gaza",
       "text": "Le 7 octobre 2023, le Hamas et d’autres groupes armés palestiniens attaquent le sud d’Israël. Des civils sont tués, des personnes sont enlevées et emmenées comme otages à Gaza. Israël mène ensuite des opérations militaires dans la bande de Gaza.",
       "context": "La Commission internationale indépendante d’enquête créée par le Conseil des droits de l’homme a examiné les trois premiers mois de la guerre. Dans son rapport du 14 juin 2024, elle conclut, « sur la base de motifs raisonnables », que des membres des ailes militaires du Hamas et d’autres groupes armés palestiniens ont commis des crimes de guerre lors de l’attaque du 7 octobre (§ 90). Pour les opérations militaires israéliennes à Gaza, elle conclut qu’Israël a commis des crimes de guerre et des crimes contre l’humanité (§ 97).",
@@ -538,7 +533,7 @@
     {
       "id": "avis-2024",
       "year": "2024",
-      "short": "L’avis de la CIJ",
+      "short": "L’avis de la Cour",
       "threads": [
         "france",
         "law"
@@ -548,17 +543,15 @@
         "cisjordanie"
       ],
       "kind": "Avis consultatif · 19 juillet",
-      "title": "La CIJ examine les conséquences de l’occupation",
+      "title": "L’avis de la Cour internationale de Justice sur l’occupation",
       "text": "Par onze voix contre quatre, la Cour internationale de Justice est d’avis que la présence continue d’Israël dans le Territoire palestinien occupé est illicite et qu’Israël doit y mettre fin « dans les plus brefs délais ».",
-      "context": "Pour les autres États, dont la France, la Cour est d’avis, par douze voix contre trois, qu’ils sont dans l’obligation de ne pas reconnaître comme licite la situation découlant de cette présence et de ne pas prêter aide ou assistance à son maintien (§ 285, point 7). L’Assemblée générale a demandé cet avis. Il est distinct de l’affaire contentieuse Afrique du Sud contre Israël, portée devant la même Cour. Le 18 septembre 2024, la France vote pour la résolution ES-10/24 de l’Assemblée générale, qui fait suite à l’avis. Son représentant déclare que « la France ne reconnaîtra pas l’annexion illégale de ces territoires », et précise qu’elle aurait préféré un texte reprenant exactement l’avis de la Cour. Le 30 juin 2026, le ministère des Affaires étrangères publie une mise en garde aux entreprises, qui s’appuie sur la résolution 2334 et sur l’avis de la Cour. Celles qui prennent part à l’activité des colonies israéliennes « s’exposent au risque d’être reconnues coupables de violations du droit international ». Le 8 septembre 2026, le Président de la République s’engage, avec les Premiers ministres britannique et canadien, à prendre « des mesures pour interdire l’importation de produits en provenance des colonies ». Cette déclaration ne cite pas l’avis. Le 17 septembre 2026, le porte-parole du ministère indique que les travaux techniques ont débuté, dont « le dossier du vecteur juridique et du calendrier ».",
+      "context": "Pour les autres États, dont la France, la Cour est d’avis, par douze voix contre trois, qu’ils sont dans l’obligation de ne pas reconnaître comme licite la situation découlant de cette présence et de ne pas prêter aide ou assistance à son maintien (§ 285, point 7). L’Assemblée générale a demandé cet avis. Il est distinct de l’affaire contentieuse Afrique du Sud contre Israël, portée devant la même Cour. Le 18 septembre 2024, la France vote pour la résolution ES-10/24 de l’Assemblée générale, qui fait suite à l’avis. Son représentant déclare que « la France ne reconnaîtra pas l’annexion illégale de ces territoires », et précise qu’elle aurait préféré un texte reprenant exactement l’avis de la Cour. Le 8 septembre 2026, le Président de la République s’engage, avec les Premiers ministres britannique et canadien, à prendre « des mesures pour interdire l’importation de produits en provenance des colonies ». Cette déclaration ne cite pas l’avis.",
       "question": "La France a-t-elle adopté une mesure contraignante à la suite de l’avis ?",
       "sources": [
         "icj-avis",
         "pv-es10-55",
-        "meae-entreprises-2026",
         "icj",
-        "elysee-2026-09-08",
-        "meae-pp-2026-09-17"
+        "elysee-2026-09-08"
       ],
       "terms": [
         "avis"
@@ -664,7 +657,6 @@
       "author": "La délégation française au Conseil de sécurité de l’ONU",
       "nature": "Vote",
       "text": "La France vote pour la résolution 2334, adoptée par 14 voix et une abstention, celle des États-Unis. Le texte réaffirme que la création par Israël de colonies de peuplement dans le Territoire palestinien occupé depuis 1967, y compris Jérusalem-Est, « n’a aucun fondement en droit et constitue une violation flagrante du droit international » (paragraphe 1).",
-      "limit": "Une résolution formule des constats et des demandes. Elle ne dit pas si ces demandes ont été suivies.",
       "sources": [
         "2334",
         "2334-texte"
@@ -679,7 +671,6 @@
       "author": "Le Conseil d’État",
       "nature": "Décision de justice administrative",
       "text": "Le Conseil d’État rejette les recours contre l’avis du 24 novembre 2016. Il statue après l’arrêt de la Cour de justice de l’Union européenne du 12 novembre 2019, qu’il avait saisie : selon cet arrêt, ces denrées doivent mentionner le territoire occupé et, le cas échéant, leur provenance d’une colonie.",
-      "limit": "La décision tranche la légalité de l’avis. Elle ne dit rien de son application par les commerçants ni des contrôles effectués.",
       "sources": [
         "ce-2019",
         "cjue-psagot"
@@ -694,7 +685,6 @@
       "author": "La délégation française à l’Assemblée générale de l’ONU",
       "nature": "Vote et explication de vote",
       "text": "La France vote pour la résolution ES-10/24, qui fait suite à l’avis de la Cour internationale de Justice. Le texte est adopté par 124 voix contre 14, avec 43 abstentions. Le représentant de la France déclare que « la France ne reconnaîtra pas l’annexion illégale de ces territoires », et précise qu’elle aurait préféré un texte reprenant exactement l’avis de la Cour.",
-      "limit": "Un vote et une explication de vote ne disent pas quelles mesures ont été appliquées ensuite.",
       "sources": [
         "pv-es10-55"
       ]
@@ -724,7 +714,6 @@
       "author": "Le ministère de l’Europe et des Affaires étrangères",
       "nature": "Avis aux entreprises",
       "text": "Le ministère publie une mise en garde sur les activités des entreprises françaises dans les colonies israéliennes. Il s’appuie sur la résolution 2334 et sur l’avis de la Cour. Les entreprises qui prennent part à l’activité des colonies « s’exposent au risque d’être reconnues coupables de violations du droit international ».",
-      "limit": "Le texte décrit des risques pour les entreprises. Il ne dit pas quelles mesures ont été prises à leur encontre.",
       "sources": [
         "meae-entreprises-2026"
       ]
@@ -748,20 +737,20 @@
   "actors": {
     "france": {
       "label": "En France",
-      "title": "Gouvernement et Parlement : deux types de documents",
+      "title": "Le gouvernement et le Parlement",
       "cards": [
         {
           "name": "Le gouvernement",
-          "text": "France Diplomatie donne accès à la position officielle et au récit français des relations bilatérales. Ces pages disent ce que le gouvernement affirme ; elles ne listent pas les décisions qui ont suivi.",
+          "text": "France Diplomatie, le site du ministère de l’Europe et des Affaires étrangères, publie la position officielle de la France et son récit des relations franco-israéliennes.",
           "sources": [
             "france"
           ]
         },
         {
           "name": "Le Parlement",
-          "text": "Les questions et les réponses publiques permettent de suivre les demandes d’explication adressées au gouvernement. Les scrutins sont une autre catégorie de documents.",
+          "text": "Les députés posent au gouvernement des questions écrites, auxquelles le ministre concerné répond publiquement. Exemple cité : la question n° 27183 sur l’étiquetage des produits des colonies, avec la réponse du 28 avril 2020.",
           "sources": [
-            "an"
+            "qe-27183"
           ]
         }
       ]
@@ -792,7 +781,7 @@
       "cards": [
         {
           "name": "Les enquêtes du PCPSR",
-          "text": "Le PCPSR publie des enquêtes menées à Gaza et en Cisjordanie. Aucun résultat n’est repris ici.",
+          "text": "Le Palestinian Center for Policy and Survey Research (PCPSR), centre palestinien de recherche politique et d’enquêtes, publie des enquêtes menées à Gaza et en Cisjordanie. Aucun résultat n’est repris ici.",
           "sources": [
             "pcpsr"
           ]
@@ -808,21 +797,27 @@
     },
     "international": {
       "label": "À l’international",
-      "title": "Des organes de l’ONU de nature différente",
+      "title": "Le Conseil de sécurité, la Cour et une commission d’enquête",
       "note": "Cette sélection n’est pas un inventaire des acteurs internationaux.",
       "cards": [
         {
           "name": "Le Conseil de sécurité",
-          "text": "La résolution 2334 est un texte adopté par les États membres du Conseil à cette date. Le compte rendu distingue le vote des explications de chaque représentant.",
+          "text": "Le 23 décembre 2016, le Conseil adopte la résolution 2334 par quatorze voix, dont celle de la France, et une abstention, celle des États-Unis.",
           "sources": [
             "2334"
           ]
         },
         {
-          "name": "Une cour ou une commission",
-          "text": "L’avis de la CIJ et les conclusions d’une commission d’enquête sont des documents de nature différente.",
+          "name": "La Cour internationale de Justice",
+          "text": "Le 19 juillet 2024, la Cour rend un avis consultatif demandé par l’Assemblée générale. Dans un avis, elle expose le droit applicable ; elle ne condamne personne.",
           "sources": [
-            "icj-avis",
+            "icj-avis"
+          ]
+        },
+        {
+          "name": "La commission d’enquête",
+          "text": "Créée par le Conseil des droits de l’homme, la Commission internationale indépendante d’enquête publie le 14 juin 2024 un rapport sur les trois premiers mois de la guerre (A/HRC/56/26). Elle ne rend pas de condamnation pénale.",
+          "sources": [
             "coi-rapport"
           ]
         }
@@ -856,16 +851,6 @@
       "sources": [
         "icj-avis"
       ]
-    },
-    {
-      "id": "source",
-      "title": "Source primaire",
-      "subtitle": "Notion de méthode",
-      "text": "Pour un vote, le compte rendu officiel est une source primaire. Pour la position d’un mouvement, sa propre déclaration en est une. Cela ne rend pas toutes les affirmations de son auteur exactes : la source établit d’abord ce qu’il a dit ou fait.",
-      "sources": [
-        "an",
-        "standing"
-      ]
     }
   ],
   "documents": {
@@ -898,7 +883,6 @@
           "États-Unis"
         ]
       },
-      "voteNote": "Chaque membre vote en son nom. Le compte rendu distingue ce vote des explications données ensuite par chaque représentant.",
       "note": "Extraits du dispositif. Paragraphes 3, 4, 6 à 11 et 13 non reproduits. Transcription relue le 28 septembre 2026 sur le texte officiel en français.",
       "defaultParagraph": "5",
       "paragraphs": [
@@ -969,7 +953,7 @@
           "followups": [
             {
               "source": "sg2334",
-              "note": "Le trentième rapport trimestriel, publié par écrit le 19 juin 2024. Un exemple daté de ce suivi."
+              "note": "Le trentième rapport trimestriel, publié par écrit le 19 juin 2024."
             },
             {
               "source": "sg2334-2026",

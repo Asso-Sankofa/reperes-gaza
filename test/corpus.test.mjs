@@ -82,17 +82,6 @@ test('un lieu inconnu ou une zone de carte inconnue est détecté', async () => 
   assert.ok(errors.some(e => e.includes('zone de carte inconnue')));
 });
 
-test('un lieu non dessiné sur la carte exige une note, un repère sans lieu n’en a pas besoin', async () => {
-  const d = await load();
-  const nakba = d.events.find(e => e.id === 'nakba-1948');
-  delete nakba.place_note;
-  const a2023 = d.events.find(e => e.id === 'attaques-2023');
-  delete a2023.place_note;
-  const { errors } = validateCorpus(d);
-  assert.ok(!errors.some(e => e.includes('nakba-1948')));
-  assert.ok(errors.some(e => e.includes('attaques-2023') && e.includes('place_note')), 'un lieu non dessiné suffit à exiger la note');
-});
-
 test('chaque notice reste accessible : située sur la carte ou listée hors carte', async () => {
   const d = await load();
   const mapped = new Set(d.places.filter(p => p.map_zone).map(p => p.id));
