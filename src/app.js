@@ -129,6 +129,10 @@ function noticePlace(e) {
   </figure>`;
 }
 
+// Langue d'un titre de source (champ lang) ou d'un passage marqué {en}…{/en} dans un texte français.
+const sourceTitle = s => (s.lang ? `<span lang="${esc(s.lang)}">${esc(s.title)}</span>` : esc(s.title));
+const rich = text => esc(text).replace(/\{(en)\}(.*?)\{\/\1\}/g, '<span lang="$1">$2</span>');
+
 // Appels de source [[id]] : numérotés dans l'ordre d'apparition. La note de marge (ordinateur) suit le premier appel.
 const CALL = /\[\[([a-z0-9-]+)\]\]/g;
 const citedOrder = ev => [...new Set([...`${ev.text} ${ev.context || ''}`.matchAll(CALL)].map(m => m[1]))];
@@ -139,8 +143,8 @@ function withCalls(text, order, seen) {
     const s = sourceById.get(id);
     const first = !seen.has(id);
     seen.add(id);
-    return `<button type="button" class="cite" data-source="${esc(id)}" aria-label="Source ${n} : ${esc(s.publisher)}">${n}</button>${first
-      ? `<span class="sidenote" data-source="${esc(id)}" aria-hidden="true"><span class="sidenote__n">${n}</span><span class="sidenote__publisher">${esc(s.publisher)}</span><span class="sidenote__title">${esc(s.title)}</span></span>`
+    return `<button type="button" class="cite" data-source="${esc(id)}" aria-label="Source ${n} : ${esc(s.publisher)}, ${esc(s.title)}">${n}</button>${first
+      ? `<span class="sidenote" data-source="${esc(id)}" aria-hidden="true"><span class="sidenote__n">${n}</span><span class="sidenote__publisher">${esc(s.publisher)}</span><span class="sidenote__title">${sourceTitle(s)}</span></span>`
       : ''}`;
   });
 }
@@ -150,7 +154,7 @@ function sourceButtons(ids, ctx, compact = false) {
     const s = sourceById.get(id);
     return `<button type="button" class="source-button${compact ? ' source-button--compact' : ''}" data-source="${esc(id)}" data-focus="src-${esc(ctx)}-${esc(id)}">
       <span class="source-button__n">${String(i + 1).padStart(2, '0')}</span>
-      <span><span class="source-button__publisher">${esc(s.publisher)}</span>${compact ? '' : `<span class="source-button__title">${esc(s.title)}</span>`}</span>
+      <span><span class="source-button__publisher">${esc(s.publisher)}</span>${compact ? '' : `<span class="source-button__title">${sourceTitle(s)}</span>`}</span>
       <span aria-hidden="true">↗</span>
     </button>`;
   }).join('');
@@ -181,8 +185,8 @@ function gloss(p, variant) {
     const s = sourceById.get(f.source);
     return `<button type="button" class="followup" data-source="${esc(f.source)}" data-focus="fu-${variant}-${esc(p.n)}-${i}">
       <span class="followup__head"><span>${esc(s.publisher)}</span><span aria-hidden="true">↗</span></span>
-      <span class="followup__title">${esc(s.title)}</span>
-      <span class="followup__note">${esc(f.note)}</span>
+      <span class="followup__title">${sourceTitle(s)}</span>
+      <span class="followup__note">${rich(f.note)}</span>
     </button>`;
   }).join('');
   return `<p class="eyebrow">PARAGRAPHE ${esc(p.n)} · À QUI S’ADRESSE-T-IL ?</p>
@@ -252,7 +256,7 @@ function documentSection(ev, doc) {
             ${col.corrections.length ? `<ul>${col.corrections.map(c => `<li>${esc(c)}</li>`).join('')}</ul>` : ''}
           </details>` : ''}
         </div>
-        <aside class="gloss gloss--aside" aria-live="polite" aria-label="Le paragraphe choisi et ses suites">${gloss(selected, 'aside')}</aside>
+        <div class="gloss gloss--aside" aria-live="polite">${gloss(selected, 'aside')}</div>
       </div>
     </div>
   </section>`;
@@ -298,7 +302,7 @@ function renderParcours() {
       ${ev.context ? `<p class="notice__context">${withCalls(ev.context, order, seen)}</p>` : ''}
       ${doc ? `<p class="reading__doc"><a class="button button--outline" href="${evHref(ev)}/texte" data-focus="doc-open">Lire la ${esc(doc.title.replace(/ \(\d{4}\)$/, '').replace(/^R/, 'r'))}, paragraphe par paragraphe <span aria-hidden="true">→</span></a></p>` : ''}
       ${decisions.length ? `<div class="reading__decisions">
-        <p class="eyebrow eyebrow--muted">DÉCISIONS FRANÇAISES</p>
+        <h2 class="eyebrow eyebrow--muted">DÉCISIONS FRANÇAISES</h2>
         <ul>${decisions.map(x => `<li><a href="#/decisions/${esc(x.id)}">${esc(x.title)} · ${esc(x.date)} <span aria-hidden="true">→</span></a></li>`).join('')}</ul>
       </div>` : ''}
       <section class="reading__sources" aria-labelledby="sources-title">
@@ -306,13 +310,13 @@ function renderParcours() {
         ${sourceButtons(order, 'ev')}
       </section>
       <div class="reading__question">
-        <p class="eyebrow eyebrow--muted">QUESTION OUVERTE</p>
+        <h2 class="eyebrow eyebrow--muted">QUESTION OUVERTE</h2>
         <p class="notice__question">${esc(ev.question)}</p>
       </div>
       ${more ? `<details class="reading__more"${state.moreOpen ? ' open' : ''}>
         <summary data-focus="more">Pour aller plus loin</summary>
-        ${terms.map(t => `<div class="term"><p class="term__title">${esc(t.title)}</p><p class="term__text">${esc(t.text)}</p></div>`).join('')}
-        ${ev.actors?.length ? `<p class="eyebrow eyebrow--muted">ACTEURS CONCERNÉS</p>
+        ${terms.map(t => `<div class="term"><p class="term__title">${esc(t.title)}</p><p class="term__text">${rich(t.text)}</p></div>`).join('')}
+        ${ev.actors?.length ? `<h3 class="eyebrow eyebrow--muted">ACTEURS CONCERNÉS</h3>
         <div class="pill-group">${ev.actors.map(a => `<a class="pill" href="#/voix/${esc(a)}">${esc(data.actors[a].label)} →</a>`).join('')}</div>` : ''}
       </details>` : ''}
       ${why1948 ? why1948.outerHTML.replace('data-template="why1948"', '').replace('data-focus="home-histoire"', 'data-focus="parcours-histoire"') : ''}
@@ -398,7 +402,7 @@ function renderMots() {
         return `<article aria-labelledby="mot-${esc(t.id)}">
           <p class="eyebrow eyebrow--doc">${esc(t.subtitle)}</p>
           <h2 id="mot-${esc(t.id)}">${esc(t.title)}</h2>
-          <p>${esc(t.text)}</p>
+          <p>${rich(t.text)}</p>
           ${sourceButtons(t.sources, `mot-${t.id}`, true)}
           ${linked.length ? `<div class="pill-group">${linked.map(e => `<a class="pill" href="${evHref(e)}">Repère ${esc(e.year)} →</a>`).join('')}</div>` : ''}
         </article>`;
@@ -422,8 +426,8 @@ function renderPager(ctx) {
   if (!p) return '';
   return `<nav class="pager${state.route === 'parcours' ? ' pager--parcours' : ''}" aria-label="Continuer la lecture">
     <div class="wrap pager__inner">
-      <a href="${esc(p[0])}" data-focus="pager-prev"><span class="pager__sub">← ${esc(p[1])}</span><span class="pager__label">${esc(p[2])}</span></a>
-      <a href="${esc(p[3])}" class="pager__next" data-focus="pager-next"><span class="pager__sub">${esc(p[4])} →</span><span class="pager__label">${esc(p[5])}</span></a>
+      <a href="${esc(p[0])}" data-focus="pager-prev"><span class="pager__sub"><span aria-hidden="true">←</span> ${esc(p[1])}</span><span class="pager__label">${esc(p[2])}</span></a>
+      <a href="${esc(p[3])}" class="pager__next" data-focus="pager-next"><span class="pager__sub">${esc(p[4])} <span aria-hidden="true">→</span></span><span class="pager__label">${esc(p[5])}</span></a>
     </div>
   </nav>`;
 }
@@ -536,10 +540,10 @@ function openSource(id, trigger) {
   state.sourceId = id;
   el.panelBody.innerHTML = `
     <p class="eyebrow eyebrow--doc source-panel__type">${esc(s.type)}</p>
-    <h2 id="panel-title">${esc(s.title)}</h2>
+    <h2 id="panel-title">${sourceTitle(s)}</h2>
     <p class="source-panel__publisher">${esc(s.publisher)}</p>
     <h3>Ce que cette source documente</h3><p>${esc(s.scope)}</p>
-    <h3>Où regarder</h3><p>${esc(s.locator)}</p>
+    <h3>Où regarder</h3><p>${rich(s.locator)}</p>
     <h3>Limite</h3><p>${esc(s.limit)}</p>
     ${s.verified_on ? `<p class="source-panel__access">Passage vérifié le ${esc(formatDate(s.verified_on))}.</p>` : ''}
     <a class="source-panel__link" href="${esc(s.url)}" target="_blank" rel="noopener noreferrer"><span>Ouvrir le document d’origine<span class="visually-hidden"> (nouvel onglet)</span></span><span aria-hidden="true">↗</span></a>`;

@@ -2,6 +2,7 @@
 // Lancé par `docker compose run --rm e2e`. BASE_URL désigne le site à tester (local ou déployé).
 import { chromium } from 'playwright';
 import { mkdir } from 'node:fs/promises';
+import fs from 'node:fs';
 
 const BASE = (process.env.BASE_URL || 'http://site:8080').replace(/\/$/, '');
 const SHOTS = process.env.SHOTS_DIR || '/app/e2e/screenshots';
@@ -192,6 +193,28 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   check('ordinateur : aucune requête vers un domaine tiers', page.external.length === 0, page.external.join(', '));
   check('ordinateur : aucune erreur JavaScript', page.errors.length === 0, page.errors.join(' | '));
   await page.context().close();
+}
+
+/* ---------- Accessibilité : règles automatiques (axe-core, WCAG 2.1 A et AA) ---------- */
+{
+  const axeSrc = fs.readFileSync(new URL('./node_modules/axe-core/axe.min.js', import.meta.url), 'utf8');
+  const routes = ['', 'parcours/nakba-1948', 'parcours/retrait-2005', 'parcours/resolution-2016', 'parcours/resolution-2016/texte', 'decisions', 'voix', 'verifier', 'mots', 'methode'];
+  for (const [viewport, label] of [[{ width: 1366, height: 900 }, 'ordinateur'], [{ width: 390, height: 844 }, 'mobile']]) {
+    const page = await newPage(viewport);
+    const found = [];
+    for (const r of routes) {
+      await page.goto(`${BASE}/#/${r}`);
+      await page.waitForSelector('main h1:visible');
+      await page.evaluate(axeSrc);
+      const res = await page.evaluate(() => axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] } }));
+      for (const v of res.violations) found.push(`#/${r} ${v.id} (${v.nodes.length})`);
+    }
+    check(`axe-core : aucune violation (${label})`, found.length === 0, found.join(', '));
+    await page.goto(`${BASE}/#/parcours/nakba-1948`);
+    await page.waitForSelector('#notice-title');
+    check(`langue : titre de source en anglais marqué (${label})`, (await page.locator('.source-button__title [lang="en"], .sidenote__title [lang="en"]').first().textContent()) === 'About the Nakba');
+    await page.context().close();
+  }
 }
 
 /* ---------- Réduction des animations ---------- */

@@ -265,8 +265,8 @@ h1, h2, h3 { margin: 0; }
 .toc summary::-webkit-details-marker { display: none; }
 .toc summary .eyebrow { margin: 0; }
 .toc__label { font-size: .9rem; text-decoration: underline; text-underline-offset: 3px; }
-.toc__label::after { content: ' +'; text-decoration: none; display: inline-block; margin-left: 4px; }
-.toc[open] .toc__label::after { content: ' −'; }
+.toc__label::after { content: '+'; content: '+' / ''; text-decoration: none; display: inline-block; margin-left: 6px; }
+.toc[open] .toc__label::after { content: '−'; content: '−' / ''; }
 .chapters { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; padding-bottom: 12px; margin-top: 8px; }
 .chapters a {
   flex: 1 1 0; min-width: 88px; scroll-snap-align: center; display: block; padding: 12px 8px 6px;

@@ -39,7 +39,7 @@ services:
     command:
       - sh
       - -c
-      - npm init -y >/dev/null && npm install --no-audit --no-fund --silent playwright@1.63.0 && cp /app/e2e/*.mjs . && node $${E2E_SCRIPT:-parcours.mjs}
+      - npm init -y >/dev/null && npm install --no-audit --no-fund --silent playwright@1.63.0 axe-core@4.10.3 && cp /app/e2e/*.mjs . && node $${E2E_SCRIPT:-parcours.mjs}
     environment:
       BASE_URL: ${BASE_URL:-http://site:8080}
       SHOTS_DIR: /app/e2e/screenshots

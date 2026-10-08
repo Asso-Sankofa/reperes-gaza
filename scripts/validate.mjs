@@ -5,6 +5,7 @@ const ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const STATUSES = ['draft_pending_independent_review', 'editorial_review_completed'];
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 const DASHES = /[\u2013\u2014]/; // demi-cadratin et cadratin, exclus par la charte éditoriale
+export const LANG_SPAN = /\{en\}[^{}]+\{\/en\}/g;
 export const CALL = /\[\[([a-z0-9-]+)\]\]/g;
 export const LOOSE_SPACE = /\S [:;?!](?=\s|$)/; // espace normale là où la charte demande une espace insécable
 
@@ -56,6 +57,7 @@ export function validateCorpus(d, { externalRefs = [], mapZones = MAP_ZONES } = 
     for (const f of ['publisher', 'title', 'url', 'type', 'scope', 'locator', 'access', 'limit']) {
       if (!s[f]) err(`source ${s.id} : champ « ${f} » vide`);
     }
+    if (s.lang !== undefined && s.lang !== 'en') err(`source ${s.id} : langue du titre inconnue « ${s.lang} »`);
     let url;
     try { url = new URL(s.url); } catch { err(`source ${s.id} : URL invalide « ${s.url} »`); continue; }
     if (url.protocol !== 'https:') err(`source ${s.id} : URL non HTTPS « ${s.url} »`);
@@ -129,6 +131,9 @@ export function validateCorpus(d, { externalRefs = [], mapZones = MAP_ZONES } = 
   walkStrings(d, (value, path) => {
     if (DASHES.test(value)) err(`${path} : tiret cadratin ou demi-cadratin`);
     if (LOOSE_SPACE.test(value)) err(`${path} : espace normale avant « : », « ; », « ? » ou « ! »`);
+    // Changement de langue (RGAA 8.7) : {en}…{/en}, fermé et sans imbrication.
+    const marks = value.replace(LANG_SPAN, '');
+    if (/\{\/?[a-z]{2}\}/.test(marks)) err(`${path} : marque de langue mal fermée ou inconnue`);
   });
 
   return { errors, warnings };
