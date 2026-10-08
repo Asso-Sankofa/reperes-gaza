@@ -19,8 +19,8 @@ export function countWord(n) {
   return NUMBER_WORDS[n];
 }
 
-// Les appels de source [[id]] servent au rendu ; l'export CSV garde le texte seul.
-const plain = s => String(s ?? '').replace(CALL, '');
+// Les appels de source [[id]] et les marques de langue servent au rendu ; l'export CSV garde le texte seul.
+const plain = s => String(s ?? '').replace(CALL, '').replace(/\{\/?en\}/g, '');
 
 export function toCsv(corpus) {
   const cell = v => {

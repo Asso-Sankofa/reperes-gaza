@@ -20,7 +20,8 @@
       "locator": "Premier paragraphe (définition) ; rubrique Nakba Commemorations (table ronde du 17 mai 2024)",
       "access": "Page consultée le 30 septembre 2026 dans un navigateur. Passage relu : « The Nakba, which means “catastrophe” in Arabic, refers to the mass displacement and dispossession of Palestinians during the 1948 Arab-Israeli war. »",
       "limit": "La présentation d’une institution n’épuise pas les débats historiques.",
-      "verified_on": "2026-09-30"
+      "verified_on": "2026-09-30",
+      "lang": "en"
     },
     {
       "id": "histoire",
@@ -32,7 +33,8 @@
       "locator": "Passages sur 1967 et 2005",
       "access": "Page consultée le 29 septembre 2026 dans un navigateur. Passage relu : « In 2005, Israel withdrew its settlers and troops from Gaza while retaining control over its borders, seashore and airspace. »",
       "limit": "Le résumé d’une institution n’épuise pas les débats historiques.",
-      "verified_on": "2026-09-29"
+      "verified_on": "2026-09-29",
+      "lang": "en"
     },
     {
       "id": "france",
@@ -171,10 +173,11 @@
       "url": "https://www.ochaopt.org/data/casualties",
       "type": "Méthodologie de données humanitaires",
       "scope": "Périmètre des victimes recensées et conditions de vérification.",
-      "locator": "Introduction et Definitions and clarifications",
+      "locator": "Introduction et {en}Definitions and clarifications{/en}",
       "access": "Page consultée le 30 septembre et le 1er octobre 2026 dans un navigateur. Passages relus : les victimes des hostilités commencées le 7 octobre 2023 ne sont ajoutées qu’« once these incidents have been independently verified » ; un incident doit être confirmé par « at least two independent and reliable sources », sauf les incidents qui font des blessés israéliens, pour lesquels l’information est « typically based on media reports » ; seules sont comptées les victimes « of confrontations between Palestinians and Israelis in the context of the occupation and conflict ».",
       "limit": "Les séries et les points de situation peuvent avoir des périmètres ou des statuts de vérification différents.",
-      "verified_on": "2026-10-01"
+      "verified_on": "2026-10-01",
+      "lang": "en"
     },
     {
       "id": "an",
@@ -196,7 +199,8 @@
       "scope": "Objectifs déclarés et participation de citoyens juifs et palestiniens d’Israël.",
       "locator": "Présentation du mouvement",
       "access": "Présentation consultée pendant le repérage.",
-      "limit": "Cette source établit les objectifs revendiqués. Elle ne mesure pas leur représentativité dans la population."
+      "limit": "Cette source établit les objectifs revendiqués. Elle ne mesure pas leur représentativité dans la population.",
+      "lang": "en"
     },
     {
       "id": "idi",
@@ -205,7 +209,7 @@
       "url": "https://en.idi.org.il/",
       "type": "Institut de recherche",
       "scope": "Accès aux enquêtes sur la société israélienne.",
-      "locator": "Surveys and Polls",
+      "locator": "{en}Surveys and Polls{/en}",
       "access": "Portail consulté pendant le repérage.",
       "limit": "Chaque enquête doit être lue avec sa date, son échantillon et sa question exacte. Aucun pourcentage n’est repris ici."
     },
@@ -218,7 +222,8 @@
       "scope": "Enquête en Cisjordanie, à Gaza et à Jérusalem-Est.",
       "locator": "Présentation de l’échantillon",
       "access": "Notice d’enquête consultée pendant le repérage.",
-      "limit": "Les conditions de collecte et la couverture territoriale doivent accompagner les résultats."
+      "limit": "Les conditions de collecte et la couverture territoriale doivent accompagner les résultats.",
+      "lang": "en"
     },
     {
       "id": "2334-texte",
@@ -251,7 +256,7 @@
       "url": "https://unsco.unmissions.org/en/news/security-council-briefing-28-september-2026-unscr-2334",
       "type": "Exposé présenté en séance, en anglais",
       "scope": "Trente-neuvième rapport sur l’application de la résolution 2334. Il couvre la période du 13 juin au 18 septembre 2026.",
-      "locator": "Introduction : « Settlement activity has, nevertheless, continued at high levels. » Passage sur le paragraphe 5 : annonce du 8 septembre 2026 par le Canada, la France et le Royaume-Uni.",
+      "locator": "Introduction : « {en}Settlement activity has, nevertheless, continued at high levels.{/en} » Passage sur le paragraphe 5 : annonce du 8 septembre 2026 par le Canada, la France et le Royaume-Uni.",
       "access": "Exposé consulté le 7 octobre 2026 sur le site de l’UNSCO. Passages relus à cette date.",
       "limit": "Un exposé oral résume le rapport. Il ne remplace pas le compte rendu de la séance, qui contient aussi les interventions des États.",
       "verified_on": "2026-10-07"
@@ -829,7 +834,7 @@
       "id": "nakba",
       "title": "Nakba",
       "subtitle": "L’événement de 1948 et l’usage élargi du mot",
-      "text": "Ce mot arabe signifie « catastrophe ». Il désigne le déplacement massif et la dépossession des Palestiniens pendant la guerre de 1948. Le mot sert aussi à décrire un processus qui se poursuivrait depuis : le Comité de l’ONU pour les droits des Palestiniens a ainsi intitulé une table ronde du 17 mai 2024 « 1948-2024: The Ongoing Palestinian Nakba ». Cette fiche s’en tient à l’événement de 1948.",
+      "text": "Ce mot arabe signifie « catastrophe ». Il désigne le déplacement massif et la dépossession des Palestiniens pendant la guerre de 1948. Le mot sert aussi à décrire un processus qui se poursuivrait depuis : le Comité de l’ONU pour les droits des Palestiniens a ainsi intitulé une table ronde du 17 mai 2024 « {en}1948-2024: The Ongoing Palestinian Nakba{/en} ». Cette fiche s’en tient à l’événement de 1948.",
       "sources": [
         "nakba"
       ]
@@ -957,7 +962,7 @@
             },
             {
               "source": "sg2334-2026",
-              "note": "L’exposé du 28 septembre 2026 présente le trente-neuvième rapport. Selon lui, « Settlement activity has, nevertheless, continued at high levels ». C’est le plus récent que nous ayons repéré au 7 octobre 2026."
+              "note": "L’exposé du 28 septembre 2026 présente le trente-neuvième rapport. Selon lui, « {en}Settlement activity has, nevertheless, continued at high levels{/en} ». C’est le plus récent que nous ayons repéré au 7 octobre 2026."
             }
           ],
           "question": "Que disent les derniers rapports, et comment la France y a-t-elle répondu en séance ?"

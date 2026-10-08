@@ -114,6 +114,26 @@ test('une géométrie inattendue arrête le build', () => {
   assert.throws(() => decode(topo), /zone gaza/);
 });
 
+test('chaque source d’un repère est appelée dans le texte, et seulement elles', async () => {
+  const d = await load();
+  const e = d.events.find(x => x.id === 'guerre-1967');
+  e.text = e.text.replace('[[histoire]]', '[[absente]]');
+  const { errors } = validateCorpus(d);
+  assert.ok(errors.some(x => x.includes('[[absente]]')));
+  assert.ok(errors.some(x => x.includes('« histoire » jamais appelée')));
+});
+
+test('un passage en anglais est marqué et la marque est fermée', async () => {
+  const d = await load();
+  d.terms[0].text += ' {en}not closed';
+  d.sources[0].lang = 'klingon';
+  const { errors } = validateCorpus(d);
+  assert.ok(errors.some(x => x.includes('marque de langue mal fermée')));
+  assert.ok(errors.some(x => x.includes('langue du titre inconnue')));
+  const csv = toCsv(await load());
+  assert.doesNotMatch(csv, /\{\/?en\}|\[\[/);
+});
+
 test('le CSV reprend chaque événement et échappe les guillemets', async () => {
   const d = await load();
   const csv = toCsv(d).trim().split('\n');
