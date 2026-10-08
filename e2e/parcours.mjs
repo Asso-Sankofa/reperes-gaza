@@ -46,7 +46,7 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   check('accueil : frise avec huit repères', (await page.locator('[data-slot="home-rail"] .rail__dot').count()) === 8);
   check('accueil : polices chargées localement', await page.evaluate(async () => { await document.fonts.ready; return document.fonts.check('16px "DM Sans"') && document.fonts.check('16px "Libre Caslon Display"'); }));
   check('accueil : nouveau titre', (await page.locator('#home-title').innerText()).replace(/\s+/g, ' ') === 'Comprendre le rôle de la France dans la question de Gaza');
-  check('accueil : bouton « Commencer en 1948 »', (await page.locator('.hero__cta').getAttribute('href')) === '#/parcours/nakba-1948');
+  check('accueil : bouton « Lire le premier repère »', (await page.locator('.hero__cta').getAttribute('href')) === '#/parcours/nakba-1948');
   check('carte : SVG intégré, nommé', (await page.locator('.explorer__map svg[role="img"]').count()) === 1 && (await page.locator('#map-region-title').count()) === 1);
   check('carte : légende et lien vers la méthode', (await page.locator('.map-caption a[href="#/methode"]').count()) === 1);
   check('sommaire : trois commandes, les huit repères par défaut', (await page.locator('.place-filter').count()) === 3 && (await pressed(page)) === 'all' && (await years(page)).length === 8);

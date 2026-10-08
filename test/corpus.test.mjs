@@ -139,7 +139,7 @@ test('le build produit une page cohérente avec le corpus', async () => {
     assert.doesNotMatch(html, /unpkg\.com|jsdelivr|fonts\.googleapis|fonts\.gstatic/);
     assert.match(html, /<h1 id="home-title"[^>]*>Comprendre le rôle de la France <span class="accent-on-ink">dans la question de Gaza<\/span><\/h1>/);
     assert.match(html, /Huit repères, de 1948 à 2025&nbsp;: des décisions françaises, et le contexte qui les éclaire\./);
-    assert.match(html, /href="#\/parcours\/nakba-1948">Commencer en 1948/);
+    assert.match(html, /href="#\/parcours\/nakba-1948">Lire le premier repère/);
     assert.match(html, /class="map map--light map--region"/);
     assert.match(html, /<template id="map-mini"><svg class="map map--light"/);
     assert.doesNotMatch(html.replace(/<script type="application\/json" id="corpus">[\s\S]*?<\/script>/, ''), /\sstyle="/, 'la CSP interdit les attributs style');
