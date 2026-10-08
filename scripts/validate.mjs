@@ -34,12 +34,10 @@ export function validateCorpus(d, { externalRefs = [], mapZones = MAP_ZONES } = 
   const termIds = uniqueIds(d.terms, 'terme');
   const threadIds = uniqueIds(d.threads, 'fil');
   const placeIds = uniqueIds(d.places, 'lieu');
-  const mapped = new Set();
   for (const p of d.places) {
     for (const f of ['label', 'short']) if (!p[f]) err(`lieu ${p.id} : champ « ${f} » vide`);
     if (p.map_zone === undefined) err(`lieu ${p.id} : map_zone attendu (zone de la carte ou null)`);
     else if (p.map_zone !== null && !mapZones.includes(p.map_zone)) err(`lieu ${p.id} : zone de carte inconnue « ${p.map_zone} »`);
-    if (p.map_zone) mapped.add(p.id);
   }
   const actorIds = new Set(Object.keys(d.actors));
   for (const id of actorIds) if (!ID.test(id)) err(`acteur : identifiant invalide « ${id} »`);
@@ -67,7 +65,7 @@ export function validateCorpus(d, { externalRefs = [], mapZones = MAP_ZONES } = 
   let lastYear = -Infinity;
   for (const e of d.events) {
     const where = `événement ${e.id}`;
-    for (const f of ['year', 'short', 'kind', 'title', 'text', 'context', 'question']) {
+    for (const f of ['year', 'short', 'kind', 'title', 'text', 'question']) {
       if (!e[f]) err(`${where} : champ « ${f} » vide`);
     }
     if (!/^\d{4}$/.test(e.year)) err(`${where} : année invalide « ${e.year} »`);
@@ -78,11 +76,9 @@ export function validateCorpus(d, { externalRefs = [], mapZones = MAP_ZONES } = 
     for (const t of e.threads || []) if (!threadIds.has(t)) err(`${where} : fil inconnu « ${t} »`);
     for (const t of e.terms || []) if (!termIds.has(t)) err(`${where} : terme inconnu « ${t} »`);
     for (const a of e.actors || []) if (!actorIds.has(a)) err(`${where} : acteur inconnu « ${a} »`);
-    // Un lieu nommé mais non dessiné s'affiche en toutes lettres avec sa note. Sans lieu, le repère est listé hors carte à l'accueil.
+    // Sans lieu dessiné, le repère est listé hors carte à l'accueil.
     if (!Array.isArray(e.places)) err(`${where} : liste de lieux absente (tableau vide si aucun)`);
     for (const p of e.places || []) if (!placeIds.has(p)) err(`${where} : lieu inconnu « ${p} »`);
-    const partlyMapped = (e.places || []).some(p => !mapped.has(p));
-    if (partlyMapped && !e.place_note) err(`${where} : place_note attendu, un lieu n’est pas dessiné sur la carte`);
   }
 
   // Décisions françaises : chaque acte renvoie à un repère et à ses documents, dans l'ordre chronologique.
@@ -90,7 +86,7 @@ export function validateCorpus(d, { externalRefs = [], mapZones = MAP_ZONES } = 
   let lastWhen = '';
   for (const x of d.decisions || []) {
     const where = `décision ${x.id}`;
-    for (const f of ['date', 'title', 'author', 'nature', 'text', 'limit']) if (!x[f]) err(`${where} : champ « ${f} » vide`);
+    for (const f of ['date', 'title', 'author', 'nature', 'text']) if (!x[f]) err(`${where} : champ « ${f} » vide`);
     if (!/^\d{4}(-\d{2}(-\d{2})?)?$/.test(x.when || '')) err(`${where} : when doit être une date AAAA, AAAA-MM ou AAAA-MM-JJ`);
     else if (x.when < lastWhen) err(`${where} : les décisions doivent être classées par date`);
     else lastWhen = x.when;
