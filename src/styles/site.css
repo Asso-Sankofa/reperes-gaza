@@ -257,7 +257,8 @@ h1, h2, h3 { margin: 0; }
 
 /* Parcours : un repère se lit comme un article court annoté. */
 .parcours-head { border-bottom: 1px solid var(--color-border); }
-.parcours-head__inner { padding-top: 14px; padding-bottom: 14px; }
+.parcours-head__inner { padding-top: 14px; padding-bottom: 14px; display: flex; align-items: flex-start; gap: 12px; }
+.toc { flex: 1; min-width: 0; }
 .toc summary {
   display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; cursor: pointer; list-style: none;
   min-height: var(--target-min); align-content: center;
@@ -283,6 +284,18 @@ h1, h2, h3 { margin: 0; }
 .reading__head { max-width: 800px; }
 .reading__body { max-width: var(--column); }
 .notice__meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin: 0 0 14px; }
+/* Lecteur audio : dans la barre du haut, à droite du sommaire. */
+.listen { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+.listen__button {
+  display: inline-flex; align-items: center; gap: 6px; min-height: var(--target-min); padding: 6px 14px;
+  border: 1px solid var(--color-ink); border-radius: var(--radius-control); background: var(--color-paper); font-size: .85rem;
+}
+.listen__button:hover { background: var(--color-ink); color: var(--color-on-ink); }
+/* Icônes dessinées en CSS : elles ne dépendent pas des polices de l'appareil. */
+.listen__icon { display: inline-block; flex: none; }
+.listen__icon--play { width: 0; height: 0; border-style: solid; border-width: 5px 0 5px 8px; border-color: transparent transparent transparent currentColor; }
+.listen__icon--pause { width: 8px; height: 10px; border-left: 3px solid currentColor; border-right: 3px solid currentColor; }
+.listen__icon--stop { width: 9px; height: 9px; background: currentColor; }
 .notice__year { font-family: var(--font-editorial); font-size: 2rem; line-height: 1; color: var(--color-accent); }
 .notice__title { font-family: var(--font-editorial); font-weight: 400; font-size: clamp(2rem, 3.6vw, 3.3rem); line-height: 1.1; letter-spacing: -.015em; margin: 0 0 24px; text-wrap: balance; }
 .notice__text { font-size: var(--text-lead); line-height: 1.6; margin: 0 0 18px; text-wrap: pretty; }

@@ -217,6 +217,46 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   }
 }
 
+/* ---------- Lecteur audio (synthèse vocale simulée) ---------- */
+{
+  const page = await newPage({ width: 1366, height: 900 });
+  // Synthèse factice : on enregistre ce qui serait lu, sans dépendre des voix installées.
+  await page.addInitScript(() => {
+    window.__spoken = [];
+    const synth = { speaking: false, paused: false, getVoices: () => [],
+      speak(u) { window.__spoken.push({ text: u.text, lang: u.lang }); this.last = u; },
+      pause() { this.paused = true; }, resume() { this.paused = false; },
+      cancel() { window.__cancelled = (window.__cancelled || 0) + 1; } };
+    Object.defineProperty(window, 'speechSynthesis', { value: synth });
+    window.SpeechSynthesisUtterance = class { constructor(text) { this.text = text; } };
+  });
+  await page.goto(BASE + '/#/parcours/nakba-1948');
+  await page.waitForSelector('#notice-title');
+  await page.getByRole('button', { name: 'Écouter' }).click();
+  const spoken = await page.evaluate(() => window.__spoken);
+  const all = spoken.map(x => x.text).join(' ');
+  check('lecteur : lit l’année, le titre, le texte et la question', all.startsWith('1948. Le déplacement') && all.includes('Question ouverte'));
+  check('lecteur : ne lit pas les appels de source', !/\[\[|\]\]/.test(all));
+  check('lecteur : focus sur Pause', (await focused(page)) === 'listen-toggle' && (await page.locator('[data-listen="pause"]').isVisible()));
+  await page.getByRole('button', { name: 'Pause' }).click();
+  check('lecteur : Pause puis Reprendre', await page.getByRole('button', { name: 'Reprendre' }).isVisible());
+  await page.getByRole('button', { name: 'Arrêter' }).click();
+  check('lecteur : Arrêter revient à Écouter', (await focused(page)) === 'listen-play');
+  await page.goto(BASE + '/#/mots');
+  await page.goto(BASE + '/#/parcours/resolution-2016');
+  await page.waitForSelector('#notice-title');
+  await page.getByRole('button', { name: 'Écouter' }).click();
+  const before = await page.evaluate(() => window.__cancelled || 0);
+  await page.locator('.pager__next').click();
+  await page.waitForFunction(b => location.hash === '#/parcours/attaques-2023' && (window.__cancelled || 0) > b && document.querySelector('[data-listen="play"]'), before, { timeout: 3000 }).catch(() => {});
+  check('lecteur : la lecture s’arrête au changement de repère', (await page.evaluate(() => window.__cancelled || 0)) > before && (await page.getByRole('button', { name: 'Écouter' }).isVisible()));
+  await page.goto(BASE + '/#/parcours/resolution-2016/texte');
+  await page.waitForSelector('#doc-title');
+  check('lecteur : absent de la page du document', (await page.locator('.listen').count()) === 0);
+  check('lecteur : aucune erreur JavaScript', page.errors.length === 0, page.errors.join(' | '));
+  await page.context().close();
+}
+
 /* ---------- Réduction des animations ---------- */
 {
   const page = await newPage({ width: 1366, height: 900 }, { reducedMotion: 'reduce' });
