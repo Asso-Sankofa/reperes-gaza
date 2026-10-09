@@ -193,8 +193,7 @@ function gloss(p, variant) {
     <p class="gloss__addressee">${esc(p.addressee)}</p>
     <p class="gloss__text">${esc(p.gloss)}</p>
     <p class="eyebrow">POUR EXAMINER SES SUITES</p>
-    ${followups}
-    <div class="gloss__open"><p class="eyebrow">QUESTION OUVERTE</p><p class="gloss__question">${esc(p.question)}</p></div>`;
+    ${followups}`;
 }
 
 function documentSection(ev, doc) {
@@ -310,10 +309,6 @@ function renderParcours() {
         <h2 id="sources-title" class="eyebrow eyebrow--muted">SOURCES</h2>
         ${sourceButtons(order, 'ev')}
       </section>
-      <div class="reading__question">
-        <h2 class="eyebrow eyebrow--muted">QUESTION OUVERTE</h2>
-        <p class="notice__question">${esc(ev.question)}</p>
-      </div>
       ${more ? `<details class="reading__more"${state.moreOpen ? ' open' : ''}>
         <summary data-focus="more">Pour aller plus loin</summary>
         ${terms.map(t => `<div class="term"><p class="term__title">${esc(t.title)}</p><p class="term__text">${rich(t.text)}</p></div>`).join('')}
@@ -619,7 +614,7 @@ function trapMenuFocus(e) {
 const SPEECH = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
 let speech = 'idle'; // idle | playing | paused
 
-// Ce qui est lu : année et titre, texte, contexte, question. Sans les appels de source ;
+// Ce qui est lu : année et titre, texte, contexte. Sans les appels de source ;
 // les passages {en}…{/en} sont lus avec une voix anglaise quand l'appareil en a une.
 function speechParts(ev) {
   const parts = [];
@@ -637,7 +632,6 @@ function speechParts(ev) {
   add(`${ev.year}. ${ev.title}.`);
   add(ev.text);
   add(ev.context);
-  add(`Question ouverte : ${ev.question}`);
   return parts;
 }
 

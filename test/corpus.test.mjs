@@ -60,7 +60,7 @@ test('les tirets cadratins sont refusés', async () => {
 
 test('une espace normale avant « : » est refusée, dans le corpus comme dans le gabarit', async () => {
   const d = await load();
-  d.events[0].question = 'Pourquoi ?';
+  d.events[0].title = 'Pourquoi ?';
   assert.ok(validateCorpus(d).errors.some(e => e.includes('espace normale')));
   const html = await readFile(new URL('../src/index.html', import.meta.url), 'utf8');
   const text = html.replace(/<script[\s\S]*?<\/script>|<svg[\s\S]*?<\/svg>|<!--[\s\S]*?-->/g, '').replace(/<[^>]+>/g, '');
