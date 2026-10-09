@@ -380,6 +380,18 @@
       "access": "Article du 22 septembre 2025, consulté le 8 octobre 2026 sur news.un.org. Passages relus à cette date.",
       "limit": "Article d’information du service de presse de l’ONU, pas un compte rendu officiel de séance.",
       "verified_on": "2026-10-08"
+    },
+    {
+      "id": "ddf-1967-2",
+      "publisher": "Ministère des Affaires étrangères · Commission des archives diplomatiques",
+      "title": "Documents diplomatiques français, 1967, tome II (1er juillet-29 décembre)",
+      "url": "https://gallica.bnf.fr/ark:/12148/bd6t5327078f.texteImage",
+      "type": "Recueil de documents diplomatiques",
+      "scope": "Documents du ministère des Affaires étrangères du second semestre 1967, publiés et annotés par la Commission des archives diplomatiques.",
+      "locator": "Document n° 65 : note du 1er août 1967, « Embargo sur les armes à destination du Moyen-Orient » (Afrique-Levant, Israël, questions militaires) : « selon les instructions gouvernementales (note du ministre des Armées du 5 juin) seuls les pays suivants du Proche-Orient étaient soumis à l’embargo : Israël, RAU, Syrie, Liban, Jordanie, Irak, Koweït, Arabie Saoudite. » Même document : « Les instructions gouvernementales indiquent qu’il s’agit de matériel militaire contrôlé par la CIEEMG, à l’exception, en ce qui concerne Israël, des pièces de rechange pour avions ayant fait l’objet de contrats antérieurs au 8 juin (décision du Président de la République en date du 8 juin). » Document n° 4 : télégramme du 2 juillet 1967. Document n° 293 : télégramme du 9 décembre 1967.",
+      "access": "Volume consulté le 9 octobre 2026 en mode texte sur Gallica. Passages relus à cette date.",
+      "limit": "La note du ministre des Armées du 5 juin et la décision du 8 juin ne sont pas reproduites. Une note des éditeurs (document n° 17) parle de « l’embargo décidé le 2 juin 1967 ».",
+      "verified_on": "2026-10-09"
     }
   ],
   "events": [
@@ -442,13 +454,14 @@
       "kind": "Guerre et embargo · juin",
       "title": "L’occupation de Gaza et de la Cisjordanie",
       "text": "Lors de la guerre de juin 1967, Israël occupe Gaza et la Cisjordanie, dont Jérusalem-Est.[[histoire]] La France décide un embargo sur les armes. Le 16 juin, devant l’Assemblée nationale, le ministre des Affaires étrangères Maurice Couve de Murville parle d’une décision « prise après l’éclatement des hostilités » de « mettre l’embargo sur les livraisons d’armes à toutes les parties belligérantes ».[[an-1967]]",
-      "context": "Sa date varie selon les documents. Le 17 mai 1968, le secrétaire d’État André Bettencourt situe la décision « à la même époque » que la déclaration du 2 juin, puis rappelle que « la guerre a été déclenchée le 5 juin ».[[an-1968]] Le ministère des Affaires étrangères écrit aujourd’hui que l’embargo a été décidé « avant le déclenchement des hostilités ».[[france]] Selon Bettencourt, le gouvernement l’assouplit en juillet 1967 mais le maintient « essentiellement pour 50 avions Mirage V commandés par Israël ».[[an-1968]] Aucun acte publié fixant l’embargo n’a été trouvé. Le territoire occupé en 1967 est celui que désignent la résolution 2334 en 2016 et l’avis de la Cour internationale de Justice en 2024.",
-      "question": "Quel acte a fixé l’embargo, et à quelle date ?",
+      "context": "Sa date varie selon les documents. Le 17 mai 1968, le secrétaire d’État André Bettencourt situe la décision « à la même époque » que la déclaration du 2 juin, puis rappelle que « la guerre a été déclenchée le 5 juin ».[[an-1968]] Le ministère des Affaires étrangères écrit aujourd’hui que l’embargo a été décidé « avant le déclenchement des hostilités ».[[france]] Selon Bettencourt, le gouvernement l’assouplit en juillet 1967 mais le maintient « essentiellement pour 50 avions Mirage V commandés par Israël ».[[an-1968]] Une note interne du ministère des Affaires étrangères du 1er août 1967 renvoie aux « instructions gouvernementales (note du ministre des Armées du 5 juin) » et à une « décision du Président de la République en date du 8 juin », qui excepte pour Israël les pièces de rechange d’avions commandées avant le 8 juin. Ces deux textes ne sont pas reproduits dans les Documents diplomatiques français.[[ddf-1967-2]] Le territoire occupé en 1967 est celui que désignent la résolution 2334 en 2016 et l’avis de la Cour internationale de Justice en 2024.",
+      "question": "Que contient la note du ministre des Armées du 5 juin 1967 ?",
       "sources": [
         "histoire",
         "an-1967",
         "an-1968",
-        "france"
+        "france",
+        "ddf-1967-2"
       ],
       "terms": [
         "colonie"
@@ -615,11 +628,12 @@
       "event": "guerre-1967",
       "title": "Embargo sur les armes",
       "author": "Le gouvernement",
-      "nature": "Décision gouvernementale, connue par des déclarations",
-      "text": "Le 16 juin 1967, devant l’Assemblée nationale, le ministre des Affaires étrangères Maurice Couve de Murville parle de « notre décision, prise après l’éclatement des hostilités, de mettre l’embargo sur les livraisons d’armes à toutes les parties belligérantes ».",
-      "limit": "Aucun acte publié fixant l’embargo n’a été trouvé. Sa date varie selon les documents. En 1968, le secrétaire d’État André Bettencourt la situe « à la même époque » que la déclaration du 2 juin. Le ministère des Affaires étrangères écrit aujourd’hui que l’embargo a été décidé « avant le déclenchement des hostilités ».",
+      "nature": "Instructions gouvernementales, par une note du ministre des Armées",
+      "text": "Le 16 juin 1967, devant l’Assemblée nationale, le ministre des Affaires étrangères Maurice Couve de Murville parle de « notre décision, prise après l’éclatement des hostilités, de mettre l’embargo sur les livraisons d’armes à toutes les parties belligérantes ». Une note interne du ministère des Affaires étrangères du 1er août 1967 précise que, « selon les instructions gouvernementales (note du ministre des Armées du 5 juin) », l’embargo s’applique à Israël, à la RAU, à la Syrie, au Liban, à la Jordanie, à l’Irak, au Koweït et à l’Arabie saoudite. Une « décision du Président de la République en date du 8 juin » excepte pour Israël les pièces de rechange d’avions commandées avant cette date.",
+      "limit": "La note du 5 juin et la décision du 8 juin ne sont reproduites dans aucun document consulté. Les dates données varient : en 1968, le secrétaire d’État André Bettencourt situe la décision « à la même époque » que la déclaration du 2 juin ; le ministère des Affaires étrangères écrit aujourd’hui que l’embargo a été décidé « avant le déclenchement des hostilités » ; une note des éditeurs des Documents diplomatiques français parle de « l’embargo décidé le 2 juin 1967 ».",
       "sources": [
         "an-1967",
+        "ddf-1967-2",
         "an-1968",
         "france"
       ]
@@ -631,11 +645,12 @@
       "event": "guerre-1967",
       "title": "Assouplissement de l’embargo",
       "author": "Le gouvernement",
-      "nature": "Décision gouvernementale, connue par une déclaration ultérieure",
-      "text": "Selon André Bettencourt, secrétaire d’État aux Affaires étrangères, le gouvernement assouplit l’embargo en juillet 1967 mais le maintient « essentiellement pour 50 avions Mirage V commandés par Israël ».",
-      "limit": "Ce récit est fait devant l’Assemblée nationale le 17 mai 1968. Aucun acte publié n’a été trouvé.",
+      "nature": "Décision gouvernementale, connue par des télégrammes et une déclaration ultérieure",
+      "text": "Selon André Bettencourt, secrétaire d’État aux Affaires étrangères, le gouvernement assouplit l’embargo en juillet 1967 mais le maintient « essentiellement pour 50 avions Mirage V commandés par Israël ». Le 2 juillet 1967, le ministre des Affaires étrangères télégraphie : « Au sujet de notre embargo des armes vers Israël, celui-ci est maintenu pour le moment, sauf en ce qui concerne les pièces détachées. » Le 9 décembre 1967, il transmet à l’ambassade à Washington des précisions données à l’AFP : « Jusqu’à ce jour la France a livré et continue de livrer à l’État d’Israël la totalité des matériels militaires qui ont été commandés, à l’exception des Mirage. »",
+      "limit": "Aucun acte fixant l’assouplissement n’a été trouvé. Les télégrammes du 2 juillet et du 9 décembre 1967 décrivent la position du gouvernement sans citer de décision.",
       "sources": [
-        "an-1968"
+        "an-1968",
+        "ddf-1967-2"
       ]
     },
     {
