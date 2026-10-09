@@ -235,7 +235,7 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   await page.getByRole('button', { name: 'Écouter' }).click();
   const spoken = await page.evaluate(() => window.__spoken);
   const all = spoken.map(x => x.text).join(' ');
-  check('lecteur : lit l’année, le titre, le texte et la question', all.startsWith('1948. Le déplacement') && all.includes('Question ouverte'));
+  check('lecteur : lit l’année, le titre et le texte', all.startsWith('1948. Le déplacement') && all.includes('guerre israélo-arabe de 1948'));
   check('lecteur : ne lit pas les appels de source', !/\[\[|\]\]/.test(all));
   check('lecteur : focus sur Pause', (await focused(page)) === 'listen-toggle' && (await page.locator('[data-listen="pause"]').isVisible()));
   await page.getByRole('button', { name: 'Pause' }).click();

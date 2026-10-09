@@ -68,7 +68,7 @@ export function validateCorpus(d, { externalRefs = [], mapZones = MAP_ZONES } = 
   let lastYear = -Infinity;
   for (const e of d.events) {
     const where = `événement ${e.id}`;
-    for (const f of ['year', 'short', 'kind', 'title', 'text', 'question']) {
+    for (const f of ['year', 'short', 'kind', 'title', 'text']) {
       if (!e[f]) err(`${where} : champ « ${f} » vide`);
     }
     if (!/^\d{4}$/.test(e.year)) err(`${where} : année invalide « ${e.year} »`);
@@ -118,7 +118,7 @@ export function validateCorpus(d, { externalRefs = [], mapZones = MAP_ZONES } = 
     if (new Set(ns).size !== ns.length) err(`${where} : numéro de paragraphe en double`);
     if (doc.defaultParagraph && !ns.includes(doc.defaultParagraph)) err(`${where} : defaultParagraph « ${doc.defaultParagraph} » absent des extraits`);
     for (const p of doc.paragraphs) {
-      for (const f of ['text', 'addressee', 'gloss', 'question']) if (!p[f]) err(`${where}, § ${p.n} : champ « ${f} » vide`);
+      for (const f of ['text', 'addressee', 'gloss']) if (!p[f]) err(`${where}, § ${p.n} : champ « ${f} » vide`);
       refSources(p.followups.map(f => f.source), `${where}, § ${p.n}`);
     }
     if (doc.collation && !ISO_DATE.test(doc.collation.checked_on || '')) err(`${where} : collation.checked_on doit être une date AAAA-MM-JJ`);

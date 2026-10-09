@@ -16,7 +16,7 @@ Commencer par la réponse à la question de la page. Expliquer ensuite les élé
 
 Employer des verbes précis. Définir les mots techniques à leur première apparition. Les sigles sont développés. Attribuer les qualifications controversées à la personne ou à l'institution qui les emploie, de même que les usages d'un mot qui en élargissent le sens (par exemple Nakba employé pour un processus qui se poursuivrait après 1948).
 
-Une notice donne l'information, pas la consigne qui aurait dû la produire. Si une phrase décrit ce que la page devrait faire (« la portée doit être expliquée »), la remplacer par l'information elle-même, ou dire clairement qu'elle manque encore. Donner d'abord le fait vérifié, puis sa limite, une seule fois. Une question finale ne porte que sur ce que le corpus ne permet pas encore de trancher.
+Une notice donne l'information, pas la consigne qui aurait dû la produire. Si une phrase décrit ce que la page devrait faire (« la portée doit être expliquée »), la remplacer par l'information elle-même, ou dire clairement qu'elle manque encore. Donner d'abord le fait vérifié, puis sa limite, une seule fois.
 
 Lire le texte à voix haute. Demander à un lecteur de reformuler ce qu'il a compris. Ne pas fabriquer de souvenirs ou de témoignages.
 
