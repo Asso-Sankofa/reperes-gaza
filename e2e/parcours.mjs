@@ -151,9 +151,11 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
 
   await page.goto(BASE + '/#/parcours/attaques-2023');
   await page.waitForSelector('#notice-title');
-  check('sommaire des repères : replié par défaut', (await page.locator('.chapters').isHidden()) && (await page.locator('.toc summary').innerText()).includes('REPÈRE 9 SUR 11'));
-  await page.locator('.toc summary').click();
+  check('sommaire des repères : ouvert par défaut sur grand écran', (await page.locator('.chapters').isVisible()) && (await page.locator('.toc summary').innerText()).includes('REPÈRE 9 SUR 11'));
   check('sommaire des repères : onze repères', (await page.locator('.chapters a').count()) === 11 && (await page.locator('.chapters a[aria-current]').getAttribute('href')) === '#/parcours/attaques-2023');
+  await page.locator('.pager__next').click();
+  await page.waitForFunction(() => document.querySelector('.chapters a[aria-current]')?.getAttribute('href') === '#/parcours/avis-2024');
+  check('sommaire des repères : reste ouvert au repère suivant', await page.locator('.chapters').isVisible());
   await page.goto(BASE + '/#/parcours/guerre-1967');
   await page.waitForSelector('#notice-title');
   await page.locator('.reading__decisions a').first().click();
@@ -308,6 +310,14 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   const textBox = await page.locator('.notice__text').boundingBox();
   check('mobile : le texte du repère tient dans le premier écran', textBox.y + textBox.height <= 844 - 64, `bas du texte à ${Math.round(textBox.y + textBox.height)} px`);
   check('mobile : pas de défilement horizontal (notice)', await noHorizontalScroll(page));
+  check('mobile : sommaire des repères replié par défaut', await page.locator('.chapters').isHidden());
+  await page.locator('.toc summary').tap();
+  await page.evaluate(() => { location.hash = '#/parcours/attaques-2023'; });
+  await page.waitForFunction(() => document.querySelector('.chapters a[aria-current]')?.getAttribute('href') === '#/parcours/attaques-2023');
+  check('mobile : sommaire ouvert reste ouvert au repère suivant', await page.locator('.chapters').isVisible());
+  await page.evaluate(() => { location.hash = '#/parcours/resolution-2016'; });
+  await page.waitForSelector('#notice-title');
+  await page.locator('.toc summary').tap();
 
   const toggle = page.locator('#menu-toggle');
   await toggle.click();
