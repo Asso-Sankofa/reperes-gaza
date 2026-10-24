@@ -9,6 +9,7 @@ const ROUTES = ['parcours', 'decisions', 'voix', 'verifier', 'mots', 'methode'];
 const RAIL_START = 1945;
 const RAIL_END = 2026;
 const RAIL_TICKS = [1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020];
+const RAIL_GAP = 7; // part de la frise (en %) réservée aux années avant RAIL_START, à échelle réduite
 
 const events = data.events;
 const sourceById = new Map(data.sources.map(s => [s.id, s]));
@@ -75,7 +76,8 @@ function parseHash() {
 }
 
 const evHref = e => '#/parcours/' + encodeURIComponent(e.id);
-const railPos = e => ((Number(e.year) - RAIL_START) / (RAIL_END - RAIL_START)) * 100;
+const railX = y => (y < RAIL_START ? ((y - 1900) / (RAIL_START - 1900)) * RAIL_GAP : RAIL_GAP + ((y - RAIL_START) / (RAIL_END - RAIL_START)) * (100 - RAIL_GAP));
+const railPos = e => railX(Number(e.year));
 const scrollBehavior = () => (REDUCED.matches ? 'auto' : 'smooth');
 
 // Le repère courant et sa position dans la liste complète.
@@ -170,7 +172,8 @@ function rail(current, list) {
   });
   const cls = e => (current && e.id === current.id ? ' is-active' : list.includes(e) ? '' : ' is-out');
   return `<div class="rail__line"></div>
-    ${RAIL_TICKS.map(y => `<div class="rail__tick" data-left="${((y - RAIL_START) / (RAIL_END - RAIL_START)) * 100}"><span>${y}</span></div>`).join('')}
+    ${RAIL_TICKS.map(y => `<div class="rail__tick" data-left="${railX(y)}"><span>${y}</span></div>`).join('')}
+    <div class="rail__break" data-left="${RAIL_GAP * 0.7}" aria-hidden="true">//</div>
     ${labels.map(c => {
       const active = current && c.items.some(x => x.id === current.id);
       const inList = c.items.some(x => list.includes(x));
