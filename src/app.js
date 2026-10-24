@@ -288,7 +288,7 @@ function renderParcours() {
   const seen = new Set();
   const terms = (ev.terms || []).map(id => termById.get(id));
   const decisions = (data.decisions || []).filter(x => x.event === ev.id);
-  const why1948 = events[0] === ev ? $('[data-template="why1948"]') : null;
+  const why1948 = ev.id === 'nakba-1948' ? $('[data-template="why1948"]') : null;
   const more = terms.length || ev.actors?.length;
   return `${head}
   <article class="wrap reading" aria-labelledby="notice-title">

@@ -44,14 +44,14 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   await page.waitForSelector('#home-title');
   check('accueil : titre affiché', await page.locator('#home-title').isVisible());
   check('accueil : six questions', (await page.locator('.question-card').count()) === 6);
-  check('accueil : frise avec huit repères', (await page.locator('[data-slot="home-rail"] .rail__dot').count()) === 8);
+  check('accueil : frise avec onze repères', (await page.locator('[data-slot="home-rail"] .rail__dot').count()) === 11);
   check('accueil : polices chargées localement', await page.evaluate(async () => { await document.fonts.ready; return document.fonts.check('16px "DM Sans"') && document.fonts.check('16px "Libre Caslon Display"'); }));
   check('accueil : nouveau titre', (await page.locator('#home-title').innerText()).replace(/\s+/g, ' ') === 'Comprendre le rôle de la France dans la question de Gaza');
-  check('accueil : bouton « Lire le premier repère »', (await page.locator('.hero__cta').getAttribute('href')) === '#/parcours/nakba-1948');
+  check('accueil : bouton « Lire le premier repère »', (await page.locator('.hero__cta').getAttribute('href')) === '#/parcours/sykes-picot-1916');
   check('carte : SVG intégré, nommé', (await page.locator('.explorer__map svg[role="img"]').count()) === 1 && (await page.locator('#map-region-title').count()) === 1);
   check('carte : légende et lien vers la méthode', (await page.locator('.map-caption a[href="#/methode"]').count()) === 1);
-  check('sommaire : trois commandes, les huit repères par défaut', (await page.locator('.place-filter').count()) === 3 && (await pressed(page)) === 'all' && (await years(page)).length === 8);
-  check('sommaire : bouton « Voir les huit repères »', await page.getByRole('button', { name: 'Voir les huit repères' }).isVisible());
+  check('sommaire : trois commandes, les onze repères par défaut', (await page.locator('.place-filter').count()) === 3 && (await pressed(page)) === 'all' && (await years(page)).length === 11);
+  check('sommaire : bouton « Voir les onze repères »', await page.getByRole('button', { name: 'Voir les onze repères' }).isVisible());
   check('sommaire : zone d’annonce polie', (await page.locator('.map-summary__status').getAttribute('role')) === 'status');
 
   // Clavier : Tab jusqu'à « Gaza », Entrée ; puis Tab, Espace sur « Cisjordanie ».
@@ -61,9 +61,9 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   await page.keyboard.press('Enter');
   check('clavier : Entrée sélectionne Gaza', (await pressed(page)) === 'gaza');
   check('Gaza : 1967, 2005, 2016, 2023, 2024', (await years(page)).join(',') === '1967,2005,2016,2023,2024');
-  check('Gaza : annonce du nombre de repères', (await page.locator('.map-summary__status').textContent()) === 'Bande de Gaza\u00a0: 5 repères sur 8');
+  check('Gaza : annonce du nombre de repères', (await page.locator('.map-summary__status').textContent()) === 'Bande de Gaza\u00a0: 5 repères sur 11');
   check('Gaza : carte synchronisée', (await muted(page)) === 'cisjordanie');
-  check('Gaza : 1948, 1949 et 2025 restent accessibles', (await page.locator('.map-summary__off a').count()) === 3);
+  check('Gaza : 1916, 1948, 1949, 1956, 1957 et 2025 restent accessibles', (await page.locator('.map-summary__off a').count()) === 6);
   check('Gaza : 2023 mentionne le sud d’Israël', (await page.locator('.map-list li', { hasText: '2023' }).innerText()).includes('Sud d’Israël'));
   check('clavier : focus conservé sur la commande', (await focused(page)) === 'place-gaza');
   await page.keyboard.press('Tab');
@@ -74,15 +74,15 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   check('carte : un clic sur Gaza met à jour les commandes', (await pressed(page)) === 'gaza');
   await page.waitForTimeout(300);
   await page.screenshot({ path: `${SHOTS}/desktop-accueil-gaza.png` });
-  await page.getByRole('button', { name: 'Voir les huit repères' }).click();
-  check('« Voir les huit repères » rétablit la liste complète', (await years(page)).length === 8 && (await muted(page)) === '');
+  await page.getByRole('button', { name: 'Voir les onze repères' }).click();
+  check('« Voir les onze repères » rétablit la liste complète', (await years(page)).length === 11 && (await muted(page)) === '');
   await page.screenshot({ path: `${SHOTS}/desktop-accueil.png`, fullPage: true });
 
   // Sans carte (SVG absent ou non rendu), les commandes et la liste fonctionnent seules.
   await page.evaluate(() => document.querySelector('.explorer__map svg').remove());
   await page.getByRole('button', { name: 'Cisjordanie' }).click();
   check('sans carte : le filtre fonctionne', (await years(page)).length === 3 && page.errors.length === 0, page.errors.join(' | '));
-  await page.getByRole('button', { name: 'Voir les huit repères' }).click();
+  await page.getByRole('button', { name: 'Voir les onze repères' }).click();
 
   await page.goto(BASE + '/#/parcours/retrait-2005');
   await page.waitForSelector('#notice-title');
@@ -151,9 +151,9 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
 
   await page.goto(BASE + '/#/parcours/attaques-2023');
   await page.waitForSelector('#notice-title');
-  check('sommaire des repères : replié par défaut', (await page.locator('.chapters').isHidden()) && (await page.locator('.toc summary').innerText()).includes('REPÈRE 6 SUR 8'));
+  check('sommaire des repères : replié par défaut', (await page.locator('.chapters').isHidden()) && (await page.locator('.toc summary').innerText()).includes('REPÈRE 9 SUR 11'));
   await page.locator('.toc summary').click();
-  check('sommaire des repères : huit repères', (await page.locator('.chapters a').count()) === 8 && (await page.locator('.chapters a[aria-current]').getAttribute('href')) === '#/parcours/attaques-2023');
+  check('sommaire des repères : onze repères', (await page.locator('.chapters a').count()) === 11 && (await page.locator('.chapters a[aria-current]').getAttribute('href')) === '#/parcours/attaques-2023');
   await page.goto(BASE + '/#/parcours/guerre-1967');
   await page.waitForSelector('#notice-title');
   await page.locator('.reading__decisions a').first().click();
@@ -329,15 +329,15 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   check('mobile : cibles tactiles d’au moins 44 px', (await page.locator('.place-filter').evaluateAll(b => b.every(x => x.getBoundingClientRect().height >= 44))));
   await page.getByRole('button', { name: 'Gaza' }).tap();
   check('mobile : toucher « Gaza » filtre la liste', (await pressed(page)) === 'gaza' && (await years(page)).length === 5);
-  await page.getByRole('button', { name: 'Voir les huit repères' }).tap();
+  await page.getByRole('button', { name: 'Voir les onze repères' }).tap();
   await page.locator('.explorer__map').scrollIntoViewIfNeeded();
   const gz = await page.locator('.explorer__map [data-zone="gaza"]').boundingBox();
   await page.touchscreen.tap(gz.x + gz.width / 2, gz.y + gz.height / 2);
   check('mobile : toucher Gaza sur la carte', (await pressed(page)) === 'gaza', `zone ${Math.round(gz.width)}×${Math.round(gz.height)} px`);
   await page.waitForTimeout(300);
   await page.screenshot({ path: `${SHOTS}/mobile-accueil-gaza.png`, fullPage: true });
-  await page.getByRole('button', { name: 'Voir les huit repères' }).tap();
-  check('mobile : liste chronologique à l’accueil', (await page.locator('.map-list li').count()) === 8);
+  await page.getByRole('button', { name: 'Voir les onze repères' }).tap();
+  check('mobile : liste chronologique à l’accueil', (await page.locator('.map-list li').count()) === 11);
   check('mobile : pas de défilement horizontal (accueil)', await noHorizontalScroll(page));
   await page.screenshot({ path: `${SHOTS}/mobile-accueil.png`, fullPage: true });
   check('mobile : aucune requête vers un domaine tiers', page.external.length === 0, page.external.join(', '));
