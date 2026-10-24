@@ -45,6 +45,7 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   check('accueil : titre affiché', await page.locator('#home-title').isVisible());
   check('accueil : six questions', (await page.locator('.question-card').count()) === 6);
   check('accueil : frise avec onze repères', (await page.locator('[data-slot="home-rail"] .rail__dot').count()) === 11);
+  check('accueil : la frise place chaque étiquette dans la page', await page.evaluate(() => [...document.querySelectorAll('[data-slot="home-rail"] .rail__label')].every(n => { const r = n.getBoundingClientRect(); return r.left >= 0 && r.right <= window.innerWidth; })));
   check('accueil : polices chargées localement', await page.evaluate(async () => { await document.fonts.ready; return document.fonts.check('16px "DM Sans"') && document.fonts.check('16px "Libre Caslon Display"'); }));
   check('accueil : nouveau titre', (await page.locator('#home-title').innerText()).replace(/\s+/g, ' ') === 'Comprendre le rôle de la France dans la question de Gaza');
   check('accueil : bouton « Lire le premier repère »', (await page.locator('.hero__cta').getAttribute('href')) === '#/parcours/sykes-picot-1916');
