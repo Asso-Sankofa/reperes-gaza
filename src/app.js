@@ -42,7 +42,7 @@ const state = {
   place: 'all',
   sourceId: null,
   selPara: {},
-  tocOpen: false,
+  tocOpen: window.matchMedia('(min-width: 720px)').matches, // ouvert sur grand écran, replié sur mobile
   moreOpen: false,
   menuOpen: false,
 };
@@ -707,7 +707,7 @@ function onHashChange() {
   // Onglets des acteurs : le focus reste sur l'onglet utilisé.
   const keepFocus = !!active?.closest?.('.tabs');
   closeMenu({ restoreFocus: false });
-  if (changed) { closePanel({ restoreFocus: false }); stopSpeech(); state.tocOpen = false; state.moreOpen = false; }
+  if (changed) { closePanel({ restoreFocus: false }); stopSpeech(); state.moreOpen = false; }
   Object.assign(state, next);
   render({ focusHeading: changed && !keepFocus });
   // Lien vers un acte précis de la page Décisions : on s'y rend plutôt qu'en haut de page.
@@ -732,7 +732,7 @@ document.addEventListener('click', e => {
   }
 });
 
-// Sommaire des repères et « Pour aller plus loin » : leur état d'ouverture survit aux rendus.
+// Sommaire des repères et « Pour aller plus loin » : leur état d'ouverture survit aux rendus et aux changements de repère.
 document.addEventListener('toggle', e => {
   if (e.target.matches?.('.toc')) { state.tocOpen = e.target.open; if (e.target.open) centerCurrentChapter(); }
   if (e.target.matches?.('.reading__more')) state.moreOpen = e.target.open;
