@@ -392,9 +392,79 @@
       "access": "Volume consulté le 9 octobre 2026 en mode texte sur Gallica. Passages relus à cette date.",
       "limit": "La note du ministre des Armées du 5 juin et la décision du 8 juin ne sont pas reproduites. Une note des éditeurs (document n° 17) parle de « l’embargo décidé le 2 juin 1967 ».",
       "verified_on": "2026-10-09"
+    },
+    {
+      "id": "cambon-grey",
+      "publisher": "Digithèque de matériaux juridiques et politiques · Université de Perpignan",
+      "title": "Accords Sykes-Picot, 1916 (lettre de Paul Cambon à Edward Grey, 9 mai 1916)",
+      "url": "https://mjp.univ-perp.fr/constit/sy1916.htm",
+      "type": "Texte d’un accord diplomatique",
+      "scope": "Texte français de la lettre de Paul Cambon du 9 mai 1916 et présentation de l’accord.",
+      "locator": "Présentation (échange de lettres des 9 et 16 mai 1916, zone brune devenue Palestine du mandat, application incomplète de l’accord) ; clause 3 de la lettre du 9 mai : « Dans la zone brune sera établie une administration internationale dont la forme devra être décidée après consultation avec la Russie, et ensuite d’accord avec les autres alliés et les représentants du chérif de la Mecque. »",
+      "access": "Page consultée le 24 octobre 2026 (texte téléchargé, passages comparés par script). Elle indique que le document d’origine est un texte dactylographié publié par le ministère français des Affaires étrangères.",
+      "limit": "La page précise qu’une page de l’accord manquait dans le document d’origine et qu’elle l’a complétée. La lettre ne nomme pas la Palestine : l’identification de la zone brune à la Palestine du mandat est celle de la Digithèque.",
+      "verified_on": "2026-10-24"
+    },
+    {
+      "id": "soutou-2016",
+      "publisher": "Georges-Henri Soutou · Revue Défense nationale",
+      "title": "Suez 1956 : tout ce qu’il ne faut pas faire !",
+      "url": "https://shs.cairn.info/revue-defense-nationale-2016-9-page-43?lang=fr",
+      "type": "Article d’historien",
+      "scope": "Déroulement de l’opération de Suez, réunion de Sèvres et décision française d’aider Israël sur le plan nucléaire.",
+      "locator": "RDN n° 794, novembre 2016, p. 43-50 (DOI 10.3917/rdna.794.0043). P. 43 : engagements pris envers Israël. P. 44 : nationalisation du canal, réunion de Sèvres du 22 au 24 octobre 1956, scénario, opération conçue en dehors du Quai d’Orsay. P. 48, section « Israël » : conseil restreint du 25 octobre 1956, aide nucléaire, hostilité du Quai d’Orsay.",
+      "access": "Article lu en entier (PDF de Cairn téléchargé le 24 octobre 2026, passages comparés par script). Passages relus : « Une réunion décisive eut lieu à Sèvres du 22 au 24 octobre 1956 entre Britanniques, Français et Israéliens » ; « Le 25 octobre 1956, un conseil restreint à Paris décida d’aider Israël sur le plan nucléaire ».",
+      "limit": "Article de synthèse : l’auteur écrit que sur Sèvres « les documents sont rares, mais clairs ». Le lien entre la décision du 25 octobre et la participation d’Israël (« quid pro quo ») est son interprétation. La note du 11 septembre 1957 sur laquelle il s’appuie (Archives nationales, 580 AP 14) n’a pas été consultée.",
+      "verified_on": "2026-10-24"
+    },
+    {
+      "id": "nsa-ebb510",
+      "publisher": "National Security Archive · Université George Washington",
+      "title": "The Eisenhower Administration and the Discovery of Dimona: March 1958-January 1961",
+      "url": "https://nsarchive2.gwu.edu/nukevault/ebb510/",
+      "type": "Recueil de documents commentés",
+      "scope": "Documents américains sur la découverte de Dimona, présentés par Avner Cohen et William Burr.",
+      "locator": "Document 11 : télégramme CAHTO 4 de Paris, 16 décembre 1960, compte rendu d’un entretien entre Maurice Couve de Murville et Christian Herter. Présentation : accord de Dimona signé à Paris le 3 octobre 1957 ; « paquet Dimona » signé par Shimon Peres le 30 octobre 1957.",
+      "access": "Page publiée le 15 avril 2015, consultée le 24 octobre 2026 (texte téléchargé, passages comparés par script). Passage relu : « under the bilateral agreement, France would supply Israel the raw materials and receive any plutonium produced by the plant ».",
+      "limit": "Source américaine : le télégramme rapporte des propos de Couve de Murville, ce n’est pas un document français. Les deux dates d’octobre 1957 figurent à deux endroits de la page, sans que les auteurs précisent ce qui distingue l’accord du paquet.",
+      "verified_on": "2026-10-24",
+      "lang": "en"
+    },
+    {
+      "id": "ddf-1957-1",
+      "publisher": "Ministère des Affaires étrangères · Commission de publication des documents diplomatiques français",
+      "title": "Documents diplomatiques français, 1957, tome I (1er janvier-30 juin)",
+      "url": "https://gallica.bnf.fr/ark:/12148/bd6t5327061f.texteImage",
+      "type": "Recueil de documents diplomatiques",
+      "scope": "Documents du ministère des Affaires étrangères du premier semestre 1957, publiés et annotés par la Commission de publication.",
+      "locator": "Document n° 366 : télégramme de M. Parodi, représentant permanent de la France au Conseil de l’OTAN, n° 50218, 6 mai 1957, note 1 : « Les pays en état de fabriquer la bombe atomique au cours des prochaines années étaient dans l’ordre : la France, la Suède et Israël. »",
+      "access": "Volume consulté le 24 octobre 2026 en texte intégral. Passage relu à cette date.",
+      "limit": "La note du Secrétariat général du 7 mai 1957 dont la note de bas de page rend compte n’est pas reproduite. Elle rapporte des propos du ministre sur l’armement nucléaire, sans parler d’une aide française à Israël. Les volumes 1956 (tomes II et III) et 1957 (tome I) ne contiennent ni le protocole de Sèvres ni de document sur cette aide, d’après une recherche en texte intégral.",
+      "verified_on": "2026-10-24"
     }
   ],
   "events": [
+    {
+      "id": "sykes-picot-1916",
+      "year": "1916",
+      "short": "Sykes-Picot",
+      "threads": [
+        "history",
+        "france"
+      ],
+      "places": [],
+      "kind": "Accord franco-britannique · mai",
+      "title": "La France et le Royaume-Uni prévoient une administration internationale en Palestine",
+      "text": "Le 9 mai 1916, l’ambassadeur de France à Londres Paul Cambon écrit au secrétaire d’État britannique Edward Grey pour confirmer un accord de partage de l’empire ottoman. Grey confirme son accord le 16 mai. Cet échange de lettres est connu sous le nom d’accords Sykes-Picot.[[cambon-grey]] Le texte place sous « administration internationale » la « zone brune », que la Digithèque qui le publie identifie à la Palestine du mandat britannique.[[cambon-grey]]",
+      "context": "La lettre précise que la forme de cette administration sera décidée « après consultation avec la Russie, et ensuite d’accord avec les autres alliés et les représentants du chérif de la Mecque ».[[cambon-grey]] La Digithèque indique que l’accord n’a pas pu s’appliquer complètement, à cause de la révolution russe puis de l’arrivée au pouvoir de Mustafa Kemal.[[cambon-grey]]",
+      "sources": [
+        "cambon-grey"
+      ],
+      "terms": [],
+      "actors": [
+        "france"
+      ]
+    },
     {
       "id": "nakba-1948",
       "year": "1948",
@@ -435,6 +505,51 @@
       "terms": [],
       "actors": [
         "france"
+      ]
+    },
+    {
+      "id": "suez-1956",
+      "year": "1956",
+      "short": "Suez et Sèvres",
+      "threads": [
+        "history",
+        "france"
+      ],
+      "places": [],
+      "kind": "Réunion de Sèvres · 22 au 24 octobre",
+      "title": "La France prépare à Sèvres, avec Israël et le Royaume-Uni, l’attaque contre l’Égypte",
+      "text": "Le 26 juillet 1956, Nasser annonce la nationalisation du canal de Suez, propriété d’une compagnie à capitaux franco-britanniques.[[soutou-2016]] Du 22 au 24 octobre, des Français, des Britanniques et des Israéliens se réunissent à Sèvres et mettent au point un scénario : une attaque israélienne, un ultimatum franco-britannique aux deux parties, puis l’occupation de la zone du canal par les Franco-Britanniques.[[soutou-2016]] L’historien Georges-Henri Soutou écrit que le vrai but était de renverser Nasser.[[soutou-2016]]",
+      "context": "L’attaque israélienne à travers le Sinaï commence le 29 octobre. Le 6 novembre, Londres renonce et la France suit contre son gré. L’ONU impose un cessez-le-feu dans la nuit du 6 au 7.[[soutou-2016]] Selon Soutou, l’opération a été conçue en dehors du Quai d’Orsay, et les engagements pris envers Israël pour obtenir sa participation « pèsent encore aujourd’hui sur la crise du Moyen-Orient ».[[soutou-2016]]",
+      "sources": [
+        "soutou-2016"
+      ],
+      "terms": [],
+      "actors": [
+        "france",
+        "israel"
+      ]
+    },
+    {
+      "id": "dimona-1957",
+      "year": "1957",
+      "short": "Dimona",
+      "threads": [
+        "france"
+      ],
+      "places": [],
+      "kind": "Aide nucléaire · octobre",
+      "title": "La France aide Israël à construire le réacteur de Dimona",
+      "text": "Selon Georges-Henri Soutou, qui s’appuie sur une note du ministère des Affaires étrangères du 11 septembre 1957, un conseil restreint réuni à Paris le 25 octobre 1956, lendemain de la signature des protocoles de Sèvres, décide d’aider Israël à construire un réacteur et une usine d’extraction de plutonium. Il y voit la contrepartie de la participation d’Israël à l’opération.[[soutou-2016]] Le 16 décembre 1960, d’après un télégramme américain, le ministre Maurice Couve de Murville reconnaît auprès du secrétaire d’État américain Christian Herter un accord secret franco-israélien pour construire le réacteur de Dimona, que le télégramme décrit comme une réplique de l’usine de Marcoule. La France fournit les matières premières et reçoit le plutonium produit.[[nsa-ebb510]]",
+      "context": "Selon Soutou, le Quai d’Orsay était hostile à cet accord, parce qu’il jugeait évident qu’Israël fabriquerait des armes et que le secret ne serait pas gardé longtemps.[[soutou-2016]] Avner Cohen et William Burr situent la signature de l’accord de Dimona à Paris le 3 octobre 1957. Ils datent du 30 octobre la signature du « paquet Dimona » par Shimon Peres.[[nsa-ebb510]] Au Conseil de l’OTAN de mai 1957, selon une note du ministère du 7 mai résumée dans les Documents diplomatiques français, le ministre des Affaires étrangères Christian Pineau cite Israël, après la France et la Suède, parmi les pays en état de fabriquer la bombe atomique « au cours des prochaines années ».[[ddf-1957-1]]",
+      "sources": [
+        "soutou-2016",
+        "nsa-ebb510",
+        "ddf-1957-1"
+      ],
+      "terms": [],
+      "actors": [
+        "france",
+        "israel"
       ]
     },
     {
