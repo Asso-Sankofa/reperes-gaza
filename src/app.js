@@ -273,7 +273,7 @@ function renderParcours() {
             <span class="chapters__year">${esc(e.year)}</span><span class="chapters__short">${esc(e.short)}</span></a>`).join('')}
         </nav>
       </details>
-      ${SPEECH && !(doc && state.sub === 'texte') ? `<div class="listen" data-slot="listen" role="group" aria-label="Écouter ce repère">${listenControls()}</div>` : ''}
+      ${hasFrenchVoice() && !(doc && state.sub === 'texte') ? `<div class="listen" data-slot="listen" role="group" aria-label="Écouter ce repère">${listenControls()}</div>` : ''}
     </div>
   </section>`;
 
@@ -612,6 +612,8 @@ function trapMenuFocus(e) {
 /* ---------- Lecteur audio (synthèse vocale du navigateur) ---------- */
 
 const SPEECH = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+// Sans voix française installée, le navigateur lirait le texte avec sa voix par défaut, souvent anglaise : le bouton n'est alors pas proposé.
+const hasFrenchVoice = () => SPEECH && window.speechSynthesis.getVoices().some(v => v.lang.toLowerCase().startsWith('fr'));
 let speech = 'idle'; // idle | playing | paused
 
 // Ce qui est lu : année et titre, texte, contexte. Sans les appels de source ;
@@ -687,6 +689,13 @@ function stopSpeech({ keepFocus = false } = {}) {
 }
 
 window.addEventListener('pagehide', () => { if (SPEECH) window.speechSynthesis.cancel(); });
+// Les voix se chargent après le premier affichage dans certains navigateurs.
+if (SPEECH) {
+  let hadFrench = hasFrenchVoice();
+  window.speechSynthesis.addEventListener?.('voiceschanged', () => {
+    if (hasFrenchVoice() !== hadFrench) { hadFrench = !hadFrench; render(); }
+  });
+}
 
 /* ---------- Événements ---------- */
 

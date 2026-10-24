@@ -223,7 +223,7 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   // Synthèse factice : on enregistre ce qui serait lu, sans dépendre des voix installées.
   await page.addInitScript(() => {
     window.__spoken = [];
-    const synth = { speaking: false, paused: false, getVoices: () => [],
+    const synth = { speaking: false, paused: false, getVoices: () => [{ lang: 'fr-FR' }],
       speak(u) { window.__spoken.push({ text: u.text, lang: u.lang }); this.last = u; },
       pause() { this.paused = true; }, resume() { this.paused = false; },
       cancel() { window.__cancelled = (window.__cancelled || 0) + 1; } };
@@ -254,6 +254,26 @@ const noHorizontalScroll = page => page.evaluate(() => document.documentElement.
   await page.waitForSelector('#doc-title');
   check('lecteur : absent de la page du document', (await page.locator('.listen').count()) === 0);
   check('lecteur : aucune erreur JavaScript', page.errors.length === 0, page.errors.join(' | '));
+  await page.context().close();
+}
+
+/* ---------- Lecteur audio sans voix française ---------- */
+{
+  const page = await newPage({ width: 1366, height: 900 });
+  await page.addInitScript(() => {
+    const synth = new EventTarget();
+    synth.voices = [{ lang: 'en-GB' }];
+    synth.getVoices = () => synth.voices;
+    synth.speak = () => {}; synth.cancel = () => {};
+    Object.defineProperty(window, 'speechSynthesis', { value: synth });
+    window.SpeechSynthesisUtterance = class { constructor(text) { this.text = text; } };
+  });
+  await page.goto(BASE + '/#/parcours/nakba-1948');
+  await page.waitForSelector('#notice-title');
+  check('lecteur : pas de bouton sans voix française', (await page.locator('.listen').count()) === 0);
+  await page.evaluate(() => { speechSynthesis.voices = [{ lang: 'fr-FR' }]; speechSynthesis.dispatchEvent(new Event('voiceschanged')); });
+  check('lecteur : le bouton apparaît quand une voix française se charge', await page.getByRole('button', { name: 'Écouter' }).isVisible());
+  check('lecteur : aucune erreur JavaScript (sans voix française)', page.errors.length === 0, page.errors.join(' | '));
   await page.context().close();
 }
 
